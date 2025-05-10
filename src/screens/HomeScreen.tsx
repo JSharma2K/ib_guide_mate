@@ -22,6 +22,7 @@ type RootStackParamList = {
   SubjectDetail: { subjectId: string };
   ManageGuides: undefined;
   EnglishALiterature: undefined;
+  MathAA: undefined;
 };
 
 type HomeScreenProps = {
@@ -66,6 +67,8 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
         onPress={() => {
           if (item.key === 'english-a') {
             navigation.navigate('EnglishALiterature');
+          } else if (item.key === 'math-aa') {
+            navigation.navigate('MathAA');
           } else {
             navigation.navigate('SubjectList');
           }

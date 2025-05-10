@@ -11,6 +11,7 @@ import SubjectListScreen from './src/screens/SubjectListScreen';
 import SubjectDetailScreen from './src/screens/SubjectDetailScreen';
 import ManageGuidesScreen from './src/screens/ManageGuidesScreen';
 import EnglishALiteratureScreen from './src/screens/EnglishALiteratureScreen';
+import MathAAScreen from './src/screens/MathAAScreen';
 
 const { DarkTheme } = adaptNavigationTheme({
   reactNavigationDark: NavigationDarkTheme,
@@ -84,6 +85,17 @@ export default function App() {
               component={EnglishALiteratureScreen} 
               options={{ 
                 title: 'English A: Literature',
+                headerStyle: {
+                  backgroundColor: theme.colors.primary,
+                },
+                headerTintColor: theme.colors.onPrimary,
+              }}
+            />
+            <Stack.Screen 
+              name="MathAA" 
+              component={MathAAScreen} 
+              options={{ 
+                title: 'Mathematics: Analysis and Approaches',
                 headerStyle: {
                   backgroundColor: theme.colors.primary,
                 },
