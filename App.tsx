@@ -10,6 +10,7 @@ import HomeScreen from './src/screens/HomeScreen';
 import SubjectListScreen from './src/screens/SubjectListScreen';
 import SubjectDetailScreen from './src/screens/SubjectDetailScreen';
 import ManageGuidesScreen from './src/screens/ManageGuidesScreen';
+import EnglishALiteratureScreen from './src/screens/EnglishALiteratureScreen';
 
 const { DarkTheme } = adaptNavigationTheme({
   reactNavigationDark: NavigationDarkTheme,
@@ -77,6 +78,17 @@ export default function App() {
               name="ManageGuides" 
               component={ManageGuidesScreen} 
               options={{ title: 'Manage Guides' }}
+            />
+            <Stack.Screen 
+              name="EnglishALiterature" 
+              component={EnglishALiteratureScreen} 
+              options={{ 
+                title: 'English A: Literature',
+                headerStyle: {
+                  backgroundColor: theme.colors.primary,
+                },
+                headerTintColor: theme.colors.onPrimary,
+              }}
             />
           </Stack.Navigator>
         </NavigationContainer>

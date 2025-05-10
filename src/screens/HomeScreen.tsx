@@ -21,6 +21,7 @@ type RootStackParamList = {
   SubjectList: undefined;
   SubjectDetail: { subjectId: string };
   ManageGuides: undefined;
+  EnglishALiterature: undefined;
 };
 
 type HomeScreenProps = {
@@ -62,7 +63,13 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
     <Animated.View entering={FadeInDown.delay(200 + index * 100).duration(600)}>
       <Card
         style={styles.subjectCard}
-        onPress={() => navigation.navigate('SubjectList')}
+        onPress={() => {
+          if (item.key === 'english-a') {
+            navigation.navigate('EnglishALiterature');
+          } else {
+            navigation.navigate('SubjectList');
+          }
+        }}
         elevation={0}
       >
         <LinearGradient
