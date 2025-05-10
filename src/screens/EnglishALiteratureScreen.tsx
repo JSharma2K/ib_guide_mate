@@ -89,6 +89,67 @@ const EnglishALiteratureScreen = () => {
               </List.Accordion>
 
               <List.Accordion
+                title="Detailed Rubrics"
+                expanded={expandedSection === 'detailedRubrics'}
+                onPress={() => toggleSection('detailedRubrics')}
+                titleStyle={styles.sectionTitle}
+              >
+                <View style={styles.sectionContent}>
+                  <Text style={styles.subsectionTitle}>Paper 1 (20 marks)</Text>
+                  <View style={styles.criterionContainer}>
+                    <Text style={styles.criterionTitle}>Criterion A: Understanding and Interpretation (5 marks)</Text>
+                    <Text style={styles.criterionDescription}>
+                      • Insightful interpretation of the text{'\n'}
+                      • Clear understanding of meaning and purpose
+                    </Text>
+
+                    <Text style={styles.criterionTitle}>Criterion B: Analysis and Evaluation (5 marks)</Text>
+                    <Text style={styles.criterionDescription}>
+                      • Effective analysis of stylistic features{'\n'}
+                      • Analysis of literary devices{'\n'}
+                      • Understanding of impact on the reader
+                    </Text>
+
+                    <Text style={styles.criterionTitle}>Criterion C: Focus and Organization (5 marks)</Text>
+                    <Text style={styles.criterionDescription}>
+                      • Ideas are clearly structured{'\n'}
+                      • Logical development of arguments{'\n'}
+                      • Coherent presentation
+                    </Text>
+
+                    <Text style={styles.criterionTitle}>Criterion D: Language (5 marks)</Text>
+                    <Text style={styles.criterionDescription}>
+                      • Clear, varied, and accurate language{'\n'}
+                      • Appropriate for literary analysis
+                    </Text>
+                  </View>
+
+                  <Text style={styles.subsectionTitle}>Paper 2 (30 marks)</Text>
+                  <View style={styles.criterionContainer}>
+                    <Text style={styles.criterionTitle}>Criterion A: Knowledge, Understanding and Interpretation (10 marks)</Text>
+                    <Text style={styles.criterionTitle}>Criterion B: Analysis and Evaluation (10 marks)</Text>
+                    <Text style={styles.criterionTitle}>Criterion C: Focus and Organization (10 marks)</Text>
+                  </View>
+
+                  <Text style={styles.subsectionTitle}>Individual Oral (40 marks)</Text>
+                  <View style={styles.criterionContainer}>
+                    <Text style={styles.criterionTitle}>Criterion A: Knowledge, Understanding and Interpretation (10 marks)</Text>
+                    <Text style={styles.criterionTitle}>Criterion B: Analysis and Evaluation (10 marks)</Text>
+                    <Text style={styles.criterionTitle}>Criterion C: Focus and Organization (10 marks)</Text>
+                    <Text style={styles.criterionTitle}>Criterion D: Language (10 marks)</Text>
+                  </View>
+
+                  <Text style={styles.subsectionTitle}>HL Essay (20 marks)</Text>
+                  <View style={styles.criterionContainer}>
+                    <Text style={styles.criterionTitle}>Criterion A: Knowledge, Understanding and Interpretation (5 marks)</Text>
+                    <Text style={styles.criterionTitle}>Criterion B: Analysis and Evaluation (5 marks)</Text>
+                    <Text style={styles.criterionTitle}>Criterion C: Focus, Organization and Development (5 marks)</Text>
+                    <Text style={styles.criterionTitle}>Criterion D: Language (5 marks)</Text>
+                  </View>
+                </View>
+              </List.Accordion>
+
+              <List.Accordion
                 title="Prescribed Literature"
                 expanded={expandedSection === 'literature'}
                 onPress={() => toggleSection('literature')}
@@ -178,6 +239,28 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     fontFamily: 'Montserrat_700Bold',
     fontStyle: 'italic',
+  },
+  criterionContainer: {
+    marginTop: 8,
+    marginBottom: 16,
+    padding: 12,
+    backgroundColor: 'rgba(255,255,255,0.03)',
+    borderRadius: 8,
+  },
+  criterionTitle: {
+    fontSize: 15,
+    color: '#FFD700',
+    marginTop: 12,
+    marginBottom: 4,
+    fontFamily: 'Montserrat_700Bold',
+  },
+  criterionDescription: {
+    fontSize: 14,
+    color: '#E0D8C3',
+    marginLeft: 8,
+    marginBottom: 8,
+    lineHeight: 20,
+    fontFamily: 'Montserrat_400Regular',
   },
 });
 
