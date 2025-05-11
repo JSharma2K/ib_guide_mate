@@ -12,7 +12,7 @@ const MathAAScreen = () => {
   const overviewAnimation = useRef(new Animated.Value(0)).current;
   const essentialsAnimation = useRef(new Animated.Value(0)).current;
   const topicsAnimation = useRef(new Animated.Value(0)).current;
-  const assessmentAnimation = useRef(new Animated.Value(0)).current;
+  const rubricsAnimation = useRef(new Animated.Value(0)).current;
 
   const toggleSection = (section: string) => {
     const isExpanding = expandedSection !== section;
@@ -22,7 +22,7 @@ const MathAAScreen = () => {
       'overview': overviewAnimation,
       'essentials': essentialsAnimation,
       'topics': topicsAnimation,
-      'assessment': assessmentAnimation,
+      'rubrics': rubricsAnimation,
     }[section];
 
     Animated.timing(animationValue, {
@@ -67,7 +67,7 @@ const MathAAScreen = () => {
       'overview': overviewAnimation,
       'essentials': essentialsAnimation,
       'topics': topicsAnimation,
-      'assessment': assessmentAnimation,
+      'rubrics': rubricsAnimation,
     }[section];
 
     return (
@@ -121,27 +121,6 @@ const MathAAScreen = () => {
               </List.Accordion>
 
               <List.Accordion
-                title="Subject Essentials"
-                expanded={expandedSection === 'essentials'}
-                onPress={() => toggleSection('essentials')}
-                titleStyle={styles.sectionTitle}
-              >
-                {renderAnimatedContent('essentials',
-                  <View style={styles.sectionContent}>
-                    <Text style={styles.subsectionTitle}>Course Structure</Text>
-                    <Text style={styles.content}>
-                      {highlightText("• Standard Level (SL): 150 hours\n• Higher Level (HL): 240 hours\n\nKey Features:\n• Focus on mathematical reasoning\n• Development of problem-solving skills\n• Application of mathematics to real-world situations")}
-                    </Text>
-
-                    <Text style={styles.subsectionTitle}>Assessment Structure</Text>
-                    <Text style={styles.content}>
-                      {highlightText("Standard Level (SL):\n• External Assessment: 80%\n• Internal Assessment: 20%\n\nHigher Level (HL):\n• External Assessment: 80%\n• Internal Assessment: 20%")}
-                    </Text>
-                  </View>
-                )}
-              </List.Accordion>
-
-              <List.Accordion
                 title="Topics"
                 expanded={expandedSection === 'topics'}
                 onPress={() => toggleSection('topics')}
@@ -163,22 +142,125 @@ const MathAAScreen = () => {
               </List.Accordion>
 
               <List.Accordion
-                title="Assessment Details"
-                expanded={expandedSection === 'assessment'}
-                onPress={() => toggleSection('assessment')}
+                title="Subject Essentials"
+                expanded={expandedSection === 'essentials'}
+                onPress={() => toggleSection('essentials')}
                 titleStyle={styles.sectionTitle}
               >
-                {renderAnimatedContent('assessment',
+                {renderAnimatedContent('essentials',
                   <View style={styles.sectionContent}>
-                    <Text style={styles.subsectionTitle}>External Assessment</Text>
-                    <Text style={styles.content}>
-                      {highlightText("Paper 1:\n• No calculator allowed\n• Short and extended response questions\n• 90 minutes (SL) / 120 minutes (HL)\n\nPaper 2:\n• Calculator allowed\n• Short and extended response questions\n• 90 minutes (SL) / 120 minutes (HL)")}
-                    </Text>
+                    <Text style={styles.subsectionTitle}>Syllabus Overview</Text>
+                    <View style={styles.criterionContainer}>
+                      <Text style={styles.content}>
+                        {highlightText("Topics (SL/HL):")}
+                      </Text>
+                      <Text style={styles.criterionDescription}>
+                        • Number & Algebra (19/39){'\n'}
+                        • Functions (21/32){'\n'}
+                        • Geometry (25/51){'\n'}
+                        • Statistics (27/33){'\n'}
+                        • Calculus (28/55)
+                      </Text>
+                    </View>
 
-                    <Text style={styles.subsectionTitle}>Internal Assessment</Text>
-                    <Text style={styles.content}>
-                      {highlightText("Mathematical Exploration:\n• Individual investigation\n• 20 hours\n• Written report of 12-20 pages")}
-                    </Text>
+                    <Text style={styles.subsectionTitle}>Assessment Outline</Text>
+                    <View style={styles.criterionContainer}>
+                      <Text style={styles.levelTitle}>Standard Level (SL)</Text>
+                      <Text style={styles.criterionDescription}>
+                        • Paper 1 (90m): 40%{'\n'}
+                        • Paper 2 (90m): 40%{'\n'}
+                        • Internal Assessment: 20%
+                      </Text>
+
+                      <Text style={styles.levelTitle}>Higher Level (HL)</Text>
+                      <Text style={styles.criterionDescription}>
+                        • Paper 1 (120m): 30%{'\n'}
+                        • Paper 2 (120m): 30%{'\n'}
+                        • Paper 3 (75m): 20%{'\n'}
+                        • Internal Assessment: 20%
+                      </Text>
+                    </View>
+
+                    <Text style={styles.subsectionTitle}>Internal Assessment Rubrics (20 marks)</Text>
+                    <View style={styles.criterionContainer}>
+                      <Text style={styles.criterionDescription}>
+                        • Criterion A: Presentation (4 marks){'\n'}
+                        • Criterion B: Mathematical communication (4 marks){'\n'}
+                        • Criterion C: Personal engagement (4 marks){'\n'}
+                        • Criterion D: Reflection (3 marks){'\n'}
+                        • Criterion E: Use of mathematics (5 marks)
+                      </Text>
+                    </View>
+
+                    <Text style={styles.subsectionTitle}>Assessment Objectives in Practice</Text>
+                    <View style={styles.criterionContainer}>
+                      <Text style={styles.criterionDescription}>
+                        • Problem solving{'\n'}
+                        • Communication{'\n'}
+                        • Reasoning{'\n'}
+                        • Technology use{'\n'}
+                        • Inquiry
+                      </Text>
+                    </View>
+                  </View>
+                )}
+              </List.Accordion>
+
+              <List.Accordion
+                title="Detailed Rubrics"
+                expanded={expandedSection === 'rubrics'}
+                onPress={() => toggleSection('rubrics')}
+                titleStyle={styles.sectionTitle}
+              >
+                {renderAnimatedContent('rubrics',
+                  <View style={styles.sectionContent}>
+                    <Text style={styles.subsectionTitle}>Papers 1, 2, 3</Text>
+                    <View style={styles.criterionContainer}>
+                      <Text style={styles.content}>
+                        {highlightText("Assessed via mark schemes, not fixed rubrics.")}
+                      </Text>
+                      <Text style={styles.criterionTitle}>Rewarded Elements:</Text>
+                      <Text style={styles.criterionDescription}>
+                        • Mathematical reasoning and accuracy{'\n'}
+                        • Logical structure and progression{'\n'}
+                        • Use of correct notation{'\n'}
+                        • Clear communication of solutions{'\n'}
+                        • For HL Paper 3: deep problem solving and strategy
+                      </Text>
+                    </View>
+
+                    <Text style={styles.subsectionTitle}>Internal Assessment (20 marks)</Text>
+                    <View style={styles.criterionContainer}>
+                      <Text style={styles.criterionTitle}>Criterion A: Presentation (4 marks)</Text>
+                      <Text style={styles.criterionDescription}>
+                        • The exploration is well structured and coherent
+                      </Text>
+
+                      <Text style={styles.criterionTitle}>Criterion B: Mathematical Communication (4 marks)</Text>
+                      <Text style={styles.criterionDescription}>
+                        • Appropriate use of mathematical language and notation
+                      </Text>
+
+                      <Text style={styles.criterionTitle}>Criterion C: Personal Engagement (4 marks)</Text>
+                      <Text style={styles.criterionDescription}>
+                        • Evidence of independent thinking{'\n'}
+                        • Creativity{'\n'}
+                        • Ownership
+                      </Text>
+
+                      <Text style={styles.criterionTitle}>Criterion D: Reflection (3 marks)</Text>
+                      <Text style={styles.criterionDescription}>
+                        • Critical reflection on results{'\n'}
+                        • Critical reflection on methods{'\n'}
+                        • Critical reflection on learning
+                      </Text>
+
+                      <Text style={styles.criterionTitle}>Criterion E: Use of Mathematics (5 marks)</Text>
+                      <Text style={styles.criterionDescription}>
+                        • Correct and relevant mathematical processes{'\n'}
+                        • Used with sophistication
+                      </Text>
+                    </View>
                   </View>
                 )}
               </List.Accordion>
@@ -247,6 +329,35 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255, 215, 0, 0.2)',
     color: '#FFD700',
     fontWeight: 'bold',
+  },
+  criterionContainer: {
+    marginTop: 8,
+    marginBottom: 16,
+    padding: 12,
+    backgroundColor: 'rgba(255,255,255,0.03)',
+    borderRadius: 8,
+  },
+  criterionTitle: {
+    fontSize: 15,
+    color: '#FFD700',
+    marginTop: 12,
+    marginBottom: 4,
+    fontFamily: 'Montserrat_700Bold',
+  },
+  criterionDescription: {
+    fontSize: 14,
+    color: '#E0D8C3',
+    marginLeft: 8,
+    marginBottom: 8,
+    lineHeight: 20,
+    fontFamily: 'Montserrat_400Regular',
+  },
+  levelTitle: {
+    fontSize: 15,
+    color: '#FFD700',
+    marginTop: 12,
+    marginBottom: 4,
+    fontFamily: 'Montserrat_700Bold',
   },
 });
 
