@@ -141,7 +141,7 @@ const EnglishALiteratureScreen = () => {
         style={{
           maxHeight: animationValue.interpolate({
             inputRange: [0, 1],
-            outputRange: [0, 1000],
+            outputRange: [0, 3000],
           }),
           opacity: animationValue,
           overflow: 'hidden',
@@ -276,25 +276,25 @@ const EnglishALiteratureScreen = () => {
                     {/* PAPER 2 */}
                     <Text style={styles.subsectionTitle}>Paper 2 (30 marks)</Text>
                     <View style={styles.criterionContainer}>
-                      <Text style={styles.criterionTitle}>{highlightText("Criterion A: Knowledge, Understanding and Interpretation (10 marks)")}</Text>
-                      <Text style={styles.criterionTitle}>{highlightText("Criterion B: Analysis and Evaluation (10 marks)")}</Text>
-                      <Text style={styles.criterionTitle}>{highlightText("Criterion C: Focus and Organization (10 marks)")}</Text>
+                      <Text style={styles.criterionDescription}>{highlightText("Criterion A: Knowledge, Understanding and Interpretation (10 marks)")}</Text>
+                      <Text style={styles.criterionDescription}>{highlightText("Criterion B: Analysis and Evaluation (10 marks)")}</Text>
+                      <Text style={styles.criterionDescription}>{highlightText("Criterion C: Focus and Organization (10 marks)")}</Text>
                     </View>
                     {/* INDIVIDUAL ORAL */}
                     <Text style={styles.subsectionTitle}>Individual Oral (40 marks)</Text>
                     <View style={styles.criterionContainer}>
-                      <Text style={styles.criterionTitle}>{highlightText("Criterion A: Knowledge, Understanding and Interpretation (10 marks)")}</Text>
-                      <Text style={styles.criterionTitle}>{highlightText("Criterion B: Analysis and Evaluation (10 marks)")}</Text>
-                      <Text style={styles.criterionTitle}>{highlightText("Criterion C: Focus and Organization (10 marks)")}</Text>
-                      <Text style={styles.criterionTitle}>{highlightText("Criterion D: Language (10 marks)")}</Text>
+                      <Text style={styles.criterionDescription}>{highlightText("Criterion A: Knowledge, Understanding and Interpretation (10 marks)")}</Text>
+                      <Text style={styles.criterionDescription}>{highlightText("Criterion B: Analysis and Evaluation (10 marks)")}</Text>
+                      <Text style={styles.criterionDescription}>{highlightText("Criterion C: Focus and Organization (10 marks)")}</Text>
+                      <Text style={styles.criterionDescription}>{highlightText("Criterion D: Language (10 marks)")}</Text>
                     </View>
                     {/* HL ESSAY */}
                     <Text style={styles.subsectionTitle}>HL Essay (20 marks)</Text>
                     <View style={styles.criterionContainer}>
-                      <Text style={styles.criterionTitle}>{highlightText("Criterion A: Knowledge, Understanding and Interpretation (5 marks)")}</Text>
-                      <Text style={styles.criterionTitle}>{highlightText("Criterion B: Analysis and Evaluation (5 marks)")}</Text>
-                      <Text style={styles.criterionTitle}>{highlightText("Criterion C: Focus, Organization and Development (5 marks)")}</Text>
-                      <Text style={styles.criterionTitle}>{highlightText("Criterion D: Language (5 marks)")}</Text>
+                      <Text style={styles.criterionDescription}>{highlightText("Criterion A: Knowledge, Understanding and Interpretation (5 marks)")}</Text>
+                      <Text style={styles.criterionDescription}>{highlightText("Criterion B: Analysis and Evaluation (5 marks)")}</Text>
+                      <Text style={styles.criterionDescription}>{highlightText("Criterion C: Focus, Organization and Development (5 marks)")}</Text>
+                      <Text style={styles.criterionDescription}>{highlightText("Criterion D: Language (5 marks)")}</Text>
                     </View>
                   </View>
                 )}
