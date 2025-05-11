@@ -163,6 +163,9 @@ const EnglishALiteratureScreen = () => {
           onChangeText={handleSearch}
           value={searchQuery}
           style={styles.searchBar}
+          inputStyle={{ color: '#FFD700' }}
+          placeholderTextColor="#FFD700"
+          iconColor="#FFD700"
         />
         {matchingSections.length > 1 && (
           <View style={{ alignItems: 'flex-end', marginBottom: 8 }}>

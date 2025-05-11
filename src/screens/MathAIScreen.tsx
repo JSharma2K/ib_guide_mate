@@ -1,12 +1,15 @@
 import React, { useState, useRef } from 'react';
 import { View, ScrollView, StyleSheet, Animated } from 'react-native';
-import { Text, Card, List, Searchbar } from 'react-native-paper';
+import { Text, Card, List, Searchbar, Button as PaperButton, useTheme } from 'react-native-paper';
 import { LinearGradient } from 'expo-linear-gradient';
 
 const MathAIScreen = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [highlightedText, setHighlightedText] = useState('');
+  const [matchingSections, setMatchingSections] = useState<string[]>([]);
+  const [currentMatchIndex, setCurrentMatchIndex] = useState(0);
+  const theme = useTheme();
 
   // Animation values for each section
   const overviewAnimation = useRef(new Animated.Value(0)).current;
@@ -14,17 +17,23 @@ const MathAIScreen = () => {
   const essentialsAnimation = useRef(new Animated.Value(0)).current;
   const rubricsAnimation = useRef(new Animated.Value(0)).current;
 
+  const sectionContentStrings: Record<'overview' | 'topics' | 'essentials' | 'rubrics', string> = {
+    overview: `Mathematics: Applications and Interpretation is a course that focuses on mathematical modeling and the use of technology to solve real-world problems.`,
+    topics: `• Number and Algebra\n• Functions\n• Geometry and Trigonometry\n• Statistics and Probability\n• Calculus\n• Discrete Mathematics\n• Further Statistics\n• Further Calculus` ,
+    essentials: `Topics (SL/HL):\n• Number & Algebra (16/29)\n• Functions (31/42)\n• Geometry (18/46)\n• Statistics (36/52)\n• Calculus (19/41)\nAssessment Outline\n• Paper 1 (90m): 40%\n• Paper 2 (90m): 40%\n• IA: 20%\n• Paper 1 (120m): 30%\n• Paper 2 (120m): 30%\n• Paper 3 (75m): 20%\n• IA: 20%\nIA Rubrics (same as AA)\n• A: Presentation (4)\n• B: Mathematical communication (4)\n• C: Personal engagement (4)\n• D: Reflection (3)\n• E: Use of mathematics (5)\nAssessment Objectives in Practice\n• Emphasis on technology, modeling, and real-world applications`,
+    rubrics: `PAPERS 1, 2, 3\nAlso marked via detailed schemes.\nRewarded elements include:\n• Real-world application\n• Correct use of technology (GDC)\n• Modeling and interpretation\n• Accuracy and reasoning\n• For HL Paper 3: emphasis on extended contextual problems\nMATHEMATICS AA & AI: INTERNAL ASSESSMENT (20 marks)\nCriterion A: Presentation (4 marks)\nThe exploration is well structured and coherent.\nCriterion B: Mathematical Communication (4 marks)\nAppropriate use of mathematical language and notation.\nCriterion C: Personal Engagement (4 marks)\nEvidence of independent thinking, creativity, and ownership.\nCriterion D: Reflection (3 marks)\nCritical reflection on results, methods, and learning.\nCriterion E: Use of Mathematics (5 marks)\nCorrect and relevant mathematical processes used with sophistication.`
+  };
+  const sectionKeys: Array<'overview' | 'topics' | 'essentials' | 'rubrics'> = ['overview', 'topics', 'essentials', 'rubrics'];
+
   const toggleSection = (section: string) => {
     const isExpanding = expandedSection !== section;
     setExpandedSection(isExpanding ? section : null);
-
     const animationValue = {
       'overview': overviewAnimation,
       'topics': topicsAnimation,
       'essentials': essentialsAnimation,
       'rubrics': rubricsAnimation,
     }[section];
-
     if (animationValue) {
       Animated.timing(animationValue, {
         toValue: isExpanding ? 1 : 0,
@@ -37,21 +46,76 @@ const MathAIScreen = () => {
   const handleSearch = (query: string) => {
     setSearchQuery(query);
     setHighlightedText(query);
-
-    const searchableSections = {
-      overview: "Mathematics: Applications and Interpretation is a course that focuses on mathematical modeling and the use of technology to solve real-world problems.",
-      topics: "Number and Algebra Functions Geometry and Trigonometry Statistics and Probability Calculus",
-      essentials: "Syllabus Overview Assessment Outline Internal Assessment Rubrics Assessment Objectives in Practice",
-      rubrics: "Detailed Rubrics for Math AI",
-    };
-
-    for (const [section, content] of Object.entries(searchableSections)) {
-      if (content.toLowerCase().includes(query.toLowerCase())) {
-        setExpandedSection(section);
-        break;
-      }
+    if (!query) {
+      setMatchingSections([]);
+      setCurrentMatchIndex(0);
+      setExpandedSection(null);
+      return;
+    }
+    // Find all sections that match
+    const matches = sectionKeys.filter(key =>
+      sectionContentStrings[key].toLowerCase().includes(query.toLowerCase())
+    );
+    setMatchingSections(matches);
+    setCurrentMatchIndex(0);
+    if (matches.length > 0) {
+      setExpandedSection(matches[0]);
+    } else {
+      setExpandedSection(null);
     }
   };
+
+  const handleNextMatch = () => {
+    if (matchingSections.length < 2) return;
+    const nextIndex = (currentMatchIndex + 1) % matchingSections.length;
+    setCurrentMatchIndex(nextIndex);
+    setExpandedSection(matchingSections[nextIndex]);
+  };
+
+  // Ensure expandedSection always matches the current match, even on first search
+  React.useEffect(() => {
+    if (matchingSections.length > 0) {
+      setExpandedSection(matchingSections[currentMatchIndex]);
+    } else {
+      setExpandedSection(null);
+    }
+  }, [currentMatchIndex, matchingSections]);
+
+  // When expandedSection changes, trigger the animation for that section
+  React.useEffect(() => {
+    if (!expandedSection) return;
+    const animationValue = {
+      'overview': overviewAnimation,
+      'topics': topicsAnimation,
+      'essentials': essentialsAnimation,
+      'rubrics': rubricsAnimation,
+    }[expandedSection];
+    if (animationValue) {
+      Animated.timing(animationValue, {
+        toValue: 1,
+        duration: 300,
+        useNativeDriver: false,
+      }).start();
+    }
+    // Collapse all other sections
+    sectionKeys.forEach(key => {
+      if (key !== expandedSection) {
+        const anim = {
+          'overview': overviewAnimation,
+          'topics': topicsAnimation,
+          'essentials': essentialsAnimation,
+          'rubrics': rubricsAnimation,
+        }[key];
+        if (anim) {
+          Animated.timing(anim, {
+            toValue: 0,
+            duration: 300,
+            useNativeDriver: false,
+          }).start();
+        }
+      }
+    });
+  }, [expandedSection]);
 
   const highlightText = (text: string) => {
     if (!highlightedText) return text;
@@ -76,7 +140,7 @@ const MathAIScreen = () => {
         style={{
           maxHeight: animationValue.interpolate({
             inputRange: [0, 1],
-            outputRange: [0, 1000],
+            outputRange: [0, 3000],
           }),
           opacity: animationValue,
           overflow: 'hidden',
@@ -98,8 +162,28 @@ const MathAIScreen = () => {
           onChangeText={handleSearch}
           value={searchQuery}
           style={styles.searchBar}
+          inputStyle={{ color: '#FFD700' }}
+          placeholderTextColor="#FFD700"
+          iconColor="#FFD700"
         />
-
+        {matchingSections.length > 1 && (
+          <View style={{ alignItems: 'flex-end', marginBottom: 8 }}>
+            <PaperButton
+              mode="contained"
+              onPress={handleNextMatch}
+              style={{
+                borderRadius: 24,
+                backgroundColor: '#FFD700',
+                marginTop: 4,
+                minWidth: 120,
+                elevation: 2,
+              }}
+              labelStyle={{ color: theme.colors.primary, fontWeight: 'bold' }}
+            >
+              {`Next (${currentMatchIndex + 1}/${matchingSections.length})`}
+            </PaperButton>
+          </View>
+        )}
         <Card style={styles.card}>
           <Card.Content>
             <Text style={styles.title}>Mathematics: Applications and Interpretation</Text>
@@ -114,7 +198,7 @@ const MathAIScreen = () => {
                 {renderAnimatedContent('overview',
                   <View style={styles.sectionContent}>
                     <Text style={styles.content}>
-                      {highlightText("Mathematics: Applications and Interpretation is a course that focuses on mathematical modeling and the use of technology to solve real-world problems. (Placeholder content for Math AI)")}
+                      {highlightText("Mathematics: Applications and Interpretation is a course that focuses on mathematical modeling and the use of technology to solve real-world problems.")}
                     </Text>
                   </View>
                 )}
@@ -130,11 +214,11 @@ const MathAIScreen = () => {
                   <View style={styles.sectionContent}>
                     <Text style={styles.subsectionTitle}>Core Topics</Text>
                     <Text style={styles.content}>
-                      {highlightText("• Number and Algebra\n• Functions\n• Geometry and Trigonometry\n• Statistics and Probability\n• Calculus (Placeholder content for Math AI)")}
+                      {highlightText("• Number and Algebra\n• Functions\n• Geometry and Trigonometry\n• Statistics and Probability\n• Calculus")}
                     </Text>
                     <Text style={styles.subsectionTitle}>Additional HL Topics</Text>
                     <Text style={styles.content}>
-                      {highlightText("• Discrete Mathematics\n• Further Statistics\n• Further Calculus (Placeholder content for Math AI)")}
+                      {highlightText("• Discrete Mathematics\n• Further Statistics\n• Further Calculus")}
                     </Text>
                   </View>
                 )}
@@ -150,32 +234,27 @@ const MathAIScreen = () => {
                   <View style={styles.sectionContent}>
                     <Text style={styles.subsectionTitle}>Syllabus Overview</Text>
                     <View style={styles.criterionContainer}>
-                      <Text style={styles.content}>
-                        {highlightText("Topics (SL/HL):\n• Placeholder topics for Math AI")}
-                      </Text>
+                      <Text style={styles.content}>{highlightText("Topics (SL/HL):")}</Text>
+                      <Text style={styles.criterionDescription}>{highlightText("• Number & Algebra (16/29)\n• Functions (31/42)\n• Geometry (18/46)\n• Statistics (36/52)\n• Calculus (19/41)")}</Text>
                     </View>
                     <Text style={styles.subsectionTitle}>Assessment Outline</Text>
                     <View style={styles.criterionContainer}>
                       <Text style={styles.levelTitle}>Standard Level (SL)</Text>
-                      <Text style={styles.criterionDescription}>
-                        {highlightText("• Paper 1: XX%\n• Paper 2: XX%\n• Internal Assessment: XX% (Placeholder content for Math AI)")}
-                      </Text>
+                      <Text style={styles.criterionDescription}>{highlightText("• Paper 1 (90m): 40%\n• Paper 2 (90m): 40%\n• IA: 20%")}</Text>
                       <Text style={styles.levelTitle}>Higher Level (HL)</Text>
-                      <Text style={styles.criterionDescription}>
-                        {highlightText("• Paper 1: XX%\n• Paper 2: XX%\n• Paper 3: XX%\n• Internal Assessment: XX% (Placeholder content for Math AI)")}
-                      </Text>
+                      <Text style={styles.criterionDescription}>{highlightText("• Paper 1 (120m): 30%\n• Paper 2 (120m): 30%\n• Paper 3 (75m): 20%\n• IA: 20%")}</Text>
                     </View>
-                    <Text style={styles.subsectionTitle}>Internal Assessment Rubrics (20 marks)</Text>
+                    <Text style={styles.subsectionTitle}>IA Rubrics (same as AA)</Text>
                     <View style={styles.criterionContainer}>
-                      <Text style={styles.criterionDescription}>
-                        {highlightText("• Criterion A: Presentation (4 marks)\n• Criterion B: Mathematical communication (4 marks)\n• Criterion C: Personal engagement (4 marks)\n• Criterion D: Reflection (3 marks)\n• Criterion E: Use of mathematics (5 marks) (Placeholder content for Math AI)")}
-                      </Text>
+                      <Text style={styles.criterionDescription}>{highlightText("• A: Presentation (4)")}</Text>
+                      <Text style={styles.criterionDescription}>{highlightText("• B: Mathematical communication (4)")}</Text>
+                      <Text style={styles.criterionDescription}>{highlightText("• C: Personal engagement (4)")}</Text>
+                      <Text style={styles.criterionDescription}>{highlightText("• D: Reflection (3)")}</Text>
+                      <Text style={styles.criterionDescription}>{highlightText("• E: Use of mathematics (5)")}</Text>
                     </View>
                     <Text style={styles.subsectionTitle}>Assessment Objectives in Practice</Text>
                     <View style={styles.criterionContainer}>
-                      <Text style={styles.criterionDescription}>
-                        {highlightText("• Problem solving\n• Communication\n• Reasoning\n• Technology use\n• Inquiry (Placeholder content for Math AI)")}
-                      </Text>
+                      <Text style={styles.criterionDescription}>{highlightText("• Emphasis on technology, modeling, and real-world applications")}</Text>
                     </View>
                   </View>
                 )}
@@ -189,38 +268,28 @@ const MathAIScreen = () => {
               >
                 {renderAnimatedContent('rubrics',
                   <View style={styles.sectionContent}>
-                    <Text style={styles.subsectionTitle}>Papers 1, 2, 3</Text>
+                    <Text style={styles.subsectionTitle}>PAPERS 1, 2, 3</Text>
                     <View style={styles.criterionContainer}>
-                      <Text style={styles.content}>
-                        {highlightText("Assessed via mark schemes, not fixed rubrics. (Placeholder content for Math AI)")}
-                      </Text>
-                      <Text style={styles.criterionTitle}>Rewarded Elements:</Text>
-                      <Text style={styles.criterionDescription}>
-                        {highlightText("• Mathematical reasoning and accuracy\n• Logical structure and progression\n• Use of correct notation\n• Clear communication of solutions\n• For HL Paper 3: deep problem solving and strategy (Placeholder content for Math AI)")}
-                      </Text>
+                      <Text style={styles.criterionDescription}>{highlightText("Also marked via detailed schemes.")}</Text>
+                      <Text style={styles.criterionDescription}>{highlightText("Rewarded elements include:")}</Text>
+                      <Text style={styles.criterionDescription}>{highlightText("• Real-world application")}</Text>
+                      <Text style={styles.criterionDescription}>{highlightText("• Correct use of technology (GDC)")}</Text>
+                      <Text style={styles.criterionDescription}>{highlightText("• Modeling and interpretation")}</Text>
+                      <Text style={styles.criterionDescription}>{highlightText("• Accuracy and reasoning")}</Text>
+                      <Text style={styles.criterionDescription}>{highlightText("• For HL Paper 3: emphasis on extended contextual problems")}</Text>
                     </View>
-                    <Text style={styles.subsectionTitle}>Internal Assessment (20 marks)</Text>
+                    <Text style={styles.subsectionTitle}>MATHEMATICS AA & AI: INTERNAL ASSESSMENT (20 marks)</Text>
                     <View style={styles.criterionContainer}>
-                      <Text style={styles.criterionTitle}>Criterion A: Presentation (4 marks)</Text>
-                      <Text style={styles.criterionDescription}>
-                        {highlightText("• The exploration is well structured and coherent (Placeholder content for Math AI)")}
-                      </Text>
-                      <Text style={styles.criterionTitle}>Criterion B: Mathematical Communication (4 marks)</Text>
-                      <Text style={styles.criterionDescription}>
-                        {highlightText("• Appropriate use of mathematical language and notation (Placeholder content for Math AI)")}
-                      </Text>
-                      <Text style={styles.criterionTitle}>Criterion C: Personal Engagement (4 marks)</Text>
-                      <Text style={styles.criterionDescription}>
-                        {highlightText("• Evidence of independent thinking\n• Creativity\n• Ownership (Placeholder content for Math AI)")}
-                      </Text>
-                      <Text style={styles.criterionTitle}>Criterion D: Reflection (3 marks)</Text>
-                      <Text style={styles.criterionDescription}>
-                        {highlightText("• Critical reflection on results\n• Critical reflection on methods\n• Critical reflection on learning (Placeholder content for Math AI)")}
-                      </Text>
-                      <Text style={styles.criterionTitle}>Criterion E: Use of Mathematics (5 marks)</Text>
-                      <Text style={styles.criterionDescription}>
-                        {highlightText("• Correct and relevant mathematical processes\n• Used with sophistication (Placeholder content for Math AI)")}
-                      </Text>
+                      <Text style={styles.criterionTitle}>{highlightText("Criterion A: Presentation (4 marks)")}</Text>
+                      <Text style={styles.criterionDescription}>{highlightText("The exploration is well structured and coherent.")}</Text>
+                      <Text style={styles.criterionTitle}>{highlightText("Criterion B: Mathematical Communication (4 marks)")}</Text>
+                      <Text style={styles.criterionDescription}>{highlightText("Appropriate use of mathematical language and notation.")}</Text>
+                      <Text style={styles.criterionTitle}>{highlightText("Criterion C: Personal Engagement (4 marks)")}</Text>
+                      <Text style={styles.criterionDescription}>{highlightText("Evidence of independent thinking, creativity, and ownership.")}</Text>
+                      <Text style={styles.criterionTitle}>{highlightText("Criterion D: Reflection (3 marks)")}</Text>
+                      <Text style={styles.criterionDescription}>{highlightText("Critical reflection on results, methods, and learning.")}</Text>
+                      <Text style={styles.criterionTitle}>{highlightText("Criterion E: Use of Mathematics (5 marks)")}</Text>
+                      <Text style={styles.criterionDescription}>{highlightText("Correct and relevant mathematical processes used with sophistication.")}</Text>
                     </View>
                   </View>
                 )}
@@ -269,11 +338,16 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat_700Bold',
   },
   subsectionTitle: {
-    fontSize: 16,
+    fontSize: 18,
     color: '#FFD700',
-    marginTop: 16,
-    marginBottom: 8,
     fontFamily: 'Montserrat_700Bold',
+    marginBottom: 8,
+  },
+  levelTitle: {
+    fontSize: 16,
+    color: '#E0D8C3',
+    fontFamily: 'Montserrat_400Regular',
+    marginBottom: 8,
   },
   sectionContent: {
     padding: 16,
@@ -292,33 +366,18 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   criterionContainer: {
-    marginTop: 8,
     marginBottom: 16,
-    padding: 12,
-    backgroundColor: 'rgba(255,255,255,0.03)',
-    borderRadius: 8,
   },
   criterionTitle: {
-    fontSize: 15,
+    fontSize: 16,
     color: '#FFD700',
-    marginTop: 12,
-    marginBottom: 4,
     fontFamily: 'Montserrat_700Bold',
+    marginBottom: 4,
   },
   criterionDescription: {
-    fontSize: 14,
+    fontSize: 16,
     color: '#E0D8C3',
-    marginLeft: 8,
-    marginBottom: 8,
-    lineHeight: 20,
     fontFamily: 'Montserrat_400Regular',
-  },
-  levelTitle: {
-    fontSize: 15,
-    color: '#FFD700',
-    marginTop: 12,
-    marginBottom: 4,
-    fontFamily: 'Montserrat_700Bold',
   },
 });
 
