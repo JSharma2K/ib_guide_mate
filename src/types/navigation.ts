@@ -6,6 +6,11 @@ export type RootStackParamList = {
   SubjectDetail: { subjectId: string };
   ManageGuides: undefined;
   EnglishALiterature: undefined;
+  MathAA: undefined;
+  MathAI: undefined;
+  AddGuide: { guideId?: string };
+  GuideDetail: { guideId: string };
+  GuideList: undefined;
 };
 
 declare global {

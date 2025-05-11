@@ -1,10 +1,10 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { View, StyleSheet, FlatList, Dimensions, Platform, StatusBar } from 'react-native';
 import { Card, useTheme, Text } from 'react-native-paper';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
-import Animated, { FadeInDown, FadeInUp, useSharedValue, useAnimatedStyle, withRepeat, withTiming, Easing } from 'react-native-reanimated';
+import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 
@@ -62,23 +62,6 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
     Inter_300Light: require('../../assets/fonts/Inter-Light.ttf'),
   });
 
-  // Lightbulb shine animation
-  const bulbGlow = useSharedValue(0.5);
-  React.useEffect(() => {
-    bulbGlow.value = withRepeat(
-      withTiming(1, { duration: 900, easing: Easing.inOut(Easing.ease) }),
-      -1,
-      true
-    );
-  }, []);
-  const animatedBulbStyle = useAnimatedStyle(() => ({
-    shadowColor: '#FFD700',
-    shadowOpacity: bulbGlow.value,
-    shadowRadius: 12 * bulbGlow.value,
-    opacity: bulbGlow.value * 0.7 + 0.3,
-    transform: [{ scale: 0.95 + bulbGlow.value * 0.1 }],
-  }));
-
   const renderSubject = useCallback(({ item, index }: any) => (
     <Animated.View entering={FadeInDown.delay(200 + index * 100).duration(600)}>
       <Card
@@ -115,6 +98,23 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
     </Animated.View>
   ), [navigation]);
 
+  useEffect(() => {
+    navigation.setOptions({
+      headerStyle: {
+        backgroundColor: '#181A20',
+        elevation: 0,
+        shadowOpacity: 0,
+      },
+      headerTintColor: '#FFD700',
+      headerTitleStyle: {
+        fontFamily: 'Inter_700Bold',
+        fontSize: 22,
+        color: '#FFD700',
+      },
+      animation: 'fade',
+    });
+  }, [navigation]);
+
   if (!fontsLoaded) {
     return <AppLoading />;
   }
@@ -131,9 +131,6 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
         <Animated.View entering={FadeInUp.duration(800)} style={styles.topSection}>
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
             <Text style={styles.appTitle}>IB GuideMate</Text>
-            <Animated.View style={[{ marginLeft: 10 }, animatedBulbStyle]}>
-              <MaterialCommunityIcons name="lightbulb-on-outline" size={32} color="#FFD700" />
-            </Animated.View>
           </View>
           <Text style={styles.appSubtitle}>
             The app where IB subject guides are more accessible than ever.
@@ -178,9 +175,6 @@ const styles = StyleSheet.create({
     color: '#FFD700',
     letterSpacing: 0.5,
     marginBottom: 10,
-    textShadowColor: '#FFD700',
-    textShadowOffset: { width: 0, height: 0 },
-    textShadowRadius: 18,
   },
   appSubtitle: {
     fontSize: 16,

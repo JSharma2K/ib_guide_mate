@@ -7,6 +7,7 @@ export interface SubjectGuide {
   assessment: string;
   content: string;
   lastUpdated: string;
+  pdfUrl?: string;
 }
 
 // In-memory storage

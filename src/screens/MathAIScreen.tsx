@@ -1,15 +1,23 @@
-import React, { useState, useRef } from 'react';
-import { View, ScrollView, StyleSheet, Animated } from 'react-native';
-import { Text, Card, List, Searchbar, Button as PaperButton, useTheme } from 'react-native-paper';
+import React, { useState, useRef, useEffect } from 'react';
+import { View, ScrollView, StyleSheet, Animated, Platform } from 'react-native';
+import { Text, Card, List, Searchbar, Button as PaperButton } from 'react-native-paper';
 import { LinearGradient } from 'expo-linear-gradient';
+import { theme, gradientColors, styles as themeStyles } from '../theme/theme';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../types/navigation';
 
-const MathAIScreen = () => {
+type MathAIScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'MathAI'>;
+
+type Props = {
+  navigation: MathAIScreenNavigationProp;
+};
+
+const MathAIScreen: React.FC<Props> = ({ navigation }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [highlightedText, setHighlightedText] = useState('');
   const [matchingSections, setMatchingSections] = useState<string[]>([]);
   const [currentMatchIndex, setCurrentMatchIndex] = useState(0);
-  const theme = useTheme();
 
   // Animation values for each section
   const overviewAnimation = useRef(new Animated.Value(0)).current;
@@ -117,12 +125,26 @@ const MathAIScreen = () => {
     });
   }, [expandedSection]);
 
+  useEffect(() => {
+    navigation.setOptions({
+      headerStyle: {
+        backgroundColor: '#181A20',
+      },
+      headerTintColor: '#FFD700',
+      headerTitleStyle: {
+        fontFamily: 'Inter_700Bold',
+        fontSize: 22,
+        color: '#FFD700',
+      },
+    });
+  }, [navigation]);
+
   const highlightText = (text: string) => {
     if (!highlightedText) return text;
     const parts = text.split(new RegExp(`(${highlightedText})`, 'gi'));
     return parts.map((part, i) =>
       part.toLowerCase() === highlightedText.toLowerCase() ?
-        <Text key={i} style={styles.highlightedText}>{part}</Text> :
+        <Text key={i} style={themeStyles.highlightedText}>{part}</Text> :
         part
     );
   };
@@ -152,233 +174,158 @@ const MathAIScreen = () => {
   };
 
   return (
-    <ScrollView style={styles.container}>
-      <LinearGradient
-        colors={["#232B4D", "#1A237E", "#121933"]}
-        style={styles.gradient}
-      >
-        <Searchbar
-          placeholder="Search content..."
-          onChangeText={handleSearch}
-          value={searchQuery}
-          style={styles.searchBar}
-          inputStyle={{ color: '#FFD700' }}
-          placeholderTextColor="#FFD700"
-          iconColor="#FFD700"
-        />
-        {matchingSections.length > 1 && (
-          <View style={{ alignItems: 'flex-end', marginBottom: 8 }}>
-            <PaperButton
-              mode="contained"
-              onPress={handleNextMatch}
-              style={{
-                borderRadius: 24,
-                backgroundColor: '#FFD700',
-                marginTop: 4,
-                minWidth: 120,
-                elevation: 2,
-              }}
-              labelStyle={{ color: theme.colors.primary, fontWeight: 'bold' }}
-            >
-              {`Next (${currentMatchIndex + 1}/${matchingSections.length})`}
-            </PaperButton>
-          </View>
-        )}
-        <Card style={styles.card}>
-          <Card.Content>
-            <Text style={styles.title}>Mathematics: Applications and Interpretation</Text>
-            <Text style={styles.subtitle}>Group 5: Mathematics</Text>
-            <List.Section>
-              <List.Accordion
-                title="Course Overview"
-                expanded={expandedSection === 'overview'}
-                onPress={() => toggleSection('overview')}
-                titleStyle={styles.sectionTitle}
+    <View style={[themeStyles.container, { backgroundColor: '#181A20' }]}>
+      <ScrollView>
+        <LinearGradient
+          colors={["#22304A", "#181A20"]}
+          style={[themeStyles.gradient, { paddingTop: Platform.OS === 'android' ? 60 : 80, paddingHorizontal: 20, paddingBottom: 24 }]}
+          start={{ x: 0.5, y: 0 }}
+          end={{ x: 0.5, y: 1 }}
+        >
+          <Searchbar
+            placeholder="Search content..."
+            onChangeText={handleSearch}
+            value={searchQuery}
+            style={[themeStyles.searchBar, { backgroundColor: 'rgba(34, 48, 74, 0.7)' }]}
+            inputStyle={{ color: theme.colors.primary }}
+            placeholderTextColor={theme.colors.primary}
+            iconColor={theme.colors.primary}
+          />
+          {matchingSections.length > 1 && (
+            <View style={{ alignItems: 'flex-end', marginBottom: 8 }}>
+              <PaperButton
+                mode="contained"
+                onPress={handleNextMatch}
+                style={{
+                  borderRadius: 24,
+                  backgroundColor: theme.colors.primary,
+                  marginTop: 4,
+                  minWidth: 120,
+                  elevation: 2,
+                }}
+                labelStyle={{ color: theme.colors.background, fontWeight: 'bold' }}
               >
-                {renderAnimatedContent('overview',
-                  <View style={styles.sectionContent}>
-                    <Text style={styles.content}>
-                      {highlightText("Mathematics: Applications and Interpretation is a course that focuses on mathematical modeling and the use of technology to solve real-world problems.")}
-                    </Text>
-                  </View>
-                )}
-              </List.Accordion>
+                {`Next (${currentMatchIndex + 1}/${matchingSections.length})`}
+              </PaperButton>
+            </View>
+          )}
+          <Card style={themeStyles.card}>
+            <Card.Content>
+              <Text style={themeStyles.title}>Mathematics: Applications and Interpretation</Text>
+              <Text style={themeStyles.subtitle}>Group 5: Mathematics</Text>
+              <List.Section>
+                <List.Accordion
+                  title="Course Overview"
+                  expanded={expandedSection === 'overview'}
+                  onPress={() => toggleSection('overview')}
+                  titleStyle={themeStyles.sectionTitle}
+                >
+                  {renderAnimatedContent('overview',
+                    <View style={themeStyles.sectionContent}>
+                      <Text style={themeStyles.content}>
+                        {highlightText(sectionContentStrings.overview)}
+                      </Text>
+                    </View>
+                  )}
+                </List.Accordion>
 
-              <List.Accordion
-                title="Topics"
-                expanded={expandedSection === 'topics'}
-                onPress={() => toggleSection('topics')}
-                titleStyle={styles.sectionTitle}
-              >
-                {renderAnimatedContent('topics',
-                  <View style={styles.sectionContent}>
-                    <Text style={styles.subsectionTitle}>Core Topics</Text>
-                    <Text style={styles.content}>
-                      {highlightText("• Number and Algebra\n• Functions\n• Geometry and Trigonometry\n• Statistics and Probability\n• Calculus")}
-                    </Text>
-                    <Text style={styles.subsectionTitle}>Additional HL Topics</Text>
-                    <Text style={styles.content}>
-                      {highlightText("• Discrete Mathematics\n• Further Statistics\n• Further Calculus")}
-                    </Text>
-                  </View>
-                )}
-              </List.Accordion>
+                <List.Accordion
+                  title="Topics"
+                  expanded={expandedSection === 'topics'}
+                  onPress={() => toggleSection('topics')}
+                  titleStyle={themeStyles.sectionTitle}
+                >
+                  {renderAnimatedContent('topics',
+                    <View style={themeStyles.sectionContent}>
+                      <Text style={themeStyles.subsectionTitle}>Core Topics</Text>
+                      <Text style={themeStyles.content}>
+                        {highlightText("• Number and Algebra\n• Functions\n• Geometry and Trigonometry\n• Statistics and Probability\n• Calculus")}
+                      </Text>
+                      <Text style={themeStyles.subsectionTitle}>Additional HL Topics</Text>
+                      <Text style={themeStyles.content}>
+                        {highlightText("• Discrete Mathematics\n• Further Statistics\n• Further Calculus")}
+                      </Text>
+                    </View>
+                  )}
+                </List.Accordion>
 
-              <List.Accordion
-                title="Subject Essentials"
-                expanded={expandedSection === 'essentials'}
-                onPress={() => toggleSection('essentials')}
-                titleStyle={styles.sectionTitle}
-              >
-                {renderAnimatedContent('essentials',
-                  <View style={styles.sectionContent}>
-                    <Text style={styles.subsectionTitle}>Syllabus Overview</Text>
-                    <View style={styles.criterionContainer}>
-                      <Text style={styles.content}>{highlightText("Topics (SL/HL):")}</Text>
-                      <Text style={styles.criterionDescription}>{highlightText("• Number & Algebra (16/29)\n• Functions (31/42)\n• Geometry (18/46)\n• Statistics (36/52)\n• Calculus (19/41)")}</Text>
+                <List.Accordion
+                  title="Subject Essentials"
+                  expanded={expandedSection === 'essentials'}
+                  onPress={() => toggleSection('essentials')}
+                  titleStyle={themeStyles.sectionTitle}
+                >
+                  {renderAnimatedContent('essentials',
+                    <View style={themeStyles.sectionContent}>
+                      <Text style={themeStyles.subsectionTitle}>Syllabus Overview</Text>
+                      <View style={themeStyles.criterionContainer}>
+                        <Text style={themeStyles.content}>{highlightText("Topics (SL/HL):")}</Text>
+                        <Text style={themeStyles.criterionDescription}>{highlightText("• Number & Algebra (16/29)\n• Functions (31/42)\n• Geometry (18/46)\n• Statistics (36/52)\n• Calculus (19/41)")}</Text>
+                      </View>
+                      <Text style={themeStyles.subsectionTitle}>Assessment Outline</Text>
+                      <View style={themeStyles.criterionContainer}>
+                        <Text style={themeStyles.levelTitle}>Standard Level (SL)</Text>
+                        <Text style={themeStyles.criterionDescription}>{highlightText("• Paper 1 (90m): 40%\n• Paper 2 (90m): 40%\n• IA: 20%")}</Text>
+                        <Text style={themeStyles.levelTitle}>Higher Level (HL)</Text>
+                        <Text style={themeStyles.criterionDescription}>{highlightText("• Paper 1 (120m): 30%\n• Paper 2 (120m): 30%\n• Paper 3 (75m): 20%\n• IA: 20%")}</Text>
+                      </View>
+                      <Text style={themeStyles.subsectionTitle}>IA Rubrics (same as AA)</Text>
+                      <View style={themeStyles.criterionContainer}>
+                        <Text style={themeStyles.criterionDescription}>{highlightText("• A: Presentation (4)")}</Text>
+                        <Text style={themeStyles.criterionDescription}>{highlightText("• B: Mathematical communication (4)")}</Text>
+                        <Text style={themeStyles.criterionDescription}>{highlightText("• C: Personal engagement (4)")}</Text>
+                        <Text style={themeStyles.criterionDescription}>{highlightText("• D: Reflection (3)")}</Text>
+                        <Text style={themeStyles.criterionDescription}>{highlightText("• E: Use of mathematics (5)")}</Text>
+                      </View>
+                      <Text style={themeStyles.subsectionTitle}>Assessment Objectives in Practice</Text>
+                      <View style={themeStyles.criterionContainer}>
+                        <Text style={themeStyles.criterionDescription}>{highlightText("• Emphasis on technology, modeling, and real-world applications")}</Text>
+                      </View>
                     </View>
-                    <Text style={styles.subsectionTitle}>Assessment Outline</Text>
-                    <View style={styles.criterionContainer}>
-                      <Text style={styles.levelTitle}>Standard Level (SL)</Text>
-                      <Text style={styles.criterionDescription}>{highlightText("• Paper 1 (90m): 40%\n• Paper 2 (90m): 40%\n• IA: 20%")}</Text>
-                      <Text style={styles.levelTitle}>Higher Level (HL)</Text>
-                      <Text style={styles.criterionDescription}>{highlightText("• Paper 1 (120m): 30%\n• Paper 2 (120m): 30%\n• Paper 3 (75m): 20%\n• IA: 20%")}</Text>
-                    </View>
-                    <Text style={styles.subsectionTitle}>IA Rubrics (same as AA)</Text>
-                    <View style={styles.criterionContainer}>
-                      <Text style={styles.criterionDescription}>{highlightText("• A: Presentation (4)")}</Text>
-                      <Text style={styles.criterionDescription}>{highlightText("• B: Mathematical communication (4)")}</Text>
-                      <Text style={styles.criterionDescription}>{highlightText("• C: Personal engagement (4)")}</Text>
-                      <Text style={styles.criterionDescription}>{highlightText("• D: Reflection (3)")}</Text>
-                      <Text style={styles.criterionDescription}>{highlightText("• E: Use of mathematics (5)")}</Text>
-                    </View>
-                    <Text style={styles.subsectionTitle}>Assessment Objectives in Practice</Text>
-                    <View style={styles.criterionContainer}>
-                      <Text style={styles.criterionDescription}>{highlightText("• Emphasis on technology, modeling, and real-world applications")}</Text>
-                    </View>
-                  </View>
-                )}
-              </List.Accordion>
+                  )}
+                </List.Accordion>
 
-              <List.Accordion
-                title="Detailed Rubrics"
-                expanded={expandedSection === 'rubrics'}
-                onPress={() => toggleSection('rubrics')}
-                titleStyle={styles.sectionTitle}
-              >
-                {renderAnimatedContent('rubrics',
-                  <View style={styles.sectionContent}>
-                    <Text style={styles.subsectionTitle}>PAPERS 1, 2, 3</Text>
-                    <View style={styles.criterionContainer}>
-                      <Text style={styles.criterionDescription}>{highlightText("Also marked via detailed schemes.")}</Text>
-                      <Text style={styles.criterionDescription}>{highlightText("Rewarded elements include:")}</Text>
-                      <Text style={styles.criterionDescription}>{highlightText("• Real-world application")}</Text>
-                      <Text style={styles.criterionDescription}>{highlightText("• Correct use of technology (GDC)")}</Text>
-                      <Text style={styles.criterionDescription}>{highlightText("• Modeling and interpretation")}</Text>
-                      <Text style={styles.criterionDescription}>{highlightText("• Accuracy and reasoning")}</Text>
-                      <Text style={styles.criterionDescription}>{highlightText("• For HL Paper 3: emphasis on extended contextual problems")}</Text>
+                <List.Accordion
+                  title="Detailed Rubrics"
+                  expanded={expandedSection === 'rubrics'}
+                  onPress={() => toggleSection('rubrics')}
+                  titleStyle={themeStyles.sectionTitle}
+                >
+                  {renderAnimatedContent('rubrics',
+                    <View style={themeStyles.sectionContent}>
+                      <Text style={themeStyles.subsectionTitle}>PAPERS 1, 2, 3</Text>
+                      <View style={themeStyles.criterionContainer}>
+                        <Text style={themeStyles.criterionDescription}>{highlightText("Also marked via detailed schemes.")}</Text>
+                        <Text style={themeStyles.criterionDescription}>{highlightText("Rewarded elements include:")}</Text>
+                        <Text style={themeStyles.criterionDescription}>{highlightText("• Real-world application")}</Text>
+                        <Text style={themeStyles.criterionDescription}>{highlightText("• Correct use of technology (GDC)")}</Text>
+                        <Text style={themeStyles.criterionDescription}>{highlightText("• Modeling and interpretation")}</Text>
+                        <Text style={themeStyles.criterionDescription}>{highlightText("• Accuracy and reasoning")}</Text>
+                        <Text style={themeStyles.criterionDescription}>{highlightText("• For HL Paper 3: emphasis on extended contextual problems")}</Text>
+                      </View>
+                      <Text style={themeStyles.subsectionTitle}>MATHEMATICS AA & AI: INTERNAL ASSESSMENT (20 marks)</Text>
+                      <View style={themeStyles.criterionContainer}>
+                        <Text style={themeStyles.criterionTitle}>{highlightText("Criterion A: Presentation (4 marks)")}</Text>
+                        <Text style={themeStyles.criterionDescription}>{highlightText("The exploration is well structured and coherent.")}</Text>
+                        <Text style={themeStyles.criterionTitle}>{highlightText("Criterion B: Mathematical Communication (4 marks)")}</Text>
+                        <Text style={themeStyles.criterionDescription}>{highlightText("Appropriate use of mathematical language and notation.")}</Text>
+                        <Text style={themeStyles.criterionTitle}>{highlightText("Criterion C: Personal Engagement (4 marks)")}</Text>
+                        <Text style={themeStyles.criterionDescription}>{highlightText("Evidence of independent thinking, creativity, and ownership.")}</Text>
+                        <Text style={themeStyles.criterionTitle}>{highlightText("Criterion D: Reflection (3 marks)")}</Text>
+                        <Text style={themeStyles.criterionDescription}>{highlightText("Critical reflection on results, methods, and learning.")}</Text>
+                        <Text style={themeStyles.criterionTitle}>{highlightText("Criterion E: Use of Mathematics (5 marks)")}</Text>
+                        <Text style={themeStyles.criterionDescription}>{highlightText("Correct and relevant mathematical processes used with sophistication.")}</Text>
+                      </View>
                     </View>
-                    <Text style={styles.subsectionTitle}>MATHEMATICS AA & AI: INTERNAL ASSESSMENT (20 marks)</Text>
-                    <View style={styles.criterionContainer}>
-                      <Text style={styles.criterionTitle}>{highlightText("Criterion A: Presentation (4 marks)")}</Text>
-                      <Text style={styles.criterionDescription}>{highlightText("The exploration is well structured and coherent.")}</Text>
-                      <Text style={styles.criterionTitle}>{highlightText("Criterion B: Mathematical Communication (4 marks)")}</Text>
-                      <Text style={styles.criterionDescription}>{highlightText("Appropriate use of mathematical language and notation.")}</Text>
-                      <Text style={styles.criterionTitle}>{highlightText("Criterion C: Personal Engagement (4 marks)")}</Text>
-                      <Text style={styles.criterionDescription}>{highlightText("Evidence of independent thinking, creativity, and ownership.")}</Text>
-                      <Text style={styles.criterionTitle}>{highlightText("Criterion D: Reflection (3 marks)")}</Text>
-                      <Text style={styles.criterionDescription}>{highlightText("Critical reflection on results, methods, and learning.")}</Text>
-                      <Text style={styles.criterionTitle}>{highlightText("Criterion E: Use of Mathematics (5 marks)")}</Text>
-                      <Text style={styles.criterionDescription}>{highlightText("Correct and relevant mathematical processes used with sophistication.")}</Text>
-                    </View>
-                  </View>
-                )}
-              </List.Accordion>
-            </List.Section>
-          </Card.Content>
-        </Card>
-      </LinearGradient>
-    </ScrollView>
+                  )}
+                </List.Accordion>
+              </List.Section>
+            </Card.Content>
+          </Card>
+        </LinearGradient>
+      </ScrollView>
+    </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  gradient: {
-    flex: 1,
-    padding: 16,
-  },
-  searchBar: {
-    marginBottom: 16,
-    backgroundColor: 'rgba(255,255,255,0.1)',
-  },
-  card: {
-    backgroundColor: 'rgba(255,255,255,0.05)',
-    borderRadius: 16,
-    marginBottom: 16,
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#FFD700',
-    marginBottom: 8,
-    fontFamily: 'Montserrat_700Bold',
-  },
-  subtitle: {
-    fontSize: 16,
-    color: '#E0D8C3',
-    marginBottom: 24,
-    fontFamily: 'Montserrat_400Regular',
-  },
-  sectionTitle: {
-    fontSize: 18,
-    color: '#FFD700',
-    fontFamily: 'Montserrat_700Bold',
-  },
-  subsectionTitle: {
-    fontSize: 18,
-    color: '#FFD700',
-    fontFamily: 'Montserrat_700Bold',
-    marginBottom: 8,
-  },
-  levelTitle: {
-    fontSize: 16,
-    color: '#E0D8C3',
-    fontFamily: 'Montserrat_400Regular',
-    marginBottom: 8,
-  },
-  sectionContent: {
-    padding: 16,
-    backgroundColor: 'rgba(255,255,255,0.02)',
-    borderRadius: 8,
-  },
-  content: {
-    fontSize: 16,
-    color: '#E0D8C3',
-    lineHeight: 24,
-    fontFamily: 'Montserrat_400Regular',
-  },
-  highlightedText: {
-    backgroundColor: 'rgba(255, 215, 0, 0.2)',
-    color: '#FFD700',
-    fontWeight: 'bold',
-  },
-  criterionContainer: {
-    marginBottom: 16,
-  },
-  criterionTitle: {
-    fontSize: 16,
-    color: '#FFD700',
-    fontFamily: 'Montserrat_700Bold',
-    marginBottom: 4,
-  },
-  criterionDescription: {
-    fontSize: 16,
-    color: '#E0D8C3',
-    fontFamily: 'Montserrat_400Regular',
-  },
-});
 
 export default MathAIScreen; 

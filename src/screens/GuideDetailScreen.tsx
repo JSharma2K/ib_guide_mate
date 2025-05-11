@@ -5,6 +5,7 @@ import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { guideService, SubjectGuide } from '../services/guideService';
 import { RootStackParamList } from '../types/navigation';
+import { theme } from '../theme/theme';
 
 type GuideDetailScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'GuideDetail'>;
 type GuideDetailScreenRouteProp = RouteProp<RootStackParamList, 'GuideDetail'>;
@@ -60,7 +61,7 @@ export const GuideDetailScreen = () => {
 
   if (loading) {
     return (
-      <View style={styles.loadingContainer}>
+      <View style={theme.loadingContainer}>
         <ActivityIndicator size="large" />
       </View>
     );
@@ -68,15 +69,15 @@ export const GuideDetailScreen = () => {
 
   if (!guide) {
     return (
-      <View style={styles.errorContainer}>
+      <View style={theme.errorContainer}>
         <Text>Guide not found</Text>
       </View>
     );
   }
 
   return (
-    <ScrollView style={styles.container}>
-      <Card style={styles.card}>
+    <ScrollView style={theme.container}>
+      <Card style={theme.card}>
         <Card.Title
           title={guide.subjectName}
           subtitle={`Group: ${guide.group}`}
@@ -96,26 +97,26 @@ export const GuideDetailScreen = () => {
           )}
         />
         <Card.Content>
-          <Text style={styles.description}>{guide.description}</Text>
+          <Text style={theme.description}>{guide.description}</Text>
           
-          <Text style={styles.sectionTitle}>Topics</Text>
+          <Text style={theme.sectionTitle}>Topics</Text>
           <View style={styles.topicsContainer}>
             {guide.topics.map((topic, index) => (
-              <Text key={index} style={styles.topic}>• {topic}</Text>
+              <Text key={index} style={theme.topic}>• {topic}</Text>
             ))}
           </View>
 
-          <Text style={styles.sectionTitle}>Assessment</Text>
-          <Text style={styles.content}>{guide.assessment}</Text>
+          <Text style={theme.sectionTitle}>Assessment</Text>
+          <Text style={theme.content}>{guide.assessment}</Text>
 
-          <Text style={styles.sectionTitle}>Content</Text>
-          <Text style={styles.content}>{guide.content}</Text>
+          <Text style={theme.sectionTitle}>Content</Text>
+          <Text style={theme.content}>{guide.content}</Text>
 
           {guide.pdfUrl && (
             <Button
               mode="contained"
               onPress={handleOpenPDF}
-              style={styles.pdfButton}
+              style={theme.pdfButton}
             >
               Open PDF Guide
             </Button>
@@ -127,49 +128,10 @@ export const GuideDetailScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#f5f5f5',
-  },
-  loadingContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  errorContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  card: {
-    margin: 16,
-  },
   headerActions: {
     flexDirection: 'row',
   },
-  description: {
-    fontSize: 16,
-    marginBottom: 16,
-  },
-  sectionTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginTop: 16,
-    marginBottom: 8,
-  },
   topicsContainer: {
     marginBottom: 16,
-  },
-  topic: {
-    fontSize: 16,
-    marginLeft: 8,
-    marginBottom: 4,
-  },
-  content: {
-    fontSize: 16,
-    lineHeight: 24,
-  },
-  pdfButton: {
-    marginTop: 16,
   },
 }); 

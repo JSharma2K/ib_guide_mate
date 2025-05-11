@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { View, ScrollView, ActivityIndicator, StyleSheet } from 'react-native';
+import { View, ScrollView, ActivityIndicator } from 'react-native';
 import { TextInput, Button, HelperText } from 'react-native-paper';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { guideService, SubjectGuide } from '../services/guideService';
 import { RootStackParamList } from '../types/navigation';
+import { theme, styles as themeStyles } from '../theme/theme';
 
 type AddGuideScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'AddGuide'>;
 type AddGuideScreenRouteProp = RouteProp<RootStackParamList, 'AddGuide'>;
@@ -78,20 +79,22 @@ export const AddGuideScreen = () => {
 
   if (loading) {
     return (
-      <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" />
+      <View style={themeStyles.loadingContainer}>
+        <ActivityIndicator size="large" color={theme.colors.primary} />
       </View>
     );
   }
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={[themeStyles.container, { backgroundColor: theme.colors.background }]}>
       <TextInput
         label="Subject Name"
         value={formData.subjectName}
         onChangeText={(text) => setFormData({ ...formData, subjectName: text })}
         error={!!errors.subjectName}
-        style={styles.input}
+        style={[themeStyles.input, { backgroundColor: theme.colors.surface }]}
+        textColor={theme.colors.text}
+        theme={{ colors: { primary: theme.colors.primary } }}
       />
       <HelperText type="error" visible={!!errors.subjectName}>
         {errors.subjectName}
@@ -102,7 +105,9 @@ export const AddGuideScreen = () => {
         value={formData.group}
         onChangeText={(text) => setFormData({ ...formData, group: text })}
         error={!!errors.group}
-        style={styles.input}
+        style={[themeStyles.input, { backgroundColor: theme.colors.surface }]}
+        textColor={theme.colors.text}
+        theme={{ colors: { primary: theme.colors.primary } }}
       />
       <HelperText type="error" visible={!!errors.group}>
         {errors.group}
@@ -115,7 +120,9 @@ export const AddGuideScreen = () => {
         error={!!errors.description}
         multiline
         numberOfLines={3}
-        style={styles.input}
+        style={[themeStyles.input, { backgroundColor: theme.colors.surface }]}
+        textColor={theme.colors.text}
+        theme={{ colors: { primary: theme.colors.primary } }}
       />
       <HelperText type="error" visible={!!errors.description}>
         {errors.description}
@@ -128,7 +135,9 @@ export const AddGuideScreen = () => {
         error={!!errors.topics}
         multiline
         numberOfLines={4}
-        style={styles.input}
+        style={[themeStyles.input, { backgroundColor: theme.colors.surface }]}
+        textColor={theme.colors.text}
+        theme={{ colors: { primary: theme.colors.primary } }}
       />
       <HelperText type="error" visible={!!errors.topics}>
         {errors.topics}
@@ -141,7 +150,9 @@ export const AddGuideScreen = () => {
         error={!!errors.assessment}
         multiline
         numberOfLines={4}
-        style={styles.input}
+        style={[themeStyles.input, { backgroundColor: theme.colors.surface }]}
+        textColor={theme.colors.text}
+        theme={{ colors: { primary: theme.colors.primary } }}
       />
       <HelperText type="error" visible={!!errors.assessment}>
         {errors.assessment}
@@ -154,7 +165,9 @@ export const AddGuideScreen = () => {
         error={!!errors.content}
         multiline
         numberOfLines={8}
-        style={styles.input}
+        style={[themeStyles.input, { backgroundColor: theme.colors.surface }]}
+        textColor={theme.colors.text}
+        theme={{ colors: { primary: theme.colors.primary } }}
       />
       <HelperText type="error" visible={!!errors.content}>
         {errors.content}
@@ -163,31 +176,11 @@ export const AddGuideScreen = () => {
       <Button
         mode="contained"
         onPress={handleSubmit}
-        style={styles.submitButton}
+        style={[themeStyles.submitButton, { backgroundColor: theme.colors.primary }]}
+        textColor={theme.colors.background}
       >
         {route.params?.guideId ? 'Update Guide' : 'Add Guide'}
       </Button>
     </ScrollView>
   );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16,
-    backgroundColor: '#f5f5f5',
-  },
-  loadingContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  input: {
-    marginBottom: 8,
-    backgroundColor: 'white',
-  },
-  submitButton: {
-    marginTop: 16,
-    marginBottom: 32,
-  },
-}); 
+}; 

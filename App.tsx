@@ -41,7 +41,15 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <PaperProvider theme={theme}>
-        <NavigationContainer theme={DarkTheme}>
+        <NavigationContainer
+          theme={{
+            ...DarkTheme,
+            colors: {
+              ...DarkTheme.colors,
+              background: '#181A20',
+            },
+          }}
+        >
           <Stack.Navigator
             initialRouteName="Home"
             screenOptions={{
@@ -54,8 +62,9 @@ export default function App() {
               },
               headerShadowVisible: false,
               contentStyle: {
-                backgroundColor: theme.colors.background,
+                backgroundColor: '#181A20',
               },
+              animation: 'fade',
             }}
           >
             <Stack.Screen 
