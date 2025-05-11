@@ -23,6 +23,7 @@ type RootStackParamList = {
   ManageGuides: undefined;
   EnglishALiterature: undefined;
   MathAA: undefined;
+  MathAI: undefined;
 };
 
 type HomeScreenProps = {
@@ -69,6 +70,8 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
             navigation.navigate('EnglishALiterature');
           } else if (item.key === 'math-aa') {
             navigation.navigate('MathAA');
+          } else if (item.key === 'math-ai') {
+            navigation.navigate('MathAI');
           } else {
             navigation.navigate('SubjectList');
           }
@@ -191,7 +194,6 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: 'rgba(255,255,255,0.04)',
     borderRadius: 22,
-    backdropFilter: 'blur(8px)', // for web, ignored on native
   },
   subjectTitle: {
     fontSize: 20,
