@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from 'react';
-import { View, StyleSheet, FlatList, Dimensions, Platform, StatusBar } from 'react-native';
+import { View, StyleSheet, FlatList, Dimensions, Platform, StatusBar, Image } from 'react-native';
 import { Card, useTheme, Text, List } from 'react-native-paper';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Feather } from '@expo/vector-icons';
@@ -28,6 +28,7 @@ type RootStackParamList = {
 
 type HomeScreenProps = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'Home'>;
+  route: { params?: { userType?: 'student' | 'teacher' } };
 };
 
 const SUBJECTS = [
@@ -56,8 +57,9 @@ const SUBJECTS = [
 
 const sectionKeys = ['overview', 'essentials', 'literature', 'detailedRubrics'];
 
-const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
+const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, route }) => {
   const theme = useTheme();
+  const userType = route?.params?.userType || 'student';
   let [fontsLoaded] = useFonts({
     Inter_700Bold: require('../../assets/fonts/Inter-Bold.ttf'),
     Inter_400Regular: require('../../assets/fonts/Inter-Regular.ttf'),
@@ -70,11 +72,11 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
         style={[styles.subjectCard, { borderWidth: 2, borderColor: '#FFD700', backgroundColor: '#22242C' }]}
         onPress={() => {
           if (item.key === 'english-a') {
-            navigation.navigate('EnglishALiterature');
+            navigation.navigate('EnglishALiterature', { userType });
           } else if (item.key === 'math-aa') {
-            navigation.navigate('MathAA');
+            navigation.navigate('MathAA', { userType });
           } else if (item.key === 'math-ai') {
-            navigation.navigate('MathAI');
+            navigation.navigate('MathAI', { userType });
           } else {
             navigation.navigate('SubjectList');
           }
@@ -98,7 +100,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
         </LinearGradient>
       </Card>
     </Animated.View>
-  ), [navigation]);
+  ), [navigation, userType]);
 
   useEffect(() => {
     navigation.setOptions({
@@ -148,8 +150,11 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
           />
         </View>
         <View style={styles.footer}>
-          <Logo />
-          <Text style={styles.footerText}>A Whetstone Ed Initiative</Text>
+          <Image
+            source={require('../../assets/images/whetstone-logo.png')}
+            style={styles.footerLogo}
+            resizeMode="contain"
+          />
         </View>
       </LinearGradient>
     </View>
@@ -231,16 +236,13 @@ const styles = StyleSheet.create({
   footer: {
     alignItems: 'center',
     marginTop: 32,
-    borderTopWidth: 0.5,
-    borderTopColor: 'rgba(255,215,0,0.08)',
     paddingTop: 12,
   },
-  footerText: {
-    color: '#FFD700',
-    fontSize: 13,
-    marginTop: 2,
-    fontFamily: 'Inter_400Regular',
-    letterSpacing: 0.5,
+  footerLogo: {
+    width: 200,
+    height: 70,
+    opacity: 0.9,
+    marginBottom: 4,
   },
 });
 

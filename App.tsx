@@ -13,6 +13,7 @@ import ManageGuidesScreen from './src/screens/ManageGuidesScreen';
 import EnglishALiteratureScreen from './src/screens/EnglishALiteratureScreen';
 import MathAAScreen from './src/screens/MathAAScreen';
 import MathAIScreen from './src/screens/MathAIScreen';
+import EntryScreen from './src/screens/EntryScreen';
 
 const { DarkTheme } = adaptNavigationTheme({
   reactNavigationDark: NavigationDarkTheme,
@@ -51,7 +52,7 @@ export default function App() {
           }}
         >
           <Stack.Navigator
-            initialRouteName="Home"
+            initialRouteName="Entry"
             screenOptions={{
               headerStyle: {
                 backgroundColor: theme.colors.primary,
@@ -68,10 +69,15 @@ export default function App() {
             }}
           >
             <Stack.Screen 
+              name="Entry" 
+              component={EntryScreen} 
+              options={{ title: 'IB GuideMate', headerShown: false }}
+            />
+            <Stack.Screen 
               name="Home" 
               component={HomeScreen} 
               options={{ 
-                title: 'IB Guidemate',
+                title: 'Subjects',
                 headerShown: false,
               }}
             />

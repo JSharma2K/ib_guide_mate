@@ -1,13 +1,14 @@
 import { NavigatorScreenParams } from '@react-navigation/native';
 
 export type RootStackParamList = {
-  Home: undefined;
+  Entry: undefined;
+  Home: { userType: 'student' | 'teacher' } | undefined;
   SubjectList: undefined;
-  SubjectDetail: { subjectId: string };
+  SubjectDetail: { subjectId: string; userType: 'student' | 'teacher' };
   ManageGuides: undefined;
-  EnglishALiterature: undefined;
-  MathAA: undefined;
-  MathAI: undefined;
+  EnglishALiterature: { userType: 'student' | 'teacher' };
+  MathAA: { userType: 'student' | 'teacher' };
+  MathAI: { userType: 'student' | 'teacher' };
   AddGuide: { guideId?: string };
   GuideDetail: { guideId: string };
   GuideList: undefined;

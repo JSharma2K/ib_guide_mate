@@ -1,0 +1,137 @@
+import React from 'react';
+import { View, StyleSheet, Platform, ImageBackground, Image, TouchableOpacity } from 'react-native';
+import { Text } from 'react-native-paper';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { theme } from '../theme/theme';
+import { RootStackParamList } from '../types/navigation';
+import Animated, { FadeIn } from 'react-native-reanimated';
+
+const GOLD_GRADIENT = ['#FFD700', '#FFC300', '#FFB300'];
+
+const EntryScreen: React.FC<{ navigation: NativeStackNavigationProp<RootStackParamList, 'Entry'> }> = ({ navigation }) => {
+  return (
+    <ImageBackground
+      source={require('../../assets/images/entry-bg.png')}
+      style={styles.background}
+      resizeMode="cover"
+    >
+      <View style={styles.overlay} />
+      <View style={styles.header}>
+        <Animated.View entering={FadeIn.duration(1200)}>
+          <Text style={styles.premiumTitle}>IB GuideMate</Text>
+        </Animated.View>
+      </View>
+      <View style={styles.centerContent}>
+        <Animated.View entering={FadeIn.delay(200).duration(600)}>
+          <TouchableOpacity
+            style={styles.floatingButton}
+            activeOpacity={0.7}
+            onPress={() => navigation.navigate('Home', { userType: 'student' })}
+          >
+            <View style={styles.dash} />
+            <Text style={styles.floatingButtonText}>Student Resources</Text>
+            <View style={styles.dash} />
+          </TouchableOpacity>
+        </Animated.View>
+        <Animated.View entering={FadeIn.delay(400).duration(600)}>
+          <TouchableOpacity
+            style={styles.floatingButton}
+            activeOpacity={0.7}
+            onPress={() => navigation.navigate('Home', { userType: 'teacher' })}
+          >
+            <View style={styles.dash} />
+            <Text style={styles.floatingButtonText}>Teacher Resources</Text>
+            <View style={styles.dash} />
+          </TouchableOpacity>
+        </Animated.View>
+      </View>
+      <View style={styles.logoContainer}>
+        <Image
+          source={require('../../assets/images/whetstone-logo.png')}
+          style={styles.miniLogo}
+          resizeMode="contain"
+        />
+      </View>
+    </ImageBackground>
+  );
+};
+
+const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+  },
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(24, 26, 32, 0.5)', // dark overlay for readability
+    zIndex: 1,
+  },
+  header: {
+    position: 'absolute',
+    top: Platform.OS === 'android' ? 40 : 60,
+    left: 0,
+    width: '100%',
+    zIndex: 2,
+    paddingLeft: 24,
+    paddingBottom: 16,
+  },
+  premiumTitle: {
+    fontSize: 32,
+    fontFamily: Platform.OS === 'ios' ? 'Georgia-Bold' : 'serif', // Swap for PlayfairDisplay-Bold or Cinzel-Bold if available
+    color: 'rgba(255, 215, 0, 0.7)',
+    letterSpacing: 2.5,
+    textShadowColor: '#B8860B',
+    textShadowOffset: { width: 2, height: 2 },
+    textShadowRadius: 10,
+    elevation: 3,
+  },
+  centerContent: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    paddingHorizontal: 24,
+    zIndex: 2,
+  },
+  floatingButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
+    marginVertical: 14,
+    paddingVertical: 10,
+    paddingHorizontal: 0,
+    minWidth: 220,
+    borderRadius: 24,
+  },
+  floatingButtonText: {
+    color: '#FFD700',
+    fontFamily: 'Inter_700Bold',
+    fontSize: 16,
+    letterSpacing: 0.5,
+    textAlign: 'center',
+    marginHorizontal: 12,
+  },
+  dash: {
+    width: 18,
+    height: 2,
+    backgroundColor: '#FFD700',
+    borderRadius: 1,
+    opacity: 0.85,
+  },
+  logoContainer: {
+    width: '100%',
+    alignItems: 'center',
+    marginBottom: Platform.OS === 'android' ? 18 : 24,
+    zIndex: 2,
+  },
+  miniLogo: {
+    width: 320,
+    height: 110,
+    opacity: 0.9,
+  },
+});
+
+export default EntryScreen; 

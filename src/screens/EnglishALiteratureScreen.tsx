@@ -4,7 +4,8 @@ import { Text, Card, List, Searchbar, Button as PaperButton } from 'react-native
 import { LinearGradient } from 'expo-linear-gradient';
 import { theme, gradientColors, styles as themeStyles } from '../theme/theme';
 
-const EnglishALiteratureScreen = ({ navigation }) => {
+const EnglishALiteratureScreen = ({ navigation, route }) => {
+  const userType = route?.params?.userType || 'student';
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [highlightedText, setHighlightedText] = useState('');
@@ -437,6 +438,28 @@ const EnglishALiteratureScreen = ({ navigation }) => {
               </List.Section>
             </Card.Content>
           </Card>
+          {/* Example: show a teacher-only dropdown */}
+          {userType === 'teacher' && (
+            <List.Accordion
+              title="Teacher-Only Resources"
+              titleStyle={themeStyles.sectionTitle}
+            >
+              <View style={{ padding: 16 }}>
+                <Text style={themeStyles.content}>This dropdown is only visible to teachers.</Text>
+              </View>
+            </List.Accordion>
+          )}
+          {/* Example: show a student-only dropdown */}
+          {userType === 'student' && (
+            <List.Accordion
+              title="Student-Only Resources"
+              titleStyle={themeStyles.sectionTitle}
+            >
+              <View style={{ padding: 16 }}>
+                <Text style={themeStyles.content}>This dropdown is only visible to students.</Text>
+              </View>
+            </List.Accordion>
+          )}
         </LinearGradient>
       </ScrollView>
     </View>
