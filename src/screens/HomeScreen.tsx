@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from 'react';
 import { View, StyleSheet, FlatList, Dimensions, Platform, StatusBar } from 'react-native';
-import { Card, useTheme, Text } from 'react-native-paper';
+import { Card, useTheme, Text, List } from 'react-native-paper';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Feather } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -53,6 +53,8 @@ const SUBJECTS = [
     color: '#FFF6B7',
   },
 ];
+
+const sectionKeys = ['overview', 'essentials', 'literature', 'detailedRubrics'];
 
 const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   const theme = useTheme();

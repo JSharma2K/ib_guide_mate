@@ -18,11 +18,58 @@ const EnglishALiteratureScreen = ({ navigation }) => {
   const detailedRubricsAnimation = useRef(new Animated.Value(0)).current;
 
   // Section keys and content for search
+  const detailedRubricsSearchText = [
+    // Paper 1
+    'A Understanding & Interpretation 5',
+    'B Analysis & Evaluation 5',
+    'C Focus & Organization 5',
+    'D Language 5',
+    // Paper 2
+    'A Knowledge & Understanding 10',
+    'B Analysis & Evaluation 10',
+    'C Focus & Organization 10',
+    // Individual Oral
+    'A Knowledge, Understanding & Interpretation 10',
+    'B Analysis & Evaluation 10',
+    'C Focus & Organization 10',
+    'D Language 10',
+    // Literature and Performance - Paper 1
+    'A Knowledge & Interpretation 10',
+    'B Analysis & Evaluation 10',
+    'C Focus & Organization 5',
+    'D Language 5',
+    // Literature and Performance - Written Assignment
+    'A Knowledge & Understanding 6',
+    'B Analysis & Evaluation 6',
+    'C Focus & Organization 6',
+    'D Language 4',
+    'E Performance Analysis & Communication 4',
+    // Literature and Performance - Internal Assessment
+    'A Knowledge & Understanding 8',
+    'B Analysis & Evaluation 8',
+    'C Performance Skills 8',
+    'D Oral Communication 8',
+    // SSST Paper 1
+    'A Understanding & Interpretation 5',
+    'B Analysis & Evaluation 5',
+    'C Focus & Organization 5',
+    'D Language 5',
+    // SSST Paper 2
+    'A Knowledge & Understanding 10',
+    'B Analysis & Evaluation 10',
+    'C Focus & Organization 10',
+    // SSST Individual Oral
+    'A Knowledge, Understanding & Interpretation 10',
+    'B Analysis & Evaluation 10',
+    'C Focus & Organization 10',
+    'D Language 10',
+  ].join(' ');
+
   const sectionContentStrings: Record<'overview' | 'essentials' | 'literature' | 'detailedRubrics', string> = {
     overview: `English A: Literature is a course that focuses on the study of literary texts. It is designed for students who are interested in developing their understanding of literature and literary criticism. The course emphasizes the development of critical thinking and analytical skills through the study of a wide range of literary works from different periods, styles, and genres.`,
     essentials: `Course Overview\n• Standard Level (SL): 4 works\n• Higher Level (HL): 6 works\nAreas of Exploration\n• Readers-Writers-Texts\n• Time and Space\n• Intertextuality\nAssessment Outline\nSL:\n• Paper 1 (1h15m): 35%\n• Paper 2 (1h45m): 35%\n• Individual Oral (15 min): 30%\nHL:\n• Paper 1 (2h15m): 35%\n• Paper 2 (1h45m): 25%\n• Individual Oral: 20%\n• HL Essay: 20%\nRubrics\n• Paper 1 & 2: Criteria A-D (5-10 marks each)\n• IO: Criteria A-D (10 marks each)\n• HL Essay: Criteria A-D (5 marks each)\nAssessment Objectives in Practice\n• Problem solving\n• Communication\n• Reasoning\n• Technology use\n• Inquiry`,
     literature: `Works in Translation\n• Study of works originally written in languages other than English\n• Focus on cultural and historical context\n• Development of intercultural understanding\nWorks in English\n• Study of works written in English\n• Focus on literary techniques and devices\n• Development of critical analysis skills`,
-    detailedRubrics: `Paper 1 (20 marks)\nCriterion A: Understanding and Interpretation (5 marks)\n• Insightful interpretation of the text\n• Clear understanding of meaning and purpose\nCriterion B: Analysis and Evaluation (5 marks)\n• Effective analysis of stylistic features\n• Analysis of literary devices\n• Understanding of impact on the reader\nCriterion C: Focus and Organization (5 marks)\n• Ideas are clearly structured\n• Logical development of arguments\n• Coherent presentation\nCriterion D: Language (5 marks)\n• Clear, varied, and accurate language\n• Appropriate for literary analysis\nPaper 2 (30 marks)\nCriterion A: Knowledge, Understanding and Interpretation (10 marks)\nCriterion B: Analysis and Evaluation (10 marks)\nCriterion C: Focus and Organization (10 marks)\nIndividual Oral (40 marks)\nCriterion A: Knowledge, Understanding and Interpretation (10 marks)\nCriterion B: Analysis and Evaluation (10 marks)\nCriterion C: Focus and Organization (10 marks)\nCriterion D: Language (10 marks)\nHL Essay (20 marks)\nCriterion A: Knowledge, Understanding and Interpretation (5 marks)\nCriterion B: Analysis and Evaluation (5 marks)\nCriterion C: Focus, Organization and Development (5 marks)\nCriterion D: Language (5 marks)`
+    detailedRubrics: detailedRubricsSearchText,
   };
   const sectionKeys: Array<'overview' | 'essentials' | 'literature' | 'detailedRubrics'> = ['overview', 'essentials', 'literature', 'detailedRubrics'];
 
@@ -166,6 +213,23 @@ const EnglishALiteratureScreen = ({ navigation }) => {
     );
   };
 
+  const RubricTable = ({ data, highlightedText }: { data: { criterion: string; summary: string; max: number }[]; highlightedText: string }) => (
+    <View style={{ borderWidth: 1, borderColor: '#FFD700', borderRadius: 8, marginBottom: 8 }}>
+      <View style={{ flexDirection: 'row', backgroundColor: '#22242C' }}>
+        <Text style={[themeStyles.sectionTitle, { flex: 1, padding: 8 }]}>Criterion</Text>
+        <Text style={[themeStyles.sectionTitle, { flex: 2, padding: 8 }]}>Descriptor Summary</Text>
+        <Text style={[themeStyles.sectionTitle, { flex: 0.5, padding: 8, textAlign: 'center' }]}>Max</Text>
+      </View>
+      {data.map((row, idx) => (
+        <View key={idx} style={{ flexDirection: 'row', borderTopWidth: idx === 0 ? 0 : 1, borderColor: '#FFD700' }}>
+          <Text style={{ flex: 1, color: '#FFD700', padding: 8 }}>{highlightText(row.criterion)}</Text>
+          <Text style={{ flex: 2, color: '#B6B6B6', padding: 8 }}>{highlightText(row.summary)}</Text>
+          <Text style={{ flex: 0.5, color: '#FFD700', padding: 8, textAlign: 'center' }}>{highlightText(String(row.max))}</Text>
+        </View>
+      ))}
+    </View>
+  );
+
   return (
     <View style={[themeStyles.container, { backgroundColor: '#181A20' }]}>
       <StatusBar barStyle="light-content" />
@@ -280,45 +344,95 @@ const EnglishALiteratureScreen = ({ navigation }) => {
                   onPress={() => toggleSection('detailedRubrics')}
                   titleStyle={themeStyles.sectionTitle}
                 >
-                  {renderAnimatedContent('detailedRubrics',
-                    <View style={themeStyles.sectionContent}>
-                      {/* PAPER 1 */}
-                      <Text style={themeStyles.subsectionTitle}>Paper 1 (20 marks)</Text>
-                      <View style={themeStyles.criterionContainer}>
-                        <Text style={themeStyles.criterionTitle}>{highlightText("Criterion A: Understanding and Interpretation (5 marks)")}</Text>
-                        <Text style={themeStyles.criterionDescription}>{highlightText("Insightful interpretation of the text with a clear understanding of meaning and purpose.")}</Text>
-                        <Text style={themeStyles.criterionTitle}>{highlightText("Criterion B: Analysis and Evaluation (5 marks)")}</Text>
-                        <Text style={themeStyles.criterionDescription}>{highlightText("Effective analysis of stylistic features, literary devices, and their impact on the reader.")}</Text>
-                        <Text style={themeStyles.criterionTitle}>{highlightText("Criterion C: Focus and Organization (5 marks)")}</Text>
-                        <Text style={themeStyles.criterionDescription}>{highlightText("Ideas are clearly structured, logically developed, and coherently presented.")}</Text>
-                        <Text style={themeStyles.criterionTitle}>{highlightText("Criterion D: Language (5 marks)")}</Text>
-                        <Text style={themeStyles.criterionDescription}>{highlightText("Uses clear, varied, and accurate language appropriate for literary analysis.")}</Text>
-                      </View>
-                      {/* PAPER 2 */}
-                      <Text style={themeStyles.subsectionTitle}>Paper 2 (30 marks)</Text>
-                      <View style={themeStyles.criterionContainer}>
-                        <Text style={themeStyles.criterionDescription}>{highlightText("Criterion A: Knowledge, Understanding and Interpretation (10 marks)")}</Text>
-                        <Text style={themeStyles.criterionDescription}>{highlightText("Criterion B: Analysis and Evaluation (10 marks)")}</Text>
-                        <Text style={themeStyles.criterionDescription}>{highlightText("Criterion C: Focus and Organization (10 marks)")}</Text>
-                      </View>
-                      {/* INDIVIDUAL ORAL */}
-                      <Text style={themeStyles.subsectionTitle}>Individual Oral (40 marks)</Text>
-                      <View style={themeStyles.criterionContainer}>
-                        <Text style={themeStyles.criterionDescription}>{highlightText("Criterion A: Knowledge, Understanding and Interpretation (10 marks)")}</Text>
-                        <Text style={themeStyles.criterionDescription}>{highlightText("Criterion B: Analysis and Evaluation (10 marks)")}</Text>
-                        <Text style={themeStyles.criterionDescription}>{highlightText("Criterion C: Focus and Organization (10 marks)")}</Text>
-                        <Text style={themeStyles.criterionDescription}>{highlightText("Criterion D: Language (10 marks)")}</Text>
-                      </View>
-                      {/* HL ESSAY */}
-                      <Text style={themeStyles.subsectionTitle}>HL Essay (20 marks)</Text>
-                      <View style={themeStyles.criterionContainer}>
-                        <Text style={themeStyles.criterionDescription}>{highlightText("Criterion A: Knowledge, Understanding and Interpretation (5 marks)")}</Text>
-                        <Text style={themeStyles.criterionDescription}>{highlightText("Criterion B: Analysis and Evaluation (5 marks)")}</Text>
-                        <Text style={themeStyles.criterionDescription}>{highlightText("Criterion C: Focus, Organization and Development (5 marks)")}</Text>
-                        <Text style={themeStyles.criterionDescription}>{highlightText("Criterion D: Language (5 marks)")}</Text>
-                      </View>
-                    </View>
-                  )}
+                  <View style={{ padding: 16 }}>
+                    {/* Paper 1 Table */}
+                    <Text style={[themeStyles.subsectionTitle, { marginBottom: 8 }]}>Language A: Literature - Paper 1</Text>
+                    <RubricTable
+                      data={[
+                        { criterion: 'A', summary: 'Understanding & Interpretation', max: 5 },
+                        { criterion: 'B', summary: 'Analysis & Evaluation', max: 5 },
+                        { criterion: 'C', summary: 'Focus & Organization', max: 5 },
+                        { criterion: 'D', summary: 'Language', max: 5 },
+                      ]}
+                      highlightedText={highlightedText}
+                    />
+                    {/* Paper 2 Table */}
+                    <Text style={[themeStyles.subsectionTitle, { marginTop: 24, marginBottom: 8 }]}>Language A: Literature - Paper 2</Text>
+                    <RubricTable
+                      data={[
+                        { criterion: 'A', summary: 'Knowledge & Understanding', max: 10 },
+                        { criterion: 'B', summary: 'Analysis & Evaluation', max: 10 },
+                        { criterion: 'C', summary: 'Focus & Organization', max: 10 },
+                      ]}
+                      highlightedText={highlightedText}
+                    />
+                    {/* Individual Oral Table */}
+                    <Text style={[themeStyles.subsectionTitle, { marginTop: 24, marginBottom: 8 }]}>Language A: Literature - Individual Oral</Text>
+                    <RubricTable
+                      data={[
+                        { criterion: 'A', summary: 'Knowledge, Understanding & Interpretation', max: 10 },
+                        { criterion: 'B', summary: 'Analysis & Evaluation', max: 10 },
+                        { criterion: 'C', summary: 'Focus & Organization', max: 10 },
+                        { criterion: 'D', summary: 'Language', max: 10 },
+                      ]}
+                      highlightedText={highlightedText}
+                    />
+                    {/* Literature and Performance - Written Assignment Table */}
+                    <Text style={[themeStyles.subsectionTitle, { marginTop: 24, marginBottom: 8 }]}>Literature and Performance - Written Assignment</Text>
+                    <RubricTable
+                      data={[
+                        { criterion: 'A', summary: 'Knowledge & Understanding', max: 6 },
+                        { criterion: 'B', summary: 'Analysis & Evaluation', max: 6 },
+                        { criterion: 'C', summary: 'Focus & Organization', max: 6 },
+                        { criterion: 'D', summary: 'Language', max: 4 },
+                        { criterion: 'E', summary: 'Performance Analysis & Communication', max: 4 },
+                      ]}
+                      highlightedText={highlightedText}
+                    />
+                    {/* Literature and Performance - Internal Assessment Table */}
+                    <Text style={[themeStyles.subsectionTitle, { marginTop: 24, marginBottom: 8 }]}>Literature and Performance - Internal Assessment</Text>
+                    <RubricTable
+                      data={[
+                        { criterion: 'A', summary: 'Knowledge & Understanding', max: 8 },
+                        { criterion: 'B', summary: 'Analysis & Evaluation', max: 8 },
+                        { criterion: 'C', summary: 'Performance Skills', max: 8 },
+                        { criterion: 'D', summary: 'Oral Communication', max: 8 },
+                      ]}
+                      highlightedText={highlightedText}
+                    />
+                    {/* SSST: Language A Literature - Paper 1 Table */}
+                    <Text style={[themeStyles.subsectionTitle, { marginTop: 24, marginBottom: 8 }]}>SSST: Language A Literature - Paper 1</Text>
+                    <RubricTable
+                      data={[
+                        { criterion: 'A', summary: 'Understanding & Interpretation', max: 5 },
+                        { criterion: 'B', summary: 'Analysis & Evaluation', max: 5 },
+                        { criterion: 'C', summary: 'Focus & Organization', max: 5 },
+                        { criterion: 'D', summary: 'Language', max: 5 },
+                      ]}
+                      highlightedText={highlightedText}
+                    />
+                    {/* SSST: Language A Literature - Paper 2 Table */}
+                    <Text style={[themeStyles.subsectionTitle, { marginTop: 24, marginBottom: 8 }]}>SSST: Language A Literature - Paper 2</Text>
+                    <RubricTable
+                      data={[
+                        { criterion: 'A', summary: 'Knowledge & Understanding', max: 10 },
+                        { criterion: 'B', summary: 'Analysis & Evaluation', max: 10 },
+                        { criterion: 'C', summary: 'Focus & Organization', max: 10 },
+                      ]}
+                      highlightedText={highlightedText}
+                    />
+                    {/* SSST: Language A Literature - Individual Oral Table */}
+                    <Text style={[themeStyles.subsectionTitle, { marginTop: 24, marginBottom: 8 }]}>SSST: Language A Literature - Individual Oral</Text>
+                    <RubricTable
+                      data={[
+                        { criterion: 'A', summary: 'Knowledge, Understanding & Interpretation', max: 10 },
+                        { criterion: 'B', summary: 'Analysis & Evaluation', max: 10 },
+                        { criterion: 'C', summary: 'Focus & Organization', max: 10 },
+                        { criterion: 'D', summary: 'Language', max: 10 },
+                      ]}
+                      highlightedText={highlightedText}
+                    />
+                  </View>
                 </List.Accordion>
               </List.Section>
             </Card.Content>
