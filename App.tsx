@@ -14,6 +14,7 @@ import EnglishALiteratureScreen from './src/screens/EnglishALiteratureScreen';
 import MathAAScreen from './src/screens/MathAAScreen';
 import MathAIScreen from './src/screens/MathAIScreen';
 import EntryScreen from './src/screens/EntryScreen';
+import ExtendedEssayScreen from './src/screens/ExtendedEssayScreen';
 
 const { DarkTheme } = adaptNavigationTheme({
   reactNavigationDark: NavigationDarkTheme,
@@ -123,6 +124,17 @@ export default function App() {
               component={MathAIScreen} 
               options={{ 
                 title: 'Mathematics: Applications and Interpretation',
+                headerStyle: {
+                  backgroundColor: theme.colors.primary,
+                },
+                headerTintColor: theme.colors.onPrimary,
+              }}
+            />
+            <Stack.Screen
+              name="ExtendedEssay"
+              component={ExtendedEssayScreen}
+              options={{
+                title: 'Extended Essay',
                 headerStyle: {
                   backgroundColor: theme.colors.primary,
                 },

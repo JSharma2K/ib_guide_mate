@@ -7,6 +7,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
+import ExtendedEssayScreen from '../screens/ExtendedEssayScreen';
 
 const { width } = Dimensions.get('window');
 
@@ -24,6 +25,7 @@ type RootStackParamList = {
   EnglishALiterature: undefined;
   MathAA: undefined;
   MathAI: undefined;
+  ExtendedEssay: undefined;
 };
 
 type HomeScreenProps = {
@@ -53,6 +55,13 @@ const SUBJECTS = [
     subtitle: 'Applications and Interpretation',
     color: '#FFF6B7',
   },
+  {
+    key: 'extended-essay',
+    icon: 'file-text',
+    title: 'Extended Essay',
+    subtitle: 'Core Component',
+    color: '#FFB6C1',
+  },
 ];
 
 const sectionKeys = ['overview', 'essentials', 'literature', 'detailedRubrics'];
@@ -77,6 +86,8 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, route }) => {
             navigation.navigate('MathAA', { userType });
           } else if (item.key === 'math-ai') {
             navigation.navigate('MathAI', { userType });
+          } else if (item.key === 'extended-essay') {
+            navigation.navigate('ExtendedEssay', { userType });
           } else {
             navigation.navigate('SubjectList');
           }

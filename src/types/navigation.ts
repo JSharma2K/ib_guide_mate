@@ -12,6 +12,7 @@ export type RootStackParamList = {
   AddGuide: { guideId?: string };
   GuideDetail: { guideId: string };
   GuideList: undefined;
+  ExtendedEssay: { userType: 'student' | 'teacher' };
 };
 
 declare global {
