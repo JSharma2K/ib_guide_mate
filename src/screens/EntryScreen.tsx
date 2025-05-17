@@ -5,10 +5,20 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { theme } from '../theme/theme';
 import { RootStackParamList } from '../types/navigation';
 import Animated, { FadeIn } from 'react-native-reanimated';
+import { useFonts } from 'expo-font';
+import AppLoading from 'expo-app-loading';
 
 const GOLD_GRADIENT = ['#FFD700', '#FFC300', '#FFB300'];
 
 const EntryScreen: React.FC<{ navigation: NativeStackNavigationProp<RootStackParamList, 'Entry'> }> = ({ navigation }) => {
+  let [fontsLoaded] = useFonts({
+    'ScopeOne-Regular': require('../../assets/fonts/ScopeOne-Regular.ttf'),
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
   return (
     <ImageBackground
       source={require('../../assets/images/entry-bg.png')}
@@ -31,6 +41,7 @@ const EntryScreen: React.FC<{ navigation: NativeStackNavigationProp<RootStackPar
             <View style={styles.dash} />
             <Text style={styles.floatingButtonText}>Student Resources</Text>
             <View style={styles.dash} />
+            <View style={styles.bottomDash} />
           </TouchableOpacity>
         </Animated.View>
         <Animated.View entering={FadeIn.delay(400).duration(600)}>
@@ -42,6 +53,7 @@ const EntryScreen: React.FC<{ navigation: NativeStackNavigationProp<RootStackPar
             <View style={styles.dash} />
             <Text style={styles.floatingButtonText}>Teacher Resources</Text>
             <View style={styles.dash} />
+            <View style={styles.bottomDash} />
           </TouchableOpacity>
         </Animated.View>
       </View>
@@ -78,14 +90,10 @@ const styles = StyleSheet.create({
     paddingBottom: 16,
   },
   premiumTitle: {
-    fontSize: 32,
-    fontFamily: Platform.OS === 'ios' ? 'Georgia-Bold' : 'serif', // Swap for PlayfairDisplay-Bold or Cinzel-Bold if available
+    fontSize: 42,
+    fontFamily: 'ScopeOne-Regular',
     color: 'rgba(255, 215, 0, 0.7)',
     letterSpacing: 2.5,
-    textShadowColor: '#B8860B',
-    textShadowOffset: { width: 2, height: 2 },
-    textShadowRadius: 10,
-    elevation: 3,
   },
   centerContent: {
     flex: 1,
@@ -105,20 +113,31 @@ const styles = StyleSheet.create({
     paddingHorizontal: 0,
     minWidth: 220,
     borderRadius: 24,
+    position: 'relative',
   },
   floatingButtonText: {
     color: '#FFD700',
-    fontFamily: 'Inter_700Bold',
+    fontFamily: 'ScopeOne-Regular',
     fontSize: 16,
     letterSpacing: 0.5,
     textAlign: 'center',
     marginHorizontal: 12,
   },
   dash: {
-    width: 18,
+    width: 6,
+    height: 6,
+    backgroundColor: '#FFD700',
+    borderRadius: 3,
+    opacity: 0.85,
+  },
+  bottomDash: {
+    position: 'absolute',
+    bottom: -4,
+    left: '50%',
+    transform: [{ translateX: -30 }],
+    width: 60,
     height: 2,
     backgroundColor: '#FFD700',
-    borderRadius: 1,
     opacity: 0.85,
   },
   logoContainer: {
