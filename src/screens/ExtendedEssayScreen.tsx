@@ -45,9 +45,9 @@ const sectionKeys: Array<'purpose' | 'objectives' | 'pathways' | 'roles' | 'inte
 const Rubric2027Table = ({ highlightedText }: { highlightedText: string }) => (
   <View style={{ borderWidth: 1, borderColor: '#FFD700', borderRadius: 8, marginBottom: 8 }}>
     <View style={{ flexDirection: 'row', backgroundColor: '#22242C' }}>
-      <Text style={[themeStyles.sectionTitle, { flex: 1, padding: 8 }]}>Criterion</Text>
-      <Text style={[themeStyles.sectionTitle, { flex: 2, padding: 8 }]}>What It Assesses</Text>
-      <Text style={[themeStyles.sectionTitle, { flex: 0.5, padding: 8, textAlign: 'center' }]}>Max Marks</Text>
+      <Text style={[themeStyles.sectionTitle, { flex: 1, padding: 8, fontSize: 14 }]}>Criterion</Text>
+      <Text style={[themeStyles.sectionTitle, { flex: 1.5, padding: 8, fontSize: 14 }]}>What It Assesses</Text>
+      <Text style={[themeStyles.sectionTitle, { flex: 1, padding: 8, textAlign: 'center', fontSize: 14 }]} numberOfLines={1} ellipsizeMode="tail">Marks</Text>
     </View>
     {[
       {
@@ -78,15 +78,15 @@ const Rubric2027Table = ({ highlightedText }: { highlightedText: string }) => (
     ].map((row, idx) => (
       <View key={idx} style={{ flexDirection: 'row', borderTopWidth: idx === 0 ? 0 : 1, borderColor: '#FFD700' }}>
         <Text style={{ flex: 1, color: '#FFD700', padding: 8 }}>{highlightedText ? highlightText(row.criterion) : row.criterion}</Text>
-        <Text style={{ flex: 2, color: '#B6B6B6', padding: 8 }}>{highlightedText ? highlightText(row.assesses) : row.assesses}</Text>
-        <Text style={{ flex: 0.5, color: '#FFD700', padding: 8, textAlign: 'center' }}>{row.max}</Text>
+        <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 8 }}>{highlightedText ? highlightText(row.assesses) : row.assesses}</Text>
+        <Text style={{ flex: 1, color: '#FFD700', padding: 8, textAlign: 'center' }}>{row.max}</Text>
       </View>
     ))}
     {/* Total row */}
     <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#FFD700', backgroundColor: '#232B4D' }}>
       <Text style={{ flex: 1, color: '#FFD700', padding: 8, fontWeight: '700' }}>Total</Text>
-      <Text style={{ flex: 2, color: '#B6B6B6', padding: 8 }}></Text>
-      <Text style={{ flex: 0.5, color: '#FFD700', padding: 8, textAlign: 'center', fontWeight: '700' }}>30</Text>
+      <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 8 }}></Text>
+      <Text style={{ flex: 1, color: '#FFD700', padding: 8, textAlign: 'center', fontWeight: '700' }}>30</Text>
     </View>
   </View>
 );
@@ -426,11 +426,9 @@ const ExtendedEssayScreen: React.FC<Props> = ({ navigation, route }) => {
                   onPress={() => toggleSection('rubric2027')}
                   titleStyle={themeStyles.sectionTitle}
                 >
-                  {renderAnimatedContent('rubric2027',
-                    <View style={themeStyles.sectionContent}>
-                      <Rubric2027Table highlightedText={highlightedText} />
-                    </View>
-                  )}
+                  <View style={{ padding: 16 }}>
+                    <Rubric2027Table highlightedText={highlightedText} />
+                  </View>
                 </List.Accordion>
               </List.Section>
             </Card.Content>

@@ -8,6 +8,8 @@ import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import ExtendedEssayScreen from '../screens/ExtendedEssayScreen';
+import { RootStackParamList } from '../types/navigation';
+import Rubric2027Table from '../components/Rubric2027Table';
 
 const { width } = Dimensions.get('window');
 
@@ -16,17 +18,6 @@ const Logo = () => (
     <Text style={{ color: '#B6B6B6', fontSize: 22, fontFamily: 'Inter_700Bold' }}>~WE</Text>
   </View>
 );
-
-type RootStackParamList = {
-  Home: undefined;
-  SubjectList: undefined;
-  SubjectDetail: { subjectId: string };
-  ManageGuides: undefined;
-  EnglishALiterature: undefined;
-  MathAA: undefined;
-  MathAI: undefined;
-  ExtendedEssay: undefined;
-};
 
 type HomeScreenProps = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'Home'>;
@@ -117,8 +108,6 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, route }) => {
     navigation.setOptions({
       headerStyle: {
         backgroundColor: '#181A20',
-        elevation: 0,
-        shadowOpacity: 0,
       },
       headerTintColor: '#FFD700',
       headerTitleStyle: {
