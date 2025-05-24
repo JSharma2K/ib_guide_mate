@@ -59,7 +59,7 @@ const EntryScreen: React.FC<{ navigation: NativeStackNavigationProp<RootStackPar
       </View>
       <View style={styles.logoContainer}>
         <Image
-          source={require('../../assets/images/whetstone-logo.png')}
+          source={require('../../assets/images/whetstone_white.png')}
           style={styles.miniLogo}
           resizeMode="contain"
         />

@@ -146,7 +146,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, route }) => {
         </View>
         <View style={styles.footer}>
           <Image
-            source={require('../../assets/images/whetstone-logo.png')}
+            source={require('../../assets/images/whetstone_white.png')}
             style={styles.footerLogo}
             resizeMode="contain"
           />
