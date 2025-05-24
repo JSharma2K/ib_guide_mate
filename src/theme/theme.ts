@@ -119,7 +119,7 @@ export const styles = {
   highlightedText: {
     backgroundColor: 'rgba(126,195,255,0.2)',
     color: '#7EC3FF',
-    fontWeight: 'bold',
+    fontWeight: '700',
   },
   loadingContainer: {
     flex: 1,

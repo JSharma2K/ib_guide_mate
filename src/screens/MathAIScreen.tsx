@@ -13,9 +13,11 @@ type MathAIScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 
 
 type Props = {
   navigation: MathAIScreenNavigationProp;
+  route: any;
 };
 
-const MathAIScreen: React.FC<Props> = ({ navigation }) => {
+const MathAIScreen: React.FC<Props> = ({ navigation, route }) => {
+  const userType = route?.params?.userType || 'student';
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [highlightedText, setHighlightedText] = useState('');
@@ -330,6 +332,24 @@ const MathAIScreen: React.FC<Props> = ({ navigation }) => {
             </View>
           ))}
         </View>
+        {userType === 'student' && (
+          <View style={{ borderRadius: 16, borderWidth: 1, borderColor: '#7EC3FF', backgroundColor: 'rgba(182,199,247,0.12)', marginBottom: 24, overflow: 'hidden', paddingHorizontal: 8 }}>
+            <List.Item
+              title="Student-Only Resources"
+              titleStyle={{ color: '#fff', fontFamily: 'ScopeOne-Regular', fontSize: 18 }}
+              style={{ paddingVertical: 16, paddingLeft: 20 }}
+            />
+          </View>
+        )}
+        {userType === 'teacher' && (
+          <View style={{ borderRadius: 16, borderWidth: 1, borderColor: '#7EC3FF', backgroundColor: 'rgba(182,199,247,0.12)', marginBottom: 24, overflow: 'hidden', paddingHorizontal: 8 }}>
+            <List.Item
+              title="Teacher-Only Resources"
+              titleStyle={{ color: '#fff', fontFamily: 'ScopeOne-Regular', fontSize: 18 }}
+              style={{ paddingVertical: 16, paddingLeft: 20 }}
+            />
+          </View>
+        )}
       </ScrollView>
     </ImageBackground>
   );
