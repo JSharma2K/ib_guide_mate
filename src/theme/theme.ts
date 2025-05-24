@@ -117,9 +117,9 @@ export const styles = {
     marginBottom: 16,
   },
   highlightedText: {
-    backgroundColor: 'rgba(255, 215, 0, 0.2)',
-    color: '#FFD700',
-    fontWeight: '700',
+    backgroundColor: 'rgba(126,195,255,0.2)',
+    color: '#7EC3FF',
+    fontWeight: 700,
   },
   loadingContainer: {
     flex: 1,
