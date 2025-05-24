@@ -176,86 +176,86 @@ const MathAIScreen: React.FC<Props> = ({ navigation }) => {
   return (
     <View style={[themeStyles.container, { backgroundColor: '#181A20' }]}>
       <ScrollView>
-        <LinearGradient
+      <LinearGradient
           colors={["#22304A", "#181A20"]}
           style={[themeStyles.gradient, { paddingTop: Platform.OS === 'android' ? 60 : 80, paddingHorizontal: 20, paddingBottom: 24 }]}
           start={{ x: 0.5, y: 0 }}
           end={{ x: 0.5, y: 1 }}
-        >
-          <Searchbar
-            placeholder="Search content..."
-            onChangeText={handleSearch}
-            value={searchQuery}
+      >
+        <Searchbar
+          placeholder="Search content..."
+          onChangeText={handleSearch}
+          value={searchQuery}
             style={[themeStyles.searchBar, { backgroundColor: 'rgba(34, 48, 74, 0.7)' }]}
             inputStyle={{ color: theme.colors.primary }}
             placeholderTextColor={theme.colors.primary}
             iconColor={theme.colors.primary}
-          />
-          {matchingSections.length > 1 && (
-            <View style={{ alignItems: 'flex-end', marginBottom: 8 }}>
-              <PaperButton
-                mode="contained"
-                onPress={handleNextMatch}
-                style={{
-                  borderRadius: 24,
+        />
+        {matchingSections.length > 1 && (
+          <View style={{ alignItems: 'flex-end', marginBottom: 8 }}>
+            <PaperButton
+              mode="contained"
+              onPress={handleNextMatch}
+              style={{
+                borderRadius: 24,
                   backgroundColor: theme.colors.primary,
-                  marginTop: 4,
-                  minWidth: 120,
-                  elevation: 2,
-                }}
+                marginTop: 4,
+                minWidth: 120,
+                elevation: 2,
+              }}
                 labelStyle={{ color: theme.colors.background, fontWeight: 'bold' }}
-              >
-                {`Next (${currentMatchIndex + 1}/${matchingSections.length})`}
-              </PaperButton>
-            </View>
-          )}
+            >
+              {`Next (${currentMatchIndex + 1}/${matchingSections.length})`}
+            </PaperButton>
+          </View>
+        )}
           <Card style={themeStyles.card}>
-            <Card.Content>
+          <Card.Content>
               <Text style={themeStyles.title}>Mathematics: Applications and Interpretation</Text>
               <Text style={themeStyles.subtitle}>Group 5: Mathematics</Text>
-              <List.Section>
-                <List.Accordion
-                  title="Course Overview"
-                  expanded={expandedSection === 'overview'}
-                  onPress={() => toggleSection('overview')}
+            <List.Section>
+              <List.Accordion
+                title="Course Overview"
+                expanded={expandedSection === 'overview'}
+                onPress={() => toggleSection('overview')}
                   titleStyle={themeStyles.sectionTitle}
-                >
-                  {renderAnimatedContent('overview',
+              >
+                {renderAnimatedContent('overview',
                     <View style={themeStyles.sectionContent}>
                       <Text style={themeStyles.content}>
                         {highlightText(sectionContentStrings.overview)}
-                      </Text>
-                    </View>
-                  )}
-                </List.Accordion>
+                    </Text>
+                  </View>
+                )}
+              </List.Accordion>
 
-                <List.Accordion
-                  title="Topics"
-                  expanded={expandedSection === 'topics'}
-                  onPress={() => toggleSection('topics')}
+              <List.Accordion
+                title="Topics"
+                expanded={expandedSection === 'topics'}
+                onPress={() => toggleSection('topics')}
                   titleStyle={themeStyles.sectionTitle}
-                >
-                  {renderAnimatedContent('topics',
+              >
+                {renderAnimatedContent('topics',
                     <View style={themeStyles.sectionContent}>
                       <Text style={themeStyles.subsectionTitle}>Core Topics</Text>
                       <Text style={themeStyles.content}>
-                        {highlightText("• Number and Algebra\n• Functions\n• Geometry and Trigonometry\n• Statistics and Probability\n• Calculus")}
-                      </Text>
+                      {highlightText("• Number and Algebra\n• Functions\n• Geometry and Trigonometry\n• Statistics and Probability\n• Calculus")}
+                    </Text>
                       <Text style={themeStyles.subsectionTitle}>Additional HL Topics</Text>
                       <Text style={themeStyles.content}>
-                        {highlightText("• Discrete Mathematics\n• Further Statistics\n• Further Calculus")}
-                      </Text>
-                    </View>
-                  )}
-                </List.Accordion>
+                      {highlightText("• Discrete Mathematics\n• Further Statistics\n• Further Calculus")}
+                    </Text>
+                  </View>
+                )}
+              </List.Accordion>
 
-                <List.Accordion
-                  title="Subject Essentials"
-                  expanded={expandedSection === 'essentials'}
-                  onPress={() => toggleSection('essentials')}
+              <List.Accordion
+                title="Subject Essentials"
+                expanded={expandedSection === 'essentials'}
+                onPress={() => toggleSection('essentials')}
                   titleStyle={themeStyles.sectionTitle}
-                >
-                  {renderAnimatedContent('essentials',
+              >
+                {renderAnimatedContent('essentials',
                     <View style={themeStyles.sectionContent}>
                       <Text style={themeStyles.subsectionTitle}>Syllabus Overview</Text>
                       <View style={themeStyles.criterionContainer}>
@@ -268,7 +268,7 @@ const MathAIScreen: React.FC<Props> = ({ navigation }) => {
                         <Text style={themeStyles.criterionDescription}>{highlightText("• Paper 1 (90m): 40%\n• Paper 2 (90m): 40%\n• IA: 20%")}</Text>
                         <Text style={themeStyles.levelTitle}>Higher Level (HL)</Text>
                         <Text style={themeStyles.criterionDescription}>{highlightText("• Paper 1 (120m): 30%\n• Paper 2 (120m): 30%\n• Paper 3 (75m): 20%\n• IA: 20%")}</Text>
-                      </View>
+                    </View>
                       <Text style={themeStyles.subsectionTitle}>IA Rubrics (same as AA)</Text>
                       <View style={themeStyles.criterionContainer}>
                         <Text style={themeStyles.criterionDescription}>{highlightText("• A: Presentation (4)")}</Text>
@@ -276,22 +276,22 @@ const MathAIScreen: React.FC<Props> = ({ navigation }) => {
                         <Text style={themeStyles.criterionDescription}>{highlightText("• C: Personal engagement (4)")}</Text>
                         <Text style={themeStyles.criterionDescription}>{highlightText("• D: Reflection (3)")}</Text>
                         <Text style={themeStyles.criterionDescription}>{highlightText("• E: Use of mathematics (5)")}</Text>
-                      </View>
+                    </View>
                       <Text style={themeStyles.subsectionTitle}>Assessment Objectives in Practice</Text>
                       <View style={themeStyles.criterionContainer}>
                         <Text style={themeStyles.criterionDescription}>{highlightText("• Emphasis on technology, modeling, and real-world applications")}</Text>
-                      </View>
                     </View>
-                  )}
-                </List.Accordion>
+                  </View>
+                )}
+              </List.Accordion>
 
-                <List.Accordion
-                  title="Detailed Rubrics"
-                  expanded={expandedSection === 'rubrics'}
-                  onPress={() => toggleSection('rubrics')}
+              <List.Accordion
+                title="Detailed Rubrics"
+                expanded={expandedSection === 'rubrics'}
+                onPress={() => toggleSection('rubrics')}
                   titleStyle={themeStyles.sectionTitle}
-                >
-                  {renderAnimatedContent('rubrics',
+              >
+                {renderAnimatedContent('rubrics',
                     <View style={themeStyles.sectionContent}>
                       <Text style={themeStyles.subsectionTitle}>PAPERS 1, 2, 3</Text>
                       <View style={themeStyles.criterionContainer}>
@@ -302,7 +302,7 @@ const MathAIScreen: React.FC<Props> = ({ navigation }) => {
                         <Text style={themeStyles.criterionDescription}>{highlightText("• Modeling and interpretation")}</Text>
                         <Text style={themeStyles.criterionDescription}>{highlightText("• Accuracy and reasoning")}</Text>
                         <Text style={themeStyles.criterionDescription}>{highlightText("• For HL Paper 3: emphasis on extended contextual problems")}</Text>
-                      </View>
+                    </View>
                       <Text style={themeStyles.subsectionTitle}>MATHEMATICS AA & AI: INTERNAL ASSESSMENT (20 marks)</Text>
                       <View style={themeStyles.criterionContainer}>
                         <Text style={themeStyles.criterionTitle}>{highlightText("Criterion A: Presentation (4 marks)")}</Text>
@@ -315,15 +315,15 @@ const MathAIScreen: React.FC<Props> = ({ navigation }) => {
                         <Text style={themeStyles.criterionDescription}>{highlightText("Critical reflection on results, methods, and learning.")}</Text>
                         <Text style={themeStyles.criterionTitle}>{highlightText("Criterion E: Use of Mathematics (5 marks)")}</Text>
                         <Text style={themeStyles.criterionDescription}>{highlightText("Correct and relevant mathematical processes used with sophistication.")}</Text>
-                      </View>
                     </View>
-                  )}
-                </List.Accordion>
-              </List.Section>
-            </Card.Content>
-          </Card>
-        </LinearGradient>
-      </ScrollView>
+                  </View>
+                )}
+              </List.Accordion>
+            </List.Section>
+          </Card.Content>
+        </Card>
+      </LinearGradient>
+    </ScrollView>
     </View>
   );
 };

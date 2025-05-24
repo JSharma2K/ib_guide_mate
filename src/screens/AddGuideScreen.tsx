@@ -183,4 +183,4 @@ export const AddGuideScreen = () => {
       </Button>
     </ScrollView>
   );
-}; 
+};

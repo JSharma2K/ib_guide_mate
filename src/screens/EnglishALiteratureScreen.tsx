@@ -235,116 +235,116 @@ const EnglishALiteratureScreen = ({ navigation, route }) => {
     <View style={[themeStyles.container, { backgroundColor: '#181A20' }]}>
       <StatusBar barStyle="light-content" />
       <ScrollView>
-        <LinearGradient
+      <LinearGradient
           colors={["#22304A", "#181A20"]}
           style={[themeStyles.gradient, { paddingTop: 60 }]}
           start={{ x: 0.5, y: 0 }}
           end={{ x: 0.5, y: 1 }}
-        >
-          <Searchbar
-            placeholder="Search content..."
-            onChangeText={handleSearch}
-            value={searchQuery}
+      >
+        <Searchbar
+          placeholder="Search content..."
+          onChangeText={handleSearch}
+          value={searchQuery}
             style={[themeStyles.searchBar, { backgroundColor: 'rgba(34, 48, 74, 0.7)' }]}
             inputStyle={{ color: theme.colors.primary }}
             placeholderTextColor={theme.colors.primary}
             iconColor={theme.colors.primary}
-          />
-          {matchingSections.length > 1 && (
-            <View style={{ alignItems: 'flex-end', marginBottom: 8 }}>
-              <PaperButton
-                mode="contained"
-                onPress={handleNextMatch}
-                style={{
-                  borderRadius: 24,
+        />
+        {matchingSections.length > 1 && (
+          <View style={{ alignItems: 'flex-end', marginBottom: 8 }}>
+            <PaperButton
+              mode="contained"
+              onPress={handleNextMatch}
+              style={{
+                borderRadius: 24,
                   backgroundColor: theme.colors.primary,
-                  marginTop: 4,
-                  minWidth: 120,
-                  elevation: 2,
-                }}
+                marginTop: 4,
+                minWidth: 120,
+                elevation: 2,
+              }}
                 labelStyle={{ color: theme.colors.background, fontWeight: 700 }}
-              >
-                {`Next (${currentMatchIndex + 1}/${matchingSections.length})`}
-              </PaperButton>
-            </View>
-          )}
+            >
+              {`Next (${currentMatchIndex + 1}/${matchingSections.length})`}
+            </PaperButton>
+          </View>
+        )}
           <Card style={[themeStyles.card, { backgroundColor: 'rgba(34, 48, 74, 0.7)' }]}>
-            <Card.Content>
+          <Card.Content>
               <Text style={themeStyles.title}>English A: Literature</Text>
               <Text style={themeStyles.subtitle}>Group 1: Studies in Language and Literature</Text>
-              <List.Section>
-                <List.Accordion
-                  title="Course Overview"
-                  expanded={expandedSection === 'overview'}
-                  onPress={() => toggleSection('overview')}
+            <List.Section>
+              <List.Accordion
+                title="Course Overview"
+                expanded={expandedSection === 'overview'}
+                onPress={() => toggleSection('overview')}
                   titleStyle={themeStyles.sectionTitle}
-                >
-                  {renderAnimatedContent('overview',
+              >
+                {renderAnimatedContent('overview',
                     <View style={themeStyles.sectionContent}>
                       <Text style={themeStyles.content}>
                         {highlightText(sectionContentStrings.overview)}
-                      </Text>
-                    </View>
-                  )}
-                </List.Accordion>
+                    </Text>
+                  </View>
+                )}
+              </List.Accordion>
 
-                <List.Accordion
-                  title="Subject Essentials"
-                  expanded={expandedSection === 'essentials'}
-                  onPress={() => toggleSection('essentials')}
+              <List.Accordion
+                title="Subject Essentials"
+                expanded={expandedSection === 'essentials'}
+                onPress={() => toggleSection('essentials')}
                   titleStyle={themeStyles.sectionTitle}
-                >
-                  {renderAnimatedContent('essentials',
+              >
+                {renderAnimatedContent('essentials',
                     <View style={themeStyles.sectionContent}>
                       <Text style={themeStyles.subsectionTitle}>Course Overview</Text>
                       <Text style={themeStyles.content}>
-                        {highlightText("• Standard Level (SL): 4 works\n• Higher Level (HL): 6 works\n\nAreas of Exploration:\n• Readers-Writers-Texts\n• Time and Space\n• Intertextuality")}
-                      </Text>
+                      {highlightText("• Standard Level (SL): 4 works\n• Higher Level (HL): 6 works\n\nAreas of Exploration:\n• Readers-Writers-Texts\n• Time and Space\n• Intertextuality")}
+                    </Text>
 
                       <Text style={themeStyles.subsectionTitle}>Assessment Outline</Text>
                       <Text style={themeStyles.levelTitle}>Standard Level (SL)</Text>
                       <Text style={themeStyles.content}>
-                        {highlightText("• Paper 1 (1h15m): 35%\n• Paper 2 (1h45m): 35%\n• Individual Oral (15 min): 30%")}
-                      </Text>
+                      {highlightText("• Paper 1 (1h15m): 35%\n• Paper 2 (1h45m): 35%\n• Individual Oral (15 min): 30%")}
+                    </Text>
                       <Text style={themeStyles.levelTitle}>Higher Level (HL)</Text>
                       <Text style={themeStyles.content}>
-                        {highlightText("• Paper 1 (2h15m): 35%\n• Paper 2 (1h45m): 25%\n• Individual Oral: 20%\n• HL Essay: 20%")}
-                      </Text>
+                      {highlightText("• Paper 1 (2h15m): 35%\n• Paper 2 (1h45m): 25%\n• Individual Oral: 20%\n• HL Essay: 20%")}
+                    </Text>
 
                       <Text style={themeStyles.subsectionTitle}>Rubrics</Text>
                       <Text style={themeStyles.content}>
-                        {highlightText("• Paper 1 & 2: Criteria A-D (5-10 marks each)\n• IO: Criteria A-D (10 marks each)\n• HL Essay: Criteria A-D (5 marks each)")}
-                      </Text>
-                    </View>
-                  )}
-                </List.Accordion>
+                      {highlightText("• Paper 1 & 2: Criteria A-D (5-10 marks each)\n• IO: Criteria A-D (10 marks each)\n• HL Essay: Criteria A-D (5 marks each)")}
+                    </Text>
+                  </View>
+                )}
+              </List.Accordion>
 
-                <List.Accordion
-                  title="Prescribed Literature"
-                  expanded={expandedSection === 'literature'}
-                  onPress={() => toggleSection('literature')}
+              <List.Accordion
+                title="Prescribed Literature"
+                expanded={expandedSection === 'literature'}
+                onPress={() => toggleSection('literature')}
                   titleStyle={themeStyles.sectionTitle}
-                >
-                  {renderAnimatedContent('literature',
+              >
+                {renderAnimatedContent('literature',
                     <View style={themeStyles.sectionContent}>
                       <Text style={themeStyles.subsectionTitle}>Works in Translation</Text>
                       <Text style={themeStyles.content}>
-                        {highlightText("• Study of works originally written in languages other than English\n• Focus on cultural and historical context\n• Development of intercultural understanding")}
-                      </Text>
+                      {highlightText("• Study of works originally written in languages other than English\n• Focus on cultural and historical context\n• Development of intercultural understanding")}
+                    </Text>
                       <Text style={themeStyles.subsectionTitle}>Works in English</Text>
                       <Text style={themeStyles.content}>
-                        {highlightText("• Study of works written in English\n• Focus on literary techniques and devices\n• Development of critical analysis skills")}
-                      </Text>
-                    </View>
-                  )}
-                </List.Accordion>
+                      {highlightText("• Study of works written in English\n• Focus on literary techniques and devices\n• Development of critical analysis skills")}
+                    </Text>
+                  </View>
+                )}
+              </List.Accordion>
 
-                <List.Accordion
-                  title="Detailed Rubrics"
-                  expanded={expandedSection === 'detailedRubrics'}
-                  onPress={() => toggleSection('detailedRubrics')}
+              <List.Accordion
+                title="Detailed Rubrics"
+                expanded={expandedSection === 'detailedRubrics'}
+                onPress={() => toggleSection('detailedRubrics')}
                   titleStyle={themeStyles.sectionTitle}
-                >
+              >
                   <View style={{ padding: 16 }}>
                     {/* Paper 1 Table */}
                     <Text style={[themeStyles.subsectionTitle, { marginBottom: 8 }]}>Language A: Literature - Paper 1</Text>
@@ -434,10 +434,10 @@ const EnglishALiteratureScreen = ({ navigation, route }) => {
                       highlightedText={highlightedText}
                     />
                   </View>
-                </List.Accordion>
-              </List.Section>
-            </Card.Content>
-          </Card>
+              </List.Accordion>
+            </List.Section>
+          </Card.Content>
+        </Card>
           {/* Example: show a teacher-only dropdown */}
           {userType === 'teacher' && (
             <List.Accordion
@@ -460,8 +460,8 @@ const EnglishALiteratureScreen = ({ navigation, route }) => {
               </View>
             </List.Accordion>
           )}
-        </LinearGradient>
-      </ScrollView>
+      </LinearGradient>
+    </ScrollView>
     </View>
   );
 };

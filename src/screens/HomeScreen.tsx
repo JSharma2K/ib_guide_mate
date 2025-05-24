@@ -9,7 +9,7 @@ import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import ExtendedEssayScreen from '../screens/ExtendedEssayScreen';
 import { RootStackParamList } from '../types/navigation';
-import Rubric2027Table from '../components/Rubric2027Table';
+
 
 const { width } = Dimensions.get('window');
 
@@ -61,9 +61,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, route }) => {
   const theme = useTheme();
   const userType = route?.params?.userType || 'student';
   let [fontsLoaded] = useFonts({
-    Inter_700Bold: require('../../assets/fonts/Inter-Bold.ttf'),
-    Inter_400Regular: require('../../assets/fonts/Inter-Regular.ttf'),
-    Inter_300Light: require('../../assets/fonts/Inter-Light.ttf'),
+    'ScopeOne-Regular': require('../../assets/fonts/ScopeOne-Regular.ttf'),
   });
 
   const renderSubject = useCallback(({ item, index }: any) => (
@@ -134,13 +132,11 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, route }) => {
       >
         <Animated.View entering={FadeInUp.duration(800)} style={styles.topSection}>
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={styles.appTitle}>IB GuideMate</Text>
+            <Text style={[styles.appTitle, { fontSize: 26 }]}>IB GuideMate</Text>
           </View>
-          <Text style={styles.appSubtitle}>
-            The app where IB subject guides are more accessible than ever.
-          </Text>
         </Animated.View>
         <View style={styles.subjectsSection}>
+          <Text style={styles.subjectSubheading}>Subjects</Text>
           <FlatList
             data={SUBJECTS}
             renderItem={renderSubject}
@@ -178,7 +174,7 @@ const styles = StyleSheet.create({
   },
   appTitle: {
     fontSize: 38,
-    fontFamily: 'Inter_700Bold',
+    fontFamily: 'ScopeOne-Regular',
     color: '#FFD700',
     letterSpacing: 0.5,
     marginBottom: 10,
@@ -223,14 +219,14 @@ const styles = StyleSheet.create({
   },
   subjectTitle: {
     fontSize: 18,
-    fontFamily: 'Inter_700Bold',
+    fontFamily: 'ScopeOne-Regular',
     color: '#FFD700',
     marginBottom: 2,
   },
   subjectSubtitle: {
     fontSize: 14,
+    fontFamily: 'ScopeOne-Regular',
     color: '#B6B6B6',
-    fontFamily: 'Inter_400Regular',
     fontWeight: '400',
   },
   footer: {
@@ -243,6 +239,12 @@ const styles = StyleSheet.create({
     height: 70,
     opacity: 0.9,
     marginBottom: 4,
+  },
+  subjectSubheading: {
+    fontSize: 20,
+    fontFamily: 'ScopeOne-Regular',
+    color: '#FFD700',
+    marginBottom: 10,
   },
 });
 
