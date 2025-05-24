@@ -28,7 +28,7 @@ const EntryScreen: React.FC<{ navigation: NativeStackNavigationProp<RootStackPar
       <View style={styles.overlay} />
       <View style={styles.header}>
         <Animated.View entering={FadeIn.duration(1200)}>
-          <Text style={styles.premiumTitle}>IB GuideMate</Text>
+          <Text style={[styles.premiumTitle, { color: '#7EC3FF' }]}>IB GuideMate</Text>
         </Animated.View>
       </View>
       <View style={styles.centerContent}>
@@ -39,7 +39,7 @@ const EntryScreen: React.FC<{ navigation: NativeStackNavigationProp<RootStackPar
             onPress={() => navigation.navigate('Home', { userType: 'student' })}
           >
             <View style={styles.dash} />
-            <Text style={styles.floatingButtonText}>Student Resources</Text>
+            <Text style={[styles.floatingButtonText, { color: '#7EC3FF' }]}>Student Resources</Text>
             <View style={styles.dash} />
             <View style={styles.bottomDash} />
           </TouchableOpacity>
@@ -51,7 +51,7 @@ const EntryScreen: React.FC<{ navigation: NativeStackNavigationProp<RootStackPar
             onPress={() => navigation.navigate('Home', { userType: 'teacher' })}
           >
             <View style={styles.dash} />
-            <Text style={styles.floatingButtonText}>Teacher Resources</Text>
+            <Text style={[styles.floatingButtonText, { color: '#7EC3FF' }]}>Teacher Resources</Text>
             <View style={styles.dash} />
             <View style={styles.bottomDash} />
           </TouchableOpacity>
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   floatingButtonText: {
-    color: '#FFD700',
+    color: '#7EC3FF',
     fontFamily: 'ScopeOne-Regular',
     fontSize: 16,
     letterSpacing: 0.5,
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
   dash: {
     width: 6,
     height: 6,
-    backgroundColor: '#FFD700',
+    backgroundColor: '#FFFFFF',
     borderRadius: 3,
     opacity: 0.85,
   },
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     transform: [{ translateX: -30 }],
     width: 60,
     height: 2,
-    backgroundColor: '#FFD700',
+    backgroundColor: '#FFFFFF',
     opacity: 0.85,
   },
   logoContainer: {

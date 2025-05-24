@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from 'react';
-import { View, StyleSheet, FlatList, Dimensions, Platform, StatusBar, Image } from 'react-native';
+import { View, StyleSheet, FlatList, Dimensions, Platform, StatusBar, Image, ImageBackground } from 'react-native';
 import { Card, useTheme, Text, List } from 'react-native-paper';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Feather } from '@expo/vector-icons';
@@ -67,7 +67,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, route }) => {
   const renderSubject = useCallback(({ item, index }: any) => (
     <Animated.View entering={FadeInDown.delay(200 + index * 100).duration(600)}>
       <Card
-        style={[styles.subjectCard, { borderWidth: 2, borderColor: '#FFD700', backgroundColor: '#22242C' }]}
+        style={[styles.subjectCard, { borderWidth: 2, borderColor: '#7EC3FF', backgroundColor: '#22242C' }]}
         onPress={() => {
           if (item.key === 'english-a') {
             navigation.navigate('EnglishALiterature', { userType });
@@ -90,12 +90,12 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, route }) => {
           end={{ x: 1, y: 1 }}
         >
           <View style={[styles.subjectCardContent, { backgroundColor: 'rgba(34, 48, 74, 0.7)' }]}>
-            <Feather name={item.icon} size={32} color={item.color} style={{ marginRight: 16 }} />
+            <Feather name={item.icon} size={32} color={'#7EC3FF'} style={{ marginRight: 16 }} />
             <View style={{ flex: 1 }}>
-              <Text style={styles.subjectTitle}>{item.title}</Text>
-              <Text style={styles.subjectSubtitle}>{item.subtitle}</Text>
+              <Text style={[styles.subjectTitle, { color: '#FFFFFF' }]}>{item.title}</Text>
+              <Text style={[styles.subjectSubtitle, { color: '#FFFFFF' }]}>{item.subtitle}</Text>
             </View>
-            <Feather name="chevron-right" size={24} color="#B6B6B6" />
+            <Feather name="chevron-right" size={24} color="#FFFFFF" />
           </View>
         </LinearGradient>
       </Card>
@@ -107,11 +107,11 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, route }) => {
       headerStyle: {
         backgroundColor: '#181A20',
       },
-      headerTintColor: '#FFD700',
+      headerTintColor: '#7EC3FF',
       headerTitleStyle: {
         fontFamily: 'Inter_700Bold',
         fontSize: 22,
-        color: '#FFD700',
+        color: '#7EC3FF',
       },
       animation: 'fade',
     });
@@ -122,21 +122,20 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, route }) => {
   }
 
   return (
-    <View style={[styles.flex1, { backgroundColor: '#181A20' }]}>
+    <ImageBackground
+      source={require('../../assets/images/entry-bg.png')}
+      style={[styles.flex1, { width: '100%', height: '100%' }]}
+      resizeMode="cover"
+    >
       <StatusBar barStyle="light-content" />
-      <LinearGradient
-        colors={["#22304A", "#181A20"]}
-        style={styles.gradient}
-        start={{ x: 0.5, y: 0 }}
-        end={{ x: 0.5, y: 1 }}
-      >
+      <View style={styles.gradient}>
         <Animated.View entering={FadeInUp.duration(800)} style={styles.topSection}>
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={[styles.appTitle, { fontSize: 26 }]}>IB GuideMate</Text>
+            <Text style={[styles.appTitle, { fontSize: 26, color: '#7EC3FF' }]}>IB GuideMate</Text>
           </View>
         </Animated.View>
         <View style={styles.subjectsSection}>
-          <Text style={styles.subjectSubheading}>Subjects</Text>
+          <Text style={[styles.subjectSubheading, { color: '#FFFFFF' }]}>Subjects</Text>
           <FlatList
             data={SUBJECTS}
             renderItem={renderSubject}
@@ -152,8 +151,8 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, route }) => {
             resizeMode="contain"
           />
         </View>
-      </LinearGradient>
-    </View>
+      </View>
+    </ImageBackground>
   );
 };
 
@@ -175,7 +174,7 @@ const styles = StyleSheet.create({
   appTitle: {
     fontSize: 38,
     fontFamily: 'ScopeOne-Regular',
-    color: '#FFD700',
+    color: '#7EC3FF',
     letterSpacing: 0.5,
     marginBottom: 10,
   },
@@ -197,13 +196,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#22242C',
     borderRadius: 18,
     marginBottom: 0,
-    shadowColor: '#FFD700',
+    shadowColor: '#7EC3FF',
     shadowOpacity: 0.08,
     shadowRadius: 8,
     shadowOffset: { width: 0, height: 2 },
     overflow: 'hidden',
     borderWidth: 2,
-    borderColor: '#FFD700',
+    borderColor: '#7EC3FF',
   },
   glass: {
     borderRadius: 18,
@@ -243,7 +242,7 @@ const styles = StyleSheet.create({
   subjectSubheading: {
     fontSize: 20,
     fontFamily: 'ScopeOne-Regular',
-    color: '#FFD700',
+    color: '#FFFFFF',
     marginBottom: 10,
   },
 });
