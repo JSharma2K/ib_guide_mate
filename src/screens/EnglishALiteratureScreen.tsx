@@ -47,18 +47,24 @@ const EnglishALiteratureScreen = ({ navigation, route }) => {
   const essentialsAnimation = useRef(new Animated.Value(0)).current;
   const literatureAnimation = useRef(new Animated.Value(0)).current;
   const detailedRubricsAnimation = useRef(new Animated.Value(0)).current;
+  const englishLanguageLiteratureAnimation = useRef(new Animated.Value(0)).current;
+  const englishLiteratureAnimation = useRef(new Animated.Value(0)).current;
+  const literaturePerformanceAnimation = useRef(new Animated.Value(0)).current;
   
   // Animation value for home icon fade
   const homeIconOpacity = useRef(new Animated.Value(1)).current;
 
   // Section keys and content for search
-  const sectionContentStrings: Record<'overview' | 'essentials' | 'literature' | 'detailedRubrics', string> = {
+  const sectionContentStrings: Record<'overview' | 'essentials' | 'literature' | 'detailedRubrics' | 'englishLanguageLiterature' | 'englishLiterature' | 'literaturePerformance', string> = {
     overview: `English A: Literature is a course that focuses on the study of literary texts. It is designed for students who are interested in developing their understanding of literature and literary criticism. The course emphasizes the development of critical thinking and analytical skills through the study of a wide range of literary works from different periods, styles, and genres.`,
     essentials: `Course Overview\n• Standard Level (SL): 4 works\n• Higher Level (HL): 6 works\nAreas of Exploration\n• Readers-Writers-Texts\n• Time and Space\n• Intertextuality\nAssessment Outline\nSL:\n• Paper 1 (1h15m): 35%\n• Paper 2 (1h45m): 35%\n• Individual Oral (15 min): 30%\nHL:\n• Paper 1 (2h15m): 35%\n• Paper 2 (1h45m): 25%\n• Individual Oral: 20%\n• HL Essay: 20%\nRubrics\n• Paper 1 & 2: Criteria A-D (5-10 marks each)\n• IO: Criteria A-D (10 marks each)\n• HL Essay: Criteria A-D (5 marks each)\nAssessment Objectives in Practice\n• Problem solving\n• Communication\n• Reasoning\n• Technology use\n• Inquiry`,
     literature: `Works in Translation\n• Study of works originally written in languages other than English\n• Focus on cultural and historical context\n• Development of intercultural understanding\nWorks in English\n• Study of works written in English\n• Focus on literary techniques and devices\n• Development of critical analysis skills`,
     detailedRubrics: `Language A Literature Paper 1: Criterion A Understanding Interpretation 5 marks, Criterion B Analysis Evaluation 5 marks, Criterion C Focus Organization 5 marks, Criterion D Language 5 marks. Language A Literature Paper 2: Criterion A Knowledge Understanding 10 marks, Criterion B Analysis Evaluation 10 marks, Criterion C Focus Organization 10 marks. Language A Literature Individual Oral: Criterion A Knowledge Understanding Interpretation 10 marks, Criterion B Analysis Evaluation 10 marks, Criterion C Focus Organization 10 marks, Criterion D Language 10 marks. Literature and Performance Written Assignment: Criterion A Knowledge Understanding 6 marks, Criterion B Analysis Evaluation 6 marks, Criterion C Focus Organization 6 marks, Criterion D Language 4 marks, Criterion E Performance Analysis Communication 4 marks. Literature and Performance Internal Assessment: Criterion A Knowledge Understanding 8 marks, Criterion B Analysis Evaluation 8 marks, Criterion C Performance Skills 8 marks, Criterion D Oral Communication 8 marks. SSST Language A Literature Paper 1: Criterion A Understanding Interpretation 5 marks, Criterion B Analysis Evaluation 5 marks, Criterion C Focus Organization 5 marks, Criterion D Language 5 marks. SSST Language A Literature Paper 2: Criterion A Knowledge Understanding 10 marks, Criterion B Analysis Evaluation 10 marks, Criterion C Focus Organization 10 marks. SSST Language A Literature Individual Oral: Criterion A Knowledge Understanding Interpretation 10 marks, Criterion B Analysis Evaluation 10 marks, Criterion C Focus Organization 10 marks, Criterion D Language 10 marks.`,
+    englishLanguageLiterature: `English language and literature Master the key concepts like identity, communication, and transformation. Balance your skills across both literary and non-literary text types. Use the Learner Portfolio to prepare for exams and reflect on texts. For Paper 1, analyze textual features and authorial choices perceptively. Pick a nuanced global issue for the Individual Oral that connects both texts. Practice analyzing unseen texts under timed conditions regularly. Approach the HL Essay like a research paper with literary theory support. Always link analysis to social, cultural, and historical contexts. Understand how to decode visual texts for Paper 1. Use quotes precisely and with analytical follow-through.`,
+    englishLiterature: `English Literature Anchor analysis in the 7 key concepts: identity, culture, etc. Understand how translation affects meaning in works in translation. Contextualize your interpretations with cultural and historical insights. Practice Paper 2 comparative essays with real past prompts. Apply literary theory (e.g., Feminist, Marxist) effectively in the HL Essay. Quote briefly and analyze deeply—avoid overuse of textual evidence. Choose your global issue for the IO wisely and justify its relevance. Use the Learner Portfolio to explore and connect ideas between works. Focus on authorial choices, not just the story. Develop your comparative thinking—track both similarities and contrasts.`,
+    literaturePerformance: `Literature and Performance Combine literary and performative insights for dual analysis. Explain how your IO piece is staged and interpreted in performance. Treat the creative transformation task as your artistic signature. Compare and contrast texts for theme and performability. Document every decision in your process journal. Plan your HL performance to showcase thematic depth and skill. Justify your stage directions like a director would. Remember, performance is interpretation—be intentional. Study major theatre movements to support your choices. Respect time and word limits to avoid grade penalties.`,
   };
-  const sectionKeys: Array<'overview' | 'essentials' | 'literature' | 'detailedRubrics'> = ['overview', 'essentials', 'literature', 'detailedRubrics'];
+  const sectionKeys: Array<'overview' | 'essentials' | 'literature' | 'detailedRubrics' | 'englishLanguageLiterature' | 'englishLiterature' | 'literaturePerformance'> = ['overview', 'essentials', 'literature', 'detailedRubrics', 'englishLanguageLiterature', 'englishLiterature', 'literaturePerformance'];
 
   const handleScroll = (event: any) => {
     const scrollY = event.nativeEvent.contentOffset.y;
@@ -87,6 +93,9 @@ const EnglishALiteratureScreen = ({ navigation, route }) => {
       'essentials': essentialsAnimation,
       'literature': literatureAnimation,
       'detailedRubrics': detailedRubricsAnimation,
+      'englishLanguageLiterature': englishLanguageLiteratureAnimation,
+      'englishLiterature': englishLiteratureAnimation,
+      'literaturePerformance': literaturePerformanceAnimation,
     }[section];
     if (animationValue) {
       Animated.timing(animationValue, {
@@ -108,9 +117,22 @@ const EnglishALiteratureScreen = ({ navigation, route }) => {
       setExpandedSection(null);
       return;
     }
-    // Find all sections that match
+    
+    // Define section titles for matching
+    const sectionTitles = {
+      'overview': 'Course Overview',
+      'essentials': 'Subject Essentials', 
+      'literature': 'Prescribed Literature',
+      'detailedRubrics': 'Detailed Rubrics',
+      'englishLanguageLiterature': 'English language and literature',
+      'englishLiterature': 'English Literature',
+      'literaturePerformance': 'Literature and Performance'
+    };
+    
+    // Find all sections that match content or title
     const matches = sectionKeys.filter(key =>
-      sectionContentStrings[key].toLowerCase().includes(trimmedQuery.toLowerCase())
+      sectionContentStrings[key].toLowerCase().includes(trimmedQuery.toLowerCase()) ||
+      sectionTitles[key].toLowerCase().includes(trimmedQuery.toLowerCase())
     );
     setMatchingSections(matches);
     setCurrentMatchIndex(0);
@@ -145,6 +167,9 @@ const EnglishALiteratureScreen = ({ navigation, route }) => {
       'essentials': essentialsAnimation,
       'literature': literatureAnimation,
       'detailedRubrics': detailedRubricsAnimation,
+      'englishLanguageLiterature': englishLanguageLiteratureAnimation,
+      'englishLiterature': englishLiteratureAnimation,
+      'literaturePerformance': literaturePerformanceAnimation,
     }[expandedSection];
     if (animationValue) {
       Animated.timing(animationValue, {
@@ -154,13 +179,17 @@ const EnglishALiteratureScreen = ({ navigation, route }) => {
       }).start();
     }
     // Collapse all other sections
-    sectionKeys.forEach(key => {
+    const allSectionKeys = ['overview', 'essentials', 'literature', 'detailedRubrics', 'englishLanguageLiterature', 'englishLiterature', 'literaturePerformance'];
+    allSectionKeys.forEach(key => {
       if (key !== expandedSection) {
         const anim = {
           'overview': overviewAnimation,
           'essentials': essentialsAnimation,
           'literature': literatureAnimation,
           'detailedRubrics': detailedRubricsAnimation,
+          'englishLanguageLiterature': englishLanguageLiteratureAnimation,
+          'englishLiterature': englishLiteratureAnimation,
+          'literaturePerformance': literaturePerformanceAnimation,
         }[key];
         if (anim) {
           Animated.timing(anim, {
@@ -185,6 +214,9 @@ const EnglishALiteratureScreen = ({ navigation, route }) => {
       'essentials': essentialsAnimation,
       'literature': literatureAnimation,
       'detailedRubrics': detailedRubricsAnimation,
+      'englishLanguageLiterature': englishLanguageLiteratureAnimation,
+      'englishLiterature': englishLiteratureAnimation,
+      'literaturePerformance': literaturePerformanceAnimation,
     }[section];
     if (!animationValue) return null;
     return (
@@ -427,11 +459,120 @@ const EnglishALiteratureScreen = ({ navigation, route }) => {
         </View>
         {userType === 'student' && (
           <View style={{ borderRadius: 16, borderWidth: 1, borderColor: '#7EC3FF', backgroundColor: 'rgba(182,199,247,0.12)', marginBottom: 24, overflow: 'hidden', paddingHorizontal: 8 }}>
-            <List.Item
-              title="Student-Only Resources"
-              titleStyle={{ color: '#fff', fontFamily: 'ScopeOne-Regular', fontSize: 18 }}
-              style={{ paddingVertical: 16, paddingLeft: 20 }}
-            />
+            <View style={{ padding: 20, paddingBottom: 0 }}>
+              <Text style={{ fontSize: 22, color: '#fff', fontFamily: 'ScopeOne-Regular', fontWeight: '700', marginBottom: 4 }}>Student Resources</Text>
+              <View style={{ height: 2, backgroundColor: '#7EC3FF', marginBottom: 8 }} />
+            </View>
+            
+            {/* English language and literature dropdown */}
+            <View>
+              <List.Item
+                title="English language and literature"
+                titleStyle={{ color: '#fff', fontFamily: 'ScopeOne-Regular', fontSize: 18 }}
+                onPress={() => toggleSection('englishLanguageLiterature')}
+                right={props => <List.Icon {...props} icon="chevron-right" color="#FFFFFF" style={{ transform: [{ rotate: expandedSection === 'englishLanguageLiterature' ? '90deg' : '0deg' }] }} />}
+                style={{ paddingVertical: 8, paddingLeft: 20, backgroundColor: 'transparent' }}
+              />
+              {expandedSection === 'englishLanguageLiterature' && (
+                <View style={{ paddingHorizontal: 20, paddingBottom: 16 }}>
+                  {renderAnimatedContent('englishLanguageLiterature', (
+                    <View style={{ backgroundColor: 'transparent' }}>
+                      {[
+                        "Master the key concepts like identity, communication, and transformation.",
+                        "Balance your skills across both literary and non-literary text types.",
+                        "Use the Learner Portfolio to prepare for exams and reflect on texts.",
+                        "For Paper 1, analyze textual features and authorial choices perceptively.",
+                        "Pick a nuanced global issue for the Individual Oral that connects both texts.",
+                        "Practice analyzing unseen texts under timed conditions regularly.",
+                        "Approach the HL Essay like a research paper with literary theory support.",
+                        "Always link analysis to social, cultural, and historical contexts.",
+                        "Understand how to decode visual texts for Paper 1.",
+                        "Use quotes precisely and with analytical follow-through."
+                      ].map((tip, idx) => (
+                        <View key={idx} style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: 8 }}>
+                          <Text style={{ color: '#7EC3FF', fontSize: 16, marginRight: 8, lineHeight: 24, fontFamily: 'ScopeOne-Regular' }}>{idx + 1}.</Text>
+                          <Text style={[themeStyles.content, { flex: 1, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF' }]}>{highlightText(tip, highlightedText)}</Text>
+                        </View>
+                      ))}
+                    </View>
+                  ))}
+                </View>
+              )}
+              <View style={{ height: 2, backgroundColor: '#7EC3FF', alignSelf: 'flex-start', width: 80, borderRadius: 2, marginLeft: 20, marginTop: -4, marginBottom: 8 }} />
+            </View>
+
+            {/* English Literature dropdown */}
+            <View>
+              <List.Item
+                title="English Literature"
+                titleStyle={{ color: '#fff', fontFamily: 'ScopeOne-Regular', fontSize: 18 }}
+                onPress={() => toggleSection('englishLiterature')}
+                right={props => <List.Icon {...props} icon="chevron-right" color="#FFFFFF" style={{ transform: [{ rotate: expandedSection === 'englishLiterature' ? '90deg' : '0deg' }] }} />}
+                style={{ paddingVertical: 8, paddingLeft: 20, backgroundColor: 'transparent' }}
+              />
+              {expandedSection === 'englishLiterature' && (
+                <View style={{ paddingHorizontal: 20, paddingBottom: 16 }}>
+                  {renderAnimatedContent('englishLiterature', (
+                    <View style={{ backgroundColor: 'transparent' }}>
+                      {[
+                        "Anchor analysis in the 7 key concepts: identity, culture, etc.",
+                        "Understand how translation affects meaning in works in translation.",
+                        "Contextualize your interpretations with cultural and historical insights.",
+                        "Practice Paper 2 comparative essays with real past prompts.",
+                        "Apply literary theory (e.g., Feminist, Marxist) effectively in the HL Essay.",
+                        "Quote briefly and analyze deeply—avoid overuse of textual evidence.",
+                        "Choose your global issue for the IO wisely and justify its relevance.",
+                        "Use the Learner Portfolio to explore and connect ideas between works.",
+                        "Focus on authorial choices, not just the story.",
+                        "Develop your comparative thinking—track both similarities and contrasts."
+                      ].map((tip, idx) => (
+                        <View key={idx} style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: 8 }}>
+                          <Text style={{ color: '#7EC3FF', fontSize: 16, marginRight: 8, lineHeight: 24, fontFamily: 'ScopeOne-Regular' }}>{idx + 1}.</Text>
+                          <Text style={[themeStyles.content, { flex: 1, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF' }]}>{highlightText(tip, highlightedText)}</Text>
+                        </View>
+                      ))}
+                    </View>
+                  ))}
+                </View>
+              )}
+              <View style={{ height: 2, backgroundColor: '#7EC3FF', alignSelf: 'flex-start', width: 80, borderRadius: 2, marginLeft: 20, marginTop: -4, marginBottom: 8 }} />
+            </View>
+
+            {/* Literature and Performance dropdown */}
+            <View>
+              <List.Item
+                title="Literature and Performance"
+                titleStyle={{ color: '#fff', fontFamily: 'ScopeOne-Regular', fontSize: 18 }}
+                onPress={() => toggleSection('literaturePerformance')}
+                right={props => <List.Icon {...props} icon="chevron-right" color="#FFFFFF" style={{ transform: [{ rotate: expandedSection === 'literaturePerformance' ? '90deg' : '0deg' }] }} />}
+                style={{ paddingVertical: 8, paddingLeft: 20, backgroundColor: 'transparent' }}
+              />
+              {expandedSection === 'literaturePerformance' && (
+                <View style={{ paddingHorizontal: 20, paddingBottom: 16 }}>
+                  {renderAnimatedContent('literaturePerformance', (
+                    <View style={{ backgroundColor: 'transparent' }}>
+                      {[
+                        "Combine literary and performative insights for dual analysis.",
+                        "Explain how your IO piece is staged and interpreted in performance.",
+                        "Treat the creative transformation task as your artistic signature.",
+                        "Compare and contrast texts for theme and performability.",
+                        "Document every decision in your process journal.",
+                        "Plan your HL performance to showcase thematic depth and skill.",
+                        "Justify your stage directions like a director would.",
+                        "Remember, performance is interpretation—be intentional.",
+                        "Study major theatre movements to support your choices.",
+                        "Respect time and word limits to avoid grade penalties."
+                      ].map((tip, idx) => (
+                        <View key={idx} style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: 8 }}>
+                          <Text style={{ color: '#7EC3FF', fontSize: 16, marginRight: 8, lineHeight: 24, fontFamily: 'ScopeOne-Regular' }}>{idx + 1}.</Text>
+                          <Text style={[themeStyles.content, { flex: 1, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF' }]}>{highlightText(tip, highlightedText)}</Text>
+                        </View>
+                      ))}
+                    </View>
+                  ))}
+                </View>
+              )}
+            </View>
           </View>
         )}
         {userType === 'teacher' && (
