@@ -27,18 +27,20 @@ const MathAAScreen: React.FC<Props> = ({ navigation, route }) => {
   const topicsAnimation = useRef(new Animated.Value(0)).current;
   const essentialsAnimation = useRef(new Animated.Value(0)).current;
   const rubricsAnimation = useRef(new Animated.Value(0)).current;
+  const mathematicsAAAnimation = useRef(new Animated.Value(0)).current;
   
   // Animation value for home icon fade
   const homeIconOpacity = useRef(new Animated.Value(1)).current;
 
-  const sectionContentStrings: Record<'overview' | 'topics' | 'essentials' | 'rubrics', string> = {
+  const sectionContentStrings: Record<'overview' | 'topics' | 'essentials' | 'rubrics' | 'mathematicsAA', string> = {
     overview: `Mathematics: Analysis and Approaches is a course that focuses on developing mathematical knowledge, concepts, and principles. It is designed for students who enjoy developing mathematical arguments and problem-solving skills.`,
     topics: `• Number and Algebra\n• Functions\n• Geometry and Trigonometry\n• Statistics and Probability\n• Calculus\n• Complex Numbers\n• Vectors` ,
     essentials: `Topics (SL/HL):\n• Number & Algebra (19/39)\n• Functions (21/32)\n• Geometry (25/51)\n• Statistics (27/33)\n• Calculus (28/55)\nAssessment Outline\n• Paper 1 (90m): 40%\n• Paper 2 (90m): 40%\n• Internal Assessment: 20%\n• Paper 1 (120m): 30%\n• Paper 2 (120m): 30%\n• Paper 3 (75m): 20%\n• Internal Assessment: 20%\nInternal Assessment Rubrics (20 marks)\n• Criterion A: Presentation (4 marks)\n• Criterion B: Mathematical communication (4 marks)\n• Criterion C: Personal engagement (4 marks)\n• Criterion D: Reflection (3 marks)\n• Criterion E: Use of mathematics (5 marks)\nAssessment Objectives in Practice\n• Problem solving\n• Communication\n• Reasoning\n• Technology use\n• Inquiry`,
-    rubrics: `Assessed via mark schemes, not fixed rubrics.\nRewarded Elements:\n• Mathematical reasoning and accuracy\n• Logical structure and progression\n• Use of correct notation\n• Clear communication of solutions\n• For HL Paper 3: deep problem solving and strategy\nInternal Assessment (20 marks)\n• Criterion A: Presentation (4 marks)\n• Criterion B: Mathematical Communication (4 marks)\n• Criterion C: Personal Engagement (4 marks)\n• Criterion D: Reflection (3 marks)\n• Criterion E: Use of Mathematics (5 marks)`
+    rubrics: `Assessed via mark schemes, not fixed rubrics.\nRewarded Elements:\n• Mathematical reasoning and accuracy\n• Logical structure and progression\n• Use of correct notation\n• Clear communication of solutions\n• For HL Paper 3: deep problem solving and strategy\nInternal Assessment (20 marks)\n• Criterion A: Presentation (4 marks)\n• Criterion B: Mathematical Communication (4 marks)\n• Criterion C: Personal Engagement (4 marks)\n• Criterion D: Reflection (3 marks)\n• Criterion E: Use of Mathematics (5 marks)`,
+    mathematicsAA: `Mathematics AA Build fluency in algebra and calculus—these are your core tools. Practice formal proof techniques, especially for HL. Link mathematical topics together conceptually. Always explain your reasoning, not just provide answers. Use your GDC wisely and efficiently—practice the interface. Get comfortable with the formula booklet early. Do HL past paper questions frequently to prep for Paper 3. Use math thinking strategies like conjecture and generalization. Pick a personally meaningful topic for your IA and analyze deeply. Create an error log and review what went wrong regularly.`,
   };
 
-  const sectionKeys: Array<'overview' | 'topics' | 'essentials' | 'rubrics'> = ['overview', 'topics', 'essentials', 'rubrics'];
+  const sectionKeys: Array<'overview' | 'topics' | 'essentials' | 'rubrics' | 'mathematicsAA'> = ['overview', 'topics', 'essentials', 'rubrics', 'mathematicsAA'];
 
   const handleScroll = (event: any) => {
     const scrollY = event.nativeEvent.contentOffset.y;
@@ -90,9 +92,20 @@ const MathAAScreen: React.FC<Props> = ({ navigation, route }) => {
       setExpandedSection(null);
       return;
     }
-    // Find all sections that match
+    
+    // Define section titles for matching
+    const sectionTitles = {
+      'overview': 'Course Overview',
+      'topics': 'Topics',
+      'essentials': 'Subject Essentials',
+      'rubrics': 'Detailed Rubrics',
+      'mathematicsAA': 'Mathematics AA'
+    };
+    
+    // Find all sections that match content or title
     const matches = sectionKeys.filter(key =>
-      sectionContentStrings[key].toLowerCase().includes(trimmedQuery.toLowerCase())
+      sectionContentStrings[key].toLowerCase().includes(trimmedQuery.toLowerCase()) ||
+      sectionTitles[key].toLowerCase().includes(trimmedQuery.toLowerCase())
     );
     setMatchingSections(matches);
     setCurrentMatchIndex(0);
@@ -110,7 +123,7 @@ const MathAAScreen: React.FC<Props> = ({ navigation, route }) => {
     setExpandedSection(matchingSections[nextIndex]);
   };
 
-  const highlightText = (text: string) => {
+  const highlightText = (text: string, highlightedText: string) => {
     if (!highlightedText) return text;
     const parts = text.split(new RegExp(`(${highlightedText})`, 'gi'));
     return parts.map((part, i) =>
@@ -126,6 +139,7 @@ const MathAAScreen: React.FC<Props> = ({ navigation, route }) => {
       'topics': topicsAnimation,
       'essentials': essentialsAnimation,
       'rubrics': rubricsAnimation,
+      'mathematicsAA': mathematicsAAAnimation,
     }[section];
     if (!animationValue) return null;
     return (
@@ -162,6 +176,7 @@ const MathAAScreen: React.FC<Props> = ({ navigation, route }) => {
       'topics': topicsAnimation,
       'essentials': essentialsAnimation,
       'rubrics': rubricsAnimation,
+      'mathematicsAA': mathematicsAAAnimation,
     }[expandedSection];
     if (animationValue) {
       Animated.timing(animationValue, {
@@ -178,6 +193,7 @@ const MathAAScreen: React.FC<Props> = ({ navigation, route }) => {
           'topics': topicsAnimation,
           'essentials': essentialsAnimation,
           'rubrics': rubricsAnimation,
+          'mathematicsAA': mathematicsAAAnimation,
         }[key];
         if (anim) {
           Animated.timing(anim, {
@@ -273,7 +289,7 @@ const MathAAScreen: React.FC<Props> = ({ navigation, route }) => {
               <List.Item
                 title={() => (
                   <Text style={{ color: '#fff', fontFamily: 'ScopeOne-Regular', fontSize: 18 }}>
-                    {highlightText(section.title)}
+                    {highlightText(section.title, highlightedText)}
                   </Text>
                 )}
                 onPress={() => toggleSection(section.key)}
@@ -303,23 +319,23 @@ const MathAAScreen: React.FC<Props> = ({ navigation, route }) => {
                         </View>
                       ) : section.key === 'rubrics' ? (
                         <View>
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>{highlightText('--- PAPERS 1, 2, 3 ---')}</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF' }}>{highlightText('- Assessed via mark schemes, not fixed rubrics.\n- Rewarded elements include:')}</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 12 }}>{highlightText('Mathematical reasoning and accuracy\nLogical structure and progression\nUse of correct notation\nClear communication of solutions\nFor HL Paper 3: deep problem solving and strategy')}</Text>
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 18 }}>{highlightText('MATHEMATICS AA & AI: INTERNAL ASSESSMENT (20 marks)')}</Text>
-                          <Text style={{ ...themeStyles.levelTitle, color: '#7EC3FF', fontFamily: 'ScopeOne-Regular', marginTop: 8 }}>{highlightText('Criterion A: Presentation 4 marks')}</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 12 }}>{highlightText('- The exploration is well structured and coherent.')}</Text>
-                          <Text style={{ ...themeStyles.levelTitle, color: '#7EC3FF', fontFamily: 'ScopeOne-Regular', marginTop: 8 }}>{highlightText('Criterion B: Mathematical Communication 4 marks')}</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 12 }}>{highlightText('- Appropriate use of mathematical language and notation.')}</Text>
-                          <Text style={{ ...themeStyles.levelTitle, color: '#7EC3FF', fontFamily: 'ScopeOne-Regular', marginTop: 8 }}>{highlightText('Criterion C: Personal Engagement 4 marks')}</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 12 }}>{highlightText('- Evidence of independent thinking, creativity, and ownership.')}</Text>
-                          <Text style={{ ...themeStyles.levelTitle, color: '#7EC3FF', fontFamily: 'ScopeOne-Regular', marginTop: 8 }}>{highlightText('Criterion D: Reflection 3 marks')}</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 12 }}>{highlightText('- Critical reflection on results, methods, and learning.')}</Text>
-                          <Text style={{ ...themeStyles.levelTitle, color: '#7EC3FF', fontFamily: 'ScopeOne-Regular', marginTop: 8 }}>{highlightText('Criterion E: Use of Mathematics 5 marks')}</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 12 }}>{highlightText('- Correct and relevant mathematical processes used with sophistication.')}</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>{highlightText('--- PAPERS 1, 2, 3 ---', highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF' }}>{highlightText('- Assessed via mark schemes, not fixed rubrics.\n- Rewarded elements include:', highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 12 }}>{highlightText('Mathematical reasoning and accuracy\nLogical structure and progression\nUse of correct notation\nClear communication of solutions\nFor HL Paper 3: deep problem solving and strategy', highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 18 }}>{highlightText('MATHEMATICS AA & AI: INTERNAL ASSESSMENT (20 marks)', highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.levelTitle, color: '#7EC3FF', fontFamily: 'ScopeOne-Regular', marginTop: 8 }}>{highlightText('Criterion A: Presentation 4 marks', highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 12 }}>{highlightText('- The exploration is well structured and coherent.', highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.levelTitle, color: '#7EC3FF', fontFamily: 'ScopeOne-Regular', marginTop: 8 }}>{highlightText('Criterion B: Mathematical Communication 4 marks', highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 12 }}>{highlightText('- Appropriate use of mathematical language and notation.', highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.levelTitle, color: '#7EC3FF', fontFamily: 'ScopeOne-Regular', marginTop: 8 }}>{highlightText('Criterion C: Personal Engagement 4 marks', highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 12 }}>{highlightText('- Evidence of independent thinking, creativity, and ownership.', highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.levelTitle, color: '#7EC3FF', fontFamily: 'ScopeOne-Regular', marginTop: 8 }}>{highlightText('Criterion D: Reflection 3 marks', highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 12 }}>{highlightText('- Critical reflection on results, methods, and learning.', highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.levelTitle, color: '#7EC3FF', fontFamily: 'ScopeOne-Regular', marginTop: 8 }}>{highlightText('Criterion E: Use of Mathematics 5 marks', highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 12 }}>{highlightText('- Correct and relevant mathematical processes used with sophistication.', highlightedText)}</Text>
                         </View>
                       ) : (
-                        <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF' }}>{highlightText(sectionContentStrings[section.key as keyof typeof sectionContentStrings])}</Text>
+                        <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF' }}>{highlightText(sectionContentStrings[section.key as keyof typeof sectionContentStrings], highlightedText)}</Text>
                       )}
                     </View>
                   ))}
@@ -333,11 +349,48 @@ const MathAAScreen: React.FC<Props> = ({ navigation, route }) => {
         </View>
         {userType === 'student' && (
           <View style={{ borderRadius: 16, borderWidth: 1, borderColor: '#7EC3FF', backgroundColor: 'rgba(182,199,247,0.12)', marginBottom: 24, overflow: 'hidden', paddingHorizontal: 8 }}>
-            <List.Item
-              title="Student-Only Resources"
-              titleStyle={{ color: '#fff', fontFamily: 'ScopeOne-Regular', fontSize: 18 }}
-              style={{ paddingVertical: 16, paddingLeft: 20 }}
-            />
+            <View style={{ padding: 20, paddingBottom: 0 }}>
+              <Text style={{ fontSize: 22, color: '#fff', fontFamily: 'ScopeOne-Regular', fontWeight: '700', marginBottom: 4 }}>Student Resources</Text>
+              <View style={{ height: 2, backgroundColor: '#7EC3FF', marginBottom: 8 }} />
+            </View>
+            
+            {/* Mathematics AA dropdown */}
+            <View>
+              <List.Item
+                title="Mathematics AA"
+                titleStyle={{ color: '#fff', fontFamily: 'ScopeOne-Regular', fontSize: 18 }}
+                onPress={() => toggleSection('mathematicsAA')}
+                right={props => <List.Icon {...props} icon="chevron-right" color="#FFFFFF" style={{ transform: [{ rotate: expandedSection === 'mathematicsAA' ? '90deg' : '0deg' }] }} />}
+                style={{ paddingVertical: 8, paddingLeft: 20, backgroundColor: 'transparent' }}
+              />
+              {expandedSection === 'mathematicsAA' && (
+                <View style={{ paddingHorizontal: 20, paddingBottom: 16 }}>
+                  {renderAnimatedContent('mathematicsAA', (
+                    <View style={{ backgroundColor: 'rgba(24,26,32,0.92)', borderRadius: 12, padding: 16, marginTop: 8 }}>
+                      <View>
+                        {[
+                          "Build fluency in algebra and calculus—these are your core tools.",
+                          "Practice formal proof techniques, especially for HL.",
+                          "Link mathematical topics together conceptually.",
+                          "Always explain your reasoning, not just provide answers.",
+                          "Use your GDC wisely and efficiently—practice the interface.",
+                          "Get comfortable with the formula booklet early.",
+                          "Do HL past paper questions frequently to prep for Paper 3.",
+                          "Use math thinking strategies like conjecture and generalization.",
+                          "Pick a personally meaningful topic for your IA and analyze deeply.",
+                          "Create an error log and review what went wrong regularly."
+                        ].map((tip, idx) => (
+                          <View key={idx} style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: 8 }}>
+                            <Text style={{ color: '#7EC3FF', fontSize: 16, marginRight: 8, lineHeight: 24, fontFamily: 'ScopeOne-Regular' }}>{idx + 1}.</Text>
+                            <Text style={[themeStyles.content, { flex: 1, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF' }]}>{highlightText(tip, highlightedText)}</Text>
+                          </View>
+                        ))}
+                      </View>
+                    </View>
+                  ))}
+                </View>
+              )}
+            </View>
           </View>
         )}
         {userType === 'teacher' && (
