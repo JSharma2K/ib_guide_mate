@@ -31,8 +31,9 @@ const SubjectListScreen: React.FC<SubjectListScreenProps> = ({ navigation }) => 
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
+    const trimmedQuery = query.trim();
     const filtered = subjects.filter(subject =>
-      subject.name.toLowerCase().includes(query.toLowerCase())
+      subject.name.toLowerCase().includes(trimmedQuery.toLowerCase())
     );
     setFilteredSubjects(filtered);
   };

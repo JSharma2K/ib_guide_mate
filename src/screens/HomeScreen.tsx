@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { View, StyleSheet, FlatList, Dimensions, Platform, StatusBar, Image, ImageBackground } from 'react-native';
 import { Card, useTheme, Text, List } from 'react-native-paper';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';

@@ -29,6 +29,9 @@ const MathAIScreen: React.FC<Props> = ({ navigation, route }) => {
   const topicsAnimation = useRef(new Animated.Value(0)).current;
   const essentialsAnimation = useRef(new Animated.Value(0)).current;
   const rubricsAnimation = useRef(new Animated.Value(0)).current;
+  
+  // Animation value for home icon fade
+  const homeIconOpacity = useRef(new Animated.Value(1)).current;
 
   const sectionContentStrings: Record<'overview' | 'topics' | 'essentials' | 'rubrics', string> = {
     overview: `Mathematics: Applications and Interpretation is a course that focuses on mathematical modeling and the use of technology to solve real-world problems.`,
@@ -37,6 +40,25 @@ const MathAIScreen: React.FC<Props> = ({ navigation, route }) => {
     rubrics: `PAPERS 1, 2, 3\nAlso marked via detailed schemes.\nRewarded elements include:\n• Real-world application\n• Correct use of technology (GDC)\n• Modeling and interpretation\n• Accuracy and reasoning\n• For HL Paper 3: emphasis on extended contextual problems\nMATHEMATICS AA & AI: INTERNAL ASSESSMENT (20 marks)\nCriterion A: Presentation (4 marks)\nThe exploration is well structured and coherent.\nCriterion B: Mathematical Communication (4 marks)\nAppropriate use of mathematical language and notation.\nCriterion C: Personal Engagement (4 marks)\nEvidence of independent thinking, creativity, and ownership.\nCriterion D: Reflection (3 marks)\nCritical reflection on results, methods, and learning.\nCriterion E: Use of Mathematics (5 marks)\nCorrect and relevant mathematical processes used with sophistication.`
   };
   const sectionKeys: Array<'overview' | 'topics' | 'essentials' | 'rubrics'> = ['overview', 'topics', 'essentials', 'rubrics'];
+
+  const handleScroll = (event: any) => {
+    const scrollY = event.nativeEvent.contentOffset.y;
+    const fadeThreshold = 50; // Start fading after 50px scroll
+    
+    if (scrollY > fadeThreshold) {
+      Animated.timing(homeIconOpacity, {
+        toValue: 0,
+        duration: 100,
+        useNativeDriver: true,
+      }).start();
+    } else {
+      Animated.timing(homeIconOpacity, {
+        toValue: 1,
+        duration: 100,
+        useNativeDriver: true,
+      }).start();
+    }
+  };
 
   const toggleSection = (section: string) => {
     const isExpanding = expandedSection !== section;
@@ -58,8 +80,10 @@ const MathAIScreen: React.FC<Props> = ({ navigation, route }) => {
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
-    setHighlightedText(query);
-    if (!query) {
+    // Trim whitespace from the query for searching and highlighting
+    const trimmedQuery = query.trim();
+    setHighlightedText(trimmedQuery);
+    if (!trimmedQuery) {
       setMatchingSections([]);
       setCurrentMatchIndex(0);
       setExpandedSection(null);
@@ -67,7 +91,7 @@ const MathAIScreen: React.FC<Props> = ({ navigation, route }) => {
     }
     // Find all sections that match
     const matches = sectionKeys.filter(key =>
-      sectionContentStrings[key].toLowerCase().includes(query.toLowerCase())
+      sectionContentStrings[key].toLowerCase().includes(trimmedQuery.toLowerCase())
     );
     setMatchingSections(matches);
     setCurrentMatchIndex(0);
@@ -185,17 +209,27 @@ const MathAIScreen: React.FC<Props> = ({ navigation, route }) => {
     >
       {/* Home icon top left */}
       <View style={{ position: 'absolute', top: 56, left: 16, zIndex: 100, flexDirection: 'row', alignItems: 'center' }}>
-        <Feather
-          name="home"
-          size={20}
-          color="#7EC3FF"
-          onPress={() => navigation.goBack()}
-          style={{ cursor: 'pointer' }}
-          accessibilityRole="button"
-          accessibilityLabel="Go to Home"
-        />
+        <Animated.View
+          style={{
+            opacity: homeIconOpacity,
+          }}
+        >
+          <Feather
+            name="home"
+            size={20}
+            color="#7EC3FF"
+            onPress={() => navigation.goBack()}
+            style={{ cursor: 'pointer' }}
+            accessibilityRole="button"
+            accessibilityLabel="Go to Home"
+          />
+        </Animated.View>
       </View>
-      <ScrollView contentContainerStyle={{ paddingTop: 112, paddingBottom: 32, paddingHorizontal: 16 }}>
+      <ScrollView 
+        contentContainerStyle={{ paddingTop: 112, paddingBottom: 32, paddingHorizontal: 16 }} 
+        onScroll={handleScroll}
+        scrollEventThrottle={16}
+      >
         <Searchbar
           placeholder="Search guide topics..."
           onChangeText={handleSearch}

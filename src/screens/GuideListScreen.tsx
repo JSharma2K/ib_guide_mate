@@ -32,10 +32,11 @@ export const GuideListScreen = () => {
 
   const handleSearch = async (query: string) => {
     setSearchQuery(query);
-    if (query.trim() === '') {
+    const trimmedQuery = query.trim();
+    if (trimmedQuery === '') {
       loadGuides();
     } else {
-      const searchResults = await guideService.searchGuides(query);
+      const searchResults = await guideService.searchGuides(trimmedQuery);
       setGuides(searchResults);
     }
   };

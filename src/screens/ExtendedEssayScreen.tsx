@@ -30,15 +30,16 @@ const sectionContentStrings: Record<string, string> = {
   integrity:
     `Academic Integrity & Support:\n- Students must consistently cite sources using an accepted format (APA, MLA, etc.).\n- The RPPF (max 500 words) is assessed under Criterion E and must be completed honestly.\n- Plagiarism, collusion, and improper referencing may result in the loss of the IB diploma.\n- Supervisors and schools play a role in teaching citation, ethical research, and reflection practices.`,
   rubric2027:
-    `The 2027 Extended Essay assessment rubric will be available here.`,
+    `Assessment Rubric (2027): A Framework for the Essay Clarity and relevance of the research question appropriateness of the methodology and structure 6 marks. B Knowledge and Understanding Understanding of the topic subject-specific terminology and academic context 6 marks. C Analysis and Line of Argument Quality of the research critical analysis and logical consistency of the argument 6 marks. D Discussion and Evaluation Depth of discussion significance of the findings evaluation of research outcomes 8 marks. E Engagement RPPF Evidence of intellectual initiative self-reflection and personal engagement with the process 4 marks.`,
 };
 
-const sectionKeys: Array<'purpose' | 'objectives' | 'pathways' | 'roles' | 'integrity'> = [
+const sectionKeys: Array<'purpose' | 'objectives' | 'pathways' | 'roles' | 'integrity' | 'rubric2027'> = [
   'purpose',
   'objectives',
   'pathways',
   'roles',
   'integrity',
+  'rubric2027',
 ];
 
 const highlightText = (text: string, highlightedText: string) => {
@@ -46,7 +47,7 @@ const highlightText = (text: string, highlightedText: string) => {
   const parts = text.split(new RegExp(`(${highlightedText})`, 'gi'));
   return parts.map((part, i) =>
     part.toLowerCase() === highlightedText.toLowerCase() ?
-      <Text key={i} style={[themeStyles.highlightedText, { fontWeight: '700' }]}>{part}</Text> :
+      <Text key={i} style={themeStyles.highlightedText}>{part}</Text> :
       part
   );
 };
@@ -54,22 +55,22 @@ const highlightText = (text: string, highlightedText: string) => {
 const RubricTable = ({ data, highlightedText }: { data: { criterion: string; summary: string; max: number }[]; highlightedText: string }) => (
   <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
     <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
-      <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.6, padding: 8 }}>Criterion</Text>
-      <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 2.3, padding: 8 }}>What It Assesses</Text>
-      <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 0.8, padding: 8, textAlign: 'center' }}>Max Marks</Text>
+      <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.8, padding: 8 }}>Criterion</Text>
+      <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.8, padding: 8 }}>What It Assesses</Text>
+      <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.4, padding: 8, textAlign: 'center' }}>Marks</Text>
     </View>
     {data.map((row, idx) => (
       <View key={idx} style={{ flexDirection: 'row', borderTopWidth: idx === 0 ? 0 : 1, borderColor: '#7EC3FF' }}>
-        <Text style={{ flex: 1.6, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.criterion)}</Text>
-        <Text style={{ flex: 2.3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.summary)}</Text>
-        <Text style={{ flex: 0.8, color: '#B6B6B6', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular' }}>{highlightText(String(row.max))}</Text>
+        <Text style={{ flex: 1.8, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.criterion, highlightedText)}</Text>
+        <Text style={{ flex: 1.8, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.summary, highlightedText)}</Text>
+        <Text style={{ flex: 1.4, color: '#B6B6B6', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular' }}>{highlightText(String(row.max), highlightedText)}</Text>
       </View>
     ))}
     {/* Total row */}
     <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF', backgroundColor: '#232B4D' }}>
-      <Text style={{ flex: 1.6, color: '#7EC3FF', padding: 8, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Total</Text>
-      <Text style={{ flex: 2.3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}></Text>
-      <Text style={{ flex: 0.8, color: '#7EC3FF', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>30</Text>
+      <Text style={{ flex: 1.8, color: '#7EC3FF', padding: 8, fontFamily: 'ScopeOne-Regular', fontWeight: '700' as const }}>Total</Text>
+      <Text style={{ flex: 1.8, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}> </Text>
+      <Text style={{ flex: 1.4, color: '#7EC3FF', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular', fontWeight: '700' as const }}>30</Text>
     </View>
   </View>
 );
@@ -88,6 +89,10 @@ const ExtendedEssayScreen: React.FC<Props> = ({ navigation, route }) => {
   const pathwaysAnimation = useRef(new Animated.Value(0)).current;
   const rolesAnimation = useRef(new Animated.Value(0)).current;
   const integrityAnimation = useRef(new Animated.Value(0)).current;
+  const rubric2027Animation = useRef(new Animated.Value(0)).current;
+  
+  // Animation value for home icon fade
+  const homeIconOpacity = useRef(new Animated.Value(1)).current;
 
   const toggleSection = (section: string) => {
     const isExpanding = expandedSection !== section;
@@ -98,6 +103,7 @@ const ExtendedEssayScreen: React.FC<Props> = ({ navigation, route }) => {
       'pathways': pathwaysAnimation,
       'roles': rolesAnimation,
       'integrity': integrityAnimation,
+      'rubric2027': rubric2027Animation,
     }[section];
     if (animationValue) {
       Animated.timing(animationValue, {
@@ -119,8 +125,10 @@ const ExtendedEssayScreen: React.FC<Props> = ({ navigation, route }) => {
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
-    setHighlightedText(query);
-    if (!query) {
+    // Trim whitespace from the query for searching and highlighting
+    const trimmedQuery = query.trim();
+    setHighlightedText(trimmedQuery);
+    if (!trimmedQuery) {
       setMatchingSections([]);
       setCurrentMatchIndex(0);
       setExpandedSection(null);
@@ -129,8 +137,8 @@ const ExtendedEssayScreen: React.FC<Props> = ({ navigation, route }) => {
     // Find all sections that match content or title
     const matches = dropdownSections
       .filter(section =>
-        sectionContentStrings[section.key].toLowerCase().includes(query.toLowerCase()) ||
-        section.title.toLowerCase().includes(query.toLowerCase())
+        sectionContentStrings[section.key].toLowerCase().includes(trimmedQuery.toLowerCase()) ||
+        section.title.toLowerCase().includes(trimmedQuery.toLowerCase())
       )
       .map(section => section.key);
     setMatchingSections(matches);
@@ -167,6 +175,7 @@ const ExtendedEssayScreen: React.FC<Props> = ({ navigation, route }) => {
       'pathways': pathwaysAnimation,
       'roles': rolesAnimation,
       'integrity': integrityAnimation,
+      'rubric2027': rubric2027Animation,
     }[expandedSection];
     if (animationValue) {
       Animated.timing(animationValue, {
@@ -184,6 +193,7 @@ const ExtendedEssayScreen: React.FC<Props> = ({ navigation, route }) => {
           'pathways': pathwaysAnimation,
           'roles': rolesAnimation,
           'integrity': integrityAnimation,
+          'rubric2027': rubric2027Animation,
         }[key];
         if (anim) {
           Animated.timing(anim, {
@@ -216,6 +226,7 @@ const ExtendedEssayScreen: React.FC<Props> = ({ navigation, route }) => {
       'pathways': pathwaysAnimation,
       'roles': rolesAnimation,
       'integrity': integrityAnimation,
+      'rubric2027': rubric2027Animation,
     }[section];
     if (!animationValue) return null;
     return (
@@ -234,6 +245,25 @@ const ExtendedEssayScreen: React.FC<Props> = ({ navigation, route }) => {
     );
   };
 
+  const handleScroll = (event: any) => {
+    const scrollY = event.nativeEvent.contentOffset.y;
+    const fadeThreshold = 50; // Start fading after 50px scroll
+    
+    if (scrollY > fadeThreshold) {
+      Animated.timing(homeIconOpacity, {
+        toValue: 0,
+        duration: 100,
+        useNativeDriver: true,
+      }).start();
+    } else {
+      Animated.timing(homeIconOpacity, {
+        toValue: 1,
+        duration: 100,
+        useNativeDriver: true,
+      }).start();
+    }
+  };
+
   return (
     <ImageBackground
       source={require('../../assets/images/entry-bg.png')}
@@ -241,7 +271,7 @@ const ExtendedEssayScreen: React.FC<Props> = ({ navigation, route }) => {
       resizeMode="cover"
     >
       {/* Home icon top left */}
-      <View style={{ position: 'absolute', top: 56, left: 16, zIndex: 100, flexDirection: 'row', alignItems: 'center' }}>
+      <Animated.View style={{ position: 'absolute', top: 56, left: 16, zIndex: 100, flexDirection: 'row', alignItems: 'center', opacity: homeIconOpacity }}>
         <Feather
           name="home"
           size={20}
@@ -251,8 +281,12 @@ const ExtendedEssayScreen: React.FC<Props> = ({ navigation, route }) => {
           accessibilityRole="button"
           accessibilityLabel="Go to Home"
         />
-      </View>
-      <ScrollView contentContainerStyle={{ paddingTop: 112, paddingBottom: 32, paddingHorizontal: 16 }}>
+      </Animated.View>
+      <ScrollView 
+        contentContainerStyle={{ paddingTop: 112, paddingBottom: 32, paddingHorizontal: 16 }}
+        onScroll={handleScroll}
+        scrollEventThrottle={16}
+      >
         <Searchbar
           placeholder="Search guide topics..."
           onChangeText={handleSearch}
@@ -415,45 +449,6 @@ const ExtendedEssayScreen: React.FC<Props> = ({ navigation, route }) => {
                           />
                         </View>
                       )}
-                      {userType === 'student' ? (
-                        <PaperButton
-                          mode="outlined"
-                          style={{
-                            borderRadius: 24,
-                            backgroundColor: 'transparent',
-                            minWidth: 160,
-                            elevation: 2,
-                            paddingVertical: 4,
-                            borderWidth: 1,
-                            borderColor: '#7EC3FF',
-                            marginTop: 16,
-                            alignSelf: 'flex-start',
-                          }}
-                          labelStyle={{ color: '#FFFFFF', fontFamily: 'ScopeOne-Regular', fontSize: 15 }}
-                          onPress={() => {}}
-                        >
-                          Student-Only Resources
-                        </PaperButton>
-                      ) : userType === 'teacher' ? (
-                        <PaperButton
-                          mode="outlined"
-                          style={{
-                            borderRadius: 24,
-                            backgroundColor: 'transparent',
-                            minWidth: 160,
-                            elevation: 2,
-                            paddingVertical: 4,
-                            borderWidth: 1,
-                            borderColor: '#7EC3FF',
-                            marginTop: 16,
-                            alignSelf: 'flex-start',
-                          }}
-                          labelStyle={{ color: '#FFFFFF', fontFamily: 'ScopeOne-Regular', fontSize: 15 }}
-                          onPress={() => {}}
-                        >
-                          Teacher-Only Resources
-                        </PaperButton>
-                      ) : null}
                     </View>
                   ))}
                 </View>
@@ -464,6 +459,25 @@ const ExtendedEssayScreen: React.FC<Props> = ({ navigation, route }) => {
             </View>
           ))}
         </View>
+        {/* Add separate Student-Only Resources section */}
+        {userType === 'student' && (
+          <View style={{ borderRadius: 16, borderWidth: 1, borderColor: '#7EC3FF', backgroundColor: 'rgba(182,199,247,0.12)', marginBottom: 24, overflow: 'hidden', paddingHorizontal: 8 }}>
+            <List.Item
+              title="Student-Only Resources"
+              titleStyle={{ color: '#fff', fontFamily: 'ScopeOne-Regular', fontSize: 18 }}
+              style={{ paddingVertical: 16, paddingLeft: 20 }}
+            />
+          </View>
+        )}
+        {userType === 'teacher' && (
+          <View style={{ borderRadius: 16, borderWidth: 1, borderColor: '#7EC3FF', backgroundColor: 'rgba(182,199,247,0.12)', marginBottom: 24, overflow: 'hidden', paddingHorizontal: 8 }}>
+            <List.Item
+              title="Teacher-Only Resources"
+              titleStyle={{ color: '#fff', fontFamily: 'ScopeOne-Regular', fontSize: 18 }}
+              style={{ paddingVertical: 16, paddingLeft: 20 }}
+            />
+          </View>
+        )}
       </ScrollView>
     </ImageBackground>
   );

@@ -7,6 +7,33 @@ import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { Feather } from '@expo/vector-icons';
 
+const highlightText = (text: string, highlightedText: string) => {
+  if (!highlightedText) return text;
+  const parts = text.split(new RegExp(`(${highlightedText})`, 'gi'));
+  return parts.map((part, i) =>
+    part.toLowerCase() === highlightedText.toLowerCase() ?
+      <Text key={i} style={themeStyles.highlightedText}>{part}</Text> :
+      part
+  );
+};
+
+const RubricTable = ({ data, highlightedText }: { data: { criterion: string; summary: string; max: number }[]; highlightedText: string }) => (
+  <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+    <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+      <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.6, padding: 8 }}>Criterion</Text>
+      <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 2.3, padding: 8 }}>Descriptor Summary</Text>
+      <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 0.8, padding: 8, textAlign: 'center' }}>Max</Text>
+    </View>
+    {data.map((row, idx) => (
+      <View key={idx} style={{ flexDirection: 'row', borderTopWidth: idx === 0 ? 0 : 1, borderColor: '#7EC3FF' }}>
+        <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.criterion, highlightedText)}</Text>
+        <Text style={{ flex: 2, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.summary, highlightedText)}</Text>
+        <Text style={{ flex: 0.5, color: '#B6B6B6', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular' }}>{highlightText(String(row.max), highlightedText)}</Text>
+      </View>
+    ))}
+  </View>
+);
+
 const EnglishALiteratureScreen = ({ navigation, route }) => {
   const userType = route?.params?.userType || 'student';
   const [searchQuery, setSearchQuery] = useState('');
@@ -20,62 +47,37 @@ const EnglishALiteratureScreen = ({ navigation, route }) => {
   const essentialsAnimation = useRef(new Animated.Value(0)).current;
   const literatureAnimation = useRef(new Animated.Value(0)).current;
   const detailedRubricsAnimation = useRef(new Animated.Value(0)).current;
+  
+  // Animation value for home icon fade
+  const homeIconOpacity = useRef(new Animated.Value(1)).current;
 
   // Section keys and content for search
-  const detailedRubricsSearchText = [
-    // Paper 1
-    'A Understanding & Interpretation 5',
-    'B Analysis & Evaluation 5',
-    'C Focus & Organization 5',
-    'D Language 5',
-    // Paper 2
-    'A Knowledge & Understanding 10',
-    'B Analysis & Evaluation 10',
-    'C Focus & Organization 10',
-    // Individual Oral
-    'A Knowledge, Understanding & Interpretation 10',
-    'B Analysis & Evaluation 10',
-    'C Focus & Organization 10',
-    'D Language 10',
-    // Literature and Performance - Paper 1
-    'A Knowledge & Interpretation 10',
-    'B Analysis & Evaluation 10',
-    'C Focus & Organization 5',
-    'D Language 5',
-    // Literature and Performance - Written Assignment
-    'A Knowledge & Understanding 6',
-    'B Analysis & Evaluation 6',
-    'C Focus & Organization 6',
-    'D Language 4',
-    'E Performance Analysis & Communication 4',
-    // Literature and Performance - Internal Assessment
-    'A Knowledge & Understanding 8',
-    'B Analysis & Evaluation 8',
-    'C Performance Skills 8',
-    'D Oral Communication 8',
-    // SSST Paper 1
-    'A Understanding & Interpretation 5',
-    'B Analysis & Evaluation 5',
-    'C Focus & Organization 5',
-    'D Language 5',
-    // SSST Paper 2
-    'A Knowledge & Understanding 10',
-    'B Analysis & Evaluation 10',
-    'C Focus & Organization 10',
-    // SSST Individual Oral
-    'A Knowledge, Understanding & Interpretation 10',
-    'B Analysis & Evaluation 10',
-    'C Focus & Organization 10',
-    'D Language 10',
-  ].join(' ');
-
   const sectionContentStrings: Record<'overview' | 'essentials' | 'literature' | 'detailedRubrics', string> = {
     overview: `English A: Literature is a course that focuses on the study of literary texts. It is designed for students who are interested in developing their understanding of literature and literary criticism. The course emphasizes the development of critical thinking and analytical skills through the study of a wide range of literary works from different periods, styles, and genres.`,
     essentials: `Course Overview\n• Standard Level (SL): 4 works\n• Higher Level (HL): 6 works\nAreas of Exploration\n• Readers-Writers-Texts\n• Time and Space\n• Intertextuality\nAssessment Outline\nSL:\n• Paper 1 (1h15m): 35%\n• Paper 2 (1h45m): 35%\n• Individual Oral (15 min): 30%\nHL:\n• Paper 1 (2h15m): 35%\n• Paper 2 (1h45m): 25%\n• Individual Oral: 20%\n• HL Essay: 20%\nRubrics\n• Paper 1 & 2: Criteria A-D (5-10 marks each)\n• IO: Criteria A-D (10 marks each)\n• HL Essay: Criteria A-D (5 marks each)\nAssessment Objectives in Practice\n• Problem solving\n• Communication\n• Reasoning\n• Technology use\n• Inquiry`,
     literature: `Works in Translation\n• Study of works originally written in languages other than English\n• Focus on cultural and historical context\n• Development of intercultural understanding\nWorks in English\n• Study of works written in English\n• Focus on literary techniques and devices\n• Development of critical analysis skills`,
-    detailedRubrics: detailedRubricsSearchText,
+    detailedRubrics: `Language A Literature Paper 1: Criterion A Understanding Interpretation 5 marks, Criterion B Analysis Evaluation 5 marks, Criterion C Focus Organization 5 marks, Criterion D Language 5 marks. Language A Literature Paper 2: Criterion A Knowledge Understanding 10 marks, Criterion B Analysis Evaluation 10 marks, Criterion C Focus Organization 10 marks. Language A Literature Individual Oral: Criterion A Knowledge Understanding Interpretation 10 marks, Criterion B Analysis Evaluation 10 marks, Criterion C Focus Organization 10 marks, Criterion D Language 10 marks. Literature and Performance Written Assignment: Criterion A Knowledge Understanding 6 marks, Criterion B Analysis Evaluation 6 marks, Criterion C Focus Organization 6 marks, Criterion D Language 4 marks, Criterion E Performance Analysis Communication 4 marks. Literature and Performance Internal Assessment: Criterion A Knowledge Understanding 8 marks, Criterion B Analysis Evaluation 8 marks, Criterion C Performance Skills 8 marks, Criterion D Oral Communication 8 marks. SSST Language A Literature Paper 1: Criterion A Understanding Interpretation 5 marks, Criterion B Analysis Evaluation 5 marks, Criterion C Focus Organization 5 marks, Criterion D Language 5 marks. SSST Language A Literature Paper 2: Criterion A Knowledge Understanding 10 marks, Criterion B Analysis Evaluation 10 marks, Criterion C Focus Organization 10 marks. SSST Language A Literature Individual Oral: Criterion A Knowledge Understanding Interpretation 10 marks, Criterion B Analysis Evaluation 10 marks, Criterion C Focus Organization 10 marks, Criterion D Language 10 marks.`,
   };
   const sectionKeys: Array<'overview' | 'essentials' | 'literature' | 'detailedRubrics'> = ['overview', 'essentials', 'literature', 'detailedRubrics'];
+
+  const handleScroll = (event: any) => {
+    const scrollY = event.nativeEvent.contentOffset.y;
+    const fadeThreshold = 50; // Start fading after 50px scroll
+    
+    if (scrollY > fadeThreshold) {
+      Animated.timing(homeIconOpacity, {
+        toValue: 0,
+        duration: 100,
+        useNativeDriver: true,
+      }).start();
+    } else {
+      Animated.timing(homeIconOpacity, {
+        toValue: 1,
+        duration: 100,
+        useNativeDriver: true,
+      }).start();
+    }
+  };
 
   const toggleSection = (section: string) => {
     const isExpanding = expandedSection !== section;
@@ -97,8 +99,10 @@ const EnglishALiteratureScreen = ({ navigation, route }) => {
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
-    setHighlightedText(query);
-    if (!query) {
+    // Trim whitespace from the query for searching and highlighting
+    const trimmedQuery = query.trim();
+    setHighlightedText(trimmedQuery);
+    if (!trimmedQuery) {
       setMatchingSections([]);
       setCurrentMatchIndex(0);
       setExpandedSection(null);
@@ -106,7 +110,7 @@ const EnglishALiteratureScreen = ({ navigation, route }) => {
     }
     // Find all sections that match
     const matches = sectionKeys.filter(key =>
-      sectionContentStrings[key].toLowerCase().includes(query.toLowerCase())
+      sectionContentStrings[key].toLowerCase().includes(trimmedQuery.toLowerCase())
     );
     setMatchingSections(matches);
     setCurrentMatchIndex(0);
@@ -175,16 +179,6 @@ const EnglishALiteratureScreen = ({ navigation, route }) => {
     });
   }, [navigation]);
 
-  const highlightText = (text: string) => {
-    if (!highlightedText) return text;
-    const parts = text.split(new RegExp(`(${highlightedText})`, 'gi'));
-    return parts.map((part, i) =>
-      part.toLowerCase() === highlightedText.toLowerCase() ?
-        <Text key={i} style={themeStyles.highlightedText}>{part}</Text> :
-        part
-    );
-  };
-
   const renderAnimatedContent = (section: string, content: React.ReactNode) => {
     const animationValue = {
       'overview': overviewAnimation,
@@ -211,23 +205,6 @@ const EnglishALiteratureScreen = ({ navigation, route }) => {
     );
   };
 
-  const RubricTable = ({ data, highlightedText }: { data: { criterion: string; summary: string; max: number }[]; highlightedText: string }) => (
-    <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
-      <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
-        <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.6, padding: 8 }}>Criterion</Text>
-        <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 2.3, padding: 8 }}>Descriptor Summary</Text>
-        <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 0.8, padding: 8, textAlign: 'center' }}>Max</Text>
-      </View>
-      {data.map((row, idx) => (
-        <View key={idx} style={{ flexDirection: 'row', borderTopWidth: idx === 0 ? 0 : 1, borderColor: '#7EC3FF' }}>
-          <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.criterion)}</Text>
-          <Text style={{ flex: 2, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.summary)}</Text>
-          <Text style={{ flex: 0.5, color: '#B6B6B6', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular' }}>{highlightText(String(row.max))}</Text>
-        </View>
-      ))}
-    </View>
-  );
-
   let [fontsLoaded] = useFonts({
     'ScopeOne-Regular': require('../../assets/fonts/ScopeOne-Regular.ttf'),
   });
@@ -244,17 +221,28 @@ const EnglishALiteratureScreen = ({ navigation, route }) => {
       <StatusBar barStyle="light-content" />
       {/* Custom back arrow and Home label */}
       <View style={{ position: 'absolute', top: 56, left: 16, zIndex: 100, flexDirection: 'row', alignItems: 'center' }}>
-        <Feather
-          name="home"
-          size={20}
-          color="#7EC3FF"
-          onPress={() => navigation.goBack()}
-          style={{ cursor: 'pointer' }}
-          accessibilityRole="button"
-          accessibilityLabel="Go to Home"
-        />
+        <Animated.View
+          style={{
+            opacity: homeIconOpacity,
+          }}
+        >
+          <Feather
+            name="home"
+            size={20}
+            color="#7EC3FF"
+            onPress={() => navigation.goBack()}
+            style={{ cursor: 'pointer' }}
+            accessibilityRole="button"
+            accessibilityLabel="Go to Home"
+          />
+        </Animated.View>
       </View>
-      <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={{ paddingTop: 112, paddingBottom: 32, paddingHorizontal: 16 }}>
+      <ScrollView 
+        keyboardShouldPersistTaps="handled" 
+        contentContainerStyle={{ paddingTop: 112, paddingBottom: 32, paddingHorizontal: 16 }}
+        onScroll={handleScroll}
+        scrollEventThrottle={16}
+      >
         <Searchbar
           placeholder="Search guide topics..."
           onChangeText={handleSearch}
@@ -313,27 +301,27 @@ const EnglishALiteratureScreen = ({ navigation, route }) => {
                     <View style={{ backgroundColor: 'transparent' }}>
                       {/* Section content logic as before */}
                       {section.key === 'overview' && (
-                        <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular' }}>{highlightText(sectionContentStrings.overview)}</Text>
+                        <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular' }}>{highlightText(sectionContentStrings.overview, highlightedText)}</Text>
                       )}
                       {section.key === 'essentials' && (
                         <View>
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>Course Overview</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular' }}>{highlightText("• Standard Level (SL): 4 works\n• Higher Level (HL): 6 works\n\nAreas of Exploration:\n• Readers-Writers-Texts\n• Time and Space\n• Intertextuality")}</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular' }}>{highlightText("• Standard Level (SL): 4 works\n• Higher Level (HL): 6 works\n\nAreas of Exploration:\n• Readers-Writers-Texts\n• Time and Space\n• Intertextuality", highlightedText)}</Text>
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>Assessment Outline</Text>
                           <Text style={{ ...themeStyles.levelTitle, color: '#7EC3FF', fontFamily: 'ScopeOne-Regular' }}>Standard Level (SL)</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular' }}>{highlightText("• Paper 1 (1h15m): 35%\n• Paper 2 (1h45m): 35%\n• Individual Oral (15 min): 30%")}</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular' }}>{highlightText("• Paper 1 (1h15m): 35%\n• Paper 2 (1h45m): 35%\n• Individual Oral (15 min): 30%", highlightedText)}</Text>
                           <Text style={{ ...themeStyles.levelTitle, color: '#7EC3FF', fontFamily: 'ScopeOne-Regular' }}>Higher Level (HL)</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular' }}>{highlightText("• Paper 1 (2h15m): 35%\n• Paper 2 (1h45m): 25%\n• Individual Oral: 20%\n• HL Essay: 20%")}</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular' }}>{highlightText("• Paper 1 (2h15m): 35%\n• Paper 2 (1h45m): 25%\n• Individual Oral: 20%\n• HL Essay: 20%", highlightedText)}</Text>
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>Rubrics</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular' }}>{highlightText("• Paper 1 & 2: Criteria A-D (5-10 marks each)\n• IO: Criteria A-D (10 marks each)\n• HL Essay: Criteria A-D (5 marks each)")}</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular' }}>{highlightText("• Paper 1 & 2: Criteria A-D (5-10 marks each)\n• IO: Criteria A-D (10 marks each)\n• HL Essay: Criteria A-D (5 marks each)", highlightedText)}</Text>
                         </View>
                       )}
                       {section.key === 'literature' && (
                         <View>
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>Works in Translation</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular' }}>{highlightText("• Study of works originally written in languages other than English\n• Focus on cultural and historical context\n• Development of intercultural understanding")}</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular' }}>{highlightText("• Study of works originally written in languages other than English\n• Focus on cultural and historical context\n• Development of intercultural understanding", highlightedText)}</Text>
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>Works in English</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular' }}>{highlightText("• Study of works written in English\n• Focus on literary techniques and devices\n• Development of critical analysis skills")}</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular' }}>{highlightText("• Study of works written in English\n• Focus on literary techniques and devices\n• Development of critical analysis skills", highlightedText)}</Text>
                         </View>
                       )}
                       {section.key === 'detailedRubrics' && (
