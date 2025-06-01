@@ -33,6 +33,13 @@ const SUBJECTS = [
     color: '#B6C7F7',
   },
   {
+    key: 'english-a-performance',
+    icon: 'music',
+    title: 'English A',
+    subtitle: 'Literature and Performance',
+    color: '#C7B6F7',
+  },
+  {
     key: 'math-aa',
     icon: 'bar-chart-2',
     title: 'Math AA',
@@ -71,6 +78,8 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, route }) => {
         onPress={() => {
           if (item.key === 'english-a') {
             navigation.navigate('EnglishALiterature', { userType });
+          } else if (item.key === 'english-a-performance') {
+            navigation.navigate('EnglishALiteraturePerformance', { userType });
           } else if (item.key === 'math-aa') {
             navigation.navigate('MathAA', { userType });
           } else if (item.key === 'math-ai') {
