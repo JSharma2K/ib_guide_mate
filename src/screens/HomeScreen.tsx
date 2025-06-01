@@ -40,6 +40,13 @@ const SUBJECTS = [
     color: '#C7B6F7',
   },
   {
+    key: 'english-a-language-literature',
+    icon: 'edit-3',
+    title: 'English A',
+    subtitle: 'Language and Literature',
+    color: '#B6F7C7',
+  },
+  {
     key: 'math-aa',
     icon: 'bar-chart-2',
     title: 'Math AA',
@@ -80,6 +87,8 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, route }) => {
             navigation.navigate('EnglishALiterature', { userType });
           } else if (item.key === 'english-a-performance') {
             navigation.navigate('EnglishALiteraturePerformance', { userType });
+          } else if (item.key === 'english-a-language-literature') {
+            navigation.navigate('EnglishALanguageLiterature', { userType });
           } else if (item.key === 'math-aa') {
             navigation.navigate('MathAA', { userType });
           } else if (item.key === 'math-ai') {

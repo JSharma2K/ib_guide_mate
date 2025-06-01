@@ -8,6 +8,7 @@ export type RootStackParamList = {
   ManageGuides: undefined;
   EnglishALiterature: { userType: 'student' | 'teacher' };
   EnglishALiteraturePerformance: { userType: 'student' | 'teacher' };
+  EnglishALanguageLiterature: { userType: 'student' | 'teacher' };
   MathAA: { userType: 'student' | 'teacher' };
   MathAI: { userType: 'student' | 'teacher' };
   AddGuide: { guideId?: string };

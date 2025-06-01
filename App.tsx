@@ -12,6 +12,7 @@ import SubjectDetailScreen from './src/screens/SubjectDetailScreen';
 import ManageGuidesScreen from './src/screens/ManageGuidesScreen';
 import EnglishALiteratureScreen from './src/screens/EnglishALiteratureScreen';
 import EnglishALiteraturePerformanceScreen from './src/screens/EnglishALiteraturePerformanceScreen';
+import EnglishALanguageLiteratureScreen from './src/screens/EnglishALanguageLiteratureScreen';
 import MathAAScreen from './src/screens/MathAAScreen';
 import MathAIScreen from './src/screens/MathAIScreen';
 import EntryScreen from './src/screens/EntryScreen';
@@ -114,6 +115,17 @@ export default function App() {
               component={EnglishALiteraturePerformanceScreen} 
               options={{ 
                 title: 'English A: Literature and Performance',
+                headerStyle: {
+                  backgroundColor: theme.colors.primary,
+                },
+                headerTintColor: theme.colors.onPrimary,
+              }}
+            />
+            <Stack.Screen 
+              name="EnglishALanguageLiterature" 
+              component={EnglishALanguageLiteratureScreen} 
+              options={{ 
+                title: 'English A: Language and Literature',
                 headerStyle: {
                   backgroundColor: theme.colors.primary,
                 },
