@@ -59,7 +59,7 @@ const EnglishALiteratureScreen = ({ navigation, route }) => {
     overview: `English A: Literature is a course that focuses on the study of literary texts. It is designed for students who are interested in developing their understanding of literature and literary criticism. The course emphasizes the development of critical thinking and analytical skills through the study of a wide range of literary works from different periods, styles, and genres.`,
     essentials: `1. Syllabus Outline & Teaching Hours\nSL: 9 works required\nHL: 13 works required\nAreas of Exploration (SL/HL Hours):\n- Readers, Writers, and Texts: 50 / 80 hours\n- Time and Space: 50 / 80 hours\n- Intertextuality: Connecting Texts: 50 / 80 hours\nTotal: 150 SL / 240 HL hours\n\n2. Assessment Objectives in Practice\nObjective 1 - Know, understand, interpret:\n- Applied in all assessments: Paper 1, Paper 2, HL Essay, Individual Oral\nObjective 2 - Analyse and evaluate:\n- Focus on how language creates meaning; present in all components\nObjective 3 - Communicate:\n- Formal, organized, fluent delivery in all written and oral assessments\n\n3. Assessment Outline & Weightage\nSL:\n- Paper 1 (Guided Literary Analysis, 1 text): 35%\n- Paper 2 (Comparative Essay): 35%\n- Individual Oral: 30%\nHL:\n- Paper 1 (Guided Literary Analysis, 2 texts): 35%\n- Paper 2 (Comparative Essay): 25%\n- Individual Oral: 20%\n- HL Essay (1200-1500 words): 20%`,
     literature: `Works in Translation\n• Study of works originally written in languages other than English\n• Focus on cultural and historical context\n• Development of intercultural understanding\nWorks in English\n• Study of works written in English\n• Focus on literary techniques and devices\n• Development of critical analysis skills`,
-    detailedRubrics: `Language A Literature Paper 1: Criterion A Understanding Interpretation 5 marks, Criterion B Analysis Evaluation 5 marks, Criterion C Focus Organization 5 marks, Criterion D Language 5 marks. Language A Literature Paper 2: Criterion A Knowledge Understanding 10 marks, Criterion B Analysis Evaluation 10 marks, Criterion C Focus Organization 10 marks. Language A Literature Individual Oral: Criterion A Knowledge Understanding Interpretation 10 marks, Criterion B Analysis Evaluation 10 marks, Criterion C Focus Organization 10 marks, Criterion D Language 10 marks. Literature and Performance Written Assignment: Criterion A Knowledge Understanding 6 marks, Criterion B Analysis Evaluation 6 marks, Criterion C Focus Organization 6 marks, Criterion D Language 4 marks, Criterion E Performance Analysis Communication 4 marks. Literature and Performance Internal Assessment: Criterion A Knowledge Understanding 8 marks, Criterion B Analysis Evaluation 8 marks, Criterion C Performance Skills 8 marks, Criterion D Oral Communication 8 marks. SSST Language A Literature Paper 1: Criterion A Understanding Interpretation 5 marks, Criterion B Analysis Evaluation 5 marks, Criterion C Focus Organization 5 marks, Criterion D Language 5 marks. SSST Language A Literature Paper 2: Criterion A Knowledge Understanding 10 marks, Criterion B Analysis Evaluation 10 marks, Criterion C Focus Organization 10 marks. SSST Language A Literature Individual Oral: Criterion A Knowledge Understanding Interpretation 10 marks, Criterion B Analysis Evaluation 10 marks, Criterion C Focus Organization 10 marks, Criterion D Language 10 marks.`,
+    detailedRubrics: `Language A Literature Paper 1: How well you understand and interpret the text, How effectively you analyze literary techniques and evaluate their impact, How well-structured and focused your response is, Quality of your writing style and expression. Language A Literature Paper 2: Depth of knowledge about your chosen works and literary concepts, Quality of comparative analysis and critical evaluation, Clear thesis logical structure and sustained argument. Language A Literature Individual Oral: Understanding of texts and how they connect to your global issue, Analysis of literary choices and their effects on meaning, Clear structure and coherent presentation of ideas, Fluent delivery and appropriate use of literary terminology. Literature and Performance Written Assignment: Understanding of the text and performance concepts, Analysis of how performance choices affect meaning, Well-organized response with clear connections, Clear and effective written communication, Insightful analysis of performance elements and staging. Literature and Performance Internal Assessment: Knowledge of text and understanding of performance context, Critical analysis of literary and performance elements, Quality of your actual performance and interpretation, Effectiveness of your spoken presentation and discussion.`,
     englishLanguageLiterature: `English language and literature Master the key concepts like identity, communication, and transformation. Balance your skills across both literary and non-literary text types. Use the Learner Portfolio to prepare for exams and reflect on texts. For Paper 1, analyze textual features and authorial choices perceptively. Pick a nuanced global issue for the Individual Oral that connects both texts. Practice analyzing unseen texts under timed conditions regularly. Approach the HL Essay like a research paper with literary theory support. Always link analysis to social, cultural, and historical contexts. Understand how to decode visual texts for Paper 1. Use quotes precisely and with analytical follow-through.`,
     englishLiterature: `English Literature Anchor analysis in the 7 key concepts: identity, culture, etc. Understand how translation affects meaning in works in translation. Contextualize your interpretations with cultural and historical insights. Practice Paper 2 comparative essays with real past prompts. Apply literary theory (e.g., Feminist, Marxist) effectively in the HL Essay. Quote briefly and analyze deeply—avoid overuse of textual evidence. Choose your global issue for the IO wisely and justify its relevance. Use the Learner Portfolio to explore and connect ideas between works. Focus on authorial choices, not just the story. Develop your comparative thinking—track both similarities and contrasts.`,
     literaturePerformance: `Literature and Performance Combine literary and performative insights for dual analysis. Explain how your IO piece is staged and interpreted in performance. Treat the creative transformation task as your artistic signature. Compare and contrast texts for theme and performability. Document every decision in your process journal. Plan your HL performance to showcase thematic depth and skill. Justify your stage directions like a director would. Remember, performance is interpretation—be intentional. Study major theatre movements to support your choices. Respect time and word limits to avoid grade penalties.`,
@@ -364,10 +364,10 @@ const EnglishALiteratureScreen = ({ navigation, route }) => {
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', marginBottom: 8, color: '#7EC3FF' }}>Language A: Literature - Paper 1</Text>
                           <RubricTable
                             data={[
-                              { criterion: 'A', summary: 'Understanding & Interpretation', max: 5 },
-                              { criterion: 'B', summary: 'Analysis & Evaluation', max: 5 },
-                              { criterion: 'C', summary: 'Focus & Organization', max: 5 },
-                              { criterion: 'D', summary: 'Language', max: 5 },
+                              { criterion: 'A', summary: 'How well you understand and interpret the text', max: 5 },
+                              { criterion: 'B', summary: 'How effectively you analyze literary techniques and evaluate their impact', max: 5 },
+                              { criterion: 'C', summary: 'How well-structured and focused your response is', max: 5 },
+                              { criterion: 'D', summary: 'Quality of your writing style and expression', max: 5 },
                             ]}
                             highlightedText={highlightedText}
                           />
@@ -375,9 +375,9 @@ const EnglishALiteratureScreen = ({ navigation, route }) => {
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', marginTop: 24, marginBottom: 8, color: '#7EC3FF' }}>Language A: Literature - Paper 2</Text>
                           <RubricTable
                             data={[
-                              { criterion: 'A', summary: 'Knowledge & Understanding', max: 10 },
-                              { criterion: 'B', summary: 'Analysis & Evaluation', max: 10 },
-                              { criterion: 'C', summary: 'Focus & Organization', max: 10 },
+                              { criterion: 'A', summary: 'Depth of knowledge about your chosen works and literary concepts', max: 10 },
+                              { criterion: 'B', summary: 'Quality of comparative analysis and critical evaluation', max: 10 },
+                              { criterion: 'C', summary: 'Clear thesis, logical structure, and sustained argument', max: 10 },
                             ]}
                             highlightedText={highlightedText}
                           />
@@ -385,10 +385,10 @@ const EnglishALiteratureScreen = ({ navigation, route }) => {
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', marginTop: 24, marginBottom: 8, color: '#7EC3FF' }}>Language A: Literature - Individual Oral</Text>
                           <RubricTable
                             data={[
-                              { criterion: 'A', summary: 'Knowledge, Understanding & Interpretation', max: 10 },
-                              { criterion: 'B', summary: 'Analysis & Evaluation', max: 10 },
-                              { criterion: 'C', summary: 'Focus & Organization', max: 10 },
-                              { criterion: 'D', summary: 'Language', max: 10 },
+                              { criterion: 'A', summary: 'Understanding of texts and how they connect to your global issue', max: 10 },
+                              { criterion: 'B', summary: 'Analysis of literary choices and their effects on meaning', max: 10 },
+                              { criterion: 'C', summary: 'Clear structure and coherent presentation of ideas', max: 10 },
+                              { criterion: 'D', summary: 'Fluent delivery and appropriate use of literary terminology', max: 10 },
                             ]}
                             highlightedText={highlightedText}
                           />
@@ -396,11 +396,11 @@ const EnglishALiteratureScreen = ({ navigation, route }) => {
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', marginTop: 24, marginBottom: 8, color: '#7EC3FF' }}>Literature and Performance - Written Assignment</Text>
                           <RubricTable
                             data={[
-                              { criterion: 'A', summary: 'Knowledge & Understanding', max: 6 },
-                              { criterion: 'B', summary: 'Analysis & Evaluation', max: 6 },
-                              { criterion: 'C', summary: 'Focus & Organization', max: 6 },
-                              { criterion: 'D', summary: 'Language', max: 4 },
-                              { criterion: 'E', summary: 'Performance Analysis & Communication', max: 4 },
+                              { criterion: 'A', summary: 'Understanding of the text and performance concepts', max: 6 },
+                              { criterion: 'B', summary: 'Analysis of how performance choices affect meaning', max: 6 },
+                              { criterion: 'C', summary: 'Well-organized response with clear connections', max: 6 },
+                              { criterion: 'D', summary: 'Clear and effective written communication', max: 4 },
+                              { criterion: 'E', summary: 'Insightful analysis of performance elements and staging', max: 4 },
                             ]}
                             highlightedText={highlightedText}
                           />
@@ -408,13 +408,23 @@ const EnglishALiteratureScreen = ({ navigation, route }) => {
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', marginTop: 24, marginBottom: 8, color: '#7EC3FF' }}>Literature and Performance - Internal Assessment</Text>
                           <RubricTable
                             data={[
-                              { criterion: 'A', summary: 'Knowledge & Understanding', max: 8 },
-                              { criterion: 'B', summary: 'Analysis & Evaluation', max: 8 },
-                              { criterion: 'C', summary: 'Performance Skills', max: 8 },
-                              { criterion: 'D', summary: 'Oral Communication', max: 8 },
+                              { criterion: 'A', summary: 'Knowledge of text and understanding of performance context', max: 8 },
+                              { criterion: 'B', summary: 'Critical analysis of literary and performance elements', max: 8 },
+                              { criterion: 'C', summary: 'Quality of your actual performance and interpretation', max: 8 },
+                              { criterion: 'D', summary: 'Effectiveness of your spoken presentation and discussion', max: 8 },
                             ]}
                             highlightedText={highlightedText}
                           />
+                          <Text style={{ 
+                            fontSize: 11, 
+                            color: 'rgba(255, 255, 255, 0.5)', 
+                            fontFamily: 'ScopeOne-Regular', 
+                            marginTop: 16, 
+                            textAlign: 'center',
+                            fontStyle: 'italic'
+                          }}>
+                            *This is interpreted material for educational guidance and not official assessment criteria.
+                          </Text>
                         </View>
                       )}
                     </View>

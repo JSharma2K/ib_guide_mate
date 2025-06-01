@@ -14,6 +14,33 @@ type Props = {
   route: any;
 };
 
+const highlightText = (text: string, highlightedText: string) => {
+  if (!highlightedText) return text;
+  const parts = text.split(new RegExp(`(${highlightedText})`, 'gi'));
+  return parts.map((part, i) =>
+    part.toLowerCase() === highlightedText.toLowerCase() ?
+      <Text key={i} style={themeStyles.highlightedText}>{part}</Text> :
+      part
+  );
+};
+
+const RubricTable = ({ data, highlightedText }: { data: { criterion: string; summary: string; max: number }[]; highlightedText: string }) => (
+  <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+    <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+      <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.6, padding: 8 }}>Criterion</Text>
+      <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 2.3, padding: 8 }}>Descriptor Summary</Text>
+      <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 0.8, padding: 8, textAlign: 'center' }}>Max</Text>
+    </View>
+    {data.map((row, idx) => (
+      <View key={idx} style={{ flexDirection: 'row', borderTopWidth: idx === 0 ? 0 : 1, borderColor: '#7EC3FF' }}>
+        <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.criterion, highlightedText)}</Text>
+        <Text style={{ flex: 2, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.summary, highlightedText)}</Text>
+        <Text style={{ flex: 0.5, color: '#B6B6B6', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular' }}>{highlightText(String(row.max), highlightedText)}</Text>
+      </View>
+    ))}
+  </View>
+);
+
 const MathAAScreen: React.FC<Props> = ({ navigation, route }) => {
   const userType = route?.params?.userType || 'student';
   const [searchQuery, setSearchQuery] = useState('');
@@ -36,7 +63,7 @@ const MathAAScreen: React.FC<Props> = ({ navigation, route }) => {
     overview: `Mathematics: Analysis and Approaches is a course that focuses on developing mathematical knowledge, concepts, and principles. It is designed for students who enjoy developing mathematical arguments and problem-solving skills.`,
     topics: `• Number and Algebra\n• Functions\n• Geometry and Trigonometry\n• Statistics and Probability\n• Calculus\n• Complex Numbers\n• Vectors` ,
     essentials: `Topics (SL/HL):\n• Number & Algebra (19/39)\n• Functions (21/32)\n• Geometry (25/51)\n• Statistics (27/33)\n• Calculus (28/55)\nAssessment Outline\n• Paper 1 (90m): 40%\n• Paper 2 (90m): 40%\n• Internal Assessment: 20%\n• Paper 1 (120m): 30%\n• Paper 2 (120m): 30%\n• Paper 3 (75m): 20%\n• Internal Assessment: 20%\nInternal Assessment Rubrics (20 marks)\n• Criterion A: Presentation (4 marks)\n• Criterion B: Mathematical communication (4 marks)\n• Criterion C: Personal engagement (4 marks)\n• Criterion D: Reflection (3 marks)\n• Criterion E: Use of mathematics (5 marks)\nAssessment Objectives in Practice\n• Problem solving\n• Communication\n• Reasoning\n• Technology use\n• Inquiry`,
-    rubrics: `Assessed via mark schemes, not fixed rubrics.\nRewarded Elements:\n• Mathematical reasoning and accuracy\n• Logical structure and progression\n• Use of correct notation\n• Clear communication of solutions\n• For HL Paper 3: deep problem solving and strategy\nInternal Assessment (20 marks)\n• Criterion A: Presentation (4 marks)\n• Criterion B: Mathematical Communication (4 marks)\n• Criterion C: Personal Engagement (4 marks)\n• Criterion D: Reflection (3 marks)\n• Criterion E: Use of Mathematics (5 marks)`,
+    rubrics: `Papers 1 2 3: Assessed via mark schemes not fixed rubrics. Mathematical reasoning and accuracy, Logical structure and progression, Use of correct notation, Clear communication of solutions, For HL Paper 3 deep problem solving and strategy. Internal Assessment: How well your exploration is structured and presented clearly, Effective use of mathematical language notation and terminology, Evidence of your personal interest and independent thinking, Quality of your reflection on methods and results, Sophistication and correctness of mathematical processes used.`,
     mathematicsAA: `Mathematics AA Build fluency in algebra and calculus—these are your core tools. Practice formal proof techniques, especially for HL. Link mathematical topics together conceptually. Always explain your reasoning, not just provide answers. Use your GDC wisely and efficiently—practice the interface. Get comfortable with the formula booklet early. Do HL past paper questions frequently to prep for Paper 3. Use math thinking strategies like conjecture and generalization. Pick a personally meaningful topic for your IA and analyze deeply. Create an error log and review what went wrong regularly.`,
   };
 
@@ -121,16 +148,6 @@ const MathAAScreen: React.FC<Props> = ({ navigation, route }) => {
     const nextIndex = (currentMatchIndex + 1) % matchingSections.length;
     setCurrentMatchIndex(nextIndex);
     setExpandedSection(matchingSections[nextIndex]);
-  };
-
-  const highlightText = (text: string, highlightedText: string) => {
-    if (!highlightedText) return text;
-    const parts = text.split(new RegExp(`(${highlightedText})`, 'gi'));
-    return parts.map((part, i) =>
-      part.toLowerCase() === highlightedText.toLowerCase() ?
-        <Text key={i} style={styles.highlightedText}>{part}</Text> :
-        part
-    );
   };
 
   const renderAnimatedContent = (section: string, content: React.ReactNode) => {
@@ -319,20 +336,30 @@ const MathAAScreen: React.FC<Props> = ({ navigation, route }) => {
                         </View>
                       ) : section.key === 'rubrics' ? (
                         <View>
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>{highlightText('--- PAPERS 1, 2, 3 ---', highlightedText)}</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF' }}>{highlightText('- Assessed via mark schemes, not fixed rubrics.\n- Rewarded elements include:', highlightedText)}</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 12 }}>{highlightText('Mathematical reasoning and accuracy\nLogical structure and progression\nUse of correct notation\nClear communication of solutions\nFor HL Paper 3: deep problem solving and strategy', highlightedText)}</Text>
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 18 }}>{highlightText('MATHEMATICS AA & AI: INTERNAL ASSESSMENT (20 marks)', highlightedText)}</Text>
-                          <Text style={{ ...themeStyles.levelTitle, color: '#7EC3FF', fontFamily: 'ScopeOne-Regular', marginTop: 8 }}>{highlightText('Criterion A: Presentation 4 marks', highlightedText)}</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 12 }}>{highlightText('- The exploration is well structured and coherent.', highlightedText)}</Text>
-                          <Text style={{ ...themeStyles.levelTitle, color: '#7EC3FF', fontFamily: 'ScopeOne-Regular', marginTop: 8 }}>{highlightText('Criterion B: Mathematical Communication 4 marks', highlightedText)}</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 12 }}>{highlightText('- Appropriate use of mathematical language and notation.', highlightedText)}</Text>
-                          <Text style={{ ...themeStyles.levelTitle, color: '#7EC3FF', fontFamily: 'ScopeOne-Regular', marginTop: 8 }}>{highlightText('Criterion C: Personal Engagement 4 marks', highlightedText)}</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 12 }}>{highlightText('- Evidence of independent thinking, creativity, and ownership.', highlightedText)}</Text>
-                          <Text style={{ ...themeStyles.levelTitle, color: '#7EC3FF', fontFamily: 'ScopeOne-Regular', marginTop: 8 }}>{highlightText('Criterion D: Reflection 3 marks', highlightedText)}</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 12 }}>{highlightText('- Critical reflection on results, methods, and learning.', highlightedText)}</Text>
-                          <Text style={{ ...themeStyles.levelTitle, color: '#7EC3FF', fontFamily: 'ScopeOne-Regular', marginTop: 8 }}>{highlightText('Criterion E: Use of Mathematics 5 marks', highlightedText)}</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 12 }}>{highlightText('- Correct and relevant mathematical processes used with sophistication.', highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>Papers 1, 2, 3</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', lineHeight: 22 }}>{highlightText('Assessed via mark schemes, not fixed rubrics.\n\nRewarded elements include:\n• Mathematical reasoning and accuracy\n• Logical structure and progression\n• Use of correct notation\n• Clear communication of solutions\n• For HL Paper 3: deep problem solving and strategy', highlightedText)}</Text>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 18 }}>Internal Assessment</Text>
+                          <RubricTable
+                            data={[
+                              { criterion: 'A', summary: 'How well your exploration is structured and presented clearly', max: 4 },
+                              { criterion: 'B', summary: 'Effective use of mathematical language, notation, and terminology', max: 4 },
+                              { criterion: 'C', summary: 'Evidence of your personal interest and independent thinking', max: 4 },
+                              { criterion: 'D', summary: 'Quality of your reflection on methods and results', max: 3 },
+                              { criterion: 'E', summary: 'Sophistication and correctness of mathematical processes used', max: 5 },
+                            ]}
+                            highlightedText={highlightedText}
+                          />
+                          <Text style={{ 
+                            fontSize: 11, 
+                            color: 'rgba(255, 255, 255, 0.5)', 
+                            fontFamily: 'ScopeOne-Regular', 
+                            marginTop: 16, 
+                            textAlign: 'center',
+                            fontStyle: 'italic'
+                          }}>
+                            *This is interpreted material for educational guidance and not official assessment criteria.
+                          </Text>
                         </View>
                       ) : (
                         <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF' }}>{highlightText(sectionContentStrings[section.key as keyof typeof sectionContentStrings], highlightedText)}</Text>

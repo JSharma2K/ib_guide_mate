@@ -16,6 +16,33 @@ type Props = {
   route: any;
 };
 
+const highlightText = (text: string, highlightedText: string) => {
+  if (!highlightedText) return text;
+  const parts = text.split(new RegExp(`(${highlightedText})`, 'gi'));
+  return parts.map((part, i) =>
+    part.toLowerCase() === highlightedText.toLowerCase() ?
+      <Text key={i} style={themeStyles.highlightedText}>{part}</Text> :
+      part
+  );
+};
+
+const RubricTable = ({ data, highlightedText }: { data: { criterion: string; summary: string; max: number }[]; highlightedText: string }) => (
+  <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+    <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+      <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.6, padding: 8 }}>Criterion</Text>
+      <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 2.3, padding: 8 }}>Descriptor Summary</Text>
+      <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 0.8, padding: 8, textAlign: 'center' }}>Max</Text>
+    </View>
+    {data.map((row, idx) => (
+      <View key={idx} style={{ flexDirection: 'row', borderTopWidth: idx === 0 ? 0 : 1, borderColor: '#7EC3FF' }}>
+        <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.criterion, highlightedText)}</Text>
+        <Text style={{ flex: 2, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.summary, highlightedText)}</Text>
+        <Text style={{ flex: 0.5, color: '#B6B6B6', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular' }}>{highlightText(String(row.max), highlightedText)}</Text>
+      </View>
+    ))}
+  </View>
+);
+
 const MathAIScreen: React.FC<Props> = ({ navigation, route }) => {
   const userType = route?.params?.userType || 'student';
   const [searchQuery, setSearchQuery] = useState('');
@@ -38,7 +65,7 @@ const MathAIScreen: React.FC<Props> = ({ navigation, route }) => {
     overview: `Mathematics: Applications and Interpretation is a course that focuses on mathematical modeling and the use of technology to solve real-world problems.`,
     topics: `• Number and Algebra\n• Functions\n• Geometry and Trigonometry\n• Statistics and Probability\n• Calculus\n• Discrete Mathematics\n• Further Statistics\n• Further Calculus` ,
     essentials: `Topics (SL/HL):\n• Number & Algebra (16/29)\n• Functions (31/42)\n• Geometry (18/46)\n• Statistics (36/52)\n• Calculus (19/41)\nAssessment Outline\n• Paper 1 (90m): 40%\n• Paper 2 (90m): 40%\n• IA: 20%\n• Paper 1 (120m): 30%\n• Paper 2 (120m): 30%\n• Paper 3 (75m): 20%\n• IA: 20%\nIA Rubrics (same as AA)\n• A: Presentation (4)\n• B: Mathematical communication (4)\n• C: Personal engagement (4)\n• D: Reflection (3)\n• E: Use of mathematics (5)\nAssessment Objectives in Practice\n• Emphasis on technology, modeling, and real-world applications`,
-    rubrics: `PAPERS 1, 2, 3\nAlso marked via detailed schemes.\nRewarded elements include:\n• Real-world application\n• Correct use of technology (GDC)\n• Modeling and interpretation\n• Accuracy and reasoning\n• For HL Paper 3: emphasis on extended contextual problems\nMATHEMATICS AA & AI: INTERNAL ASSESSMENT (20 marks)\nCriterion A: Presentation (4 marks)\nThe exploration is well structured and coherent.\nCriterion B: Mathematical Communication (4 marks)\nAppropriate use of mathematical language and notation.\nCriterion C: Personal Engagement (4 marks)\nEvidence of independent thinking, creativity, and ownership.\nCriterion D: Reflection (3 marks)\nCritical reflection on results, methods, and learning.\nCriterion E: Use of Mathematics (5 marks)\nCorrect and relevant mathematical processes used with sophistication.`,
+    rubrics: `Papers 1 2 3: Assessed via mark schemes not fixed rubrics. Real-world application and modeling, Correct use of technology GDC, Interpretation of data and results, Accuracy and mathematical reasoning, For HL Paper 3 emphasis on extended contextual problems. Internal Assessment: How well your exploration is structured and presented clearly, Effective use of mathematical language notation and terminology, Evidence of your personal interest and independent thinking, Quality of your reflection on methods and results, Sophistication and correctness of mathematical processes used.`,
     mathematicsAI: `Mathematics AI Master your GDC and practice statistical functions thoroughly. Focus on real-world interpretation and contextual reasoning. Choose an IA topic with real, observable data. Support your reasoning visually with graphs and diagrams. Use your tech tools for clarity—not shortcuts. Practice interpreting data trends, outliers, and limitations. Use the formula booklet during every mock/practice exam. Focus on understanding over memorizing procedures. Define and explain your logic clearly in all written responses. Think like a data analyst—what does your analysis reveal?`,
   };
   const sectionKeys: Array<'overview' | 'topics' | 'essentials' | 'rubrics' | 'mathematicsAI'> = ['overview', 'topics', 'essentials', 'rubrics', 'mathematicsAI'];
@@ -175,16 +202,6 @@ const MathAIScreen: React.FC<Props> = ({ navigation, route }) => {
       headerShown: false,
     });
   }, [navigation]);
-
-  const highlightText = (text: string, highlightedText: string) => {
-    if (!highlightedText) return text;
-    const parts = text.split(new RegExp(`(${highlightedText})`, 'gi'));
-    return parts.map((part, i) =>
-      part.toLowerCase() === highlightedText.toLowerCase() ?
-        <Text key={i} style={themeStyles.highlightedText}>{part}</Text> :
-        part
-    );
-  };
 
   const renderAnimatedContent = (section: string, content: React.ReactNode) => {
     const animationValue = {
@@ -348,29 +365,30 @@ const MathAIScreen: React.FC<Props> = ({ navigation, route }) => {
                       )}
                       {section.key === 'rubrics' && (
                         <View>
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>PAPERS 1, 2, 3</Text>
-                          <View style={themeStyles.criterionContainer}>
-                            <Text style={{ ...themeStyles.criterionDescription, fontFamily: 'ScopeOne-Regular' }}>{highlightText("Also marked via detailed schemes.", highlightedText)}</Text>
-                            <Text style={{ ...themeStyles.criterionDescription, fontFamily: 'ScopeOne-Regular' }}>{highlightText("Rewarded elements include:", highlightedText)}</Text>
-                            <Text style={{ ...themeStyles.criterionDescription, fontFamily: 'ScopeOne-Regular' }}>{highlightText("• Real-world application", highlightedText)}</Text>
-                            <Text style={{ ...themeStyles.criterionDescription, fontFamily: 'ScopeOne-Regular' }}>{highlightText("• Correct use of technology (GDC)", highlightedText)}</Text>
-                            <Text style={{ ...themeStyles.criterionDescription, fontFamily: 'ScopeOne-Regular' }}>{highlightText("• Modeling and interpretation", highlightedText)}</Text>
-                            <Text style={{ ...themeStyles.criterionDescription, fontFamily: 'ScopeOne-Regular' }}>{highlightText("• Accuracy and reasoning", highlightedText)}</Text>
-                            <Text style={{ ...themeStyles.criterionDescription, fontFamily: 'ScopeOne-Regular' }}>{highlightText("• For HL Paper 3: emphasis on extended contextual problems", highlightedText)}</Text>
-                          </View>
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>MATHEMATICS AA & AI: INTERNAL ASSESSMENT (20 marks)</Text>
-                          <View style={themeStyles.criterionContainer}>
-                            <Text style={{ ...themeStyles.criterionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>{highlightText("Criterion A: Presentation (4 marks)", highlightedText)}</Text>
-                            <Text style={{ ...themeStyles.criterionDescription, fontFamily: 'ScopeOne-Regular' }}>{highlightText("The exploration is well structured and coherent.", highlightedText)}</Text>
-                            <Text style={{ ...themeStyles.criterionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>{highlightText("Criterion B: Mathematical Communication (4 marks)", highlightedText)}</Text>
-                            <Text style={{ ...themeStyles.criterionDescription, fontFamily: 'ScopeOne-Regular' }}>{highlightText("Appropriate use of mathematical language and notation.", highlightedText)}</Text>
-                            <Text style={{ ...themeStyles.criterionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>{highlightText("Criterion C: Personal Engagement (4 marks)", highlightedText)}</Text>
-                            <Text style={{ ...themeStyles.criterionDescription, fontFamily: 'ScopeOne-Regular' }}>{highlightText("Evidence of independent thinking, creativity, and ownership.", highlightedText)}</Text>
-                            <Text style={{ ...themeStyles.criterionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>{highlightText("Criterion D: Reflection (3 marks)", highlightedText)}</Text>
-                            <Text style={{ ...themeStyles.criterionDescription, fontFamily: 'ScopeOne-Regular' }}>{highlightText("Critical reflection on results, methods, and learning.", highlightedText)}</Text>
-                            <Text style={{ ...themeStyles.criterionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>{highlightText("Criterion E: Use of Mathematics (5 marks)", highlightedText)}</Text>
-                            <Text style={{ ...themeStyles.criterionDescription, fontFamily: 'ScopeOne-Regular' }}>{highlightText("Correct and relevant mathematical processes used with sophistication.", highlightedText)}</Text>
-                          </View>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>Papers 1, 2, 3</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', lineHeight: 22 }}>{highlightText('Assessed via mark schemes, not fixed rubrics.\n\nRewarded elements include:\n• Real-world application and modeling\n• Correct use of technology (GDC)\n• Interpretation of data and results\n• Accuracy and mathematical reasoning\n• For HL Paper 3: emphasis on extended contextual problems', highlightedText)}</Text>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 18 }}>Internal Assessment</Text>
+                          <RubricTable
+                            data={[
+                              { criterion: 'A', summary: 'How well your exploration is structured and presented clearly', max: 4 },
+                              { criterion: 'B', summary: 'Effective use of mathematical language, notation, and terminology', max: 4 },
+                              { criterion: 'C', summary: 'Evidence of your personal interest and independent thinking', max: 4 },
+                              { criterion: 'D', summary: 'Quality of your reflection on methods and results', max: 3 },
+                              { criterion: 'E', summary: 'Sophistication and correctness of mathematical processes used', max: 5 },
+                            ]}
+                            highlightedText={highlightedText}
+                          />
+                          <Text style={{ 
+                            fontSize: 11, 
+                            color: 'rgba(255, 255, 255, 0.5)', 
+                            fontFamily: 'ScopeOne-Regular', 
+                            marginTop: 16, 
+                            textAlign: 'center',
+                            fontStyle: 'italic'
+                          }}>
+                            *This is interpreted material for educational guidance and not official assessment criteria.
+                          </Text>
                         </View>
                       )}
                     </View>
