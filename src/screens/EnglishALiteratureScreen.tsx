@@ -57,7 +57,7 @@ const EnglishALiteratureScreen = ({ navigation, route }) => {
   // Section keys and content for search
   const sectionContentStrings: Record<'overview' | 'essentials' | 'literature' | 'detailedRubrics' | 'englishLanguageLiterature' | 'englishLiterature' | 'literaturePerformance', string> = {
     overview: `English A: Literature is a course that focuses on the study of literary texts. It is designed for students who are interested in developing their understanding of literature and literary criticism. The course emphasizes the development of critical thinking and analytical skills through the study of a wide range of literary works from different periods, styles, and genres.`,
-    essentials: `Course Overview\n• Standard Level (SL): 4 works\n• Higher Level (HL): 6 works\nAreas of Exploration\n• Readers-Writers-Texts\n• Time and Space\n• Intertextuality\nAssessment Outline\nSL:\n• Paper 1 (1h15m): 35%\n• Paper 2 (1h45m): 35%\n• Individual Oral (15 min): 30%\nHL:\n• Paper 1 (2h15m): 35%\n• Paper 2 (1h45m): 25%\n• Individual Oral: 20%\n• HL Essay: 20%\nRubrics\n• Paper 1 & 2: Criteria A-D (5-10 marks each)\n• IO: Criteria A-D (10 marks each)\n• HL Essay: Criteria A-D (5 marks each)\nAssessment Objectives in Practice\n• Problem solving\n• Communication\n• Reasoning\n• Technology use\n• Inquiry`,
+    essentials: `1. Syllabus Outline & Teaching Hours\nSL: 9 works required\nHL: 13 works required\nAreas of Exploration (SL/HL Hours):\n- Readers, Writers, and Texts: 50 / 80 hours\n- Time and Space: 50 / 80 hours\n- Intertextuality: Connecting Texts: 50 / 80 hours\nTotal: 150 SL / 240 HL hours\n\n2. Assessment Objectives in Practice\nObjective 1 - Know, understand, interpret:\n- Applied in all assessments: Paper 1, Paper 2, HL Essay, Individual Oral\nObjective 2 - Analyse and evaluate:\n- Focus on how language creates meaning; present in all components\nObjective 3 - Communicate:\n- Formal, organized, fluent delivery in all written and oral assessments\n\n3. Assessment Outline & Weightage\nSL:\n- Paper 1 (Guided Literary Analysis, 1 text): 35%\n- Paper 2 (Comparative Essay): 35%\n- Individual Oral: 30%\nHL:\n- Paper 1 (Guided Literary Analysis, 2 texts): 35%\n- Paper 2 (Comparative Essay): 25%\n- Individual Oral: 20%\n- HL Essay (1200-1500 words): 20%`,
     literature: `Works in Translation\n• Study of works originally written in languages other than English\n• Focus on cultural and historical context\n• Development of intercultural understanding\nWorks in English\n• Study of works written in English\n• Focus on literary techniques and devices\n• Development of critical analysis skills`,
     detailedRubrics: `Language A Literature Paper 1: Criterion A Understanding Interpretation 5 marks, Criterion B Analysis Evaluation 5 marks, Criterion C Focus Organization 5 marks, Criterion D Language 5 marks. Language A Literature Paper 2: Criterion A Knowledge Understanding 10 marks, Criterion B Analysis Evaluation 10 marks, Criterion C Focus Organization 10 marks. Language A Literature Individual Oral: Criterion A Knowledge Understanding Interpretation 10 marks, Criterion B Analysis Evaluation 10 marks, Criterion C Focus Organization 10 marks, Criterion D Language 10 marks. Literature and Performance Written Assignment: Criterion A Knowledge Understanding 6 marks, Criterion B Analysis Evaluation 6 marks, Criterion C Focus Organization 6 marks, Criterion D Language 4 marks, Criterion E Performance Analysis Communication 4 marks. Literature and Performance Internal Assessment: Criterion A Knowledge Understanding 8 marks, Criterion B Analysis Evaluation 8 marks, Criterion C Performance Skills 8 marks, Criterion D Oral Communication 8 marks. SSST Language A Literature Paper 1: Criterion A Understanding Interpretation 5 marks, Criterion B Analysis Evaluation 5 marks, Criterion C Focus Organization 5 marks, Criterion D Language 5 marks. SSST Language A Literature Paper 2: Criterion A Knowledge Understanding 10 marks, Criterion B Analysis Evaluation 10 marks, Criterion C Focus Organization 10 marks. SSST Language A Literature Individual Oral: Criterion A Knowledge Understanding Interpretation 10 marks, Criterion B Analysis Evaluation 10 marks, Criterion C Focus Organization 10 marks, Criterion D Language 10 marks.`,
     englishLanguageLiterature: `English language and literature Master the key concepts like identity, communication, and transformation. Balance your skills across both literary and non-literary text types. Use the Learner Portfolio to prepare for exams and reflect on texts. For Paper 1, analyze textual features and authorial choices perceptively. Pick a nuanced global issue for the Individual Oral that connects both texts. Practice analyzing unseen texts under timed conditions regularly. Approach the HL Essay like a research paper with literary theory support. Always link analysis to social, cultural, and historical contexts. Understand how to decode visual texts for Paper 1. Use quotes precisely and with analytical follow-through.`,
@@ -337,15 +337,17 @@ const EnglishALiteratureScreen = ({ navigation, route }) => {
                       )}
                       {section.key === 'essentials' && (
                         <View>
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>Course Overview</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular' }}>{highlightText("• Standard Level (SL): 4 works\n• Higher Level (HL): 6 works\n\nAreas of Exploration:\n• Readers-Writers-Texts\n• Time and Space\n• Intertextuality", highlightedText)}</Text>
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>Assessment Outline</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>1. Syllabus Outline & Teaching Hours</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("SL: 9 works required\nHL: 13 works required\n\nAreas of Exploration (SL/HL Hours):\n- Readers, Writers, and Texts: 50 / 80 hours\n- Time and Space: 50 / 80 hours\n- Intertextuality: Connecting Texts: 50 / 80 hours\n\nTotal: 150 SL / 240 HL hours", highlightedText)}</Text>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>2. Assessment Objectives in Practice</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("Objective 1 - Know, understand, interpret:\n- Applied in all assessments: Paper 1, Paper 2, HL Essay, Individual Oral\n\nObjective 2 - Analyse and evaluate:\n- Focus on how language creates meaning; present in all components\n\nObjective 3 - Communicate:\n- Formal, organized, fluent delivery in all written and oral assessments", highlightedText)}</Text>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>3. Assessment Outline & Weightage</Text>
                           <Text style={{ ...themeStyles.levelTitle, color: '#7EC3FF', fontFamily: 'ScopeOne-Regular' }}>Standard Level (SL)</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular' }}>{highlightText("• Paper 1 (1h15m): 35%\n• Paper 2 (1h45m): 35%\n• Individual Oral (15 min): 30%", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("- Paper 1 (Guided Literary Analysis, 1 text): 35%\n- Paper 2 (Comparative Essay): 35%\n- Individual Oral: 30%", highlightedText)}</Text>
                           <Text style={{ ...themeStyles.levelTitle, color: '#7EC3FF', fontFamily: 'ScopeOne-Regular' }}>Higher Level (HL)</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular' }}>{highlightText("• Paper 1 (2h15m): 35%\n• Paper 2 (1h45m): 25%\n• Individual Oral: 20%\n• HL Essay: 20%", highlightedText)}</Text>
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>Rubrics</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular' }}>{highlightText("• Paper 1 & 2: Criteria A-D (5-10 marks each)\n• IO: Criteria A-D (10 marks each)\n• HL Essay: Criteria A-D (5 marks each)", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("- Paper 1 (Guided Literary Analysis, 2 texts): 35%\n- Paper 2 (Comparative Essay): 25%\n- Individual Oral: 20%\n- HL Essay (1200-1500 words): 20%", highlightedText)}</Text>
                         </View>
                       )}
                       {section.key === 'literature' && (
@@ -410,38 +412,6 @@ const EnglishALiteratureScreen = ({ navigation, route }) => {
                               { criterion: 'B', summary: 'Analysis & Evaluation', max: 8 },
                               { criterion: 'C', summary: 'Performance Skills', max: 8 },
                               { criterion: 'D', summary: 'Oral Communication', max: 8 },
-                            ]}
-                            highlightedText={highlightedText}
-                          />
-                          {/* SSST: Language A Literature - Paper 1 Table */}
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', marginTop: 24, marginBottom: 8, color: '#7EC3FF' }}>SSST: Language A Literature - Paper 1</Text>
-                          <RubricTable
-                            data={[
-                              { criterion: 'A', summary: 'Understanding & Interpretation', max: 5 },
-                              { criterion: 'B', summary: 'Analysis & Evaluation', max: 5 },
-                              { criterion: 'C', summary: 'Focus & Organization', max: 5 },
-                              { criterion: 'D', summary: 'Language', max: 5 },
-                            ]}
-                            highlightedText={highlightedText}
-                          />
-                          {/* SSST: Language A Literature - Paper 2 Table */}
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', marginTop: 24, marginBottom: 8, color: '#7EC3FF' }}>SSST: Language A Literature - Paper 2</Text>
-                          <RubricTable
-                            data={[
-                              { criterion: 'A', summary: 'Knowledge & Understanding', max: 10 },
-                              { criterion: 'B', summary: 'Analysis & Evaluation', max: 10 },
-                              { criterion: 'C', summary: 'Focus & Organization', max: 10 },
-                            ]}
-                            highlightedText={highlightedText}
-                          />
-                          {/* SSST: Language A Literature - Individual Oral Table */}
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', marginTop: 24, marginBottom: 8, color: '#7EC3FF' }}>SSST: Language A Literature - Individual Oral</Text>
-                          <RubricTable
-                            data={[
-                              { criterion: 'A', summary: 'Knowledge, Understanding & Interpretation', max: 10 },
-                              { criterion: 'B', summary: 'Analysis & Evaluation', max: 10 },
-                              { criterion: 'C', summary: 'Focus & Organization', max: 10 },
-                              { criterion: 'D', summary: 'Language', max: 10 },
                             ]}
                             highlightedText={highlightedText}
                           />

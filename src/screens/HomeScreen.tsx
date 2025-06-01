@@ -131,7 +131,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, route }) => {
       <View style={styles.gradient}>
         <Animated.View entering={FadeInUp.duration(800)} style={styles.topSection}>
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={[styles.appTitle, { fontSize: 26, color: '#7EC3FF' }]}>IB GuideMate</Text>
+            <Text style={[styles.appTitle, { fontSize: 26, color: '#7EC3FF' }]}>GuideMate</Text>
           </View>
         </Animated.View>
         <View style={styles.subjectsSection}>
@@ -150,6 +150,9 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, route }) => {
             style={styles.footerLogo}
             resizeMode="contain"
           />
+          <Text style={styles.disclaimer}>
+            This app is not affiliated with or endorsed by the International Baccalaureate Organization.
+          </Text>
         </View>
       </View>
     </ImageBackground>
@@ -244,6 +247,15 @@ const styles = StyleSheet.create({
     fontFamily: 'ScopeOne-Regular',
     color: '#FFFFFF',
     marginBottom: 10,
+  },
+  disclaimer: {
+    fontSize: 12,
+    color: '#B6B6B6',
+    textAlign: 'center',
+    lineHeight: 18,
+    fontFamily: 'Inter_400Regular',
+    fontWeight: '400',
+    marginTop: 4,
   },
 });
 

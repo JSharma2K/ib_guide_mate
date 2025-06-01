@@ -28,7 +28,8 @@ const EntryScreen: React.FC<{ navigation: NativeStackNavigationProp<RootStackPar
       <View style={styles.overlay} />
       <View style={styles.header}>
         <Animated.View entering={FadeIn.duration(1200)}>
-          <Text style={[styles.premiumTitle, { color: '#7EC3FF' }]}>IB GuideMate</Text>
+          <Text style={[styles.premiumTitle, { color: '#7EC3FF' }]}>GuideMate</Text>
+          <Text style={[styles.subtitle, { color: '#FFFFFF' }]}>Resources for IB Students and Teachers</Text>
         </Animated.View>
       </View>
       <View style={styles.centerContent}>
@@ -63,6 +64,9 @@ const EntryScreen: React.FC<{ navigation: NativeStackNavigationProp<RootStackPar
           style={styles.miniLogo}
           resizeMode="contain"
         />
+        <Text style={styles.disclaimer}>
+          This app is not affiliated with or endorsed by the International Baccalaureate Organization.
+        </Text>
       </View>
     </ImageBackground>
   );
@@ -94,6 +98,13 @@ const styles = StyleSheet.create({
     fontFamily: 'ScopeOne-Regular',
     color: 'rgba(255, 215, 0, 0.7)',
     letterSpacing: 2.5,
+  },
+  subtitle: {
+    fontSize: 18,
+    fontFamily: 'ScopeOne-Regular',
+    color: 'rgba(255, 255, 255, 0.7)',
+    letterSpacing: 0.5,
+    marginTop: 8,
   },
   centerContent: {
     flex: 1,
@@ -150,6 +161,16 @@ const styles = StyleSheet.create({
     width: 320,
     height: 110,
     opacity: 0.9,
+  },
+  disclaimer: {
+    color: 'rgba(255, 255, 255, 0.7)',
+    fontSize: 12,
+    fontFamily: 'ScopeOne-Regular',
+    letterSpacing: 0.5,
+    marginTop: 12,
+    textAlign: 'center',
+    paddingHorizontal: 20,
+    lineHeight: 16,
   },
 });
 
