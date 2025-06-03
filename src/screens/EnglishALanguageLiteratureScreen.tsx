@@ -47,21 +47,21 @@ const EnglishALanguageLiteratureScreen = ({ navigation, route }: { navigation: a
   const essentialsAnimation = useRef(new Animated.Value(0)).current;
   const literatureAnimation = useRef(new Animated.Value(0)).current;
   const detailedRubricsAnimation = useRef(new Animated.Value(0)).current;
-  const languageResourcesAnimation = useRef(new Animated.Value(0)).current;
+  const englishLanguageLiteratureAnimation = useRef(new Animated.Value(0)).current;
   
   // Animation value for home icon fade
   const homeIconOpacity = useRef(new Animated.Value(1)).current;
 
   // Section keys and content for search - PLACEHOLDER CONTENT TO BE UPDATED
-  const sectionContentStrings: Record<'overview' | 'essentials' | 'literature' | 'detailedRubrics' | 'languageResources', string> = {
+  const sectionContentStrings: Record<'overview' | 'essentials' | 'literature' | 'detailedRubrics' | 'englishLanguageLiterature', string> = {
     overview: `English A: Language and Literature is a course that combines the study of language and literary texts. It is designed for students who are interested in exploring both the mechanics of language and the art of literature.`,
     essentials: `Course Overview: SL 4 works HL 6 works Areas of Exploration Readers-Writers-Texts Time and Space Intertextuality Assessment Outline SL Paper 1 Paper 2 Individual Oral HL Paper 1 Paper 2 Individual Oral HL Essay Rubrics Paper 1 Paper 2 Criteria A-D IO Criteria A-D HL Essay Criteria A-D`,
     literature: `Works Selection Students study selection literary works different time periods cultures genres works chosen represent diverse perspectives global contexts Areas of Exploration Readers Writers Texts meaning constructed interaction reader writer text Time Space context influences meaning interpretation Intertextuality texts connect reference other texts Study Requirements Standard Level 4 works minimum Higher Level 6 works minimum Works must include poetry prose drama different time periods cultures`,
     detailedRubrics: `Assessment Overview English A Language Literature assessments evaluate your ability to analyze both literary and non-literary texts understanding how language functions in different contexts and purposes Paper 1 Guided Literary Analysis unseen literary texts guided questions literary techniques themes textual interpretation Paper 2 Comparative Essay comparative analysis works studied class literary conventions cultural contexts Individual Oral presentation analyzing global issues literary non-literary texts discussion examiner HL Essay Higher Level research essay literary work not studied class critical thinking research skills Language A Language Literature Paper 1 understand interpret text analyze stylistic features literary devices structure organize ideas language use expression Language A Language Literature Paper 2 knowledge understanding interpretation analysis evaluation focus organization Language A Language Literature Individual Oral knowledge understanding interpretation analysis evaluation skills focus organization presentation language use communication Language A Language Literature HL Essay knowledge understanding interpretation analysis evaluation abilities focus organization development language clarity academic style`,
-    languageResources: `PLACEHOLDER - Language resources content to be updated`,
+    englishLanguageLiterature: `English Language Literature Master key concepts identity communication transformation Balance skills literary non-literary text types Use Learner Portfolio prepare exams reflect texts Paper 1 analyze textual features authorial choices perceptively Pick nuanced global issue Individual Oral connects both texts Practice analyzing unseen texts timed conditions regularly Approach HL Essay research paper literary theory support Always link analysis social cultural historical contexts Understand decode visual texts Paper 1 Use quotes precisely analytical follow-through`,
   };
   
-  const sectionKeys: Array<'overview' | 'essentials' | 'literature' | 'detailedRubrics' | 'languageResources'> = ['overview', 'essentials', 'literature', 'detailedRubrics', 'languageResources'];
+  const sectionKeys: Array<'overview' | 'essentials' | 'literature' | 'detailedRubrics' | 'englishLanguageLiterature'> = ['overview', 'essentials', 'literature', 'detailedRubrics', 'englishLanguageLiterature'];
 
   const handleScroll = (event: any) => {
     const scrollY = event.nativeEvent.contentOffset.y;
@@ -90,7 +90,7 @@ const EnglishALanguageLiteratureScreen = ({ navigation, route }: { navigation: a
       'essentials': essentialsAnimation,
       'literature': literatureAnimation,
       'detailedRubrics': detailedRubricsAnimation,
-      'languageResources': languageResourcesAnimation,
+      'englishLanguageLiterature': englishLanguageLiteratureAnimation,
     }[section];
     if (animationValue) {
       Animated.timing(animationValue, {
@@ -119,7 +119,7 @@ const EnglishALanguageLiteratureScreen = ({ navigation, route }: { navigation: a
       'essentials': 'Subject Essentials', 
       'literature': 'Prescribed Literature',
       'detailedRubrics': 'Detailed Rubrics',
-      'languageResources': 'Language Resources'
+      'englishLanguageLiterature': 'English Language Literature',
     };
     
     // Find all sections that match content or title
@@ -160,7 +160,7 @@ const EnglishALanguageLiteratureScreen = ({ navigation, route }: { navigation: a
       'essentials': essentialsAnimation,
       'literature': literatureAnimation,
       'detailedRubrics': detailedRubricsAnimation,
-      'languageResources': languageResourcesAnimation,
+      'englishLanguageLiterature': englishLanguageLiteratureAnimation,
     }[expandedSection];
     if (animationValue) {
       Animated.timing(animationValue, {
@@ -170,7 +170,7 @@ const EnglishALanguageLiteratureScreen = ({ navigation, route }: { navigation: a
       }).start();
     }
     // Collapse all other sections
-    const allSectionKeys = ['overview', 'essentials', 'literature', 'detailedRubrics', 'languageResources'];
+    const allSectionKeys = ['overview', 'essentials', 'literature', 'detailedRubrics', 'englishLanguageLiterature'];
     allSectionKeys.forEach(key => {
       if (key !== expandedSection) {
         const anim = {
@@ -178,7 +178,7 @@ const EnglishALanguageLiteratureScreen = ({ navigation, route }: { navigation: a
           'essentials': essentialsAnimation,
           'literature': literatureAnimation,
           'detailedRubrics': detailedRubricsAnimation,
-          'languageResources': languageResourcesAnimation,
+          'englishLanguageLiterature': englishLanguageLiteratureAnimation,
         }[key];
         if (anim) {
           Animated.timing(anim, {
@@ -203,7 +203,7 @@ const EnglishALanguageLiteratureScreen = ({ navigation, route }: { navigation: a
       'essentials': essentialsAnimation,
       'literature': literatureAnimation,
       'detailedRubrics': detailedRubricsAnimation,
-      'languageResources': languageResourcesAnimation,
+      'englishLanguageLiterature': englishLanguageLiteratureAnimation,
     }[section];
     if (!animationValue) return null;
     return (
@@ -337,7 +337,7 @@ const EnglishALanguageLiteratureScreen = ({ navigation, route }: { navigation: a
                           <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("Paper 1 & 2: Criteria A-D (5-10 marks each)\nIO: Criteria A-D (10 marks each)\nHL Essay: Criteria A-D (5 marks each)", highlightedText)}</Text>
                         </View>
                       )}
-                      {(section.key === 'literature' || section.key === 'languageResources') && (
+                      {section.key === 'literature' && (
                         <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular' }}>{highlightText(sectionContentStrings[section.key as keyof typeof sectionContentStrings], highlightedText)}</Text>
                       )}
                       {section.key === 'literature' && (
@@ -457,21 +457,36 @@ const EnglishALanguageLiteratureScreen = ({ navigation, route }: { navigation: a
               <View style={{ height: 2, backgroundColor: '#7EC3FF', marginBottom: 8 }} />
             </View>
             
-            {/* Language Resources dropdown */}
+            {/* English Language and Literature dropdown */}
             <View>
               <List.Item
-                title="Language Resources"
+                title="English Language and Literature"
                 titleStyle={{ color: '#fff', fontFamily: 'ScopeOne-Regular', fontSize: 18 }}
-                onPress={() => toggleSection('languageResources')}
-                right={props => <List.Icon {...props} icon="chevron-right" color="#FFFFFF" style={{ transform: [{ rotate: expandedSection === 'languageResources' ? '90deg' : '0deg' }] }} />}
+                onPress={() => toggleSection('englishLanguageLiterature')}
+                right={props => <List.Icon {...props} icon="chevron-right" color="#FFFFFF" style={{ transform: [{ rotate: expandedSection === 'englishLanguageLiterature' ? '90deg' : '0deg' }] }} />}
                 style={{ paddingVertical: 8, paddingLeft: 20, backgroundColor: 'transparent' }}
               />
-              {expandedSection === 'languageResources' && (
+              {expandedSection === 'englishLanguageLiterature' && (
                 <View style={{ paddingHorizontal: 20, paddingBottom: 16 }}>
-                  {renderAnimatedContent('languageResources', (
+                  {renderAnimatedContent('englishLanguageLiterature', (
                     <View style={{ backgroundColor: 'transparent' }}>
-                      {/* PLACEHOLDER CONTENT - TO BE UPDATED */}
-                      <Text style={[themeStyles.content, { fontFamily: 'ScopeOne-Regular', color: '#FFFFFF' }]}>{highlightText(sectionContentStrings.languageResources, highlightedText)}</Text>
+                      {[
+                        "Master the key concepts like identity, communication, and transformation.",
+                        "Balance your skills across both literary and non-literary text types.",
+                        "Use the Learner Portfolio to prepare for exams and reflect on texts.",
+                        "For Paper 1, analyze textual features and authorial choices perceptively.",
+                        "Pick a nuanced global issue for the Individual Oral that connects both texts.",
+                        "Practice analyzing unseen texts under timed conditions regularly.",
+                        "Approach the HL Essay like a research paper with literary theory support.",
+                        "Always link analysis to social, cultural, and historical contexts.",
+                        "Understand how to decode visual texts for Paper 1.",
+                        "Use quotes precisely and with analytical follow-through."
+                      ].map((tip, idx) => (
+                        <View key={idx} style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: 8 }}>
+                          <Text style={{ color: '#7EC3FF', fontSize: 16, marginRight: 8, lineHeight: 24, fontFamily: 'ScopeOne-Regular' }}>{idx + 1}.</Text>
+                          <Text style={[themeStyles.content, { flex: 1, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF' }]}>{highlightText(tip, highlightedText)}</Text>
+                        </View>
+                      ))}
                     </View>
                   ))}
                 </View>

@@ -48,21 +48,19 @@ const EnglishALiteratureScreen = ({ navigation, route }: { navigation: any; rout
   const literatureAnimation = useRef(new Animated.Value(0)).current;
   const detailedRubricsAnimation = useRef(new Animated.Value(0)).current;
   const englishLiteratureAnimation = useRef(new Animated.Value(0)).current;
-  const literaturePerformanceAnimation = useRef(new Animated.Value(0)).current;
   
   // Animation value for home icon fade
   const homeIconOpacity = useRef(new Animated.Value(1)).current;
 
   // Section keys and content for search
-  const sectionContentStrings: Record<'overview' | 'essentials' | 'literature' | 'detailedRubrics' | 'englishLiterature' | 'literaturePerformance', string> = {
+  const sectionContentStrings: Record<'overview' | 'essentials' | 'literature' | 'detailedRubrics' | 'englishLiterature', string> = {
     overview: `English A: Literature is a course that focuses on the study of literary texts. It is designed for students who are interested in developing their understanding of literature and literary criticism. The course emphasizes the development of critical thinking and analytical skills through the study of a wide range of literary works from different periods, styles, and genres.`,
     essentials: `1. Syllabus Outline & Teaching Hours\nSL: 9 works required\nHL: 13 works required\nAreas of Exploration (SL/HL Hours):\n- Readers, Writers, and Texts: 50 / 80 hours\n- Time and Space: 50 / 80 hours\n- Intertextuality: Connecting Texts: 50 / 80 hours\nTotal: 150 SL / 240 HL hours\n\n2. Assessment Objectives in Practice\nObjective 1 - Know, understand, interpret:\n- Applied in all assessments: Paper 1, Paper 2, HL Essay, Individual Oral\nObjective 2 - Analyse and evaluate:\n- Focus on how language creates meaning; present in all components\nObjective 3 - Communicate:\n- Formal, organized, fluent delivery in all written and oral assessments\n\n3. Assessment Outline & Weightage\nSL:\n- Paper 1 (Guided Literary Analysis, 1 text): 35%\n- Paper 2 (Comparative Essay): 35%\n- Individual Oral: 30%\nHL:\n- Paper 1 (Guided Literary Analysis, 2 texts): 35%\n- Paper 2 (Comparative Essay): 25%\n- Individual Oral: 20%\n- HL Essay (1200-1500 words): 20%`,
     literature: `Works in Translation\n• Study of works originally written in languages other than English\n• Focus on cultural and historical context\n• Development of intercultural understanding\nWorks in English\n• Study of works written in English\n• Focus on literary techniques and devices\n• Development of critical analysis skills`,
     detailedRubrics: `Language A Literature Paper 1: How well you understand and interpret the text, How effectively you analyze literary techniques and evaluate their impact, How well-structured and focused your response is, Quality of your writing style and expression. Language A Literature Paper 2: Depth of knowledge about your chosen works and literary concepts, Quality of comparative analysis and critical evaluation, Clear thesis logical structure and sustained argument. Language A Literature Individual Oral: Understanding of texts and how they connect to your global issue, Analysis of literary choices and their effects on meaning, Clear structure and coherent presentation of ideas, Fluent delivery and appropriate use of literary terminology. Literature and Performance Written Assignment: Understanding of the text and performance concepts, Analysis of how performance choices affect meaning, Well-organized response with clear connections, Clear and effective written communication, Insightful analysis of performance elements and staging. Literature and Performance Internal Assessment: Knowledge of text and understanding of performance context, Critical analysis of literary and performance elements, Quality of your actual performance and interpretation, Effectiveness of your spoken presentation and discussion.`,
     englishLiterature: `English Literature Anchor analysis in the 7 key concepts: identity, culture, etc. Understand how translation affects meaning in works in translation. Contextualize your interpretations with cultural and historical insights. Practice Paper 2 comparative essays with real past prompts. Apply literary theory (e.g., Feminist, Marxist) effectively in the HL Essay. Quote briefly and analyze deeply—avoid overuse of textual evidence. Choose your global issue for the IO wisely and justify its relevance. Use the Learner Portfolio to explore and connect ideas between works. Focus on authorial choices, not just the story. Develop your comparative thinking—track both similarities and contrasts.`,
-    literaturePerformance: `Literature and Performance Combine literary and performative insights for dual analysis. Explain how your IO piece is staged and interpreted in performance. Treat the creative transformation task as your artistic signature. Compare and contrast texts for theme and performability. Document every decision in your process journal. Plan your HL performance to showcase thematic depth and skill. Justify your stage directions like a director would. Remember, performance is interpretation—be intentional. Study major theatre movements to support your choices. Respect time and word limits to avoid grade penalties.`,
   };
-  const sectionKeys: Array<'overview' | 'essentials' | 'literature' | 'detailedRubrics' | 'englishLiterature' | 'literaturePerformance'> = ['overview', 'essentials', 'literature', 'detailedRubrics', 'englishLiterature', 'literaturePerformance'];
+  const sectionKeys: Array<'overview' | 'essentials' | 'literature' | 'detailedRubrics' | 'englishLiterature'> = ['overview', 'essentials', 'literature', 'detailedRubrics', 'englishLiterature'];
 
   const handleScroll = (event: any) => {
     const scrollY = event.nativeEvent.contentOffset.y;
@@ -92,7 +90,6 @@ const EnglishALiteratureScreen = ({ navigation, route }: { navigation: any; rout
       'literature': literatureAnimation,
       'detailedRubrics': detailedRubricsAnimation,
       'englishLiterature': englishLiteratureAnimation,
-      'literaturePerformance': literaturePerformanceAnimation,
     }[section];
     if (animationValue) {
       Animated.timing(animationValue, {
@@ -122,7 +119,6 @@ const EnglishALiteratureScreen = ({ navigation, route }: { navigation: any; rout
       'literature': 'Prescribed Literature',
       'detailedRubrics': 'Detailed Rubrics',
       'englishLiterature': 'English Literature',
-      'literaturePerformance': 'Literature and Performance'
     };
     
     // Find all sections that match content or title
@@ -164,7 +160,6 @@ const EnglishALiteratureScreen = ({ navigation, route }: { navigation: any; rout
       'literature': literatureAnimation,
       'detailedRubrics': detailedRubricsAnimation,
       'englishLiterature': englishLiteratureAnimation,
-      'literaturePerformance': literaturePerformanceAnimation,
     }[expandedSection];
     if (animationValue) {
       Animated.timing(animationValue, {
@@ -174,7 +169,7 @@ const EnglishALiteratureScreen = ({ navigation, route }: { navigation: any; rout
       }).start();
     }
     // Collapse all other sections
-    const allSectionKeys = ['overview', 'essentials', 'literature', 'detailedRubrics', 'englishLiterature', 'literaturePerformance'];
+    const allSectionKeys = ['overview', 'essentials', 'literature', 'detailedRubrics', 'englishLiterature'];
     allSectionKeys.forEach(key => {
       if (key !== expandedSection) {
         const anim = {
@@ -183,7 +178,6 @@ const EnglishALiteratureScreen = ({ navigation, route }: { navigation: any; rout
           'literature': literatureAnimation,
           'detailedRubrics': detailedRubricsAnimation,
           'englishLiterature': englishLiteratureAnimation,
-          'literaturePerformance': literaturePerformanceAnimation,
         }[key];
         if (anim) {
           Animated.timing(anim, {
@@ -209,7 +203,6 @@ const EnglishALiteratureScreen = ({ navigation, route }: { navigation: any; rout
       'literature': literatureAnimation,
       'detailedRubrics': detailedRubricsAnimation,
       'englishLiterature': englishLiteratureAnimation,
-      'literaturePerformance': literaturePerformanceAnimation,
     }[section];
     if (!animationValue) return null;
     return (
@@ -461,42 +454,6 @@ const EnglishALiteratureScreen = ({ navigation, route }: { navigation: any; rout
                         "Use the Learner Portfolio to explore and connect ideas between works.",
                         "Focus on authorial choices, not just the story.",
                         "Develop your comparative thinking—track both similarities and contrasts."
-                      ].map((tip, idx) => (
-                        <View key={idx} style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: 8 }}>
-                          <Text style={{ color: '#7EC3FF', fontSize: 16, marginRight: 8, lineHeight: 24, fontFamily: 'ScopeOne-Regular' }}>{idx + 1}.</Text>
-                          <Text style={[themeStyles.content, { flex: 1, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF' }]}>{highlightText(tip, highlightedText)}</Text>
-                        </View>
-                      ))}
-                    </View>
-                  ))}
-                </View>
-              )}
-            </View>
-
-            {/* Literature and Performance dropdown */}
-            <View>
-              <List.Item
-                title="Literature and Performance"
-                titleStyle={{ color: '#fff', fontFamily: 'ScopeOne-Regular', fontSize: 18 }}
-                onPress={() => toggleSection('literaturePerformance')}
-                right={props => <List.Icon {...props} icon="chevron-right" color="#FFFFFF" style={{ transform: [{ rotate: expandedSection === 'literaturePerformance' ? '90deg' : '0deg' }] }} />}
-                style={{ paddingVertical: 8, paddingLeft: 20, backgroundColor: 'transparent' }}
-              />
-              {expandedSection === 'literaturePerformance' && (
-                <View style={{ paddingHorizontal: 20, paddingBottom: 16 }}>
-                  {renderAnimatedContent('literaturePerformance', (
-                    <View style={{ backgroundColor: 'transparent' }}>
-                      {[
-                        "Combine literary and performative insights for dual analysis.",
-                        "Explain how your IO piece is staged and interpreted in performance.",
-                        "Treat the creative transformation task as your artistic signature.",
-                        "Compare and contrast texts for theme and performability.",
-                        "Document every decision in your process journal.",
-                        "Plan your HL performance to showcase thematic depth and skill.",
-                        "Justify your stage directions like a director would.",
-                        "Remember, performance is interpretation—be intentional.",
-                        "Study major theatre movements to support your choices.",
-                        "Respect time and word limits to avoid grade penalties."
                       ].map((tip, idx) => (
                         <View key={idx} style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: 8 }}>
                           <Text style={{ color: '#7EC3FF', fontSize: 16, marginRight: 8, lineHeight: 24, fontFamily: 'ScopeOne-Regular' }}>{idx + 1}.</Text>
