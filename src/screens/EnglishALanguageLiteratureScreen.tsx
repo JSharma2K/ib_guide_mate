@@ -34,7 +34,7 @@ const RubricTable = ({ data, highlightedText }: { data: { criterion: string; sum
   </View>
 );
 
-const EnglishALanguageLiteratureScreen = ({ navigation, route }) => {
+const EnglishALanguageLiteratureScreen = ({ navigation, route }: { navigation: any; route: any }) => {
   const userType = route?.params?.userType || 'student';
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
@@ -55,9 +55,9 @@ const EnglishALanguageLiteratureScreen = ({ navigation, route }) => {
   // Section keys and content for search - PLACEHOLDER CONTENT TO BE UPDATED
   const sectionContentStrings: Record<'overview' | 'essentials' | 'literature' | 'detailedRubrics' | 'languageResources', string> = {
     overview: `English A: Language and Literature is a course that combines the study of language and literary texts. It is designed for students who are interested in exploring both the mechanics of language and the art of literature.`,
-    essentials: `PLACEHOLDER - Subject essentials content to be updated`,
-    literature: `PLACEHOLDER - Literature content to be updated`,
-    detailedRubrics: `PLACEHOLDER - Detailed rubrics content to be updated`,
+    essentials: `Course Overview: SL 4 works HL 6 works Areas of Exploration Readers-Writers-Texts Time and Space Intertextuality Assessment Outline SL Paper 1 Paper 2 Individual Oral HL Paper 1 Paper 2 Individual Oral HL Essay Rubrics Paper 1 Paper 2 Criteria A-D IO Criteria A-D HL Essay Criteria A-D`,
+    literature: `Works Selection Students study selection literary works different time periods cultures genres works chosen represent diverse perspectives global contexts Areas of Exploration Readers Writers Texts meaning constructed interaction reader writer text Time Space context influences meaning interpretation Intertextuality texts connect reference other texts Study Requirements Standard Level 4 works minimum Higher Level 6 works minimum Works must include poetry prose drama different time periods cultures`,
+    detailedRubrics: `Assessment Overview English A Language Literature assessments evaluate your ability to analyze both literary and non-literary texts understanding how language functions in different contexts and purposes Paper 1 Guided Literary Analysis unseen literary texts guided questions literary techniques themes textual interpretation Paper 2 Comparative Essay comparative analysis works studied class literary conventions cultural contexts Individual Oral presentation analyzing global issues literary non-literary texts discussion examiner HL Essay Higher Level research essay literary work not studied class critical thinking research skills Language A Language Literature Paper 1 understand interpret text analyze stylistic features literary devices structure organize ideas language use expression Language A Language Literature Paper 2 knowledge understanding interpretation analysis evaluation focus organization Language A Language Literature Individual Oral knowledge understanding interpretation analysis evaluation skills focus organization presentation language use communication Language A Language Literature HL Essay knowledge understanding interpretation analysis evaluation abilities focus organization development language clarity academic style`,
     languageResources: `PLACEHOLDER - Language resources content to be updated`,
   };
   
@@ -318,8 +318,128 @@ const EnglishALanguageLiteratureScreen = ({ navigation, route }) => {
                 <View style={{ paddingHorizontal: 20, paddingBottom: 16 }}>
                   {renderAnimatedContent(section.key, (
                     <View style={{ backgroundColor: 'transparent' }}>
-                      {/* PLACEHOLDER CONTENT - TO BE UPDATED */}
-                      <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular' }}>{highlightText(sectionContentStrings[section.key as keyof typeof sectionContentStrings], highlightedText)}</Text>
+                      {/* Section content logic */}
+                      {section.key === 'overview' && (
+                        <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular' }}>{highlightText(sectionContentStrings.overview, highlightedText)}</Text>
+                      )}
+                      {section.key === 'essentials' && (
+                        <View>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>Course Overview</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("- SL: 4 works; HL: 6 works\n- Areas of Exploration: Readers-Writers-Texts, Time and Space, Intertextuality", highlightedText)}</Text>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>Assessment Outline</Text>
+                          <Text style={{ ...themeStyles.levelTitle, color: '#7EC3FF', fontFamily: 'ScopeOne-Regular' }}>Standard Level (SL)</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("- Paper 1 (1h15m): 35%\n- Paper 2 (1h45m): 35%\n- Individual Oral (15 min): 30%", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.levelTitle, color: '#7EC3FF', fontFamily: 'ScopeOne-Regular' }}>Higher Level (HL)</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("- Paper 1 (2h15m): 35%\n- Paper 2 (1h45m): 25%\n- Individual Oral: 20%\n- HL Essay: 20%", highlightedText)}</Text>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>Rubrics</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("Paper 1 & 2: Criteria A-D (5-10 marks each)\nIO: Criteria A-D (10 marks each)\nHL Essay: Criteria A-D (5 marks each)", highlightedText)}</Text>
+                        </View>
+                      )}
+                      {(section.key === 'literature' || section.key === 'languageResources') && (
+                        <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular' }}>{highlightText(sectionContentStrings[section.key as keyof typeof sectionContentStrings], highlightedText)}</Text>
+                      )}
+                      {section.key === 'literature' && (
+                        <View>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginBottom: 8 }}>Works Selection</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 16 }}>
+                            {highlightText("Students study a selection of literary works from different time periods, cultures, and genres. The works are chosen to represent diverse perspectives and global contexts.", highlightedText)}
+                          </Text>
+
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginBottom: 8 }}>Areas of Exploration</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 16 }}>
+                            {highlightText("• Readers, Writers and Texts: How meaning is constructed through interaction between reader, writer, and text\n• Time and Space: How context influences meaning and interpretation\n• Intertextuality: How texts connect and reference other texts", highlightedText)}
+                          </Text>
+
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginBottom: 8 }}>Study Requirements</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>
+                            {highlightText("Standard Level: 4 works minimum\nHigher Level: 6 works minimum\n\nWorks must include poetry, prose, and drama from different time periods and cultures.", highlightedText)}
+                          </Text>
+                        </View>
+                      )}
+                      {section.key === 'detailedRubrics' && (
+                        <View>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginBottom: 8 }}>Assessment Overview</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 16 }}>
+                            {highlightText("English A: Language and Literature assessments evaluate your ability to analyze both literary and non-literary texts, understanding how language functions in different contexts and purposes.", highlightedText)}
+                          </Text>
+
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginBottom: 8 }}>Paper 1: Guided Literary Analysis</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 16 }}>
+                            {highlightText("Analysis of unseen literary texts with guided questions. Focus on literary techniques, themes, and textual interpretation.", highlightedText)}
+                          </Text>
+
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginBottom: 8 }}>Paper 2: Comparative Essay</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 16 }}>
+                            {highlightText("Comparative analysis of works studied in class. Demonstrates understanding of literary conventions and cultural contexts.", highlightedText)}
+                          </Text>
+
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginBottom: 8 }}>Individual Oral</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 16 }}>
+                            {highlightText("Oral presentation analyzing global issues in literary and non-literary texts. Includes discussion with examiner.", highlightedText)}
+                          </Text>
+
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginBottom: 8 }}>HL Essay (Higher Level Only)</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 24 }}>
+                            {highlightText("Independent research essay on a literary work not studied in class. Demonstrates critical thinking and research skills.", highlightedText)}
+                          </Text>
+
+                          {/* Paper 1 Table */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', marginBottom: 8, color: '#7EC3FF' }}>Language A: Language and Literature - Paper 1</Text>
+                          <RubricTable
+                            data={[
+                              { criterion: 'A', summary: 'How well you understand and interpret the text', max: 5 },
+                              { criterion: 'B', summary: 'How effectively you analyze stylistic features and literary devices', max: 5 },
+                              { criterion: 'C', summary: 'How clearly you structure and organize your ideas', max: 5 },
+                              { criterion: 'D', summary: 'Quality of your language use and expression', max: 5 },
+                            ]}
+                            highlightedText={highlightedText}
+                          />
+                          {/* Paper 2 Table */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', marginTop: 24, marginBottom: 8, color: '#7EC3FF' }}>Language A: Language and Literature - Paper 2</Text>
+                          <RubricTable
+                            data={[
+                              { criterion: 'A', summary: 'Depth of knowledge, understanding, and interpretation', max: 10 },
+                              { criterion: 'B', summary: 'Quality of analysis and evaluation', max: 10 },
+                              { criterion: 'C', summary: 'Clear focus and organization', max: 10 },
+                            ]}
+                            highlightedText={highlightedText}
+                          />
+                          {/* Individual Oral Table */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', marginTop: 24, marginBottom: 8, color: '#7EC3FF' }}>Language A: Language and Literature - Individual Oral</Text>
+                          <RubricTable
+                            data={[
+                              { criterion: 'A', summary: 'Knowledge, understanding, and interpretation', max: 10 },
+                              { criterion: 'B', summary: 'Analysis and evaluation skills', max: 10 },
+                              { criterion: 'C', summary: 'Focus, organization, and presentation', max: 10 },
+                              { criterion: 'D', summary: 'Language use and communication', max: 10 },
+                            ]}
+                            highlightedText={highlightedText}
+                          />
+                          {/* HL Essay Table */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', marginTop: 24, marginBottom: 8, color: '#7EC3FF' }}>Language A: Language and Literature - HL Essay</Text>
+                          <RubricTable
+                            data={[
+                              { criterion: 'A', summary: 'Knowledge, understanding, and interpretation', max: 5 },
+                              { criterion: 'B', summary: 'Analysis and evaluation abilities', max: 5 },
+                              { criterion: 'C', summary: 'Focus, organization, and development', max: 5 },
+                              { criterion: 'D', summary: 'Language clarity and academic style', max: 5 },
+                            ]}
+                            highlightedText={highlightedText}
+                          />
+                          <Text style={{ 
+                            fontSize: 11, 
+                            color: 'rgba(255, 255, 255, 0.5)', 
+                            fontFamily: 'ScopeOne-Regular', 
+                            marginTop: 16, 
+                            textAlign: 'center',
+                            fontStyle: 'italic'
+                          }}>
+                            *This is interpreted material for educational guidance and not official assessment criteria.
+                          </Text>
+                        </View>
+                      )}
                     </View>
                   ))}
                 </View>
