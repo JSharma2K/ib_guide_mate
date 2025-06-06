@@ -429,6 +429,20 @@ const MathAAScreen: React.FC<Props> = ({ navigation, route }) => {
             />
           </View>
         )}
+        
+        {/* Disclaimer */}
+        <View style={{ alignItems: 'center', marginTop: 16, marginBottom: 8 }}>
+          <Text style={{
+            fontSize: 12,
+            color: '#B6B6B6',
+            textAlign: 'center',
+            lineHeight: 18,
+            fontFamily: 'ScopeOne-Regular',
+            fontWeight: '400',
+          }}>
+            This app is not affiliated with or endorsed by the International Baccalaureate Organization.
+          </Text>
+        </View>
       </ScrollView>
     </ImageBackground>
   );
