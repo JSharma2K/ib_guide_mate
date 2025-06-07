@@ -55,22 +55,22 @@ const highlightText = (text: string, highlightedText: string) => {
 const RubricTable = ({ data, highlightedText }: { data: { criterion: string; summary: string; max: number }[]; highlightedText: string }) => (
   <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
     <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
-      <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.8, padding: 8 }}>Criterion</Text>
-      <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.8, padding: 8 }}>What It Assesses</Text>
-      <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.4, padding: 8, textAlign: 'center' }}>Marks</Text>
+      <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.8, padding: 8, fontSize: 14 }} numberOfLines={1}>Criterion</Text>
+      <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 2.8, padding: 8, fontSize: 14 }}>What It Assesses</Text>
+      <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.2, padding: 8, textAlign: 'center', fontSize: 14 }} numberOfLines={1}>Marks</Text>
     </View>
     {data.map((row, idx) => (
       <View key={idx} style={{ flexDirection: 'row', borderTopWidth: idx === 0 ? 0 : 1, borderColor: '#7EC3FF' }}>
-        <Text style={{ flex: 1.8, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.criterion, highlightedText)}</Text>
-        <Text style={{ flex: 1.8, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.summary, highlightedText)}</Text>
-        <Text style={{ flex: 1.4, color: '#B6B6B6', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular' }}>{highlightText(String(row.max), highlightedText)}</Text>
+        <Text style={{ flex: 1.8, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.criterion, highlightedText)}</Text>
+        <Text style={{ flex: 2.8, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.summary, highlightedText)}</Text>
+        <Text style={{ flex: 1.2, color: '#B6B6B6', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(String(row.max), highlightedText)}</Text>
       </View>
     ))}
     {/* Total row */}
     <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF', backgroundColor: '#232B4D' }}>
-      <Text style={{ flex: 1.8, color: '#7EC3FF', padding: 8, fontFamily: 'ScopeOne-Regular', fontWeight: '700' as const }}>Total</Text>
-      <Text style={{ flex: 1.8, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}> </Text>
-      <Text style={{ flex: 1.4, color: '#7EC3FF', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular', fontWeight: '700' as const }}>30</Text>
+      <Text style={{ flex: 1.8, color: '#7EC3FF', padding: 8, fontFamily: 'ScopeOne-Regular', fontWeight: '700' as const, fontSize: 13 }}>Total</Text>
+      <Text style={{ flex: 2.8, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}> </Text>
+      <Text style={{ flex: 1.2, color: '#7EC3FF', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular', fontWeight: '700' as const, fontSize: 13 }}>30</Text>
     </View>
   </View>
 );
@@ -439,14 +439,25 @@ const ExtendedEssayScreen: React.FC<Props> = ({ navigation, route }) => {
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginBottom: 8 }}>Assessment Rubric (2027)</Text>
                           <RubricTable
                             data={[
-                              { criterion: 'A: Framework for the Essay', summary: 'Clarity and relevance of the research question, appropriateness of the methodology and structure.', max: 6 },
-                              { criterion: 'B: Knowledge and Understanding', summary: 'Understanding of the topic, subject-specific terminology, and academic context.', max: 6 },
-                              { criterion: 'C: Analysis and Line of Argument', summary: 'Quality of the research, critical analysis, and logical consistency of the argument.', max: 6 },
-                              { criterion: 'D: Discussion and Evaluation', summary: 'Depth of discussion, significance of the findings, evaluation of research outcomes.', max: 8 },
-                              { criterion: 'E: Engagement (RPPF)', summary: 'Evidence of intellectual initiative, self-reflection, and personal engagement with the process.', max: 4 },
+                              { criterion: 'A: Framework for the Essay', summary: 'How well you structure your research question and organize your essay methodology', max: 6 },
+                              { criterion: 'B: Knowledge and Understanding', summary: 'Your grasp of the subject matter and use of appropriate academic language', max: 6 },
+                              { criterion: 'C: Analysis and Line of Argument', summary: 'The strength of your research methods and how logically you present your argument', max: 6 },
+                              { criterion: 'D: Discussion and Evaluation', summary: 'How thoroughly you explore your findings and assess the importance of your results', max: 8 },
+                              { criterion: 'E: Engagement (RPPF)', summary: 'Evidence of your personal curiosity, independent thinking, and reflection on your learning journey', max: 4 },
                             ]}
                             highlightedText={highlightedText}
                           />
+                          <Text style={{
+                            fontSize: 12,
+                            color: '#8A97A7',
+                            textAlign: 'center',
+                            lineHeight: 16,
+                            fontFamily: 'ScopeOne-Regular',
+                            marginTop: 12,
+                            fontStyle: 'italic',
+                          }}>
+                            Note: These are interpreted descriptions for educational guidance and not official assessment criteria.
+                          </Text>
                         </View>
                       )}
                     </View>

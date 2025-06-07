@@ -1,0 +1,48 @@
+{
+  "expo": {
+    "name": "GuideMate",
+    "slug": "guidemate-ib-resources",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1A1D29"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.guidemate.ibresources",
+      "buildNumber": "1",
+      "infoPlist": {
+        "UIBackgroundModes": ["background-fetch"]
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#1A1D29"
+      },
+      "package": "com.guidemate.ibresources",
+      "versionCode": 1,
+      "permissions": []
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "your-project-id-here"
+      }
+    },
+    "owner": "your-expo-username",
+    "privacy": "public",
+    "description": "GuideMate – Resources for IB Students and Teachers. A comprehensive study guide app for International Baccalaureate Diploma Programme subjects including English A, Mathematics, and Extended Essay resources.",
+    "keywords": ["education", "IB", "study", "guide", "international baccalaureate"],
+    "category": "education"
+  }
+} 
