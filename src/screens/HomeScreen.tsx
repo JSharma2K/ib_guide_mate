@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef } from 'react';
-import { View, StyleSheet, FlatList, Dimensions, Platform, StatusBar, Image, ImageBackground } from 'react-native';
+import { View, StyleSheet, FlatList, Dimensions, Platform, StatusBar, Image, ImageBackground, Animated as RNAnimated } from 'react-native';
 import { Card, useTheme, Text, List } from 'react-native-paper';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Feather } from '@expo/vector-icons';
@@ -21,16 +21,17 @@ const Logo = () => (
 
 type HomeScreenProps = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'Home'>;
-  route: { params?: { userType?: 'student' | 'teacher' } };
+  route: { params?: { userType?: 'student' | 'teacher'; subjectGroup?: 'english' | 'mathematics' } };
 };
 
-const SUBJECTS = [
+const ALL_SUBJECTS = [
   {
     key: 'english-a',
     icon: 'book',
     title: 'English A',
     subtitle: 'Literature',
     color: '#B6C7F7',
+    group: 'english',
   },
   {
     key: 'english-a-performance',
@@ -38,6 +39,7 @@ const SUBJECTS = [
     title: 'English A',
     subtitle: 'Literature and Performance',
     color: '#C7B6F7',
+    group: 'english',
   },
   {
     key: 'english-a-language-literature',
@@ -45,6 +47,7 @@ const SUBJECTS = [
     title: 'English A',
     subtitle: 'Language and Literature',
     color: '#B6F7C7',
+    group: 'english',
   },
   {
     key: 'math-aa',
@@ -52,6 +55,7 @@ const SUBJECTS = [
     title: 'Math AA',
     subtitle: 'Analysis and Approaches',
     color: '#E6D6FC',
+    group: 'mathematics',
   },
   {
     key: 'math-ai',
@@ -59,13 +63,7 @@ const SUBJECTS = [
     title: 'Math AI',
     subtitle: 'Applications and Interpretation',
     color: '#FFF6B7',
-  },
-  {
-    key: 'extended-essay',
-    icon: 'file-text',
-    title: 'Extended Essay',
-    subtitle: 'Core Component',
-    color: '#FFB6C1',
+    group: 'mathematics',
   },
 ];
 
@@ -74,6 +72,16 @@ const sectionKeys = ['overview', 'essentials', 'literature', 'detailedRubrics'];
 const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, route }) => {
   const theme = useTheme();
   const userType = route?.params?.userType || 'student';
+  const subjectGroup = route?.params?.subjectGroup;
+  
+  // Filter subjects based on the selected group
+  const SUBJECTS = subjectGroup 
+    ? ALL_SUBJECTS.filter(subject => subject.group === subjectGroup)
+    : ALL_SUBJECTS;
+    
+  // Animation value for home icon fade
+  const homeIconOpacity = useRef(new RNAnimated.Value(1)).current;
+  
   let [fontsLoaded] = useFonts({
     'ScopeOne-Regular': require('../../assets/fonts/ScopeOne-Regular.ttf'),
   });
@@ -120,6 +128,25 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, route }) => {
     </Animated.View>
   ), [navigation, userType]);
 
+  const handleScroll = (event: any) => {
+    const scrollY = event.nativeEvent.contentOffset.y;
+    const fadeThreshold = 50;
+    
+    if (scrollY > fadeThreshold) {
+      RNAnimated.timing(homeIconOpacity, {
+        toValue: 0,
+        duration: 100,
+        useNativeDriver: true,
+      }).start();
+    } else {
+      RNAnimated.timing(homeIconOpacity, {
+        toValue: 1,
+        duration: 100,
+        useNativeDriver: true,
+      }).start();
+    }
+  };
+
   useEffect(() => {
     navigation.setOptions({
       headerStyle: {
@@ -145,6 +172,19 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, route }) => {
       style={[styles.flex1, { width: '100%', height: '100%' }]}
       resizeMode="cover"
     >
+      {/* Home icon top left */}
+      <RNAnimated.View style={{ position: 'absolute', top: 56, left: 16, zIndex: 100, flexDirection: 'row', alignItems: 'center', opacity: homeIconOpacity }}>
+        <Feather
+          name="home"
+          size={20}
+          color="#7EC3FF"
+          onPress={() => navigation.goBack()}
+          style={{ cursor: 'pointer' }}
+          accessibilityRole="button"
+          accessibilityLabel="Go to Subject Groups"
+        />
+      </RNAnimated.View>
+      
       <StatusBar barStyle="light-content" />
       <View style={styles.gradient}>
         <Animated.View entering={FadeInUp.duration(800)} style={styles.topSection}>
@@ -160,6 +200,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, route }) => {
             keyExtractor={item => item.key}
             contentContainerStyle={{ gap: 18 }}
             showsVerticalScrollIndicator={false}
+            onScroll={handleScroll}
           />
         </View>
         <View style={styles.footer}>

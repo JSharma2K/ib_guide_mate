@@ -37,7 +37,7 @@ const EntryScreen: React.FC<{ navigation: NativeStackNavigationProp<RootStackPar
           <TouchableOpacity
             style={styles.floatingButton}
             activeOpacity={0.7}
-            onPress={() => navigation.navigate('Home', { userType: 'student' })}
+            onPress={() => navigation.navigate('SubjectGroups', { userType: 'student' })}
           >
             <View style={styles.dash} />
             <Text style={[styles.floatingButtonText, { color: '#7EC3FF' }]}>Student Resources</Text>
@@ -49,7 +49,7 @@ const EntryScreen: React.FC<{ navigation: NativeStackNavigationProp<RootStackPar
           <TouchableOpacity
             style={styles.floatingButton}
             activeOpacity={0.7}
-            onPress={() => navigation.navigate('Home', { userType: 'teacher' })}
+            onPress={() => navigation.navigate('SubjectGroups', { userType: 'teacher' })}
           >
             <View style={styles.dash} />
             <Text style={[styles.floatingButtonText, { color: '#7EC3FF' }]}>Teacher Resources</Text>

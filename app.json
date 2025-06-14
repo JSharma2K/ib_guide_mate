@@ -19,7 +19,9 @@
       "bundleIdentifier": "com.guidemate.ibresources",
       "buildNumber": "1",
       "infoPlist": {
-        "UIBackgroundModes": ["background-fetch"]
+        "UIBackgroundModes": [
+          "background-fetch"
+        ]
       }
     },
     "android": {
@@ -28,18 +30,25 @@
         "backgroundColor": "#1A1D29"
       },
       "package": "com.guidemate.ibresources",
-      "versionCode": 1,
+      "versionCode": 3,
       "permissions": []
     },
     "extra": {
       "eas": {
-        "projectId": "your-project-id-here"
+        "projectId": "4e6bd679-9f89-4060-b402-3a8b69c729eb"
       }
     },
     "owner": "jiviteshsharma",
     "privacy": "public",
     "description": "GuideMate – Resources for IB Students and Teachers. A comprehensive app for International Baccalaureate Diploma Programme subjects including English A, Mathematics, and Extended Essay resources.",
-    "keywords": ["education", "IB", "study", "guide", "international baccalaureate"],
+    "keywords": [
+      "education",
+      "IB",
+      "study",
+      "guide",
+      "international baccalaureate",
+      "diploma"
+    ],
     "category": "education"
   }
-} 
+}

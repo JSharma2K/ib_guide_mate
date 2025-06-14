@@ -7,6 +7,7 @@ import { DarkTheme as NavigationDarkTheme } from '@react-navigation/native';
 
 // Import screens (we'll create these next)
 import HomeScreen from './src/screens/HomeScreen';
+import SubjectGroupsScreen from './src/screens/SubjectGroupsScreen';
 import SubjectListScreen from './src/screens/SubjectListScreen';
 import SubjectDetailScreen from './src/screens/SubjectDetailScreen';
 import ManageGuidesScreen from './src/screens/ManageGuidesScreen';
@@ -75,6 +76,11 @@ export default function App() {
               name="Entry" 
               component={EntryScreen} 
               options={{ title: 'IB GuideMate', headerShown: false }}
+            />
+            <Stack.Screen 
+              name="SubjectGroups" 
+              component={SubjectGroupsScreen} 
+              options={{ title: 'Subject Groups', headerShown: false }}
             />
             <Stack.Screen 
               name="Home" 
