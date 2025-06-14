@@ -18,6 +18,7 @@ import MathAAScreen from './src/screens/MathAAScreen';
 import MathAIScreen from './src/screens/MathAIScreen';
 import EntryScreen from './src/screens/EntryScreen';
 import ExtendedEssayScreen from './src/screens/ExtendedEssayScreen';
+import GradePredictionScreen from './src/screens/GradePredictionScreen';
 
 const { DarkTheme } = adaptNavigationTheme({
   reactNavigationDark: NavigationDarkTheme,
@@ -165,6 +166,17 @@ export default function App() {
               component={ExtendedEssayScreen}
               options={{
                 title: 'Extended Essay',
+                headerStyle: {
+                  backgroundColor: theme.colors.primary,
+                },
+                headerTintColor: theme.colors.onPrimary,
+              }}
+            />
+            <Stack.Screen
+              name="GradePrediction"
+              component={GradePredictionScreen}
+              options={{
+                title: 'Grade Prediction',
                 headerStyle: {
                   backgroundColor: theme.colors.primary,
                 },

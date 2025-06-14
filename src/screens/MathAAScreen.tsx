@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { View, ScrollView, StyleSheet, Animated, Platform, ImageBackground } from 'react-native';
+import { View, ScrollView, StyleSheet, Animated, Platform, ImageBackground, TouchableOpacity } from 'react-native';
 import { Text, Card, List, Searchbar, Button as PaperButton } from 'react-native-paper';
 import { LinearGradient } from 'expo-linear-gradient';
 import { theme, gradientColors, styles as themeStyles } from '../theme/theme';
@@ -430,6 +430,50 @@ const MathAAScreen: React.FC<Props> = ({ navigation, route }) => {
           </View>
         )}
         
+        {/* Predict Your Grade Button */}
+        <TouchableOpacity
+          style={{
+            borderRadius: 16,
+            borderWidth: 1,
+            borderColor: '#7EC3FF',
+            backgroundColor: 'rgba(126, 195, 255, 0.1)',
+            marginBottom: 24,
+            overflow: 'hidden',
+          }}
+          activeOpacity={0.8}
+          onPress={() => {
+            // TODO: Navigate to grade prediction screen
+            console.log('Navigate to grade prediction');
+          }}
+        >
+          <LinearGradient
+            colors={['rgba(126, 195, 255, 0.15)', 'rgba(126, 195, 255, 0.05)']}
+            style={{ padding: 20 }}
+          >
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+              <Feather name="trending-up" size={24} color="#7EC3FF" style={{ marginRight: 12 }} />
+              <Text style={{
+                fontSize: 18,
+                color: '#7EC3FF',
+                fontFamily: 'ScopeOne-Regular',
+                fontWeight: 'bold',
+                textAlign: 'center'
+              }}>
+                Predict Your Grade
+              </Text>
+            </View>
+            <Text style={{
+              fontSize: 14,
+              color: '#B6B6B6',
+              fontFamily: 'ScopeOne-Regular',
+              textAlign: 'center',
+              marginTop: 8
+            }}>
+              Get an estimate of your final grade based on your current performance
+            </Text>
+          </LinearGradient>
+        </TouchableOpacity>
+
         {/* Disclaimer */}
         <View style={{ alignItems: 'center', marginTop: 16, marginBottom: 8 }}>
           <Text style={{
