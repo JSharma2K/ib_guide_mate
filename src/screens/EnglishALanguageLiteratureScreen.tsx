@@ -516,8 +516,10 @@ const EnglishALanguageLiteratureScreen = ({ navigation, route }: { navigation: a
           }}
           activeOpacity={0.8}
           onPress={() => {
-            // TODO: Navigate to grade prediction screen
-            console.log('Navigate to grade prediction');
+            navigation.navigate('GradePrediction', {
+              subject: 'ENGLISH A LAL',
+              userType: userType
+            });
           }}
         >
           <LinearGradient
