@@ -469,8 +469,10 @@ const EnglishALiteraturePerformanceScreen = ({ navigation, route }: { navigation
           }}
           activeOpacity={0.8}
           onPress={() => {
-            // TODO: Navigate to grade prediction screen
-            console.log('Navigate to grade prediction');
+            navigation.navigate('GradePrediction', {
+              subject: 'ENGLISH A LIT AND PERF',
+              userType: userType
+            });
           }}
         >
           <LinearGradient

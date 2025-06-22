@@ -20,10 +20,10 @@ type Props = {
 const paperWeightages = {
   'ENGLISH A LIT': {
     HL: {
-      'PAPER ONE': 0.35,        // 35%
-      'PAPER TWO': 0.25,        // 25%
+      'PAPER ONE': 0.30,        // 30%
+      'PAPER TWO': 0.20,        // 20%
       'ESSAY': 0.20,            // 20%
-      'INTERNAL ASSESSMENT (ORAL)': 0.20  // 20%
+      'INTERNAL ASSESSMENT (ORAL)': 0.30  // 30%
     },
     SL: {
       'PAPER ONE': 0.35,        // 35%
@@ -43,6 +43,31 @@ const paperWeightages = {
       'PAPER TWO': 0.35,        // 35%
       'INTERNAL ASSESSMENT (ORAL)': 0.30  // 30%
     }
+  },
+  'ENGLISH A LIT AND PERF': {
+    HL: {
+      'TRANSFORMATIVE PERFORMANCE': 0.40,  // 40%
+      'PAPER ONE': 0.30,        // 30%
+      'WRITTEN ASSIGNMENT': 0.30  // 30%
+    },
+    SL: {
+      'TRANSFORMATIVE PERFORMANCE': 0.40,  // 40%
+      'PAPER ONE': 0.30,        // 30%
+      'WRITTEN ASSIGNMENT': 0.30  // 30%
+    }
+  },
+  'MATH ANALYSIS': {
+    HL: {
+      'PAPER ONE': 0.30,        // 30%
+      'PAPER TWO': 0.30,        // 30%
+      'PAPER THREE': 0.20,      // 20%
+      'EXPLORATION': 0.20       // 20%
+    },
+    SL: {
+      'PAPER ONE': 0.40,        // 40%
+      'PAPER TWO': 0.40,        // 40%
+      'EXPLORATION': 0.20       // 20%
+    }
   }
 };
 
@@ -51,19 +76,32 @@ const gradeBoundaries = {
   'ENGLISH A LIT': {
     HL: {
       november: {
-        timezone1: {
+        timezone0: {
           ESSAY: { 1: [0, 3], 2: [4, 6], 3: [7, 9], 4: [10, 12], 5: [13, 14], 6: [15, 17], 7: [18, 20] },
           'INTERNAL ASSESSMENT (ORAL)': { 1: [0, 6], 2: [7, 12], 3: [13, 18], 4: [19, 23], 5: [24, 28], 6: [29, 33], 7: [34, 40] },
           'PAPER ONE': { 1: [0, 4], 2: [5, 8], 3: [9, 15], 4: [16, 19], 5: [20, 23], 6: [24, 27], 7: [28, 40] },
           'PAPER TWO': { 1: [0, 3], 2: [4, 6], 3: [7, 9], 4: [10, 13], 5: [14, 17], 6: [18, 21], 7: [22, 30] },
           FINAL: { 1: [0, 12], 2: [13, 24], 3: [25, 39], 4: [40, 51], 5: [52, 62], 6: [63, 75], 7: [76, 100] }
         },
+        timezone1: {
+          EXPLORATION: { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [12, 14], 6: [15, 16], 7: [17, 20] },
+          'PAPER ONE': { 1: [0, 9], 2: [10, 23], 3: [24, 34], 4: [35, 49], 5: [50, 63], 6: [64, 79], 7: [80, 110] },
+          'PAPER THREE': { 1: [0, 5], 2: [6, 14], 3: [15, 22], 4: [23, 30], 5: [31, 36], 6: [37, 45], 7: [46, 55] },
+          'PAPER TWO': { 1: [0, 9], 2: [10, 22], 3: [23, 33], 4: [34, 48], 5: [49, 62], 6: [63, 78], 7: [79, 110] },
+          FINAL: { 1: [0, 9], 2: [10, 22], 3: [23, 34], 4: [35, 48], 5: [49, 61], 6: [62, 75], 7: [76, 100] }
+        },
         timezone2: {
-          ESSAY: { 1: [0, 3], 2: [4, 6], 3: [7, 9], 4: [10, 12], 5: [13, 14], 6: [15, 17], 7: [18, 20] },
-          'INTERNAL ASSESSMENT (ORAL)': { 1: [0, 6], 2: [7, 12], 3: [13, 18], 4: [19, 23], 5: [24, 28], 6: [29, 33], 7: [34, 40] },
-          'PAPER ONE': { 1: [0, 5], 2: [6, 10], 3: [11, 15], 4: [16, 20], 5: [21, 24], 6: [25, 29], 7: [30, 40] },
-          'PAPER TWO': { 1: [0, 3], 2: [4, 7], 3: [8, 11], 4: [12, 16], 5: [17, 20], 6: [21, 25], 7: [26, 30] },
-          FINAL: { 1: [0, 13], 2: [14, 27], 3: [28, 40], 4: [41, 54], 5: [55, 66], 6: [67, 80], 7: [81, 100] }
+          EXPLORATION: { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [12, 14], 6: [15, 16], 7: [17, 20] },
+          'PAPER ONE': { 1: [0, 14], 2: [15, 22], 3: [23, 29], 4: [30, 44], 5: [45, 59], 6: [60, 75], 7: [76, 110] },
+          'PAPER TWO': { 1: [0, 15], 2: [16, 24], 3: [25, 32], 4: [33, 47], 5: [48, 62], 6: [63, 79], 7: [80, 110] },
+          FINAL: { 1: [0, 13], 2: [14, 23], 3: [24, 33], 4: [34, 46], 5: [47, 59], 6: [60, 73], 7: [74, 100] }
+        },
+        timezone0: {
+          EXPLORATION: { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [12, 14], 6: [15, 16], 7: [17, 20] },
+          'PAPER ONE': { 1: [0, 17], 2: [18, 31], 3: [32, 42], 4: [43, 57], 5: [58, 71], 6: [72, 85], 7: [86, 110] },
+          'PAPER THREE': { 1: [0, 8], 2: [9, 16], 3: [17, 24], 4: [25, 32], 5: [33, 38], 6: [39, 44], 7: [45, 55] },
+          'PAPER TWO': { 1: [0, 17], 2: [18, 30], 3: [31, 41], 4: [42, 56], 5: [57, 70], 6: [71, 83], 7: [84, 110] },
+          FINAL: { 1: [0, 14], 2: [15, 27], 3: [28, 39], 4: [40, 53], 5: [54, 66], 6: [67, 78], 7: [79, 100] }
         }
       },
       may: {
@@ -94,22 +132,28 @@ const gradeBoundaries = {
         timezone2: {
           'INTERNAL ASSESSMENT (ORAL)': { 1: [0, 6], 2: [7, 12], 3: [13, 18], 4: [19, 23], 5: [24, 28], 6: [29, 33], 7: [34, 40] },
           'PAPER ONE': { 1: [0, 2], 2: [3, 4], 3: [5, 7], 4: [8, 10], 5: [11, 13], 6: [14, 16], 7: [17, 20] },
-          'PAPER TWO': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 13], 5: [14, 17], 6: [18, 22], 7: [23, 30] },
-          FINAL: { 1: [0, 10], 2: [11, 22], 3: [23, 35], 4: [36, 50], 5: [51, 64], 6: [65, 78], 7: [79, 100] }
+          'PAPER TWO': { 1: [0, 3], 2: [4, 7], 3: [8, 11], 4: [12, 16], 5: [17, 20], 6: [21, 25], 7: [26, 30] },
+          FINAL: { 1: [0, 13], 2: [14, 29], 3: [30, 44], 4: [45, 57], 5: [58, 69], 6: [70, 82], 7: [83, 100] }
+        },
+        timezone0: {
+          'INTERNAL ASSESSMENT (ORAL)': { 1: [0, 6], 2: [7, 12], 3: [13, 18], 4: [19, 23], 5: [24, 28], 6: [29, 33], 7: [34, 40] },
+          'PAPER ONE': { 1: [0, 2], 2: [3, 4], 3: [5, 6], 4: [7, 9], 5: [10, 12], 6: [13, 15], 7: [16, 20] },
+          'PAPER TWO': { 1: [0, 3], 2: [4, 7], 3: [8, 11], 4: [12, 16], 5: [17, 20], 6: [21, 25], 7: [26, 30] },
+          FINAL: { 1: [0, 11], 2: [12, 24], 3: [25, 37], 4: [38, 52], 5: [53, 65], 6: [66, 80], 7: [81, 100] }
         }
       },
       may: {
         timezone1: {
-          'INTERNAL ASSESSMENT (ORAL)': { 1: [0, 6], 2: [7, 12], 3: [13, 18], 4: [19, 23], 5: [24, 28], 6: [29, 33], 7: [34, 40] },
-          'PAPER ONE': { 1: [0, 1], 2: [2, 3], 3: [4, 6], 4: [7, 9], 5: [10, 11], 6: [12, 14], 7: [15, 20] },
-          'PAPER TWO': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 13], 5: [14, 17], 6: [18, 22], 7: [23, 30] },
-          FINAL: { 1: [0, 9], 2: [10, 20], 3: [21, 33], 4: [34, 48], 5: [49, 60], 6: [61, 75], 7: [76, 100] }
+          'INTERNAL ASSESSMENT (ORAL)': { 1: [0, 6], 2: [7, 12], 3: [13, 19], 4: [20, 22], 5: [23, 25], 6: [26, 28], 7: [29, 32] },
+          'PAPER ONE': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [14, 18], 6: [19, 23], 7: [24, 30] },
+          'PAPER TWO': { 1: [0, 3], 2: [4, 6], 3: [7, 9], 4: [10, 13], 5: [14, 17], 6: [18, 21], 7: [22, 26] },
+          FINAL: { 1: [0, 12], 2: [13, 26], 3: [27, 42], 4: [43, 55], 5: [56, 70], 6: [71, 83], 7: [84, 100] }
         },
         timezone2: {
-          'INTERNAL ASSESSMENT (ORAL)': { 1: [0, 6], 2: [7, 12], 3: [13, 18], 4: [19, 23], 5: [24, 28], 6: [29, 33], 7: [34, 40] },
-          'PAPER ONE': { 1: [0, 3], 2: [4, 6], 3: [7, 8], 4: [9, 10], 5: [11, 12], 6: [13, 14], 7: [15, 20] },
-          'PAPER TWO': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 13], 5: [14, 18], 6: [19, 23], 7: [24, 30] },
-          FINAL: { 1: [0, 12], 2: [13, 25], 3: [26, 37], 4: [38, 50], 5: [51, 63], 6: [64, 76], 7: [77, 100] }
+          'INTERNAL ASSESSMENT (ORAL)': { 1: [0, 6], 2: [7, 12], 3: [13, 19], 4: [20, 22], 5: [23, 25], 6: [26, 28], 7: [29, 32] },
+          'PAPER ONE': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 13], 5: [14, 18], 6: [19, 23], 7: [24, 30] },
+          'PAPER TWO': { 1: [0, 2], 2: [3, 5], 3: [6, 9], 4: [10, 13], 5: [14, 18], 6: [19, 22], 7: [23, 26] },
+          FINAL: { 1: [0, 12], 2: [13, 26], 3: [27, 42], 4: [43, 55], 5: [56, 70], 6: [71, 83], 7: [84, 100] }
         }
       }
     }
@@ -152,30 +196,161 @@ const gradeBoundaries = {
     SL: {
       november: {
         timezone1: {
-          'INTERNAL ASSESSMENT (ORAL)': { 1: [0, 6], 2: [7, 12], 3: [13, 18], 4: [19, 23], 5: [24, 28], 6: [29, 33], 7: [34, 40] },
-          'PAPER ONE': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [12, 13], 6: [14, 16], 7: [17, 20] },
-          'PAPER TWO': { 1: [0, 3], 2: [4, 6], 3: [7, 9], 4: [10, 13], 5: [14, 17], 6: [18, 21], 7: [22, 30] },
-          FINAL: { 1: [0, 11], 2: [12, 25], 3: [26, 38], 4: [39, 52], 5: [53, 64], 6: [65, 77], 7: [78, 100] }
+          'INTERNAL ASSESSMENT (ORAL)': { 1: [0, 6], 2: [7, 12], 3: [13, 19], 4: [20, 22], 5: [23, 25], 6: [26, 28], 7: [29, 32] },
+          'PAPER ONE': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 13], 5: [14, 18], 6: [19, 23], 7: [24, 30] },
+          'PAPER TWO': { 1: [0, 2], 2: [3, 5], 3: [6, 9], 4: [10, 13], 5: [14, 18], 6: [19, 22], 7: [23, 26] },
+          FINAL: { 1: [0, 12], 2: [13, 26], 3: [27, 42], 4: [43, 55], 5: [56, 70], 6: [71, 83], 7: [84, 100] }
         },
         timezone2: {
-          'INTERNAL ASSESSMENT (ORAL)': { 1: [0, 6], 2: [7, 12], 3: [13, 18], 4: [19, 23], 5: [24, 28], 6: [29, 33], 7: [34, 40] },
-          'PAPER ONE': { 1: [0, 3], 2: [4, 7], 3: [8, 10], 4: [11, 12], 5: [13, 14], 6: [15, 16], 7: [17, 20] },
-          'PAPER TWO': { 1: [0, 3], 2: [4, 7], 3: [8, 11], 4: [12, 16], 5: [17, 20], 6: [21, 25], 7: [26, 30] },
-          FINAL: { 1: [0, 13], 2: [14, 29], 3: [30, 44], 4: [45, 57], 5: [58, 69], 6: [70, 82], 7: [83, 100] }
+          'INTERNAL ASSESSMENT (ORAL)': { 1: [0, 6], 2: [7, 12], 3: [13, 19], 4: [20, 22], 5: [23, 25], 6: [26, 28], 7: [29, 32] },
+          'PAPER ONE': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 13], 5: [14, 18], 6: [19, 23], 7: [24, 30] },
+          'PAPER TWO': { 1: [0, 2], 2: [3, 5], 3: [6, 9], 4: [10, 13], 5: [14, 18], 6: [19, 22], 7: [23, 26] },
+          FINAL: { 1: [0, 12], 2: [13, 26], 3: [27, 42], 4: [43, 55], 5: [56, 70], 6: [71, 83], 7: [84, 100] }
         }
       },
       may: {
         timezone1: {
-          'INTERNAL ASSESSMENT (ORAL)': { 1: [0, 6], 2: [7, 12], 3: [13, 18], 4: [19, 23], 5: [24, 28], 6: [29, 33], 7: [34, 40] },
-          'PAPER ONE': { 1: [0, 2], 2: [3, 4], 3: [5, 7], 4: [8, 10], 5: [11, 13], 6: [14, 16], 7: [17, 20] },
-          'PAPER TWO': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 13], 5: [14, 17], 6: [18, 22], 7: [23, 30] },
-          FINAL: { 1: [0, 10], 2: [11, 22], 3: [23, 35], 4: [36, 50], 5: [51, 64], 6: [65, 78], 7: [79, 100] }
+          'INTERNAL ASSESSMENT (ORAL)': { 1: [0, 6], 2: [7, 12], 3: [13, 19], 4: [20, 22], 5: [23, 25], 6: [26, 28], 7: [29, 32] },
+          'PAPER ONE': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 13], 5: [14, 18], 6: [19, 23], 7: [24, 30] },
+          'PAPER TWO': { 1: [0, 2], 2: [3, 5], 3: [6, 9], 4: [10, 13], 5: [14, 18], 6: [19, 22], 7: [23, 26] },
+          FINAL: { 1: [0, 12], 2: [13, 26], 3: [27, 42], 4: [43, 55], 5: [56, 70], 6: [71, 83], 7: [84, 100] }
         },
         timezone2: {
-          'INTERNAL ASSESSMENT (ORAL)': { 1: [0, 6], 2: [7, 12], 3: [13, 18], 4: [19, 23], 5: [24, 28], 6: [29, 33], 7: [34, 40] },
+          'INTERNAL ASSESSMENT (ORAL)': { 1: [0, 6], 2: [7, 12], 3: [13, 19], 4: [20, 22], 5: [23, 25], 6: [26, 28], 7: [29, 32] },
+          'PAPER ONE': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 13], 5: [14, 18], 6: [19, 23], 7: [24, 30] },
+          'PAPER TWO': { 1: [0, 2], 2: [3, 5], 3: [6, 9], 4: [10, 13], 5: [14, 18], 6: [19, 22], 7: [23, 26] },
+          FINAL: { 1: [0, 12], 2: [13, 26], 3: [27, 42], 4: [43, 55], 5: [56, 70], 6: [71, 83], 7: [84, 100] }
+        }
+      }
+    }
+  },
+  'ENGLISH A LIT AND PERF': {
+    HL: {
+      november: {
+        timezone1: {
+          'TRANSFORMATIVE PERFORMANCE': { 1: [0, 6], 2: [7, 12], 3: [13, 18], 4: [19, 23], 5: [24, 28], 6: [29, 33], 7: [34, 40] },
+          'PAPER ONE': { 1: [0, 2], 2: [3, 4], 3: [5, 6], 4: [7, 9], 5: [10, 12], 6: [13, 15], 7: [16, 20] },
+          'WRITTEN ASSIGNMENT': { 1: [0, 3], 2: [4, 7], 3: [8, 11], 4: [12, 16], 5: [17, 20], 6: [21, 25], 7: [26, 30] },
+          FINAL: { 1: [0, 11], 2: [12, 24], 3: [25, 37], 4: [38, 52], 5: [53, 65], 6: [66, 80], 7: [81, 100] }
+        },
+        timezone2: {
+          'TRANSFORMATIVE PERFORMANCE': { 1: [0, 6], 2: [7, 12], 3: [13, 18], 4: [19, 23], 5: [24, 28], 6: [29, 33], 7: [34, 40] },
           'PAPER ONE': { 1: [0, 2], 2: [3, 4], 3: [5, 7], 4: [8, 10], 5: [11, 13], 6: [14, 16], 7: [17, 20] },
-          'PAPER TWO': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 13], 5: [14, 18], 6: [19, 23], 7: [24, 30] },
-          FINAL: { 1: [0, 10], 2: [11, 22], 3: [23, 35], 4: [36, 50], 5: [51, 65], 6: [66, 80], 7: [81, 100] }
+          'WRITTEN ASSIGNMENT': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 13], 5: [14, 17], 6: [18, 22], 7: [23, 30] },
+          FINAL: { 1: [0, 10], 2: [11, 22], 3: [23, 35], 4: [36, 50], 5: [51, 64], 6: [65, 78], 7: [79, 100] }
+        }
+      },
+      may: {
+        timezone1: {
+          'TRANSFORMATIVE PERFORMANCE': { 1: [0, 6], 2: [7, 12], 3: [13, 19], 4: [20, 22], 5: [23, 25], 6: [26, 28], 7: [29, 32] },
+          'PAPER ONE': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 13], 5: [14, 18], 6: [19, 23], 7: [24, 30] },
+          'WRITTEN ASSIGNMENT': { 1: [0, 2], 2: [3, 5], 3: [6, 9], 4: [10, 13], 5: [14, 18], 6: [19, 22], 7: [23, 26] },
+          FINAL: { 1: [0, 12], 2: [13, 26], 3: [27, 42], 4: [43, 55], 5: [56, 70], 6: [71, 83], 7: [84, 100] }
+        },
+        timezone2: {
+          'TRANSFORMATIVE PERFORMANCE': { 1: [0, 6], 2: [7, 12], 3: [13, 19], 4: [20, 22], 5: [23, 25], 6: [26, 28], 7: [29, 32] },
+          'PAPER ONE': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 13], 5: [14, 18], 6: [19, 23], 7: [24, 30] },
+          'WRITTEN ASSIGNMENT': { 1: [0, 2], 2: [3, 5], 3: [6, 9], 4: [10, 13], 5: [14, 18], 6: [19, 22], 7: [23, 26] },
+          FINAL: { 1: [0, 12], 2: [13, 26], 3: [27, 42], 4: [43, 55], 5: [56, 70], 6: [71, 83], 7: [84, 100] }
+        }
+      }
+    },
+    SL: {
+      november: {
+        timezone1: {
+          'TRANSFORMATIVE PERFORMANCE': { 1: [0, 6], 2: [7, 12], 3: [13, 19], 4: [20, 22], 5: [23, 25], 6: [26, 28], 7: [29, 32] },
+          'PAPER ONE': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 13], 5: [14, 18], 6: [19, 23], 7: [24, 30] },
+          'WRITTEN ASSIGNMENT': { 1: [0, 2], 2: [3, 5], 3: [6, 9], 4: [10, 13], 5: [14, 18], 6: [19, 22], 7: [23, 26] },
+          FINAL: { 1: [0, 12], 2: [13, 26], 3: [27, 42], 4: [43, 55], 5: [56, 70], 6: [71, 83], 7: [84, 100] }
+        },
+        timezone2: {
+          'TRANSFORMATIVE PERFORMANCE': { 1: [0, 6], 2: [7, 12], 3: [13, 19], 4: [20, 22], 5: [23, 25], 6: [26, 28], 7: [29, 32] },
+          'PAPER ONE': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 13], 5: [14, 18], 6: [19, 23], 7: [24, 30] },
+          'WRITTEN ASSIGNMENT': { 1: [0, 2], 2: [3, 5], 3: [6, 9], 4: [10, 13], 5: [14, 18], 6: [19, 22], 7: [23, 26] },
+          FINAL: { 1: [0, 12], 2: [13, 26], 3: [27, 42], 4: [43, 55], 5: [56, 70], 6: [71, 83], 7: [84, 100] }
+        }
+      },
+      may: {
+        timezone1: {
+          'TRANSFORMATIVE PERFORMANCE': { 1: [0, 6], 2: [7, 12], 3: [13, 19], 4: [20, 22], 5: [23, 25], 6: [26, 28], 7: [29, 32] },
+          'PAPER ONE': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 13], 5: [14, 18], 6: [19, 23], 7: [24, 30] },
+          'WRITTEN ASSIGNMENT': { 1: [0, 2], 2: [3, 5], 3: [6, 9], 4: [10, 13], 5: [14, 18], 6: [19, 22], 7: [23, 26] },
+          FINAL: { 1: [0, 12], 2: [13, 26], 3: [27, 42], 4: [43, 55], 5: [56, 70], 6: [71, 83], 7: [84, 100] }
+        },
+        timezone2: {
+          'TRANSFORMATIVE PERFORMANCE': { 1: [0, 6], 2: [7, 12], 3: [13, 19], 4: [20, 22], 5: [23, 25], 6: [26, 28], 7: [29, 32] },
+          'PAPER ONE': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 13], 5: [14, 18], 6: [19, 23], 7: [24, 30] },
+          'WRITTEN ASSIGNMENT': { 1: [0, 2], 2: [3, 5], 3: [6, 9], 4: [10, 13], 5: [14, 18], 6: [19, 22], 7: [23, 26] },
+          FINAL: { 1: [0, 12], 2: [13, 26], 3: [27, 42], 4: [43, 55], 5: [56, 70], 6: [71, 83], 7: [84, 100] }
+        }
+      }
+    }
+  },
+  'MATH ANALYSIS': {
+    HL: {
+      november: {
+        timezone1: {
+          EXPLORATION: { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [12, 14], 6: [15, 16], 7: [17, 20] },
+          'PAPER ONE': { 1: [0, 9], 2: [10, 23], 3: [24, 34], 4: [35, 49], 5: [50, 63], 6: [64, 79], 7: [80, 110] },
+          'PAPER TWO': { 1: [0, 9], 2: [10, 22], 3: [23, 33], 4: [34, 48], 5: [49, 62], 6: [63, 78], 7: [79, 110] },
+          FINAL: { 1: [0, 9], 2: [10, 22], 3: [23, 34], 4: [35, 48], 5: [49, 61], 6: [62, 75], 7: [76, 100] }
+        },
+        timezone2: {
+          EXPLORATION: { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [12, 14], 6: [15, 16], 7: [17, 20] },
+          'PAPER ONE': { 1: [0, 14], 2: [15, 22], 3: [23, 29], 4: [30, 44], 5: [45, 59], 6: [60, 75], 7: [76, 110] },
+          'PAPER TWO': { 1: [0, 15], 2: [16, 24], 3: [25, 32], 4: [33, 47], 5: [48, 62], 6: [63, 79], 7: [80, 110] },
+          FINAL: { 1: [0, 13], 2: [14, 23], 3: [24, 33], 4: [34, 46], 5: [47, 59], 6: [60, 73], 7: [74, 100] }
+        },
+        timezone0: {
+          EXPLORATION: { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [12, 14], 6: [15, 16], 7: [17, 20] },
+          'PAPER ONE': { 1: [0, 17], 2: [18, 31], 3: [32, 42], 4: [43, 57], 5: [58, 71], 6: [72, 85], 7: [86, 110] },
+          'PAPER THREE': { 1: [0, 8], 2: [9, 16], 3: [17, 24], 4: [25, 32], 5: [33, 38], 6: [39, 44], 7: [45, 55] },
+          'PAPER TWO': { 1: [0, 17], 2: [18, 30], 3: [31, 41], 4: [42, 56], 5: [57, 70], 6: [71, 83], 7: [84, 110] },
+          FINAL: { 1: [0, 14], 2: [15, 27], 3: [28, 39], 4: [40, 53], 5: [54, 66], 6: [67, 78], 7: [79, 100] }
+        }
+      },
+      may: {
+        timezone1: {
+          EXPLORATION: { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [12, 14], 6: [15, 17], 7: [18, 20] },
+          'PAPER ONE': { 1: [0, 8], 2: [9, 17], 3: [18, 25], 4: [26, 35], 5: [36, 48], 6: [49, 58], 7: [59, 80] },
+          'PAPER TWO': { 1: [0, 7], 2: [8, 16], 3: [17, 24], 4: [25, 35], 5: [36, 48], 6: [49, 58], 7: [59, 80] },
+          FINAL: { 1: [0, 9], 2: [10, 21], 3: [22, 32], 4: [33, 46], 5: [47, 62], 6: [63, 75], 7: [76, 100] }
+        },
+        timezone2: {
+          EXPLORATION: { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [12, 14], 6: [15, 17], 7: [18, 20] },
+          'PAPER ONE': { 1: [0, 5], 2: [6, 11], 3: [12, 20], 4: [21, 31], 5: [32, 44], 6: [45, 57], 7: [58, 80] },
+          'PAPER TWO': { 1: [0, 7], 2: [8, 13], 3: [14, 22], 4: [23, 33], 5: [34, 45], 6: [46, 58], 7: [59, 80] },
+          FINAL: { 1: [0, 8], 2: [9, 17], 3: [18, 29], 4: [30, 43], 5: [44, 58], 6: [59, 74], 7: [75, 100] }
+        }
+      }
+    },
+    SL: {
+      november: {
+        timezone1: {
+          EXPLORATION: { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [12, 14], 6: [15, 16], 7: [17, 20] },
+          'PAPER ONE': { 1: [0, 10], 2: [11, 20], 3: [21, 28], 4: [29, 41], 5: [42, 53], 6: [54, 63], 7: [64, 80] },
+          'PAPER TWO': { 1: [0, 10], 2: [11, 20], 3: [21, 28], 4: [29, 41], 5: [42, 52], 6: [53, 61], 7: [62, 80] },
+          FINAL: { 1: [0, 12], 2: [13, 25], 3: [26, 36], 4: [37, 52], 5: [53, 66], 6: [67, 79], 7: [80, 100] }
+        },
+        timezone2: {
+          EXPLORATION: { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [12, 14], 6: [15, 17], 7: [18, 20] },
+          'PAPER ONE': { 1: [0, 10], 2: [11, 20], 3: [21, 28], 4: [29, 41], 5: [42, 52], 6: [53, 63], 7: [64, 80] },
+          'PAPER TWO': { 1: [0, 10], 2: [11, 20], 3: [21, 28], 4: [29, 41], 5: [42, 52], 6: [53, 61], 7: [62, 80] },
+          FINAL: { 1: [0, 12], 2: [13, 25], 3: [26, 36], 4: [37, 52], 5: [53, 66], 6: [67, 79], 7: [80, 100] }
+        }
+      },
+      may: {
+        timezone1: {
+          EXPLORATION: { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [12, 14], 6: [15, 17], 7: [18, 20] },
+          'PAPER ONE': { 1: [0, 8], 2: [9, 17], 3: [18, 25], 4: [26, 35], 5: [36, 48], 6: [49, 58], 7: [59, 80] },
+          'PAPER TWO': { 1: [0, 7], 2: [8, 16], 3: [17, 24], 4: [25, 35], 5: [36, 48], 6: [49, 58], 7: [59, 80] },
+          FINAL: { 1: [0, 9], 2: [10, 21], 3: [22, 32], 4: [33, 46], 5: [47, 62], 6: [63, 75], 7: [76, 100] }
+        },
+        timezone2: {
+          EXPLORATION: { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [12, 14], 6: [15, 17], 7: [18, 20] },
+          'PAPER ONE': { 1: [0, 5], 2: [6, 11], 3: [12, 20], 4: [21, 31], 5: [32, 44], 6: [45, 57], 7: [58, 80] },
+          'PAPER TWO': { 1: [0, 7], 2: [8, 13], 3: [14, 22], 4: [23, 33], 5: [34, 45], 6: [46, 58], 7: [59, 80] },
+          FINAL: { 1: [0, 8], 2: [9, 17], 3: [18, 29], 4: [30, 43], 5: [44, 58], 6: [59, 74], 7: [75, 100] }
         }
       }
     }
@@ -187,12 +362,12 @@ const paperMaxScores = {
     HL: {
       ESSAY: 20,
       'INTERNAL ASSESSMENT (ORAL)': 40,
-      'PAPER ONE': 40,
+      'PAPER ONE': 30,
       'PAPER TWO': 30
     },
     SL: {
       'INTERNAL ASSESSMENT (ORAL)': 40,
-      'PAPER ONE': 20,
+      'PAPER ONE': 30,
       'PAPER TWO': 30
     }
   },
@@ -208,19 +383,65 @@ const paperMaxScores = {
       'PAPER ONE': 20,
       'PAPER TWO': 30
     }
+  },
+  'ENGLISH A LIT AND PERF': {
+    HL: {
+      'TRANSFORMATIVE PERFORMANCE': 32,
+      'PAPER ONE': 30,
+      'WRITTEN ASSIGNMENT': 26
+    },
+    SL: {
+      'TRANSFORMATIVE PERFORMANCE': 32,
+      'PAPER ONE': 30,
+      'WRITTEN ASSIGNMENT': 26
+    }
+  },
+  'MATH ANALYSIS': {
+    HL: {
+      'PAPER ONE': 110,
+      'PAPER TWO': 110,
+      'PAPER THREE': 55,
+      'EXPLORATION': 20
+    },
+    SL: {
+      'PAPER ONE': 80,
+      'PAPER TWO': 80,
+      'EXPLORATION': 20
+    }
   }
 };
 
 const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
   const { subject, userType } = route.params;
-  const [selectedLevel, setSelectedLevel] = useState<'HL' | 'SL'>('HL');
-  const [selectedTimezone, setSelectedTimezone] = useState<'timezone1' | 'timezone2'>('timezone1');
-  const [selectedSeason, setSelectedSeason] = useState<'november' | 'may'>('november');
+  const [selectedLevel, setSelectedLevel] = useState<'HL' | 'SL'>(() => {
+    return subject === 'ENGLISH A LIT AND PERF' ? 'SL' : 'HL';
+  });
+  const [selectedTimezone, setSelectedTimezone] = useState<'timezone0' | 'timezone1' | 'timezone2'>('timezone1');
+  const [selectedSeason, setSelectedSeason] = useState<'november' | 'may'>(() => {
+    return subject === 'ENGLISH A LIT AND PERF' ? 'may' : 'november';
+  });
   const [scores, setScores] = useState<Record<string, number>>({});
   const [predictedGrade, setPredictedGrade] = useState<number | null>(null);
 
-  // Animation value for home icon fade
   const homeIconOpacity = useRef(new Animated.Value(1)).current;
+
+  const isCombinationAvailable = (level: 'HL' | 'SL', season: 'november' | 'may', timezone: 'timezone0' | 'timezone1' | 'timezone2') => {
+    if (subject === 'ENGLISH A LIT AND PERF') {
+      return level === 'SL' && season === 'may' && (timezone === 'timezone1' || timezone === 'timezone2');
+    }
+    
+    if (subject === 'MATH ANALYSIS') {
+      if (timezone === 'timezone0') {
+        return level === 'HL' && season === 'november';
+      }
+    }
+    
+    if (timezone === 'timezone0') {
+      return subject === 'MATH ANALYSIS' && level === 'HL' && season === 'november';
+    }
+    
+    return true;
+  };
 
   const handleScroll = (event: any) => {
     const scrollY = event.nativeEvent.contentOffset.y;
@@ -257,7 +478,6 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     const boundaries = timezoneData.FINAL;
     if (!boundaries) return null;
 
-    // Get weightages for this subject and level
     const weightageData = paperWeightages[subject as keyof typeof paperWeightages];
     if (!weightageData || !weightageData[selectedLevel]) return null;
     
@@ -267,7 +487,6 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     
     const maxScores = maxScoresData[selectedLevel];
 
-    // Calculate weighted score out of 100
     let weightedScore = 0;
     
     Object.keys(scores).forEach(paper => {
@@ -275,18 +494,12 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
       const maxScore = maxScores[paper as keyof typeof maxScores] || 1;
       const weight = weights[paper as keyof typeof weights] || 0;
       
-      // Convert to percentage and apply weight
       const percentage = (rawScore / maxScore) * 100;
       weightedScore += percentage * weight;
     });
 
-    // Round the weighted score to avoid precision issues
     weightedScore = Math.round(weightedScore * 100) / 100;
 
-    // Debug log to help identify issues
-    console.log(`Weighted Score: ${weightedScore}%, Selected: ${selectedLevel} ${selectedSeason} ${selectedTimezone}`);
-
-    // Find grade based on weighted score - check from grade 1 to 7
     for (let grade = 1; grade <= 7; grade++) {
       const gradeRange = boundaries[grade as keyof typeof boundaries] as [number, number];
       if (gradeRange && weightedScore >= gradeRange[0] && weightedScore <= gradeRange[1]) {
@@ -294,8 +507,6 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
       }
     }
 
-    // Fallback: if no exact match found, find the closest grade
-    // This handles edge cases where rounding might cause issues
     let closestGrade = 1;
     let minDistance = Infinity;
     
@@ -420,6 +631,18 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
           }}>
             {subject}
           </Text>
+          {subject === 'ENGLISH A LIT AND PERF' && (
+            <Text style={{ 
+              fontSize: 14, 
+              color: '#FFA500', 
+              fontFamily: 'ScopeOne-Regular',
+              textAlign: 'center',
+              marginBottom: 8,
+              fontStyle: 'italic'
+            }}>
+              Note: Only May SL boundaries are available for this subject
+            </Text>
+          )}
         </View>
 
         {/* Level Selection */}
@@ -436,29 +659,41 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
               Select Level
             </Text>
             <View style={{ flexDirection: 'row', gap: 12 }}>
-              {['HL', 'SL'].map((level) => (
-                <TouchableOpacity
-                  key={level}
-                  onPress={() => setSelectedLevel(level as 'HL' | 'SL')}
-                  style={{
-                    flex: 1,
-                    padding: 12,
-                    borderRadius: 12,
-                    borderWidth: 1,
-                    borderColor: selectedLevel === level ? '#7EC3FF' : '#444',
-                    backgroundColor: selectedLevel === level ? 'rgba(126, 195, 255, 0.2)' : 'rgba(68, 68, 68, 0.2)',
-                  }}
-                >
-                  <Text style={{
-                    color: selectedLevel === level ? '#7EC3FF' : '#B6B6B6',
-                    fontFamily: 'ScopeOne-Regular',
-                    textAlign: 'center',
-                    fontWeight: selectedLevel === level ? 'bold' : 'normal'
-                  }}>
-                    {level}
-                  </Text>
-                </TouchableOpacity>
-              ))}
+              {['HL', 'SL'].map((level) => {
+                const isAvailable = isCombinationAvailable(level as 'HL' | 'SL', selectedSeason, selectedTimezone);
+                const isSelected = selectedLevel === level;
+                
+                return (
+                  <TouchableOpacity
+                    key={level}
+                    onPress={() => {
+                      if (isAvailable) {
+                        setSelectedLevel(level as 'HL' | 'SL');
+                      }
+                    }}
+                    disabled={!isAvailable}
+                    style={{
+                      flex: 1,
+                      padding: 12,
+                      borderRadius: 12,
+                      borderWidth: 1,
+                      borderColor: isSelected ? '#7EC3FF' : (isAvailable ? '#444' : '#333'),
+                      backgroundColor: isSelected ? 'rgba(126, 195, 255, 0.2)' : (isAvailable ? 'rgba(68, 68, 68, 0.2)' : 'rgba(51, 51, 51, 0.1)'),
+                      opacity: isAvailable ? 1 : 0.5,
+                    }}
+                  >
+                    <Text style={{
+                      color: isSelected ? '#7EC3FF' : (isAvailable ? '#B6B6B6' : '#666'),
+                      fontFamily: 'ScopeOne-Regular',
+                      textAlign: 'center',
+                      fontWeight: isSelected ? 'bold' : 'normal'
+                    }}>
+                      {level}
+                      {!isAvailable && subject === 'ENGLISH A LIT AND PERF' ? ' (N/A)' : ''}
+                    </Text>
+                  </TouchableOpacity>
+                );
+              })}
             </View>
           </View>
         </View>
@@ -478,31 +713,44 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
             </Text>
             <View style={{ flexDirection: 'row', gap: 12 }}>
               {[
+                { key: 'timezone0', label: 'Timezone 0' },
                 { key: 'timezone1', label: 'Timezone 1' },
                 { key: 'timezone2', label: 'Timezone 2' }
-              ].map((timezone) => (
-                <TouchableOpacity
-                  key={timezone.key}
-                  onPress={() => setSelectedTimezone(timezone.key as 'timezone1' | 'timezone2')}
-                  style={{
-                    flex: 1,
-                    padding: 12,
-                    borderRadius: 12,
-                    borderWidth: 1,
-                    borderColor: selectedTimezone === timezone.key ? '#7EC3FF' : '#444',
-                    backgroundColor: selectedTimezone === timezone.key ? 'rgba(126, 195, 255, 0.2)' : 'rgba(68, 68, 68, 0.2)',
-                  }}
-                >
-                  <Text style={{
-                    color: selectedTimezone === timezone.key ? '#7EC3FF' : '#B6B6B6',
-                    fontFamily: 'ScopeOne-Regular',
-                    textAlign: 'center',
-                    fontWeight: selectedTimezone === timezone.key ? 'bold' : 'normal'
-                  }}>
-                    {timezone.label}
-                  </Text>
-                </TouchableOpacity>
-              ))}
+              ].map((timezone) => {
+                const isAvailable = isCombinationAvailable(selectedLevel, selectedSeason, timezone.key as 'timezone0' | 'timezone1' | 'timezone2');
+                const isSelected = selectedTimezone === timezone.key;
+                
+                return (
+                  <TouchableOpacity
+                    key={timezone.key}
+                    onPress={() => {
+                      if (isAvailable) {
+                        setSelectedTimezone(timezone.key as 'timezone0' | 'timezone1' | 'timezone2');
+                      }
+                    }}
+                    disabled={!isAvailable}
+                    style={{
+                      flex: 1,
+                      padding: 12,
+                      borderRadius: 12,
+                      borderWidth: 1,
+                      borderColor: isSelected ? '#7EC3FF' : (isAvailable ? '#444' : '#333'),
+                      backgroundColor: isSelected ? 'rgba(126, 195, 255, 0.2)' : (isAvailable ? 'rgba(68, 68, 68, 0.2)' : 'rgba(51, 51, 51, 0.1)'),
+                      opacity: isAvailable ? 1 : 0.5,
+                    }}
+                  >
+                    <Text style={{
+                      color: isSelected ? '#7EC3FF' : (isAvailable ? '#B6B6B6' : '#666'),
+                      fontFamily: 'ScopeOne-Regular',
+                      textAlign: 'center',
+                      fontWeight: isSelected ? 'bold' : 'normal'
+                    }}>
+                      {timezone.label}
+                      {!isAvailable && subject === 'ENGLISH A LIT AND PERF' ? ' (N/A)' : ''}
+                    </Text>
+                  </TouchableOpacity>
+                );
+              })}
             </View>
           </View>
         </View>
@@ -524,29 +772,41 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
               {[
                 { key: 'november', label: 'November' },
                 { key: 'may', label: 'May' }
-              ].map((season) => (
-                <TouchableOpacity
-                  key={season.key}
-                  onPress={() => setSelectedSeason(season.key as 'november' | 'may')}
-                  style={{
-                    flex: 1,
-                    padding: 12,
-                    borderRadius: 12,
-                    borderWidth: 1,
-                    borderColor: selectedSeason === season.key ? '#7EC3FF' : '#444',
-                    backgroundColor: selectedSeason === season.key ? 'rgba(126, 195, 255, 0.2)' : 'rgba(68, 68, 68, 0.2)',
-                  }}
-                >
-                  <Text style={{
-                    color: selectedSeason === season.key ? '#7EC3FF' : '#B6B6B6',
-                    fontFamily: 'ScopeOne-Regular',
-                    textAlign: 'center',
-                    fontWeight: selectedSeason === season.key ? 'bold' : 'normal'
-                  }}>
-                    {season.label}
-                  </Text>
-                </TouchableOpacity>
-              ))}
+              ].map((season) => {
+                const isAvailable = isCombinationAvailable(selectedLevel, season.key as 'november' | 'may', selectedTimezone);
+                const isSelected = selectedSeason === season.key;
+                
+                return (
+                  <TouchableOpacity
+                    key={season.key}
+                    onPress={() => {
+                      if (isAvailable) {
+                        setSelectedSeason(season.key as 'november' | 'may');
+                      }
+                    }}
+                    disabled={!isAvailable}
+                    style={{
+                      flex: 1,
+                      padding: 12,
+                      borderRadius: 12,
+                      borderWidth: 1,
+                      borderColor: isSelected ? '#7EC3FF' : (isAvailable ? '#444' : '#333'),
+                      backgroundColor: isSelected ? 'rgba(126, 195, 255, 0.2)' : (isAvailable ? 'rgba(68, 68, 68, 0.2)' : 'rgba(51, 51, 51, 0.1)'),
+                      opacity: isAvailable ? 1 : 0.5,
+                    }}
+                  >
+                    <Text style={{
+                      color: isSelected ? '#7EC3FF' : (isAvailable ? '#B6B6B6' : '#666'),
+                      fontFamily: 'ScopeOne-Regular',
+                      textAlign: 'center',
+                      fontWeight: isSelected ? 'bold' : 'normal'
+                    }}>
+                      {season.label}
+                      {!isAvailable && subject === 'ENGLISH A LIT AND PERF' ? ' (N/A)' : ''}
+                    </Text>
+                  </TouchableOpacity>
+                );
+              })}
             </View>
           </View>
         </View>

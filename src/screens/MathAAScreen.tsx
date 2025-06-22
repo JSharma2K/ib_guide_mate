@@ -442,8 +442,10 @@ const MathAAScreen: React.FC<Props> = ({ navigation, route }) => {
           }}
           activeOpacity={0.8}
           onPress={() => {
-            // TODO: Navigate to grade prediction screen
-            console.log('Navigate to grade prediction');
+            navigation.navigate('GradePrediction', {
+              subject: 'MATH ANALYSIS',
+              userType: userType
+            });
           }}
         >
           <LinearGradient

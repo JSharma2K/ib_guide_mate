@@ -469,8 +469,7 @@ const MathAIScreen: React.FC<Props> = ({ navigation, route }) => {
           }}
           activeOpacity={0.8}
           onPress={() => {
-            // TODO: Navigate to grade prediction screen
-            console.log('Navigate to grade prediction');
+            alert('Grade prediction for Math AI is coming soon! Currently available for Math AA only.');
           }}
         >
           <LinearGradient
