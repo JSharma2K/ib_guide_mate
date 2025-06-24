@@ -68,6 +68,19 @@ const paperWeightages = {
       'PAPER TWO': 0.40,        // 40%
       'EXPLORATION': 0.20       // 20%
     }
+  },
+  'MATH AI': {
+    HL: {
+      'PAPER ONE': 0.30,        // 30%
+      'PAPER TWO': 0.30,        // 30%
+      'PAPER THREE': 0.20,      // 20%
+      'EXPLORATION': 0.20       // 20%
+    },
+    SL: {
+      'PAPER ONE': 0.40,        // 40%
+      'PAPER TWO': 0.40,        // 40%
+      'EXPLORATION': 0.20       // 20%
+    }
   }
 };
 
@@ -92,17 +105,10 @@ const gradeBoundaries = {
         },
         timezone2: {
           EXPLORATION: { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [12, 14], 6: [15, 16], 7: [17, 20] },
-          'PAPER ONE': { 1: [0, 14], 2: [15, 22], 3: [23, 29], 4: [30, 44], 5: [45, 59], 6: [60, 75], 7: [76, 110] },
-          'PAPER TWO': { 1: [0, 15], 2: [16, 24], 3: [25, 32], 4: [33, 47], 5: [48, 62], 6: [63, 79], 7: [80, 110] },
-          FINAL: { 1: [0, 13], 2: [14, 23], 3: [24, 33], 4: [34, 46], 5: [47, 59], 6: [60, 73], 7: [74, 100] }
+          'PAPER ONE': { 1: [0, 13], 2: [14, 23], 3: [24, 36], 4: [37, 47], 5: [48, 56], 6: [57, 65], 7: [66, 80] },
+          'PAPER TWO': { 1: [0, 9], 2: [10, 18], 3: [19, 29], 4: [30, 40], 5: [41, 51], 6: [52, 60], 7: [61, 75] },
+          FINAL: { 1: [0, 13], 2: [14, 26], 3: [27, 41], 4: [42, 56], 5: [57, 69], 6: [70, 81], 7: [82, 100] }
         },
-        timezone0: {
-          EXPLORATION: { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [12, 14], 6: [15, 16], 7: [17, 20] },
-          'PAPER ONE': { 1: [0, 17], 2: [18, 31], 3: [32, 42], 4: [43, 57], 5: [58, 71], 6: [72, 85], 7: [86, 110] },
-          'PAPER THREE': { 1: [0, 8], 2: [9, 16], 3: [17, 24], 4: [25, 32], 5: [33, 38], 6: [39, 44], 7: [45, 55] },
-          'PAPER TWO': { 1: [0, 17], 2: [18, 30], 3: [31, 41], 4: [42, 56], 5: [57, 70], 6: [71, 83], 7: [84, 110] },
-          FINAL: { 1: [0, 14], 2: [15, 27], 3: [28, 39], 4: [40, 53], 5: [54, 66], 6: [67, 78], 7: [79, 100] }
-        }
       },
       may: {
         timezone1: {
@@ -145,7 +151,7 @@ const gradeBoundaries = {
       may: {
         timezone1: {
           'INTERNAL ASSESSMENT (ORAL)': { 1: [0, 6], 2: [7, 12], 3: [13, 19], 4: [20, 22], 5: [23, 25], 6: [26, 28], 7: [29, 32] },
-          'PAPER ONE': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [14, 18], 6: [19, 23], 7: [24, 30] },
+          'PAPER ONE': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 13], 5: [14, 18], 6: [19, 23], 7: [24, 30] },
           'PAPER TWO': { 1: [0, 3], 2: [4, 6], 3: [7, 9], 4: [10, 13], 5: [14, 17], 6: [18, 21], 7: [22, 26] },
           FINAL: { 1: [0, 12], 2: [13, 26], 3: [27, 42], 4: [43, 55], 5: [56, 70], 6: [71, 83], 7: [84, 100] }
         },
@@ -303,10 +309,10 @@ const gradeBoundaries = {
         },
         timezone0: {
           EXPLORATION: { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [12, 14], 6: [15, 16], 7: [17, 20] },
-          'PAPER ONE': { 1: [0, 17], 2: [18, 31], 3: [32, 42], 4: [43, 57], 5: [58, 71], 6: [72, 85], 7: [86, 110] },
-          'PAPER THREE': { 1: [0, 8], 2: [9, 16], 3: [17, 24], 4: [25, 32], 5: [33, 38], 6: [39, 44], 7: [45, 55] },
-          'PAPER TWO': { 1: [0, 17], 2: [18, 30], 3: [31, 41], 4: [42, 56], 5: [57, 70], 6: [71, 83], 7: [84, 110] },
-          FINAL: { 1: [0, 14], 2: [15, 27], 3: [28, 39], 4: [40, 53], 5: [54, 66], 6: [67, 78], 7: [79, 100] }
+          'PAPER ONE': { 1: [0, 16], 2: [17, 30], 3: [31, 41], 4: [42, 54], 5: [55, 69], 6: [70, 82], 7: [83, 110] },
+          'PAPER THREE': { 1: [0, 7], 2: [8, 13], 3: [14, 18], 4: [19, 25], 5: [26, 31], 6: [32, 36], 7: [37, 54] },
+          'PAPER TWO': { 1: [0, 18], 2: [19, 34], 3: [35, 45], 4: [46, 59], 5: [60, 72], 6: [73, 87], 7: [88, 108] },
+          FINAL: { 1: [0, 14], 2: [15, 27], 3: [28, 38], 4: [39, 51], 5: [52, 64], 6: [65, 76], 7: [77, 100] }
         }
       },
       may: {
@@ -351,6 +357,64 @@ const gradeBoundaries = {
           'PAPER ONE': { 1: [0, 5], 2: [6, 11], 3: [12, 20], 4: [21, 31], 5: [32, 44], 6: [45, 57], 7: [58, 80] },
           'PAPER TWO': { 1: [0, 7], 2: [8, 13], 3: [14, 22], 4: [23, 33], 5: [34, 45], 6: [46, 58], 7: [59, 80] },
           FINAL: { 1: [0, 8], 2: [9, 17], 3: [18, 29], 4: [30, 43], 5: [44, 58], 6: [59, 74], 7: [75, 100] }
+        }
+      }
+    }
+  },
+  'MATH AI': {
+    HL: {
+      may: {
+        timezone1: {
+          EXPLORATION: { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [12, 14], 6: [15, 16], 7: [17, 20] },
+          'PAPER ONE': { 1: [0, 14], 2: [15, 26], 3: [27, 35], 4: [36, 47], 5: [48, 57], 6: [58, 68], 7: [69, 110] },
+          'PAPER THREE': { 1: [0, 7], 2: [8, 14], 3: [15, 21], 4: [22, 28], 5: [29, 35], 6: [36, 41], 7: [42, 55] },
+          'PAPER TWO': { 1: [0, 15], 2: [16, 30], 3: [31, 41], 4: [42, 59], 5: [60, 74], 6: [75, 88], 7: [89, 110] },
+          FINAL: { 1: [0, 12], 2: [13, 25], 3: [26, 36], 4: [37, 50], 5: [51, 62], 6: [63, 73], 7: [74, 100] }
+        },
+        timezone2: {
+          EXPLORATION: { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [12, 14], 6: [15, 16], 7: [17, 20] },
+          'PAPER ONE': { 1: [0, 15], 2: [16, 27], 3: [28, 36], 4: [37, 50], 5: [51, 65], 6: [66, 76], 7: [77, 110] },
+          'PAPER THREE': { 1: [0, 6], 2: [7, 11], 3: [12, 16], 4: [17, 23], 5: [24, 30], 6: [31, 38], 7: [39, 55] },
+          'PAPER TWO': { 1: [0, 15], 2: [16, 29], 3: [30, 39], 4: [40, 53], 5: [54, 69], 6: [70, 84], 7: [85, 110] },
+          FINAL: { 1: [0, 12], 2: [13, 24], 3: [25, 34], 4: [35, 47], 5: [48, 61], 6: [62, 73], 7: [74, 100] }
+        }
+      },
+      november: {
+        timezone0: {
+          EXPLORATION: { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [12, 14], 6: [15, 16], 7: [17, 20] },
+          'PAPER ONE': { 1: [0, 13], 2: [14, 23], 3: [24, 36], 4: [37, 47], 5: [48, 56], 6: [57, 65], 7: [66, 80] },
+          'PAPER TWO': { 1: [0, 9], 2: [10, 18], 3: [19, 29], 4: [30, 40], 5: [41, 51], 6: [52, 60], 7: [61, 75] },
+          FINAL: { 1: [0, 13], 2: [14, 26], 3: [27, 41], 4: [42, 56], 5: [57, 69], 6: [70, 81], 7: [82, 100] }
+        }
+      }
+    },
+    SL: {
+      may: {
+        timezone1: {
+          EXPLORATION: { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [12, 14], 6: [15, 17], 7: [18, 20] },
+          'PAPER ONE': { 1: [0, 11], 2: [12, 19], 3: [20, 29], 4: [30, 38], 5: [39, 49], 6: [50, 57], 7: [58, 80] },
+          'PAPER TWO': { 1: [0, 10], 2: [11, 20], 3: [21, 29], 4: [30, 40], 5: [41, 52], 6: [53, 62], 7: [63, 80] },
+          FINAL: { 1: [0, 12], 2: [13, 24], 3: [25, 37], 4: [38, 50], 5: [51, 64], 6: [65, 76], 7: [77, 100] }
+        },
+        timezone2: {
+          EXPLORATION: { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [12, 14], 6: [15, 17], 7: [18, 20] },
+          'PAPER ONE': { 1: [0, 10], 2: [11, 19], 3: [20, 26], 4: [27, 36], 5: [37, 46], 6: [47, 58], 7: [59, 80] },
+          'PAPER TWO': { 1: [0, 9], 2: [10, 18], 3: [19, 25], 4: [26, 35], 5: [36, 46], 6: [47, 59], 7: [60, 80] },
+          FINAL: { 1: [0, 11], 2: [12, 23], 3: [24, 33], 4: [34, 46], 5: [47, 60], 6: [61, 75], 7: [76, 100] }
+        },
+      november: {
+          timezone1: {
+            EXPLORATION: { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [12, 14], 6: [15, 17], 7: [18, 20] },
+            'PAPER ONE': { 1: [0, 14], 2: [14, 23], 3: [24, 36], 4: [37, 47], 5: [48, 56], 6: [57, 65], 7: [66, 80] },
+            'PAPER TWO': { 1: [0, 9], 2: [10, 18], 3: [11, 29], 4: [30, 40], 5: [41, 51], 6: [52, 60], 7: [61, 75] },
+            FINAL: { 1: [0, 13], 2: [14, 26], 3: [27, 41], 4: [42, 56], 5: [57, 69], 6: [70, 81], 7: [82, 100] }
+          },
+          timezone2: {
+            EXPLORATION: { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [12, 14], 6: [15, 17], 7: [18, 20] },
+            'PAPER ONE': { 1: [0, 14], 2: [14, 23], 3: [24, 36], 4: [37, 47], 5: [48, 56], 6: [57, 65], 7: [66, 80] },
+            'PAPER TWO': { 1: [0, 9], 2: [10, 18], 3: [11, 29], 4: [30, 40], 5: [41, 51], 6: [52, 60], 7: [61, 75] },
+            FINAL: { 1: [0, 13], 2: [14, 26], 3: [27, 41], 4: [42, 56], 5: [57, 69], 6: [70, 81], 7: [82, 100] }
+          }
         }
       }
     }
@@ -408,6 +472,19 @@ const paperMaxScores = {
       'PAPER TWO': 80,
       'EXPLORATION': 20
     }
+  },
+  'MATH AI': {
+    HL: {
+      'PAPER ONE': 110,
+      'PAPER TWO': 110,
+      'PAPER THREE': 55,
+      'EXPLORATION': 20
+    },
+    SL: {
+      'PAPER ONE': 80,
+      'PAPER TWO': 80,
+      'EXPLORATION': 20
+    }
   }
 };
 
@@ -416,9 +493,14 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
   const [selectedLevel, setSelectedLevel] = useState<'HL' | 'SL'>(() => {
     return subject === 'ENGLISH A LIT AND PERF' ? 'SL' : 'HL';
   });
-  const [selectedTimezone, setSelectedTimezone] = useState<'timezone0' | 'timezone1' | 'timezone2'>('timezone1');
+  const [selectedTimezone, setSelectedTimezone] = useState<'timezone0' | 'timezone1' | 'timezone2'>(() => {
+    if (subject === 'MATH AI') return 'timezone0';
+    return 'timezone1';
+  });
   const [selectedSeason, setSelectedSeason] = useState<'november' | 'may'>(() => {
-    return subject === 'ENGLISH A LIT AND PERF' ? 'may' : 'november';
+    if (subject === 'ENGLISH A LIT AND PERF') return 'may';
+    if (subject === 'MATH AI') return 'november';
+    return 'november';
   });
   const [scores, setScores] = useState<Record<string, number>>({});
   const [predictedGrade, setPredictedGrade] = useState<number | null>(null);
@@ -430,17 +512,57 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
       return level === 'SL' && season === 'may' && (timezone === 'timezone1' || timezone === 'timezone2');
     }
     
+    if (subject === 'MATH AI') {
+      // HL November timezone 0
+      if (level === 'HL' && season === 'november' && timezone === 'timezone0') return true;
+      // HL May timezone 1 and 2
+      if (level === 'HL' && season === 'may' && (timezone === 'timezone1' || timezone === 'timezone2')) return true;
+      // SL November timezone 1 and 2
+      if (level === 'SL' && season === 'november' && (timezone === 'timezone1' || timezone === 'timezone2')) return true;
+      // SL May timezone 1 and 2
+      if (level === 'SL' && season === 'may' && (timezone === 'timezone1' || timezone === 'timezone2')) return true;
+      // All other combinations are not available
+      return false;
+    }
+    
     if (subject === 'MATH ANALYSIS') {
       if (timezone === 'timezone0') {
         return level === 'HL' && season === 'november';
       }
+      // All other combinations are available for Math Analysis
+      return true;
     }
     
-    if (timezone === 'timezone0') {
-      return subject === 'MATH ANALYSIS' && level === 'HL' && season === 'november';
-    }
-    
+    // For all other subjects, all combinations are available
     return true;
+  };
+
+  // Function to find the first available combination for Math AI
+  const getValidMathAICombination = (preferredLevel?: 'HL' | 'SL', preferredSeason?: 'november' | 'may', preferredTimezone?: 'timezone0' | 'timezone1' | 'timezone2') => {
+    const combinations = [
+      { level: 'HL' as const, season: 'november' as const, timezone: 'timezone0' as const },
+      { level: 'HL' as const, season: 'may' as const, timezone: 'timezone1' as const },
+      { level: 'HL' as const, season: 'may' as const, timezone: 'timezone2' as const },
+      { level: 'SL' as const, season: 'november' as const, timezone: 'timezone1' as const },
+      { level: 'SL' as const, season: 'november' as const, timezone: 'timezone2' as const },
+      { level: 'SL' as const, season: 'may' as const, timezone: 'timezone1' as const },
+      { level: 'SL' as const, season: 'may' as const, timezone: 'timezone2' as const },
+    ];
+
+    // Try to find combination that matches preferences
+    if (preferredLevel && preferredSeason && preferredTimezone) {
+      const preferred = combinations.find(c => c.level === preferredLevel && c.season === preferredSeason && c.timezone === preferredTimezone);
+      if (preferred) return preferred;
+    }
+
+    // Try to find combination with preferred level
+    if (preferredLevel) {
+      const withLevel = combinations.find(c => c.level === preferredLevel);
+      if (withLevel) return withLevel;
+    }
+
+    // Return first available combination
+    return combinations[0];
   };
 
   const handleScroll = (event: any) => {
@@ -469,10 +591,10 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     const levelData = subjectData[selectedLevel];
     if (!levelData) return null;
     
-    const seasonData = levelData[selectedSeason];
+    const seasonData = (levelData as any)[selectedSeason];
     if (!seasonData) return null;
     
-    const timezoneData = seasonData[selectedTimezone];
+    const timezoneData = (seasonData as any)[selectedTimezone];
     if (!timezoneData) return null;
     
     const boundaries = timezoneData.FINAL;
@@ -667,11 +789,17 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
                   <TouchableOpacity
                     key={level}
                     onPress={() => {
-                      if (isAvailable) {
+                      if (subject === 'MATH AI') {
+                        // For Math AI, always use smart selection logic regardless of current availability
+                        const validCombo = getValidMathAICombination(level as 'HL' | 'SL', selectedSeason, selectedTimezone);
+                        setSelectedLevel(validCombo.level);
+                        setSelectedSeason(validCombo.season);
+                        setSelectedTimezone(validCombo.timezone);
+                      } else if (isAvailable) {
                         setSelectedLevel(level as 'HL' | 'SL');
                       }
                     }}
-                    disabled={!isAvailable}
+                    disabled={subject !== 'MATH AI' && !isAvailable}
                     style={{
                       flex: 1,
                       padding: 12,
@@ -724,11 +852,17 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
                   <TouchableOpacity
                     key={timezone.key}
                     onPress={() => {
-                      if (isAvailable) {
+                      if (subject === 'MATH AI') {
+                        // For Math AI, always use smart selection logic regardless of current availability
+                        const validCombo = getValidMathAICombination(selectedLevel, selectedSeason, timezone.key as 'timezone0' | 'timezone1' | 'timezone2');
+                        setSelectedLevel(validCombo.level);
+                        setSelectedSeason(validCombo.season);
+                        setSelectedTimezone(validCombo.timezone);
+                      } else if (isAvailable) {
                         setSelectedTimezone(timezone.key as 'timezone0' | 'timezone1' | 'timezone2');
                       }
                     }}
-                    disabled={!isAvailable}
+                    disabled={subject !== 'MATH AI' && !isAvailable}
                     style={{
                       flex: 1,
                       padding: 12,
@@ -780,11 +914,17 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
                   <TouchableOpacity
                     key={season.key}
                     onPress={() => {
-                      if (isAvailable) {
+                      if (subject === 'MATH AI') {
+                        // For Math AI, use smart selection logic
+                        const validCombo = getValidMathAICombination(selectedLevel, season.key as 'november' | 'may', selectedTimezone);
+                        setSelectedLevel(validCombo.level);
+                        setSelectedSeason(validCombo.season);
+                        setSelectedTimezone(validCombo.timezone);
+                      } else if (isAvailable) {
                         setSelectedSeason(season.key as 'november' | 'may');
                       }
                     }}
-                    disabled={!isAvailable}
+                    disabled={subject !== 'MATH AI' && !isAvailable}
                     style={{
                       flex: 1,
                       padding: 12,

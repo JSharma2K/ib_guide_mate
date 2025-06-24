@@ -38,7 +38,7 @@ const SubjectGroupsScreen: React.FC<Props> = ({ navigation, route }) => {
       title: 'Language Acquisition',
       subtitle: 'Group 2',
       icon: 'globe',
-      subjects: ['Coming Soon'],
+      subjects: ['Language B'],
       color: '#7EC3FF',
       gradient: ['rgba(126, 195, 255, 0.2)', 'rgba(126, 195, 255, 0.05)']
     },
@@ -84,6 +84,9 @@ const SubjectGroupsScreen: React.FC<Props> = ({ navigation, route }) => {
     if (groupId === 1) {
       // Navigate to Home with English subjects
       navigation.navigate('Home', { userType, subjectGroup: 'english' });
+    } else if (groupId === 2) {
+      // Navigate to Language Acquisition subject selection screen
+      navigation.navigate('LanguageAcquisition', { userType });
     } else if (groupId === 5) {
       // Navigate to Home with Math subjects
       navigation.navigate('Home', { userType, subjectGroup: 'mathematics' });

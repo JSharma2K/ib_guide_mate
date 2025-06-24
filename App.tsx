@@ -14,6 +14,8 @@ import ManageGuidesScreen from './src/screens/ManageGuidesScreen';
 import EnglishALiteratureScreen from './src/screens/EnglishALiteratureScreen';
 import EnglishALiteraturePerformanceScreen from './src/screens/EnglishALiteraturePerformanceScreen';
 import EnglishALanguageLiteratureScreen from './src/screens/EnglishALanguageLiteratureScreen';
+import LanguageAcquisitionScreen from './src/screens/LanguageAcquisitionScreen';
+import LanguageBScreen from './src/screens/LanguageBScreen';
 import MathAAScreen from './src/screens/MathAAScreen';
 import MathAIScreen from './src/screens/MathAIScreen';
 import EntryScreen from './src/screens/EntryScreen';
@@ -133,6 +135,28 @@ export default function App() {
               component={EnglishALanguageLiteratureScreen} 
               options={{ 
                 title: 'English A: Language and Literature',
+                headerStyle: {
+                  backgroundColor: theme.colors.primary,
+                },
+                headerTintColor: theme.colors.onPrimary,
+              }}
+            />
+            <Stack.Screen 
+              name="LanguageAcquisition" 
+              component={LanguageAcquisitionScreen} 
+              options={{ 
+                title: 'Language Acquisition',
+                headerStyle: {
+                  backgroundColor: theme.colors.primary,
+                },
+                headerTintColor: theme.colors.onPrimary,
+              }}
+            />
+            <Stack.Screen 
+              name="LanguageB" 
+              component={LanguageBScreen} 
+              options={{ 
+                title: 'Language B',
                 headerStyle: {
                   backgroundColor: theme.colors.primary,
                 },
