@@ -38,7 +38,7 @@ const SubjectGroupsScreen: React.FC<Props> = ({ navigation, route }) => {
       title: 'Language Acquisition',
       subtitle: 'Group 2',
       icon: 'globe',
-      subjects: ['Language B'],
+      subjects: ['Language B', 'Language Ab Initio'],
       color: '#7EC3FF',
       gradient: ['rgba(126, 195, 255, 0.2)', 'rgba(126, 195, 255, 0.05)']
     },

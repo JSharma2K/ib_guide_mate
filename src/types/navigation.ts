@@ -12,6 +12,7 @@ export type RootStackParamList = {
   EnglishALiteraturePerformance: { userType: 'student' | 'teacher' };
   LanguageAcquisition: { userType: 'student' | 'teacher' };
   LanguageB: { userType: 'student' | 'teacher' };
+  LanguageAbInitio: { userType: 'student' | 'teacher' };
   MathAA: { userType: 'student' | 'teacher' };
   MathAI: { userType: 'student' | 'teacher' };
   ExtendedEssay: { userType: 'student' | 'teacher' };

@@ -25,15 +25,14 @@ const LANGUAGE_SUBJECTS = [
     color: '#B6C7F7',
     group: 'language-acquisition',
   },
-  // Future language subjects can be added here
-  // {
-  //   key: 'language-ab-initio',
-  //   icon: 'book-open',
-  //   title: 'Language ab initio',
-  //   subtitle: 'Beginner Language Learning',
-  //   color: '#C7B6F7',
-  //   group: 'language-acquisition',
-  // },
+  {
+    key: 'language-ab-initio',
+    icon: 'book-open',
+    title: 'Language Ab Initio',
+    subtitle: 'Beginner Language Learning',
+    color: '#C7B6F7',
+    group: 'language-acquisition',
+  },
 ];
 
 const LanguageAcquisitionScreen: React.FC<LanguageAcquisitionScreenProps> = ({ navigation, route }) => {
@@ -54,8 +53,9 @@ const LanguageAcquisitionScreen: React.FC<LanguageAcquisitionScreenProps> = ({ n
         onPress={() => {
           if (item.key === 'language-b') {
             navigation.navigate('LanguageB', { userType });
+          } else if (item.key === 'language-ab-initio') {
+            navigation.navigate('LanguageAbInitio', { userType });
           }
-          // Add more language subjects navigation here in the future
         }}
         elevation={0}
       >

@@ -16,6 +16,7 @@ import EnglishALiteraturePerformanceScreen from './src/screens/EnglishALiteratur
 import EnglishALanguageLiteratureScreen from './src/screens/EnglishALanguageLiteratureScreen';
 import LanguageAcquisitionScreen from './src/screens/LanguageAcquisitionScreen';
 import LanguageBScreen from './src/screens/LanguageBScreen';
+import LanguageAbInitioScreen from './src/screens/LanguageAbInitioScreen';
 import MathAAScreen from './src/screens/MathAAScreen';
 import MathAIScreen from './src/screens/MathAIScreen';
 import EntryScreen from './src/screens/EntryScreen';
@@ -157,6 +158,17 @@ export default function App() {
               component={LanguageBScreen} 
               options={{ 
                 title: 'Language B',
+                headerStyle: {
+                  backgroundColor: theme.colors.primary,
+                },
+                headerTintColor: theme.colors.onPrimary,
+              }}
+            />
+            <Stack.Screen 
+              name="LanguageAbInitio" 
+              component={LanguageAbInitioScreen} 
+              options={{ 
+                title: 'Language Ab Initio',
                 headerStyle: {
                   backgroundColor: theme.colors.primary,
                 },
