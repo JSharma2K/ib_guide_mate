@@ -33,6 +33,14 @@ const LANGUAGE_SUBJECTS = [
     color: '#C7B6F7',
     group: 'language-acquisition',
   },
+  {
+    key: 'classical-languages',
+    icon: 'feather',
+    title: 'Classical Languages',
+    subtitle: 'Latin and Ancient Greek',
+    color: '#F7C7B6',
+    group: 'language-acquisition',
+  },
 ];
 
 const LanguageAcquisitionScreen: React.FC<LanguageAcquisitionScreenProps> = ({ navigation, route }) => {
@@ -55,6 +63,8 @@ const LanguageAcquisitionScreen: React.FC<LanguageAcquisitionScreenProps> = ({ n
             navigation.navigate('LanguageB', { userType });
           } else if (item.key === 'language-ab-initio') {
             navigation.navigate('LanguageAbInitio', { userType });
+          } else if (item.key === 'classical-languages') {
+            navigation.navigate('ClassicalLanguages', { userType });
           }
         }}
         elevation={0}

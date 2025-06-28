@@ -22,6 +22,7 @@ import MathAIScreen from './src/screens/MathAIScreen';
 import EntryScreen from './src/screens/EntryScreen';
 import ExtendedEssayScreen from './src/screens/ExtendedEssayScreen';
 import GradePredictionScreen from './src/screens/GradePredictionScreen';
+import ClassicalLanguagesScreen from './src/screens/ClassicalLanguagesScreen';
 
 const { DarkTheme } = adaptNavigationTheme({
   reactNavigationDark: NavigationDarkTheme,
@@ -169,6 +170,17 @@ export default function App() {
               component={LanguageAbInitioScreen} 
               options={{ 
                 title: 'Language Ab Initio',
+                headerStyle: {
+                  backgroundColor: theme.colors.primary,
+                },
+                headerTintColor: theme.colors.onPrimary,
+              }}
+            />
+            <Stack.Screen 
+              name="ClassicalLanguages" 
+              component={ClassicalLanguagesScreen} 
+              options={{ 
+                title: 'Classical Languages',
                 headerStyle: {
                   backgroundColor: theme.colors.primary,
                 },
