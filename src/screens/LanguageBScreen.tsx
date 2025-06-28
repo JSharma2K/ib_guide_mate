@@ -20,15 +20,15 @@ const highlightText = (text: string, highlightedText: string) => {
 const RubricTable = ({ data, highlightedText }: { data: { criterion: string; summary: string; max: number }[]; highlightedText: string }) => (
   <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
     <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
-      <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.6, padding: 8 }}>Criterion</Text>
-      <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 2.3, padding: 8 }}>Descriptor Summary</Text>
+      <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 2.4, padding: 8 }}>Criterion</Text>
+      <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 2.1, padding: 8 }}>Descriptor Summary</Text>
       <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 0.8, padding: 8, textAlign: 'center' }}>Max</Text>
     </View>
     {data.map((row, idx) => (
       <View key={idx} style={{ flexDirection: 'row', borderTopWidth: idx === 0 ? 0 : 1, borderColor: '#7EC3FF' }}>
-        <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.criterion, highlightedText)}</Text>
-        <Text style={{ flex: 2, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.summary, highlightedText)}</Text>
-        <Text style={{ flex: 0.5, color: '#B6B6B6', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular' }}>{highlightText(String(row.max), highlightedText)}</Text>
+        <Text style={{ flex: 2.4, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.criterion, highlightedText)}</Text>
+        <Text style={{ flex: 2.1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.summary, highlightedText)}</Text>
+        <Text style={{ flex: 0.8, color: '#B6B6B6', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular' }}>{highlightText(String(row.max), highlightedText)}</Text>
       </View>
     ))}
   </View>
@@ -53,14 +53,14 @@ const LanguageBScreen = ({ navigation, route }: { navigation: any; route: any })
   const homeIconOpacity = useRef(new Animated.Value(1)).current;
 
   // Section keys and content for search
-  const sectionContentStrings: Record<'overview' | 'essentials' | 'skills' | 'detailedRubrics' | 'languageTips', string> = {
-    overview: `Language B is a course designed for students who have some previous experience with the target language. The course aims to develop students' intercultural understanding and communication skills in the target language through the study of language, themes, and texts. Students explore the language in a variety of contexts and develop skills in listening, speaking, reading, and writing.`,
-    essentials: `1. Syllabus Outline & Teaching Hours\nSL: 150 hours\nHL: 240 hours\n\nCore Themes:\n- Identities: Personal and cultural identity\n- Experiences: Leisure, travel, and migration\n- Human Ingenuity: Entertainment, artistic expression, and communication\n- Social Organization: Social relationships and community\n- Sharing the Planet: Global citizenship and environmental concerns\n\n2. Assessment Objectives\nObjective 1 - Communicate:\n- Express ideas clearly and effectively in the target language\nObjective 2 - Understand:\n- Demonstrate understanding of spoken and written texts\nObjective 3 - Interpret:\n- Analyze and respond to a variety of written and spoken texts\n\n3. Assessment Outline & Weightage\nSL:\n- Paper 1 (Productive Skills - Writing): 25%\n- Paper 2 (Receptive Skills): 50%\n- Individual Oral Assessment: 25%\nHL:\n- Paper 1 (Productive Skills - Writing): 25%\n- Paper 2 (Receptive Skills): 50%\n- Individual Oral Assessment: 25%`,
-    skills: `Listening Skills\n• Understand main ideas and supporting details\n• Identify speaker attitudes and opinions\n• Recognize register and tone\nSpeaking Skills\n• Express ideas clearly and fluently\n• Use appropriate vocabulary and structures\n• Demonstrate intercultural understanding\nReading Skills\n• Comprehend various text types\n• Analyze literary and non-literary texts\n• Identify cultural references and context\nWriting Skills\n• Produce coherent and well-structured texts\n• Use appropriate register and style\n• Demonstrate cultural awareness`,
-    detailedRubrics: `Language B Paper 1: Quality of language use and accuracy, Range and appropriateness of vocabulary and structures, Organization and development of ideas, Cultural understanding and awareness. Language B Paper 2: Understanding of audio and written texts, Ability to identify main ideas and supporting details, Recognition of attitudes opinions and cultural references, Comprehension of implicit meaning and inference. Language B Individual Oral: Fluency and accuracy in spoken communication, Range and appropriateness of vocabulary and grammar, Interactive skills and ability to maintain conversation, Cultural understanding and global perspective.`,
-    languageTips: `Language B acquisition strategies and tips for success in developing second language proficiency and cultural competence.`,
+  const sectionContentStrings: Record<'overview' | 'essentials' | 'literature' | 'detailedRubrics' | 'languageTips', string> = {
+    overview: `The Language B course is designed for students with some prior experience in the target language. It develops communicative competence through receptive, productive, and interactive language skills. The course emphasizes the conceptual understanding of language including audience, context, purpose, meaning, and variation. At HL, the study of two literary works originally written in the target language is mandatory. The course supports international-mindedness, critical thinking, and cross-cultural understanding.`,
+    essentials: `1. Syllabus Outline & Teaching Hours\nSL: 150 hours\nHL: 240 hours\n\nCore Themes:\n- Identities: Personal and cultural identity\n- Experiences: Leisure, travel, and migration\n- Human Ingenuity: Entertainment, artistic expression, and communication\n- Social Organization: Social relationships and community\n- Sharing the Planet: Global citizenship and environmental concerns\n\n2. Assessment Objectives in Practice\n• Communicate clearly and effectively in a range of contexts and for a variety of purposes (Paper 1, IA).\n• Use language appropriate to interpersonal/intercultural contexts and audiences (Paper 1, Paper 2, IA).\n• Express and respond to ideas with fluency and accuracy (Paper 1, Paper 2, IA).\n• Identify, organize, and present ideas effectively (Paper 1, IA).\n• Understand, analyze, and reflect upon various text types (Paper 2, IA).\n\n3. Assessment Outline & Weightages\n• SL External Assessment – 75%: Paper 1 (Writing): 25%, Paper 2 (Listening & Reading): 50%\n• SL Internal Assessment – 25%: Individual Oral based on a visual stimulus and general discussion\n• HL External Assessment – 75%: Paper 1 (Writing): 25%, Paper 2 (Listening & Reading): 50%\n• HL Internal Assessment – 25%: Individual Oral based on a literary extract and theme discussion\n\n4. Internal and External Assessment Details\n• Paper 1: A written task of 250–400 words (SL) or 450–600 words (HL), based on one of five prescribed themes.\n• Paper 2: Listening and Reading comprehension. SL (1hr 45min), HL (2hr).\n• Internal Assessment: Individual Oral—SL based on visual stimulus, HL based on literary extract.`,
+    literature: `Prescribed Themes and Topics\n• Identities – Lifestyles, beliefs, values, health, language and identity.\n• Experiences – Life stories, migration, traditions, leisure.\n• Human Ingenuity – Media, entertainment, technology.\n• Social Organization – Education, law and order, workplace.\n• Sharing the Planet – Climate, rights, ethics, globalization.\n\nText Types and Categories\n• Personal Texts: Blogs, diaries, personal letters, social media posts.\n• Professional Texts: Reports, proposals, surveys, emails.\n• Mass Media Texts: Articles, reviews, podcasts, speeches, web pages.`,
+    detailedRubrics: `Paper 1 Writing Assessment Criteria (SL & HL)\nLanguage Use: Evaluation of vocabulary range, grammatical accuracy, and linguistic complexity (maximum 12 points). Message Development: Assessment of idea relevance, clarity of expression, and content development (maximum 12 points). Conceptual Understanding: Analysis of appropriate register, tone, and adherence to text-type conventions (maximum 6 points).\n\nIndividual Oral Assessment Criteria\nLanguage Proficiency: Assessment of vocabulary usage, grammatical accuracy, and spoken fluency (maximum 10 points). Message Clarity: Evaluation of idea relevance, coherence, and clarity of communication (maximum 10 points). Interactive Communication: Assessment of engagement level, response quality, and spontaneous interaction skills (maximum 10 points).`,
+    languageTips: `Language Acquisition Tips for Success:\n1. Understand the prescribed themes deeply—build vocabulary and personal connections.\n2. Practice writing across personal, professional, and media text types.\n3. Use idioms and accurate grammar to score well on Paper 1.\n4. Prepare visual stimulus conversations for the Oral (especially HL).\n5. Listen to authentic podcasts and videos with varied accents.\n6. Read literary and non-literary texts actively—highlight unfamiliar vocabulary.\n7. Time yourself on past Paper 1/2 to simulate exam conditions.\n8. Master the rubrics—know how Language, Message, and Conceptual understanding are scored.\n9. Record mock orals and review your fluency and interaction.\n10. Review grammar and sentence connectors consistently.`,
   };
-  const sectionKeys: Array<'overview' | 'essentials' | 'skills' | 'detailedRubrics' | 'languageTips'> = ['overview', 'essentials', 'skills', 'detailedRubrics', 'languageTips'];
+  const sectionKeys: Array<'overview' | 'essentials' | 'literature' | 'detailedRubrics' | 'languageTips'> = ['overview', 'essentials', 'literature', 'detailedRubrics', 'languageTips'];
 
   const handleScroll = (event: any) => {
     const scrollY = event.nativeEvent.contentOffset.y;
@@ -87,7 +87,7 @@ const LanguageBScreen = ({ navigation, route }: { navigation: any; route: any })
     const animationValue = {
       'overview': overviewAnimation,
       'essentials': essentialsAnimation,
-      'skills': skillsAnimation,
+      'literature': skillsAnimation,
       'detailedRubrics': detailedRubricsAnimation,
       'languageTips': languageTipsAnimation,
     }[section];
@@ -116,7 +116,7 @@ const LanguageBScreen = ({ navigation, route }: { navigation: any; route: any })
     const sectionTitles = {
       'overview': 'Course Overview',
       'essentials': 'Subject Essentials', 
-      'skills': 'Language Skills',
+      'literature': 'Literature',
       'detailedRubrics': 'Detailed Rubrics',
       'languageTips': 'Language Acquisition Tips',
     };
@@ -157,7 +157,7 @@ const LanguageBScreen = ({ navigation, route }: { navigation: any; route: any })
     const animationValue = {
       'overview': overviewAnimation,
       'essentials': essentialsAnimation,
-      'skills': skillsAnimation,
+      'literature': skillsAnimation,
       'detailedRubrics': detailedRubricsAnimation,
       'languageTips': languageTipsAnimation,
     }[expandedSection];
@@ -169,13 +169,13 @@ const LanguageBScreen = ({ navigation, route }: { navigation: any; route: any })
       }).start();
     }
     // Collapse all other sections
-    const allSectionKeys = ['overview', 'essentials', 'skills', 'detailedRubrics', 'languageTips'];
+    const allSectionKeys = ['overview', 'essentials', 'literature', 'detailedRubrics', 'languageTips'];
     allSectionKeys.forEach(key => {
       if (key !== expandedSection) {
         const anim = {
           'overview': overviewAnimation,
           'essentials': essentialsAnimation,
-          'skills': skillsAnimation,
+          'literature': skillsAnimation,
           'detailedRubrics': detailedRubricsAnimation,
           'languageTips': languageTipsAnimation,
         }[key];
@@ -200,7 +200,7 @@ const LanguageBScreen = ({ navigation, route }: { navigation: any; route: any })
     const animationValue = {
       'overview': overviewAnimation,
       'essentials': essentialsAnimation,
-      'skills': skillsAnimation,
+      'literature': skillsAnimation,
       'detailedRubrics': detailedRubricsAnimation,
       'languageTips': languageTipsAnimation,
     }[section];
@@ -304,7 +304,7 @@ const LanguageBScreen = ({ navigation, route }: { navigation: any; route: any })
             <View style={{ height: 2, backgroundColor: '#7EC3FF', marginBottom: 8 }} />
           </View>
           {/* Dropdowns */}
-          {[{ key: 'overview', title: 'Course Overview' }, { key: 'essentials', title: 'Subject Essentials' }, { key: 'skills', title: 'Language Skills' }, { key: 'detailedRubrics', title: 'Detailed Rubrics' }].map((section, idx, arr) => (
+          {[{ key: 'overview', title: 'Course Overview' }, { key: 'essentials', title: 'Subject Essentials' }, { key: 'literature', title: 'Literature' }, { key: 'detailedRubrics', title: 'Detailed Rubrics' }].map((section, idx, arr) => (
             <View key={section.key}>
               <List.Item
                 title={section.title}
@@ -326,60 +326,46 @@ const LanguageBScreen = ({ navigation, route }: { navigation: any; route: any })
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>1. Syllabus Outline & Teaching Hours</Text>
                           <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("SL: 150 hours\nHL: 240 hours\n\nCore Themes:\n- Identities: Personal and cultural identity\n- Experiences: Leisure, travel, and migration\n- Human Ingenuity: Entertainment, artistic expression, and communication\n- Social Organization: Social relationships and community\n- Sharing the Planet: Global citizenship and environmental concerns", highlightedText)}</Text>
                           
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>2. Assessment Objectives</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("Objective 1 - Communicate:\n- Express ideas clearly and effectively in the target language\n\nObjective 2 - Understand:\n- Demonstrate understanding of spoken and written texts\n\nObjective 3 - Interpret:\n- Analyze and respond to a variety of written and spoken texts", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>2. Assessment Objectives in Practice</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("• Communicate clearly and effectively in a range of contexts and for a variety of purposes (Paper 1, IA).\n• Use language appropriate to interpersonal/intercultural contexts and audiences (Paper 1, Paper 2, IA).\n• Express and respond to ideas with fluency and accuracy (Paper 1, Paper 2, IA).\n• Identify, organize, and present ideas effectively (Paper 1, IA).\n• Understand, analyze, and reflect upon various text types (Paper 2, IA).", highlightedText)}</Text>
                           
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>3. Assessment Outline & Weightage</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>3. Assessment Outline & Weightages</Text>
                           <Text style={{ ...themeStyles.levelTitle, color: '#7EC3FF', fontFamily: 'ScopeOne-Regular' }}>Standard Level (SL)</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("- Paper 1 (Productive Skills - Writing): 25%\n- Paper 2 (Receptive Skills): 50%\n- Individual Oral Assessment: 25%", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("• External Assessment – 75%: Paper 1 (Writing): 25%, Paper 2 (Listening & Reading): 50%\n• Internal Assessment – 25%: Individual Oral based on a visual stimulus and general discussion", highlightedText)}</Text>
                           <Text style={{ ...themeStyles.levelTitle, color: '#7EC3FF', fontFamily: 'ScopeOne-Regular' }}>Higher Level (HL)</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("- Paper 1 (Productive Skills - Writing): 25%\n- Paper 2 (Receptive Skills): 50%\n- Individual Oral Assessment: 25%", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("• External Assessment – 75%: Paper 1 (Writing): 25%, Paper 2 (Listening & Reading): 50%\n• Internal Assessment – 25%: Individual Oral based on a literary extract and theme discussion", highlightedText)}</Text>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>4. Internal and External Assessment Details</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("• Paper 1: A written task of 250–400 words (SL) or 450–600 words (HL), based on one of five prescribed themes.\n• Paper 2: Listening and Reading comprehension. SL (1hr 45min), HL (2hr).\n• Internal Assessment: Individual Oral—SL based on visual stimulus, HL based on literary extract.", highlightedText)}</Text>
                         </View>
                       )}
-                      {section.key === 'skills' && (
+                      {section.key === 'literature' && (
                         <View>
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>Listening Skills</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular' }}>{highlightText("• Understand main ideas and supporting details\n• Identify speaker attitudes and opinions\n• Recognize register and tone", highlightedText)}</Text>
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>Speaking Skills</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular' }}>{highlightText("• Express ideas clearly and fluently\n• Use appropriate vocabulary and structures\n• Demonstrate intercultural understanding", highlightedText)}</Text>
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>Reading Skills</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular' }}>{highlightText("• Comprehend various text types\n• Analyze literary and non-literary texts\n• Identify cultural references and context", highlightedText)}</Text>
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>Writing Skills</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular' }}>{highlightText("• Produce coherent and well-structured texts\n• Use appropriate register and style\n• Demonstrate cultural awareness", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>Prescribed Themes and Topics</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("• Identities – Lifestyles, beliefs, values, health, language and identity.\n• Experiences – Life stories, migration, traditions, leisure.\n• Human Ingenuity – Media, entertainment, technology.\n• Social Organization – Education, law and order, workplace.\n• Sharing the Planet – Climate, rights, ethics, globalization.", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>Text Types and Categories</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("• Personal Texts: Blogs, diaries, personal letters, social media posts.\n• Professional Texts: Reports, proposals, surveys, emails.\n• Mass Media Texts: Articles, reviews, podcasts, speeches, web pages.", highlightedText)}</Text>
                         </View>
                       )}
                       {section.key === 'detailedRubrics' && (
                         <View>
                           {/* Paper 1 Table */}
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', marginBottom: 8, color: '#7EC3FF' }}>Language B - Paper 1 (Productive Skills)</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', marginBottom: 8, color: '#7EC3FF' }}>Paper 1 Writing Assessment (SL & HL)</Text>
                           <RubricTable
                             data={[
-                              { criterion: 'A', summary: 'Quality of language use and accuracy', max: 6 },
-                              { criterion: 'B', summary: 'Range and appropriateness of vocabulary and structures', max: 6 },
-                              { criterion: 'C', summary: 'Organization and development of ideas', max: 6 },
-                              { criterion: 'D', summary: 'Cultural understanding and awareness', max: 6 },
-                            ]}
-                            highlightedText={highlightedText}
-                          />
-                          {/* Paper 2 Table */}
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', marginTop: 24, marginBottom: 8, color: '#7EC3FF' }}>Language B - Paper 2 (Receptive Skills)</Text>
-                          <RubricTable
-                            data={[
-                              { criterion: 'A', summary: 'Understanding of audio and written texts', max: 25 },
-                              { criterion: 'B', summary: 'Ability to identify main ideas and supporting details', max: 25 },
-                              { criterion: 'C', summary: 'Recognition of attitudes, opinions, and cultural references', max: 25 },
-                              { criterion: 'D', summary: 'Comprehension of implicit meaning and inference', max: 25 },
+                              { criterion: 'A: Language Use', summary: 'Evaluation of vocabulary range, grammatical accuracy, and linguistic complexity', max: 12 },
+                              { criterion: 'B: Message Development', summary: 'Assessment of idea relevance, clarity of expression, and content development', max: 12 },
+                              { criterion: 'C: Conceptual Understanding', summary: 'Analysis of appropriate register, tone, and adherence to text-type conventions', max: 6 },
                             ]}
                             highlightedText={highlightedText}
                           />
                           {/* Individual Oral Table */}
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', marginTop: 24, marginBottom: 8, color: '#7EC3FF' }}>Language B - Individual Oral Assessment</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', marginTop: 24, marginBottom: 8, color: '#7EC3FF' }}>Individual Oral Assessment</Text>
                           <RubricTable
                             data={[
-                              { criterion: 'A', summary: 'Fluency and accuracy in spoken communication', max: 6 },
-                              { criterion: 'B', summary: 'Range and appropriateness of vocabulary and grammar', max: 6 },
-                              { criterion: 'C', summary: 'Interactive skills and ability to maintain conversation', max: 6 },
-                              { criterion: 'D', summary: 'Cultural understanding and global perspective', max: 6 },
+                              { criterion: 'A: Language Proficiency', summary: 'Assessment of vocabulary usage, grammatical accuracy, and spoken fluency', max: 10 },
+                              { criterion: 'B: Message Clarity', summary: 'Evaluation of idea relevance, coherence, and clarity of communication', max: 10 },
+                              { criterion: 'C: Interactive Communication', summary: 'Assessment of engagement level, response quality, and spontaneous interaction skills', max: 10 },
                             ]}
                             highlightedText={highlightedText}
                           />
@@ -426,16 +412,16 @@ const LanguageBScreen = ({ navigation, route }: { navigation: any; route: any })
                   {renderAnimatedContent('languageTips', (
                     <View style={{ backgroundColor: 'transparent' }}>
                       {[
-                        "Immerse yourself in the target language through media, music, and authentic materials.",
-                        "Practice speaking regularly with native speakers or language exchange partners.",
-                        "Focus on the five core themes and develop vocabulary for each area.",
-                        "Use authentic texts from the target culture to improve reading comprehension.",
-                        "Keep a vocabulary journal organized by themes and contexts.",
-                        "Practice different text types for Paper 1 writing tasks.",
-                        "Develop cultural awareness through exposure to target language communities.",
-                        "Use visual organizers to connect themes across different skills.",
-                        "Record yourself speaking to improve pronunciation and fluency.",
-                        "Engage with current events in the target language to build cultural knowledge."
+                        "Understand the prescribed themes deeply—build vocabulary and personal connections.",
+                        "Practice writing across personal, professional, and media text types.",
+                        "Use idioms and accurate grammar to score well on Paper 1.",
+                        "Prepare visual stimulus conversations for the Oral (especially HL).",
+                        "Listen to authentic podcasts and videos with varied accents.",
+                        "Read literary and non-literary texts actively—highlight unfamiliar vocabulary.",
+                        "Time yourself on past Paper 1/2 to simulate exam conditions.",
+                        "Master the rubrics—know how Language, Message, and Conceptual understanding are scored.",
+                        "Record mock orals and review your fluency and interaction.",
+                        "Review grammar and sentence connectors consistently."
                       ].map((tip, idx) => (
                         <View key={idx} style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: 8 }}>
                           <Text style={{ color: '#7EC3FF', fontSize: 16, marginRight: 8, lineHeight: 24, fontFamily: 'ScopeOne-Regular' }}>{idx + 1}.</Text>
