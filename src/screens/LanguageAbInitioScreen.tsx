@@ -54,11 +54,11 @@ const LanguageAbInitioScreen = ({ navigation, route }: { navigation: any; route:
 
   // Section keys and content for search
   const sectionContentStrings: Record<'overview' | 'essentials' | 'literature' | 'detailedRubrics' | 'languageTips', string> = {
-    overview: `Language Ab Initio is designed for students with little or no prior experience in the target language. The course focuses on developing basic communicative competence through receptive and productive language skills. Students explore the language through five prescribed themes while developing fundamental vocabulary, grammar, and cultural understanding. The course emphasizes practical communication skills for everyday situations and intercultural awareness.`,
-    essentials: `1. Syllabus Outline & Teaching Hours\nSL: 150 hours (Ab Initio is only offered at Standard Level)\n\nCore Themes:\n- Identities: Personal identity, physical and mental health\n- Experiences: School life, daily routines, leisure activities\n- Human Ingenuity: Transport, entertainment, media\n- Social Organization: Family, community, education\n- Sharing the Planet: Environment, travel, global issues\n\n2. Assessment Objectives in Practice\n• Communicate information clearly in familiar situations (Paper 1, IA)\n• Demonstrate understanding of spoken and written texts in familiar contexts (Paper 2, IA)\n• Use language appropriate to audience and purpose in familiar situations (Paper 1, IA)\n• Show awareness of intercultural elements through language use (Paper 1, Paper 2, IA)\n\n3. Assessment Outline & Weightages\n• External Assessment – 75%: Paper 1 (Writing): 25%, Paper 2 (Listening & Reading): 50%\n• Internal Assessment – 25%: Individual Oral based on a visual stimulus\n\n4. Assessment Details\n• Paper 1: Written tasks totaling 250 words based on prescribed themes\n• Paper 2: Listening and Reading comprehension (1hr 30min)\n• Internal Assessment: Individual Oral presentation based on visual stimulus`,
-    literature: `Prescribed Themes for Ab Initio\n• Identities – Personal identity, lifestyle choices, physical and mental health\n• Experiences – School experiences, daily routines, leisure and recreation\n• Human Ingenuity – Transport systems, entertainment and media\n• Social Organization – Family structures, community life, education systems\n• Sharing the Planet – Environmental awareness, travel experiences, global citizenship\n\nText Types for Beginners\n• Personal Texts: Simple emails, diary entries, social media posts, personal letters\n• Informational Texts: Brochures, advertisements, simple articles, announcements\n• Interactive Texts: Conversations, interviews, basic presentations`,
-    detailedRubrics: `Paper 1 Writing Assessment (Ab Initio)\nLanguage Use: Basic vocabulary and simple grammatical structures appropriate for beginner level (maximum 6 points). Message: Clear communication of simple ideas and information (maximum 6 points). Format and Register: Appropriate text type conventions and basic register awareness (maximum 3 points).\n\nIndividual Oral Assessment (Ab Initio)\nLanguage: Basic vocabulary and simple structures with some accuracy (maximum 6 points). Message: Clear presentation of simple ideas related to visual stimulus (maximum 6 points). Interactive Skills: Basic conversational ability and response to questions (maximum 6 points).`,
-    languageTips: `Ab Initio Success Strategies:\n1. Master basic vocabulary for all five prescribed themes systematically\n2. Practice simple sentence structures and common grammatical patterns\n3. Focus on clear communication rather than complex language\n4. Use visual aids and context clues to support understanding\n5. Practice describing images and situations for the oral assessment\n6. Listen to simple authentic materials at beginner level\n7. Write short texts using familiar vocabulary and structures\n8. Learn common phrases and expressions for everyday situations\n9. Practice basic conversations on familiar topics\n10. Build cultural awareness through simple texts and media`,
+    overview: `Language ab initio is a Standard Level (SL) course designed for students with little to no prior experience in the target language. It spans a total of 150 hours and develops receptive, productive, and interactive skills through a communicative approach. Students explore five prescribed themes—identities, experiences, human ingenuity, social organization, and sharing the planet—through language-based tasks that emphasize understanding and expression in real-life contexts. The course promotes language acquisition, intercultural understanding, and international-mindedness through authentic use of the language in varied contexts.`,
+    essentials: `Assessment Objectives in Practice\n1. Demonstrate an understanding of a range of written, audio, visual, and audio-visual texts. This includes identifying purpose, main ideas, supporting details, and drawing conclusions from authentic materials.\n2. Demonstrate an ability to engage with the text by identifying ideas, opinions, and attitudes, and by showing awareness of stylistic features.\n3. Produce clear and accurate communication through written and spoken forms. This includes appropriate use of vocabulary, grammar, register, and organization across a range of text types.\n4. Communicate and interact effectively in a range of situations using appropriate language to express personal ideas and respond to questions or prompts.\n\nAssessment Outline & Weightages\n• External Assessment: 75%\n• - Paper 1 (Writing, 1 hr): 25%\n• - Paper 2 (Listening & Reading, 1 hr 45 min): 50%\n• Internal Assessment (Individual Oral): 25%\n\nInternal and External Assessment Details\n• Paper 1: Two written tasks (70–150 words each), assessed on language, message, and conceptual understanding.\n• Paper 2: Three listening and three reading texts, comprehension questions in target language.\n• Internal: 7–10 min oral exam with stimulus and general conversation based on themes.`,
+    literature: `Prescribed Themes and Topics\n• Identities: Personal attributes, relationships, eating/drinking, well-being.\n• Experiences: Routine, leisure, holidays, festivals.\n• Human Ingenuity: Transport, entertainment, media, tech.\n• Social Organization: Neighbourhood, education, workplace, social issues.\n• Sharing the Planet: Climate, geography, environment, global issues.\n\nText Types and Categories\n• Personal Texts: Blog, diary, postcard, message, etc.\n• Professional Texts: Email, report, proposal, CV.\n• Mass Media Texts: News article, review, podcast, social post.`,
+    detailedRubrics: `Paper 1 – Writing (Productive Skills)\nStudents produce two written tasks from a choice of three, based on visual or written prompts.\nTotal Marks: 30\n\nCriterion A: Language - Correct use of words and sentence structure suitable for the writing task. Mistakes do not prevent understanding.\nCriterion B: Message - Ideas are relevant and well-developed. Content fits the situation, goal, and intended readers.\nCriterion C: Conceptual Understanding - Proper use of text format requirements including layout, organization, style, and tone.\nTOTAL (Per Task): Each written task is assessed individually using all 3 criteria. (15 × 2 = 30 marks)\n\nPaper 2 – Reading and Listening (Receptive Skills)\nThis consists of:\n• Three listening texts (response in target language)\n• Three reading texts (response in target language)\nNo specific rubrics apply here as answers are mostly objective (e.g., multiple-choice, short-answer, gap-fill). Total score is based on correct responses:\n• Paper 2 Listening: ~25 marks\n• Paper 2 Reading: ~25 marks\n\nInternal Assessment – Individual Oral\nBased on a visual stimulus and conversation, this assesses interactive and productive speaking.\nTotal Marks: 30\nCriterion A: Language - Correct pronunciation, word choice, and speaking fluency. Grammar and vocabulary match the task level.\nCriterion B: Message - Clear expression of relevant thoughts. Good structure and logical organization of spoken content.\nCriterion C: Interactive Skills - Effective participation in conversation, natural responses, and good communication techniques.\nTOTAL: Composite of all three criteria.`,
+    languageTips: `1. Master the Prescribed Themes\n• Familiarize yourself with the 5 core themes: identities, experiences, human ingenuity, social organization, and sharing the planet.\n• Build vocabulary around these themes and practice applying them in context.\n\n2. Practice Text Types Early and Often\n• Learn the conventions of blogs, articles, emails, diary entries, etc.\n• Practice writing in these formats using IB-style prompts.\n• Structure is key: greet, close, format, and tone must align with the type.\n\n3. Focus on Language Accuracy for Paper 1\n• Grammar, vocabulary, and sentence structure are scored directly (Criterion A).\n• Use spaced repetition tools (like Quizlet or Anki) to reinforce verb conjugations and essential vocab.\n• Self-correct old work and understand your frequent errors.\n\n4. Plan Before You Write\n• Spend 3–5 minutes brainstorming and outlining your response.\n• Make sure you answer the prompt directly and maintain a clear structure throughout your task.\n\n5. Use Model Answers Strategically\n• Study model responses and highlight examples of good grammar, linking phrases, and transitions.\n• Mimic these in your own practice until you gain fluency.\n\n6. Improve Listening Through Exposure\n• Watch YouTube videos, news clips, or podcasts in the target language.\n• Use subtitles and slow playback to start, then gradually remove support.\n• Practice summarizing what you heard orally or in writing.\n\n7. Train for Reading Speed and Accuracy\n• Skim first, then scan for details. Practice answering comprehension questions quickly.\n• Annotate texts to track keywords, opinions, time references, and unfamiliar vocabulary.\n\n8. Be Strategic in Your Oral Practice\n• Practice responding spontaneously using common visual stimulus formats.\n• Record yourself, listen back, and improve clarity, flow, and range.\n• Rehearse transitions ("in my opinion...", "however...") to sustain interaction.\n\n9. Focus on Personal Engagement\n• For both the IA and writing tasks, personalize your responses with your interests, hobbies, or background. It adds depth and helps fulfill the message criterion.\n\n10. Simulate Exam Conditions Regularly\n• Practice past Paper 1 and Paper 2 under timed settings.\n• For orals, simulate the exam environment with a partner or teacher.`,
   };
   const sectionKeys: Array<'overview' | 'essentials' | 'literature' | 'detailedRubrics' | 'languageTips'> = ['overview', 'essentials', 'literature', 'detailedRubrics', 'languageTips'];
 
@@ -114,9 +114,9 @@ const LanguageAbInitioScreen = ({ navigation, route }: { navigation: any; route:
     const sectionTitles = {
       'overview': 'Course Overview',
       'essentials': 'Subject Essentials', 
-      'literature': 'Literature',
+      'literature': 'Prescribed Literature',
       'detailedRubrics': 'Detailed Rubrics',
-      'languageTips': 'Language Acquisition Tips',
+      'languageTips': 'Language Ab Initio Tips',
     };
     
     const matches = sectionKeys.filter(key =>
@@ -297,7 +297,7 @@ const LanguageAbInitioScreen = ({ navigation, route }: { navigation: any; route:
             <View style={{ height: 2, backgroundColor: '#7EC3FF', marginBottom: 8 }} />
           </View>
           {/* Dropdowns */}
-          {[{ key: 'overview', title: 'Course Overview' }, { key: 'essentials', title: 'Subject Essentials' }, { key: 'literature', title: 'Literature' }, { key: 'detailedRubrics', title: 'Detailed Rubrics' }].map((section, idx, arr) => (
+          {[{ key: 'overview', title: 'Course Overview' }, { key: 'essentials', title: 'Subject Essentials' }, { key: 'literature', title: 'Prescribed Literature' }, { key: 'detailedRubrics', title: 'Detailed Rubrics' }].map((section, idx, arr) => (
             <View key={section.key}>
               <List.Item
                 title={section.title}
@@ -315,47 +315,53 @@ const LanguageAbInitioScreen = ({ navigation, route }: { navigation: any; route:
                       )}
                       {section.key === 'essentials' && (
                         <View>
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>1. Syllabus Outline & Teaching Hours</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("SL: 150 hours (Ab Initio is only offered at Standard Level)\n\nCore Themes:\n- Identities: Personal identity, physical and mental health\n- Experiences: School life, daily routines, leisure activities\n- Human Ingenuity: Transport, entertainment, media\n- Social Organization: Family, community, education\n- Sharing the Planet: Environment, travel, global issues", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>Assessment Objectives in Practice</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("1. Demonstrate an understanding of a range of written, audio, visual, and audio-visual texts. This includes identifying purpose, main ideas, supporting details, and drawing conclusions from authentic materials.\n2. Demonstrate an ability to engage with the text by identifying ideas, opinions, and attitudes, and by showing awareness of stylistic features.\n3. Produce clear and accurate communication through written and spoken forms. This includes appropriate use of vocabulary, grammar, register, and organization across a range of text types.\n4. Communicate and interact effectively in a range of situations using appropriate language to express personal ideas and respond to questions or prompts.", highlightedText)}</Text>
                           
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>2. Assessment Objectives in Practice</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("• Communicate information clearly in familiar situations (Paper 1, IA)\n• Demonstrate understanding of spoken and written texts in familiar contexts (Paper 2, IA)\n• Use language appropriate to audience and purpose in familiar situations (Paper 1, IA)\n• Show awareness of intercultural elements through language use (Paper 1, Paper 2, IA)", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>Assessment Outline & Weightages</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("• External Assessment: 75%\n• - Paper 1 (Writing, 1 hr): 25%\n• - Paper 2 (Listening & Reading, 1 hr 45 min): 50%\n• Internal Assessment (Individual Oral): 25%", highlightedText)}</Text>
                           
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>3. Assessment Outline & Weightages</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("• External Assessment – 75%: Paper 1 (Writing): 25%, Paper 2 (Listening & Reading): 50%\n• Internal Assessment – 25%: Individual Oral based on a visual stimulus", highlightedText)}</Text>
-                          
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>4. Assessment Details</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("• Paper 1: Written tasks totaling 250 words based on prescribed themes\n• Paper 2: Listening and Reading comprehension (1hr 30min)\n• Internal Assessment: Individual Oral presentation based on visual stimulus", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>Internal and External Assessment Details</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("• Paper 1: Two written tasks (70–150 words each), assessed on language, message, and conceptual understanding.\n• Paper 2: Three listening and three reading texts, comprehension questions in target language.\n• Internal: 7–10 min oral exam with stimulus and general conversation based on themes.", highlightedText)}</Text>
                         </View>
                       )}
                       {section.key === 'literature' && (
                         <View>
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>Prescribed Themes for Ab Initio</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("• Identities – Personal identity, lifestyle choices, physical and mental health\n• Experiences – School experiences, daily routines, leisure and recreation\n• Human Ingenuity – Transport systems, entertainment and media\n• Social Organization – Family structures, community life, education systems\n• Sharing the Planet – Environmental awareness, travel experiences, global citizenship", highlightedText)}</Text>
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>Text Types for Beginners</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("• Personal Texts: Simple emails, diary entries, social media posts, personal letters\n• Informational Texts: Brochures, advertisements, simple articles, announcements\n• Interactive Texts: Conversations, interviews, basic presentations", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>Prescribed Themes and Topics</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("• Identities: Personal attributes, relationships, eating/drinking, well-being.\n• Experiences: Routine, leisure, holidays, festivals.\n• Human Ingenuity: Transport, entertainment, media, tech.\n• Social Organization: Neighbourhood, education, workplace, social issues.\n• Sharing the Planet: Climate, geography, environment, global issues.", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>Text Types and Categories</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("• Personal Texts: Blog, diary, postcard, message, etc.\n• Professional Texts: Email, report, proposal, CV.\n• Mass Media Texts: News article, review, podcast, social post.", highlightedText)}</Text>
                         </View>
                       )}
                       {section.key === 'detailedRubrics' && (
                         <View>
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', marginBottom: 8, color: '#7EC3FF' }}>Paper 1 Writing Assessment (Ab Initio)</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', marginBottom: 8, color: '#7EC3FF' }}>Paper 1 – Writing (Productive Skills)</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 12 }}>{highlightText("Students produce two written tasks from a choice of three, based on visual or written prompts.\nTotal Marks: 30", highlightedText)}</Text>
                           <RubricTable
                             data={[
-                              { criterion: 'A: Language Use', summary: 'Basic vocabulary and simple grammatical structures appropriate for beginner level', max: 6 },
-                              { criterion: 'B: Message', summary: 'Clear communication of simple ideas and information', max: 6 },
-                              { criterion: 'C: Format and Register', summary: 'Appropriate text type conventions and basic register awareness', max: 3 },
+                              { criterion: 'A: Language', summary: 'Correct use of words and sentence structure suitable for the writing task. Mistakes do not prevent understanding.', max: 6 },
+                              { criterion: 'B: Message', summary: 'Ideas are relevant and well-developed. Content fits the situation, goal, and intended readers.', max: 6 },
+                              { criterion: 'C: Conceptual Understanding', summary: 'Proper use of text format requirements including layout, organization, style, and tone.', max: 3 },
                             ]}
                             highlightedText={highlightedText}
                           />
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', marginTop: 24, marginBottom: 8, color: '#7EC3FF' }}>Individual Oral Assessment (Ab Initio)</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 16, fontStyle: 'italic' }}>{highlightText("TOTAL (Per Task): Each written task is assessed individually using all 3 criteria. (15 × 2 = 30 marks)", highlightedText)}</Text>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', marginTop: 24, marginBottom: 8, color: '#7EC3FF' }}>Paper 2 – Reading and Listening (Receptive Skills)</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("This consists of:\n• Three listening texts (response in target language)\n• Three reading texts (response in target language)\n\nNo specific rubrics apply here as answers are mostly objective (e.g., multiple-choice, short-answer, gap-fill). Total score is based on correct responses:\n• Paper 2 Listening: ~25 marks\n• Paper 2 Reading: ~25 marks", highlightedText)}</Text>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', marginTop: 24, marginBottom: 8, color: '#7EC3FF' }}>Internal Assessment – Individual Oral</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 12 }}>{highlightText("Based on a visual stimulus and conversation, this assesses interactive and productive speaking.\nTotal Marks: 30", highlightedText)}</Text>
                           <RubricTable
                             data={[
-                              { criterion: 'A: Language', summary: 'Basic vocabulary and simple structures with some accuracy', max: 6 },
-                              { criterion: 'B: Message', summary: 'Clear presentation of simple ideas related to visual stimulus', max: 6 },
-                              { criterion: 'C: Interactive Skills', summary: 'Basic conversational ability and response to questions', max: 6 },
+                              { criterion: 'A: Language', summary: 'Correct pronunciation, word choice, and speaking fluency. Grammar and vocabulary match the task level.', max: 10 },
+                              { criterion: 'B: Message', summary: 'Clear expression of relevant thoughts. Good structure and logical organization of spoken content.', max: 10 },
+                              { criterion: 'C: Interactive Skills', summary: 'Effective participation in conversation, natural responses, and good communication techniques.', max: 10 },
                             ]}
                             highlightedText={highlightedText}
                           />
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginTop: 8, fontStyle: 'italic' }}>{highlightText("TOTAL: Composite of all three criteria.", highlightedText)}</Text>
+                          
                           <Text style={{ 
                             fontSize: 11, 
                             color: 'rgba(255, 255, 255, 0.5)', 
@@ -387,7 +393,7 @@ const LanguageAbInitioScreen = ({ navigation, route }: { navigation: any; route:
             
             <View>
               <List.Item
-                title="Language Acquisition Tips"
+                title="Language Ab Initio Tips"
                 titleStyle={{ color: '#fff', fontFamily: 'ScopeOne-Regular', fontSize: 18 }}
                 onPress={() => toggleSection('languageTips')}
                 right={props => <List.Icon {...props} icon="chevron-right" color="#FFFFFF" style={{ transform: [{ rotate: expandedSection === 'languageTips' ? '90deg' : '0deg' }] }} />}
@@ -397,23 +403,55 @@ const LanguageAbInitioScreen = ({ navigation, route }: { navigation: any; route:
                 <View style={{ paddingHorizontal: 20, paddingBottom: 16 }}>
                   {renderAnimatedContent('languageTips', (
                     <View style={{ backgroundColor: 'transparent' }}>
-                      {[
-                        "Master basic vocabulary for all five prescribed themes systematically",
-                        "Practice simple sentence structures and common grammatical patterns",
-                        "Focus on clear communication rather than complex language",
-                        "Use visual aids and context clues to support understanding",
-                        "Practice describing images and situations for the oral assessment",
-                        "Listen to simple authentic materials at beginner level",
-                        "Write short texts using familiar vocabulary and structures",
-                        "Learn common phrases and expressions for everyday situations",
-                        "Practice basic conversations on familiar topics",
-                        "Build cultural awareness through simple texts and media"
-                      ].map((tip, idx) => (
-                        <View key={idx} style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: 8 }}>
-                          <Text style={{ color: '#7EC3FF', fontSize: 16, marginRight: 8, lineHeight: 24, fontFamily: 'ScopeOne-Regular' }}>{idx + 1}.</Text>
-                          <Text style={[themeStyles.content, { flex: 1, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF' }]}>{highlightText(tip, highlightedText)}</Text>
-                        </View>
-                      ))}
+                      <View style={{ marginBottom: 12 }}>
+                        <Text style={{ color: '#7EC3FF', fontSize: 16, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', marginBottom: 4 }}>1. Master the Prescribed Themes</Text>
+                        <Text style={[themeStyles.content, { fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 8, lineHeight: 20 }]}>{highlightText("• Familiarize yourself with the 5 core themes: identities, experiences, human ingenuity, social organization, and sharing the planet.\n• Build vocabulary around these themes and practice applying them in context.", highlightedText)}</Text>
+                      </View>
+                      
+                      <View style={{ marginBottom: 12 }}>
+                        <Text style={{ color: '#7EC3FF', fontSize: 16, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', marginBottom: 4 }}>2. Practice Text Types Early and Often</Text>
+                        <Text style={[themeStyles.content, { fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 8, lineHeight: 20 }]}>{highlightText("• Learn the conventions of blogs, articles, emails, diary entries, etc.\n• Practice writing in these formats using IB-style prompts.\n• Structure is key: greet, close, format, and tone must align with the type.", highlightedText)}</Text>
+                      </View>
+                      
+                      <View style={{ marginBottom: 12 }}>
+                        <Text style={{ color: '#7EC3FF', fontSize: 16, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', marginBottom: 4 }}>3. Focus on Language Accuracy for Paper 1</Text>
+                        <Text style={[themeStyles.content, { fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 8, lineHeight: 20 }]}>{highlightText("• Grammar, vocabulary, and sentence structure are scored directly (Criterion A).\n• Use spaced repetition tools (like Quizlet or Anki) to reinforce verb conjugations and essential vocab.\n• Self-correct old work and understand your frequent errors.", highlightedText)}</Text>
+                      </View>
+                      
+                      <View style={{ marginBottom: 12 }}>
+                        <Text style={{ color: '#7EC3FF', fontSize: 16, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', marginBottom: 4 }}>4. Plan Before You Write</Text>
+                        <Text style={[themeStyles.content, { fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 8, lineHeight: 20 }]}>{highlightText("• Spend 3–5 minutes brainstorming and outlining your response.\n• Make sure you answer the prompt directly and maintain a clear structure throughout your task.", highlightedText)}</Text>
+                      </View>
+                      
+                      <View style={{ marginBottom: 12 }}>
+                        <Text style={{ color: '#7EC3FF', fontSize: 16, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', marginBottom: 4 }}>5. Use Model Answers Strategically</Text>
+                        <Text style={[themeStyles.content, { fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 8, lineHeight: 20 }]}>{highlightText("• Study model responses and highlight examples of good grammar, linking phrases, and transitions.\n• Mimic these in your own practice until you gain fluency.", highlightedText)}</Text>
+                      </View>
+                      
+                      <View style={{ marginBottom: 12 }}>
+                        <Text style={{ color: '#7EC3FF', fontSize: 16, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', marginBottom: 4 }}>6. Improve Listening Through Exposure</Text>
+                        <Text style={[themeStyles.content, { fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 8, lineHeight: 20 }]}>{highlightText("• Watch YouTube videos, news clips, or podcasts in the target language.\n• Use subtitles and slow playback to start, then gradually remove support.\n• Practice summarizing what you heard orally or in writing.", highlightedText)}</Text>
+                      </View>
+                      
+                      <View style={{ marginBottom: 12 }}>
+                        <Text style={{ color: '#7EC3FF', fontSize: 16, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', marginBottom: 4 }}>7. Train for Reading Speed and Accuracy</Text>
+                        <Text style={[themeStyles.content, { fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 8, lineHeight: 20 }]}>{highlightText("• Skim first, then scan for details. Practice answering comprehension questions quickly.\n• Annotate texts to track keywords, opinions, time references, and unfamiliar vocabulary.", highlightedText)}</Text>
+                      </View>
+                      
+                      <View style={{ marginBottom: 12 }}>
+                        <Text style={{ color: '#7EC3FF', fontSize: 16, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', marginBottom: 4 }}>8. Be Strategic in Your Oral Practice</Text>
+                        <Text style={[themeStyles.content, { fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 8, lineHeight: 20 }]}>{highlightText("• Practice responding spontaneously using common visual stimulus formats.\n• Record yourself, listen back, and improve clarity, flow, and range.\n• Rehearse transitions (\"in my opinion...\", \"however...\") to sustain interaction.", highlightedText)}</Text>
+                      </View>
+                      
+                      <View style={{ marginBottom: 12 }}>
+                        <Text style={{ color: '#7EC3FF', fontSize: 16, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', marginBottom: 4 }}>9. Focus on Personal Engagement</Text>
+                        <Text style={[themeStyles.content, { fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 8, lineHeight: 20 }]}>{highlightText("• For both the IA and writing tasks, personalize your responses with your interests, hobbies, or background. It adds depth and helps fulfill the message criterion.", highlightedText)}</Text>
+                      </View>
+                      
+                      <View style={{ marginBottom: 8 }}>
+                        <Text style={{ color: '#7EC3FF', fontSize: 16, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', marginBottom: 4 }}>10. Simulate Exam Conditions Regularly</Text>
+                        <Text style={[themeStyles.content, { fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 8, lineHeight: 20 }]}>{highlightText("• Practice past Paper 1 and Paper 2 under timed settings.\n• For orals, simulate the exam environment with a partner or teacher.", highlightedText)}</Text>
+                      </View>
                     </View>
                   ))}
                 </View>
