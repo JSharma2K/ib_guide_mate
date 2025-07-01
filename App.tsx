@@ -23,6 +23,8 @@ import EntryScreen from './src/screens/EntryScreen';
 import ExtendedEssayScreen from './src/screens/ExtendedEssayScreen';
 import GradePredictionScreen from './src/screens/GradePredictionScreen';
 import ClassicalLanguagesScreen from './src/screens/ClassicalLanguagesScreen';
+import IndividualsAndSocietiesScreen from './src/screens/IndividualsAndSocietiesScreen';
+import PhilosophyScreen from './src/screens/PhilosophyScreen';
 
 const { DarkTheme } = adaptNavigationTheme({
   reactNavigationDark: NavigationDarkTheme,
@@ -181,6 +183,28 @@ export default function App() {
               component={ClassicalLanguagesScreen} 
               options={{ 
                 title: 'Classical Languages',
+                headerStyle: {
+                  backgroundColor: theme.colors.primary,
+                },
+                headerTintColor: theme.colors.onPrimary,
+              }}
+            />
+            <Stack.Screen 
+              name="IndividualsAndSocieties" 
+              component={IndividualsAndSocietiesScreen} 
+              options={{ 
+                title: 'Individuals and Societies',
+                headerStyle: {
+                  backgroundColor: theme.colors.primary,
+                },
+                headerTintColor: theme.colors.onPrimary,
+              }}
+            />
+            <Stack.Screen 
+              name="Philosophy" 
+              component={PhilosophyScreen} 
+              options={{ 
+                title: 'Philosophy',
                 headerStyle: {
                   backgroundColor: theme.colors.primary,
                 },

@@ -47,7 +47,7 @@ const SubjectGroupsScreen: React.FC<Props> = ({ navigation, route }) => {
       title: 'Individuals and Societies',
       subtitle: 'Group 3',
       icon: 'users',
-      subjects: ['Coming Soon'],
+      subjects: ['Philosophy'],
       color: '#7EC3FF',
       gradient: ['rgba(126, 195, 255, 0.2)', 'rgba(126, 195, 255, 0.05)']
     },
@@ -87,6 +87,9 @@ const SubjectGroupsScreen: React.FC<Props> = ({ navigation, route }) => {
     } else if (groupId === 2) {
       // Navigate to Language Acquisition subject selection screen
       navigation.navigate('LanguageAcquisition', { userType });
+    } else if (groupId === 3) {
+      // Navigate to Individuals and Societies subject selection screen
+      navigation.navigate('IndividualsAndSocieties', { userType });
     } else if (groupId === 5) {
       // Navigate to Home with Math subjects
       navigation.navigate('Home', { userType, subjectGroup: 'mathematics' });

@@ -14,6 +14,8 @@ export type RootStackParamList = {
   LanguageB: { userType: 'student' | 'teacher' };
   LanguageAbInitio: { userType: 'student' | 'teacher' };
   ClassicalLanguages: { userType: 'student' | 'teacher' };
+  IndividualsAndSocieties: { userType: 'student' | 'teacher' };
+  Philosophy: { userType: 'student' | 'teacher' };
   MathAA: { userType: 'student' | 'teacher' };
   MathAI: { userType: 'student' | 'teacher' };
   ExtendedEssay: { userType: 'student' | 'teacher' };
