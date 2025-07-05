@@ -27,6 +27,7 @@ import IndividualsAndSocietiesScreen from './src/screens/IndividualsAndSocieties
 import PhilosophyScreen from './src/screens/PhilosophyScreen';
 import HistoryScreen from './src/screens/HistoryScreen';
 import GlobalPoliticsScreen from './src/screens/GlobalPoliticsScreen';
+import GeographyScreen from './src/screens/GeographyScreen';
 
 const { DarkTheme } = adaptNavigationTheme({
   reactNavigationDark: NavigationDarkTheme,
@@ -229,6 +230,17 @@ export default function App() {
               component={GlobalPoliticsScreen} 
               options={{ 
                 title: 'Global Politics',
+                headerStyle: {
+                  backgroundColor: theme.colors.primary,
+                },
+                headerTintColor: theme.colors.onPrimary,
+              }}
+            />
+            <Stack.Screen 
+              name="Geography" 
+              component={GeographyScreen} 
+              options={{ 
+                title: 'Geography',
                 headerStyle: {
                   backgroundColor: theme.colors.primary,
                 },

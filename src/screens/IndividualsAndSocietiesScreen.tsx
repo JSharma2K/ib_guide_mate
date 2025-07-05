@@ -41,6 +41,14 @@ const INDIVIDUALS_SOCIETIES_SUBJECTS = [
     color: '#B6C7F7',
     group: 'individuals-societies',
   },
+  {
+    key: 'geography',
+    icon: 'map',
+    title: 'Geography',
+    subtitle: 'Places, spaces, and environments',
+    color: '#B6C7F7',
+    group: 'individuals-societies',
+  },
 ];
 
 const IndividualsAndSocietiesScreen: React.FC<Props> = ({ navigation, route }) => {
@@ -65,6 +73,8 @@ const IndividualsAndSocietiesScreen: React.FC<Props> = ({ navigation, route }) =
             navigation.navigate('History', { userType });
           } else if (item.key === 'global-politics') {
             navigation.navigate('GlobalPolitics', { userType });
+          } else if (item.key === 'geography') {
+            navigation.navigate('Geography', { userType });
           }
         }}
         elevation={0}
