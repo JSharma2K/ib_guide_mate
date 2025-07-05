@@ -39,7 +39,7 @@ const GlobalPoliticsScreen = ({ navigation, route }: { navigation: any; route: a
   const sectionContentStrings: Record<'overview' | 'essentials' | 'coreThemes' | 'detailedRubrics' | 'globalPoliticsTips', string> = {
     overview: `The IB Global Politics course explores fundamental political concepts such as power, sovereignty, legitimacy, and justice. Students examine these concepts in a variety of contexts and through a diverse range of perspectives. The course emphasizes the interconnectedness of global issues and promotes critical thinking, engagement, and reflective discussion on political activity at local, national, and international levels.`,
     essentials: `Syllabus Outline and Teaching Hours\nSL: 150 hours\nHL: 240 hours\nCore Units\n- Power, Sovereignty and International Relations\n- Human Rights\n- Development\n- Peace and Conflict\nHL Extension\n- HL students undertake an extension: Global Political Challenges (Two from six topics)\nEngagement Activity\n- Research-based investigation on a political issue of personal interest\n\nAssessment Objectives in Practice\n• AO1: Demonstrate knowledge and understanding of key political concepts and contemporary political issues.\n• AO2: Apply political concepts and examples to analyse and construct arguments.\n• AO3: Demonstrate awareness of multiple perspectives and their implications.\n• AO4: Evaluate political issues and arguments, including their implications and limitations.\n\nAssessment Outline and Weightage\nStandard Level (SL)\n- Paper 1 (Stimulus-based questions): 30%\n- Paper 2 (Extended response): 45%\n- Engagement activity (Internal Assessment): 25%\nHigher Level (HL)\n- Paper 1: 20%\n- Paper 2: 35%\n- HL Extension (Global Political Challenges): 20%\n- Engagement activity (Internal Assessment): 25%`,
-    coreThemes: `Overview of the SL and HL Course: Concepts, Content, and Contexts\n\nConcepts:\n• Power\n• Sovereignty\n• Legitimacy\n• Interdependence\n• Human Rights\n• Justice\n• Development\n• Peace\n• Conflict\n• Violence\n\nContent:\n• Political systems and governance\n• Rights and responsibilities\n• Causes of development and underdevelopment\n• Conflict and conflict resolution\n\nContexts:\n• Local\n• National\n• Regional\n• International\n• Global`,
+    coreThemes: `Overview of the SL and HL Course: Concepts, Content, and Contexts\n\nConcepts:\nPower, Sovereignty, Legitimacy, Interdependence, Human Rights, Justice, Development, Globalization, Inequality, Sustainability, Peace, Conflict, Violence, Security\n\nContexts:\nLocal, National, Regional, International, Global\n\nContent / Topics:\n• Core Units:\n- Power, Sovereignty and International Relations\n- Human Rights\n- Development\n- Peace and Conflict\n• HL Extension: Global Political Challenges\n• Engagement Activity`,
     detailedRubrics: `Detailed Rubrics – Internal Assessment (Engagement Activity)\n\nCriterion A: Identification of issue\nSelects a well-defined political topic with clear connection to local community.\nMarks: 0-4\n\nCriterion B: Explanation of engagement\nProvides comprehensive description of the political activity or involvement undertaken.\nMarks: 0-4\n\nCriterion C: Demonstration of political knowledge\nSuccessfully connects theoretical political ideas to practical experience.\nMarks: 0-8\n\nCriterion D: Analysis of issue\nThoughtful examination that considers multiple viewpoints and consequences.\nMarks: 0-8\n\nCriterion E: Evaluation\nReflective assessment of the activity and deeper understanding of the political topic.\nMarks: 0-8\n\nCriterion F: Communication\nOrganized and clearly presented written work.\nMarks: 0-4`,
     globalPoliticsTips: `Top 10 Study Tips for Success – Global Politics\n\n• Understand and apply the key political concepts across all themes and papers.\n• Use current events and case studies to make your arguments relevant and real.\n• Practice writing extended responses with critical evaluation and multiple perspectives.\n• Be concise and clear in Paper 1 responses — aim for precision under timed conditions.\n• For HL, choose your global political challenges wisely and research deeply.\n• Engage actively in political discussions to build real-world understanding.\n• Organize your IA early — connect your engagement meaningfully to course content.\n• Use diagrams and comparative frameworks to visualize complex issues.\n• Practice structuring arguments with evidence, counterclaims, and implications.\n• Self-assess using rubrics to refine your analytical writing and structure.`,
   };
@@ -323,33 +323,29 @@ const GlobalPoliticsScreen = ({ navigation, route }: { navigation: any; route: a
                       )}
                       {section.key === 'coreThemes' && (
                         <View>
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginBottom: 12 }}>Overview of the SL and HL Course: Concepts, Content, and Contexts</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginBottom: 16 }}>Overview of the SL and HL Course: Concepts, Content, and Contexts</Text>
                           
-                          {/* Table Structure */}
-                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
-                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
-                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8 }}>Concepts</Text>
-                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8 }}>Content</Text>
-                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8 }}>Contexts</Text>
-                            </View>
-                            {[
-                              { concept: 'Power', content: 'Political systems and governance', context: 'Local' },
-                              { concept: 'Sovereignty', content: 'Rights and responsibilities', context: 'National' },
-                              { concept: 'Legitimacy', content: 'Causes of development and underdevelopment', context: 'Regional' },
-                              { concept: 'Interdependence', content: 'Conflict and conflict resolution', context: 'International' },
-                              { concept: 'Human Rights', content: '', context: 'Global' },
-                              { concept: 'Justice', content: '', context: '' },
-                              { concept: 'Development', content: '', context: '' },
-                              { concept: 'Peace', content: '', context: '' },
-                              { concept: 'Conflict', content: '', context: '' },
-                              { concept: 'Violence', content: '', context: '' }
-                            ].map((row, idx) => (
-                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
-                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.concept, highlightedText)}</Text>
-                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.content, highlightedText)}</Text>
-                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.context, highlightedText)}</Text>
-                              </View>
-                            ))}
+                          {/* Concepts Section */}
+                          <View style={{ borderRadius: 8, padding: 12, marginBottom: 12 }}>
+                            <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginBottom: 8 }}>Concepts</Text>
+                            <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 20 }}>{highlightText("Power, Sovereignty, Legitimacy, Interdependence, Human Rights, Justice, Development, Globalization, Inequality, Sustainability, Peace, Conflict, Violence, Security", highlightedText)}</Text>
+                          </View>
+                          
+                          {/* Contexts Section */}
+                          <View style={{ borderRadius: 8, padding: 12, marginBottom: 12 }}>
+                            <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginBottom: 8 }}>Contexts</Text>
+                            <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 20 }}>{highlightText("Local, National, Regional, International, Global", highlightedText)}</Text>
+                          </View>
+                          
+                          {/* Content/Topics Section */}
+                          <View style={{ borderRadius: 8, padding: 12, marginBottom: 8 }}>
+                            <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginBottom: 8 }}>Content / Topics</Text>
+                            <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 20, marginBottom: 8 }}>{highlightText("Core Units:", highlightedText)}</Text>
+                            <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 20, marginLeft: 12 }}>{highlightText("• Power, Sovereignty and International Relations\n• Human Rights\n• Development\n• Peace and Conflict", highlightedText)}</Text>
+                            <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 20, marginTop: 8, marginBottom: 4 }}>{highlightText("HL Extension:", highlightedText)}</Text>
+                            <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 20, marginLeft: 12 }}>{highlightText("• Global Political Challenges", highlightedText)}</Text>
+                            <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 20, marginTop: 8, marginBottom: 4 }}>{highlightText("Assessment:", highlightedText)}</Text>
+                            <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 20, marginLeft: 12 }}>{highlightText("• Engagement Activity", highlightedText)}</Text>
                           </View>
                         </View>
                       )}
