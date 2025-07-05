@@ -33,6 +33,14 @@ const INDIVIDUALS_SOCIETIES_SUBJECTS = [
     color: '#B6C7F7',
     group: 'individuals-societies',
   },
+  {
+    key: 'global-politics',
+    icon: 'globe',
+    title: 'Global Politics',
+    subtitle: 'Power and international relations',
+    color: '#B6C7F7',
+    group: 'individuals-societies',
+  },
 ];
 
 const IndividualsAndSocietiesScreen: React.FC<Props> = ({ navigation, route }) => {
@@ -55,6 +63,8 @@ const IndividualsAndSocietiesScreen: React.FC<Props> = ({ navigation, route }) =
             navigation.navigate('Philosophy', { userType });
           } else if (item.key === 'history') {
             navigation.navigate('History', { userType });
+          } else if (item.key === 'global-politics') {
+            navigation.navigate('GlobalPolitics', { userType });
           }
         }}
         elevation={0}

@@ -26,6 +26,7 @@ import ClassicalLanguagesScreen from './src/screens/ClassicalLanguagesScreen';
 import IndividualsAndSocietiesScreen from './src/screens/IndividualsAndSocietiesScreen';
 import PhilosophyScreen from './src/screens/PhilosophyScreen';
 import HistoryScreen from './src/screens/HistoryScreen';
+import GlobalPoliticsScreen from './src/screens/GlobalPoliticsScreen';
 
 const { DarkTheme } = adaptNavigationTheme({
   reactNavigationDark: NavigationDarkTheme,
@@ -217,6 +218,17 @@ export default function App() {
               component={HistoryScreen} 
               options={{ 
                 title: 'History',
+                headerStyle: {
+                  backgroundColor: theme.colors.primary,
+                },
+                headerTintColor: theme.colors.onPrimary,
+              }}
+            />
+            <Stack.Screen 
+              name="GlobalPolitics" 
+              component={GlobalPoliticsScreen} 
+              options={{ 
+                title: 'Global Politics',
                 headerStyle: {
                   backgroundColor: theme.colors.primary,
                 },
