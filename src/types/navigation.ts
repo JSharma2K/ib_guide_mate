@@ -19,6 +19,7 @@ export type RootStackParamList = {
   History: { userType: 'student' | 'teacher' };
   GlobalPolitics: { userType: 'student' | 'teacher' };
   Geography: { userType: 'student' | 'teacher' };
+  EnvironmentalSystems: { userType: 'student' | 'teacher' };
   MathAA: { userType: 'student' | 'teacher' };
   MathAI: { userType: 'student' | 'teacher' };
   ExtendedEssay: { userType: 'student' | 'teacher' };

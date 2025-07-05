@@ -28,6 +28,7 @@ import PhilosophyScreen from './src/screens/PhilosophyScreen';
 import HistoryScreen from './src/screens/HistoryScreen';
 import GlobalPoliticsScreen from './src/screens/GlobalPoliticsScreen';
 import GeographyScreen from './src/screens/GeographyScreen';
+import EnvironmentalSystemsScreen from './src/screens/EnvironmentalSystemsScreen';
 
 const { DarkTheme } = adaptNavigationTheme({
   reactNavigationDark: NavigationDarkTheme,
@@ -241,6 +242,17 @@ export default function App() {
               component={GeographyScreen} 
               options={{ 
                 title: 'Geography',
+                headerStyle: {
+                  backgroundColor: theme.colors.primary,
+                },
+                headerTintColor: theme.colors.onPrimary,
+              }}
+            />
+            <Stack.Screen 
+              name="EnvironmentalSystems" 
+              component={EnvironmentalSystemsScreen} 
+              options={{ 
+                title: 'Environmental Systems',
                 headerStyle: {
                   backgroundColor: theme.colors.primary,
                 },

@@ -47,7 +47,7 @@ const SubjectGroupsScreen: React.FC<Props> = ({ navigation, route }) => {
       title: 'Individuals and Societies',
       subtitle: 'Group 3',
       icon: 'users',
-      subjects: ['Philosophy', 'History', 'Global Politics', 'Geography'],
+      subjects: ['Philosophy', 'History', 'Global Politics', 'Geography', 'Environmental Systems and Societies'],
       color: '#7EC3FF',
       gradient: ['rgba(126, 195, 255, 0.2)', 'rgba(126, 195, 255, 0.05)']
     },

@@ -49,6 +49,14 @@ const INDIVIDUALS_SOCIETIES_SUBJECTS = [
     color: '#B6C7F7',
     group: 'individuals-societies',
   },
+  {
+    key: 'environmental-systems',
+    icon: 'layers',
+    title: 'Env Systems and Societies',
+    subtitle: 'Human-environment interactions',
+    color: '#B6C7F7',
+    group: 'individuals-societies',
+  },
 ];
 
 const IndividualsAndSocietiesScreen: React.FC<Props> = ({ navigation, route }) => {
@@ -75,6 +83,8 @@ const IndividualsAndSocietiesScreen: React.FC<Props> = ({ navigation, route }) =
             navigation.navigate('GlobalPolitics', { userType });
           } else if (item.key === 'geography') {
             navigation.navigate('Geography', { userType });
+          } else if (item.key === 'environmental-systems') {
+            navigation.navigate('EnvironmentalSystems', { userType });
           }
         }}
         elevation={0}
