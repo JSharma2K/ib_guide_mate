@@ -25,6 +25,7 @@ import GradePredictionScreen from './src/screens/GradePredictionScreen';
 import ClassicalLanguagesScreen from './src/screens/ClassicalLanguagesScreen';
 import IndividualsAndSocietiesScreen from './src/screens/IndividualsAndSocietiesScreen';
 import PhilosophyScreen from './src/screens/PhilosophyScreen';
+import HistoryScreen from './src/screens/HistoryScreen';
 
 const { DarkTheme } = adaptNavigationTheme({
   reactNavigationDark: NavigationDarkTheme,
@@ -205,6 +206,17 @@ export default function App() {
               component={PhilosophyScreen} 
               options={{ 
                 title: 'Philosophy',
+                headerStyle: {
+                  backgroundColor: theme.colors.primary,
+                },
+                headerTintColor: theme.colors.onPrimary,
+              }}
+            />
+            <Stack.Screen 
+              name="History" 
+              component={HistoryScreen} 
+              options={{ 
+                title: 'History',
                 headerStyle: {
                   backgroundColor: theme.colors.primary,
                 },

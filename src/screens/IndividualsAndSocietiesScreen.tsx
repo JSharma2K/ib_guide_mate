@@ -25,6 +25,14 @@ const INDIVIDUALS_SOCIETIES_SUBJECTS = [
     color: '#B6C7F7',
     group: 'individuals-societies',
   },
+  {
+    key: 'history',
+    icon: 'clock',
+    title: 'History',
+    subtitle: 'Study of past events and patterns',
+    color: '#B6C7F7',
+    group: 'individuals-societies',
+  },
 ];
 
 const IndividualsAndSocietiesScreen: React.FC<Props> = ({ navigation, route }) => {
@@ -45,6 +53,8 @@ const IndividualsAndSocietiesScreen: React.FC<Props> = ({ navigation, route }) =
         onPress={() => {
           if (item.key === 'philosophy') {
             navigation.navigate('Philosophy', { userType });
+          } else if (item.key === 'history') {
+            navigation.navigate('History', { userType });
           }
         }}
         elevation={0}

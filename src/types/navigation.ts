@@ -16,6 +16,7 @@ export type RootStackParamList = {
   ClassicalLanguages: { userType: 'student' | 'teacher' };
   IndividualsAndSocieties: { userType: 'student' | 'teacher' };
   Philosophy: { userType: 'student' | 'teacher' };
+  History: { userType: 'student' | 'teacher' };
   MathAA: { userType: 'student' | 'teacher' };
   MathAI: { userType: 'student' | 'teacher' };
   ExtendedEssay: { userType: 'student' | 'teacher' };
