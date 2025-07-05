@@ -56,9 +56,9 @@ const PhilosophyScreen = ({ navigation, route }: { navigation: any; route: any }
   const sectionContentStrings: Record<'overview' | 'essentials' | 'coreThemes' | 'detailedRubrics' | 'philosophyTips', string> = {
     overview: `The IB Philosophy course encourages students to engage critically with fundamental questions about life, existence, knowledge, ethics, and the nature of reality. The curriculum provides a foundation in philosophical methods and traditions while developing the ability to analyze, construct, and evaluate arguments. Students explore key ideas through prescribed texts, internally assessed tasks, and optional themes.`,
     essentials: `Syllabus Outline and Teaching Hours\nSL – 150 hours | HL – 240 hours\n- Core theme: Being Human\n- Optional themes (e.g., Aesthetics, Epistemology, Ethics, Philosophy of Religion, Political Philosophy)\n- Prescribed text (chosen from the IB-approved list)\n- Internal assessment: Philosophical analysis of a non-philosophical stimulus\n- HL extension: Exploration of the nature of philosophical activity\n\nAssessment Objectives in Practice\nAO1: Demonstrate knowledge and understanding of philosophical content.\nAO2: Analyze philosophical concepts, positions, and arguments.\nAO3: Construct and evaluate philosophical arguments.\nAO4 (HL only): Demonstrate understanding of the nature, function, and methodology of philosophy.\n\nAssessment Outline and Weightage\nStandard Level (SL):\n- Paper 1 (Core theme and one optional theme): 50%\n- Internal Assessment (Philosophical analysis): 25%\n- Paper 2 (Prescribed text): 25%\n\nHigher Level (HL):\n- Paper 1 (Core theme and one optional theme): 40%\n- Internal Assessment: 20%\n- Paper 2 (Prescribed text): 20%\n- Paper 3 (HL extension): 20%`,
-    coreThemes: `Core Themes (SL and HL)\n• Being Human: What does it mean to be human? Explores consciousness, personal identity, free will, and human nature\n• Knowledge and Technology: Examines the nature of knowledge, truth, and the impact of technology on human understanding\n\nHL Additional Themes (choose one)\n• Philosophy and Contemporary Society: Applied ethics, political philosophy, and social justice\n• Truth and Reality: Metaphysics, philosophy of science, and theories of truth\n• Philosophy of Religion: Arguments for God's existence, problem of evil, and religious experience\n\nPhilosophical Skills Development\n• Argument analysis and construction\n• Critical evaluation of philosophical positions\n• Clear and precise philosophical writing\n• Application of philosophical concepts to contemporary issues\n• Understanding different philosophical traditions and perspectives`,
-    detailedRubrics: `Paper 1 – Philosophical Analysis\nAnalysis of an unseen philosophical text with focus on argument structure and evaluation.\nTotal Marks: 25 (SL), 20 (HL)\n\nPaper 2 – Essay Questions\nStructured essay responses on core and optional themes demonstrating philosophical understanding.\nTotal Marks: 25 (SL), 25 (HL)\n\nPaper 3 – Guided Analysis (HL only)\nDetailed analysis of philosophical text with structured questions and extended response.\nTotal Marks: 20\n\nPhilosophical Analysis (Internal Assessment)\nIndependent investigation of philosophical problem with reasoned analysis and evaluation.\nTotal Marks: 20`,
-    philosophyTips: `1. Develop strong argument analysis skills\n• Practice identifying premises, conclusions, and logical structures in philosophical texts\n• Learn to evaluate the validity and soundness of arguments\n\n2. Master philosophical writing techniques\n• Write clearly and precisely, avoiding unnecessary jargon\n• Structure arguments logically with clear premises and conclusions\n\n3. Engage deeply with core philosophical texts\n• Read primary sources carefully and multiple times\n• Take detailed notes on key concepts and arguments\n\n4. Practice philosophical questioning\n• Ask fundamental questions about assumptions and beliefs\n• Explore different perspectives on philosophical problems\n\n5. Connect philosophy to contemporary issues\n• Apply philosophical concepts to current events and ethical dilemmas\n• Consider how philosophical theories relate to modern technology and society\n\n6. Develop critical thinking skills\n• Question your own beliefs and assumptions\n• Consider counterarguments and alternative viewpoints\n\n7. Use examples effectively\n• Support abstract concepts with concrete examples\n• Draw from various cultures and philosophical traditions\n\n8. Practice timed writing\n• Develop skill in organizing thoughts quickly under exam conditions\n• Practice writing philosophical essays within time constraints\n\n9. Engage in philosophical dialogue\n• Discuss philosophical questions with peers and teachers\n• Learn to articulate and defend your philosophical positions\n\n10. Stay curious and open-minded\n• Approach philosophical problems with genuine curiosity\n• Be willing to change your mind when presented with compelling arguments`,
+    coreThemes: `Overview of the SL and HL Course: Concepts, Content, and Contexts\n\nConcepts\nIdentity\nTruth\nReality\nValues\nJustification\n\nContent\nCore theme – Being human\nOptional themes (e.g., Epistemology, Ethics)\nPhilosophical traditions and methods\nPrescribed texts\nPhilosophical argumentation\n\nContexts\nSocial, historical, cultural contexts\nPersonal beliefs, global ideologies\nInterdisciplinary connections\nMoral and political frameworks\nPhilosophical, literary, and artistic sources`,
+    detailedRubrics: `Assessment Rubrics – Internal Assessment\n\nCriterion A: Philosophical Issue\nRecognition and clear explanation of the philosophical problem presented in the given material\nMarks: 6\n\nCriterion B: Philosophical Analysis\nThoroughness and precision in examining and discussing the philosophical problem\nMarks: 12\n\nCriterion C: Relevance and Support\nApplication of relevant examples and sources to strengthen the philosophical discussion\nMarks: 6`,
+    philosophyTips: `Top 10 Study Tips for Success – Philosophy\n\n1. Read prescribed texts multiple times with annotation.\n2. Practice outlining arguments before writing full responses.\n3. Master the core theme thoroughly—it appears in all exam levels.\n4. Use real-world examples to ground abstract arguments.\n5. Compare and contrast philosophical perspectives in essays.\n6. Practice explaining complex ideas clearly and concisely.\n7. Use feedback from past papers to refine essay structure.\n8. Understand the assessment rubrics and apply them to your writing.\n9. Use philosophical vocabulary accurately and consistently.\n10. Discuss your ideas with peers to test clarity and logic.`,
   };
   const sectionKeys: Array<'overview' | 'essentials' | 'coreThemes' | 'detailedRubrics' | 'philosophyTips'> = ['overview', 'essentials', 'coreThemes', 'detailedRubrics', 'philosophyTips'];
 
@@ -114,7 +114,7 @@ const PhilosophyScreen = ({ navigation, route }: { navigation: any; route: any }
     const sectionTitles = {
       'overview': 'Course Overview',
       'essentials': 'Subject Essentials', 
-      'coreThemes': 'Core Themes & Skills',
+      'coreThemes': 'Prescribed Literature',
       'detailedRubrics': 'Detailed Rubrics',
       'philosophyTips': 'Philosophy Tips',
     };
@@ -297,7 +297,7 @@ const PhilosophyScreen = ({ navigation, route }: { navigation: any; route: any }
             <View style={{ height: 2, backgroundColor: '#7EC3FF', marginBottom: 8 }} />
           </View>
           {/* Dropdowns */}
-          {[{ key: 'overview', title: 'Course Overview' }, { key: 'essentials', title: 'Subject Essentials' }, { key: 'coreThemes', title: 'Core Themes & Skills' }, { key: 'detailedRubrics', title: 'Detailed Rubrics' }].map((section, idx, arr) => (
+          {[{ key: 'overview', title: 'Course Overview' }, { key: 'essentials', title: 'Subject Essentials' }, { key: 'coreThemes', title: 'Prescribed Literature' }, { key: 'detailedRubrics', title: 'Detailed Rubrics' }].map((section, idx, arr) => (
             <View key={section.key}>
               <List.Item
                 title={section.title}
@@ -327,27 +327,56 @@ const PhilosophyScreen = ({ navigation, route }: { navigation: any; route: any }
                       )}
                       {section.key === 'coreThemes' && (
                         <View>
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>Core Themes (SL and HL)</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("• Being Human: What does it mean to be human? Explores consciousness, personal identity, free will, and human nature\n• Knowledge and Technology: Examines the nature of knowledge, truth, and the impact of technology on human understanding", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginBottom: 12 }}>Overview of the SL and HL Course: Concepts, Content, and Contexts</Text>
                           
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>HL Additional Themes (choose one)</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("• Philosophy and Contemporary Society: Applied ethics, political philosophy, and social justice\n• Truth and Reality: Metaphysics, philosophy of science, and theories of truth\n• Philosophy of Religion: Arguments for God's existence, problem of evil, and religious experience", highlightedText)}</Text>
-                          
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>Philosophical Skills Development</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("• Argument analysis and construction\n• Critical evaluation of philosophical positions\n• Clear and precise philosophical writing\n• Application of philosophical concepts to contemporary issues\n• Understanding different philosophical traditions and perspectives", highlightedText)}</Text>
+                          {/* Table Header */}
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Concepts</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Content</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Contexts</Text>
+                            </View>
+                            
+                            {/* Table Rows */}
+                            {[
+                              { concept: 'Identity', content: 'Core theme – Being human', context: 'Social, historical, cultural contexts' },
+                              { concept: 'Truth', content: 'Optional themes (e.g., Epistemology, Ethics)', context: 'Personal beliefs, global ideologies' },
+                              { concept: 'Reality', content: 'Philosophical traditions and methods', context: 'Interdisciplinary connections' },
+                              { concept: 'Values', content: 'Prescribed texts', context: 'Moral and political frameworks' },
+                              { concept: 'Justification', content: 'Philosophical argumentation', context: 'Philosophical, literary, and artistic sources' }
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', fontSize: 14 }}>{highlightText(row.concept, highlightedText)}</Text>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', fontSize: 14 }}>{highlightText(row.content, highlightedText)}</Text>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', fontSize: 14 }}>{highlightText(row.context, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
                         </View>
                       )}
                       {section.key === 'detailedRubrics' && (
                         <View>
-                          <RubricTable
-                            data={[
-                              { criterion: 'Paper 1: Philosophical Analysis', summary: 'Analysis of unseen philosophical text with focus on argument structure and evaluation', max: 25 },
-                              { criterion: 'Paper 2: Essay Questions', summary: 'Structured essay responses on core and optional themes demonstrating philosophical understanding', max: 25 },
-                              { criterion: 'Paper 3: Guided Analysis (HL)', summary: 'Detailed analysis of philosophical text with structured questions and extended response', max: 20 },
-                              { criterion: 'Philosophical Analysis (IA)', summary: 'Independent investigation of philosophical problem with reasoned analysis and evaluation', max: 20 },
-                            ]}
-                            highlightedText={highlightedText}
-                          />
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginBottom: 12 }}>Assessment Rubrics – Internal Assessment</Text>
+                          
+                          {/* Internal Assessment Rubric Table */}
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 2.2, padding: 8 }}>Criterion</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 2.8, padding: 8 }}>Description</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 0.8, padding: 8, textAlign: 'center' }}>Marks</Text>
+                            </View>
+                            {[
+                              { criterion: 'A: Philosophical Issue', description: 'Recognition and clear explanation of the philosophical problem presented in the given material', marks: 6 },
+                              { criterion: 'B: Philosophical Analysis', description: 'Thoroughness and precision in examining and discussing the philosophical problem', marks: 12 },
+                              { criterion: 'C: Relevance and Support', description: 'Application of relevant examples and sources to strengthen the philosophical discussion', marks: 6 }
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 2.2, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.criterion, highlightedText)}</Text>
+                                <Text style={{ flex: 2.8, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.description, highlightedText)}</Text>
+                                <Text style={{ flex: 0.8, color: '#B6B6B6', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular' }}>{highlightText(String(row.marks), highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
                           
                           <Text style={{ 
                             fontSize: 11, 
@@ -390,54 +419,10 @@ const PhilosophyScreen = ({ navigation, route }: { navigation: any; route: any }
                 <View style={{ paddingHorizontal: 20, paddingBottom: 16 }}>
                   {renderAnimatedContent('philosophyTips', (
                     <View style={{ backgroundColor: 'transparent' }}>
-                      <View style={{ marginBottom: 12 }}>
-                        <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>1. Develop strong argument analysis skills</Text>
-                        <Text style={[themeStyles.content, { fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 8, lineHeight: 20 }]}>{highlightText("• Practice identifying premises, conclusions, and logical structures in philosophical texts\n• Learn to evaluate the validity and soundness of arguments", highlightedText)}</Text>
-                      </View>
-                      
-                      <View style={{ marginBottom: 12 }}>
-                        <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>2. Master philosophical writing techniques</Text>
-                        <Text style={[themeStyles.content, { fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 8, lineHeight: 20 }]}>{highlightText("• Write clearly and precisely, avoiding unnecessary jargon\n• Structure arguments logically with clear premises and conclusions", highlightedText)}</Text>
-                      </View>
-                      
-                      <View style={{ marginBottom: 12 }}>
-                        <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>3. Engage deeply with core philosophical texts</Text>
-                        <Text style={[themeStyles.content, { fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 8, lineHeight: 20 }]}>{highlightText("• Read primary sources carefully and multiple times\n• Take detailed notes on key concepts and arguments", highlightedText)}</Text>
-                      </View>
-                      
-                      <View style={{ marginBottom: 12 }}>
-                        <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>4. Practice philosophical questioning</Text>
-                        <Text style={[themeStyles.content, { fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 8, lineHeight: 20 }]}>{highlightText("• Ask fundamental questions about assumptions and beliefs\n• Explore different perspectives on philosophical problems", highlightedText)}</Text>
-                      </View>
-                      
-                      <View style={{ marginBottom: 12 }}>
-                        <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>5. Connect philosophy to contemporary issues</Text>
-                        <Text style={[themeStyles.content, { fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 8, lineHeight: 20 }]}>{highlightText("• Apply philosophical concepts to current events and ethical dilemmas\n• Consider how philosophical theories relate to modern technology and society", highlightedText)}</Text>
-                      </View>
-                      
-                      <View style={{ marginBottom: 12 }}>
-                        <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>6. Develop critical thinking skills</Text>
-                        <Text style={[themeStyles.content, { fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 8, lineHeight: 20 }]}>{highlightText("• Question your own beliefs and assumptions\n• Consider counterarguments and alternative viewpoints", highlightedText)}</Text>
-                      </View>
-                      
-                      <View style={{ marginBottom: 12 }}>
-                        <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>7. Use examples effectively</Text>
-                        <Text style={[themeStyles.content, { fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 8, lineHeight: 20 }]}>{highlightText("• Support abstract concepts with concrete examples\n• Draw from various cultures and philosophical traditions", highlightedText)}</Text>
-                      </View>
-                      
-                      <View style={{ marginBottom: 12 }}>
-                        <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>8. Practice timed writing</Text>
-                        <Text style={[themeStyles.content, { fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 8, lineHeight: 20 }]}>{highlightText("• Develop skill in organizing thoughts quickly under exam conditions\n• Practice writing philosophical essays within time constraints", highlightedText)}</Text>
-                      </View>
-                      
-                      <View style={{ marginBottom: 12 }}>
-                        <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>9. Engage in philosophical dialogue</Text>
-                        <Text style={[themeStyles.content, { fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 8, lineHeight: 20 }]}>{highlightText("• Discuss philosophical questions with peers and teachers\n• Learn to articulate and defend your philosophical positions", highlightedText)}</Text>
-                      </View>
+                      <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginBottom: 16 }}>Top 10 Study Tips for Success – Philosophy</Text>
                       
                       <View style={{ marginBottom: 8 }}>
-                        <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>10. Stay curious and open-minded</Text>
-                        <Text style={[themeStyles.content, { fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', marginLeft: 8, lineHeight: 20 }]}>{highlightText("• Approach philosophical problems with genuine curiosity\n• Be willing to change your mind when presented with compelling arguments", highlightedText)}</Text>
+                        <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', lineHeight: 22 }}>{highlightText("1. Read prescribed texts multiple times with annotation.\n\n2. Practice outlining arguments before writing full responses.\n\n3. Master the core theme thoroughly—it appears in all exam levels.\n\n4. Use real-world examples to ground abstract arguments.\n\n5. Compare and contrast philosophical perspectives in essays.\n\n6. Practice explaining complex ideas clearly and concisely.\n\n7. Use feedback from past papers to refine essay structure.\n\n8. Understand the assessment rubrics and apply them to your writing.\n\n9. Use philosophical vocabulary accurately and consistently.\n\n10. Discuss your ideas with peers to test clarity and logic.", highlightedText)}</Text>
                       </View>
                     </View>
                   ))}
