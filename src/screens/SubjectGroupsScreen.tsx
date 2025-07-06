@@ -56,7 +56,7 @@ const SubjectGroupsScreen: React.FC<Props> = ({ navigation, route }) => {
       title: 'Sciences',
       subtitle: 'Group 4',
       icon: 'zap',
-      subjects: ['Coming Soon'],
+      subjects: ['Biology'],
       color: '#7EC3FF',
       gradient: ['rgba(126, 195, 255, 0.2)', 'rgba(126, 195, 255, 0.05)']
     },
@@ -90,6 +90,9 @@ const SubjectGroupsScreen: React.FC<Props> = ({ navigation, route }) => {
     } else if (groupId === 3) {
       // Navigate to Individuals and Societies subject selection screen
       navigation.navigate('IndividualsAndSocieties', { userType });
+    } else if (groupId === 4) {
+      // Navigate to Sciences subject selection screen
+      navigation.navigate('Sciences', { userType });
     } else if (groupId === 5) {
       // Navigate to Home with Math subjects
       navigation.navigate('Home', { userType, subjectGroup: 'mathematics' });

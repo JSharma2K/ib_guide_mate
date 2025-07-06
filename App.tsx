@@ -31,6 +31,8 @@ import GeographyScreen from './src/screens/GeographyScreen';
 import EnvironmentalSystemsScreen from './src/screens/EnvironmentalSystemsScreen';
 import EconomicsScreen from './src/screens/EconomicsScreen';
 import DigitalSocietyScreen from './src/screens/DigitalSocietyScreen';
+import SciencesScreen from './src/screens/SciencesScreen';
+import BiologyScreen from './src/screens/BiologyScreen';
 
 const { DarkTheme } = adaptNavigationTheme({
   reactNavigationDark: NavigationDarkTheme,
@@ -321,6 +323,28 @@ export default function App() {
               component={DigitalSocietyScreen}
               options={{
                 title: 'Digital Society',
+                headerStyle: {
+                  backgroundColor: theme.colors.primary,
+                },
+                headerTintColor: theme.colors.onPrimary,
+              }}
+            />
+            <Stack.Screen
+              name="Sciences"
+              component={SciencesScreen}
+              options={{
+                title: 'Sciences',
+                headerStyle: {
+                  backgroundColor: theme.colors.primary,
+                },
+                headerTintColor: theme.colors.onPrimary,
+              }}
+            />
+            <Stack.Screen
+              name="Biology"
+              component={BiologyScreen}
+              options={{
+                title: 'Biology',
                 headerStyle: {
                   backgroundColor: theme.colors.primary,
                 },
