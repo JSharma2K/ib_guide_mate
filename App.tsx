@@ -30,6 +30,7 @@ import GlobalPoliticsScreen from './src/screens/GlobalPoliticsScreen';
 import GeographyScreen from './src/screens/GeographyScreen';
 import EnvironmentalSystemsScreen from './src/screens/EnvironmentalSystemsScreen';
 import EconomicsScreen from './src/screens/EconomicsScreen';
+import DigitalSocietyScreen from './src/screens/DigitalSocietyScreen';
 
 const { DarkTheme } = adaptNavigationTheme({
   reactNavigationDark: NavigationDarkTheme,
@@ -309,6 +310,17 @@ export default function App() {
               component={GradePredictionScreen}
               options={{
                 title: 'Grade Prediction',
+                headerStyle: {
+                  backgroundColor: theme.colors.primary,
+                },
+                headerTintColor: theme.colors.onPrimary,
+              }}
+            />
+            <Stack.Screen
+              name="DigitalSociety"
+              component={DigitalSocietyScreen}
+              options={{
+                title: 'Digital Society',
                 headerStyle: {
                   backgroundColor: theme.colors.primary,
                 },

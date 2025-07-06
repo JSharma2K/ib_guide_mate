@@ -65,6 +65,14 @@ const INDIVIDUALS_SOCIETIES_SUBJECTS = [
     color: '#B6C7F7',
     group: 'individuals-societies',
   },
+  {
+    key: 'digital-society',
+    icon: 'smartphone',
+    title: 'Digital Society',
+    subtitle: 'Technology and social impact',
+    color: '#B6C7F7',
+    group: 'individuals-societies',
+  },
 ];
 
 const IndividualsAndSocietiesScreen: React.FC<Props> = ({ navigation, route }) => {
@@ -95,6 +103,8 @@ const IndividualsAndSocietiesScreen: React.FC<Props> = ({ navigation, route }) =
             navigation.navigate('EnvironmentalSystems', { userType });
           } else if (item.key === 'economics') {
             navigation.navigate('Economics', { userType });
+          } else if (item.key === 'digital-society') {
+            navigation.navigate('DigitalSociety', { userType });
           }
         }}
         elevation={0}
