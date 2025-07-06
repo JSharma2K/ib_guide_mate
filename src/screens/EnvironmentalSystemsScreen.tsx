@@ -37,11 +37,11 @@ const EnvironmentalSystemsScreen = ({ navigation, route }: { navigation: any; ro
 
   // Section keys and content for search
   const sectionContentStrings: Record<'overview' | 'essentials' | 'coreThemes' | 'detailedRubrics' | 'essTips', string> = {
-    overview: `Environmental Systems and Societies (ESS) is an interdisciplinary course that examines the interactions between environmental systems and human societies. The course integrates physical and human geography, biology, earth science, and environmental science to provide students with a holistic understanding of environmental issues. Students explore sustainability, resource management, pollution, climate change, and conservation through both scientific and socio-political perspectives.`,
-    essentials: `Syllabus Outline and Teaching Hours\nSL only: 150 hours\n\nCore Topics\n• Topic 1: Foundations of environmental systems and societies\n• Topic 2: Ecosystems and ecology\n• Topic 3: Biodiversity and conservation\n• Topic 4: Water and aquatic food production systems\n• Topic 5: Soil systems and terrestrial food production systems\n• Topic 6: Atmospheric systems and societies\n• Topic 7: Climate change and energy production\n• Topic 8: Human systems and resource use\n\nAssessment Objectives\n• AO1: Demonstrate knowledge and understanding of environmental systems and societies\n• AO2: Apply knowledge and understanding to analyze environmental issues\n• AO3: Synthesize knowledge from different areas to construct arguments\n• AO4: Use a variety of skills and techniques to investigate environmental issues\n\nAssessment Outline and Weightage\nStandard Level (SL) - ESS is only offered at SL\n• Paper 1: Core topics (40%)\n• Paper 2: Options and case studies (40%)\n• Internal Assessment: Individual investigation (20%)`,
-    coreThemes: `ESS Systems Approach and Key Concepts\n\nSystems Thinking\n• Inputs, outputs, transfers, and transformations\n• Feedback mechanisms and equilibrium\n• Open and closed systems\n• System models and flows\n\nKey Concepts\n• Sustainability and sustainable development\n• Environmental value systems\n• Equilibrium and change\n• Biodiversity and conservation\n• Pollution management\n• Resource management\n• Climate change mitigation and adaptation\n\nInterdisciplinary Approach\n• Scientific methodology and data analysis\n• Socio-political factors and decision-making\n• Economic considerations and cost-benefit analysis\n• Ethical perspectives and environmental philosophy\n• Cultural and historical contexts\n• International cooperation and governance`,
-    detailedRubrics: `Assessment Rubrics – Internal Assessment (Individual Investigation)\n\nCriterion A: Research question and planning\nFormulating a focused research question and developing an appropriate investigation plan.\nMarks: 0-6\n\nCriterion B: Data collection and processing\nGathering relevant data using appropriate methods and processing it effectively.\nMarks: 0-6\n\nCriterion C: Analysis and evaluation\nAnalyzing data to identify patterns and evaluating the reliability of results.\nMarks: 0-6\n\nCriterion D: Communication and application\nCommunicating findings clearly and applying results to broader environmental contexts.\nMarks: 0-6`,
-    essTips: `Top 10 Study Tips for Success – Environmental Systems and Societies\n\n• Master the systems approach and apply it to all environmental issues.\n\n• Learn to identify and analyze inputs, outputs, and feedback loops in systems.\n\n• Understand different environmental value systems and their implications.\n\n• Practice analyzing case studies from multiple perspectives (scientific, economic, social).\n\n• Develop skills in data interpretation and graphical analysis.\n\n• Stay current with environmental news and global sustainability initiatives.\n\n• For IA, choose a local environmental issue you can investigate directly.\n\n• Practice writing balanced arguments that consider multiple stakeholder views.\n\n• Understand the connections between different environmental topics.\n\n• Use real-world examples to support your understanding of concepts.`,
+    overview: `The Environmental Systems and Societies (ESS) course provides students with a coherent perspective on the environment. It combines scientific exploration with ethical awareness and policy-based problem solving. Students explore ecological processes, evaluate environmental problems, and assess solutions using systems thinking and sustainability concepts.`,
+    essentials: `Syllabus Outline and Teaching Hours\nSL/HL – 150 hours\n- Foundations of environmental systems and societies\n- Ecosystems and ecology\n- Biodiversity and conservation\n- Water and aquatic food production systems and societies\n- Soil systems and terrestrial food production systems and societies\n- Atmospheric systems and societies\n- Climate change and energy production\n- Human systems and resource use\n- Practical scheme of work (hands-on investigations, fieldwork)\n\nAssessment Objectives in Practice\nAO1: Demonstrate knowledge and understanding of environmental issues, systems, and terminology.\nAO2: Apply knowledge and understanding to analyze environmental issues and solve problems.\nAO3: Synthesize, evaluate and reflect upon environmental data, scenarios, and policies.\nAO4: Demonstrate the use of skills in practical and investigative work.\n\nAssessment Outline and Weightage\nStandard Level (SL):\n- Paper 1 (Case study): 25%\n- Paper 2 (Short and extended response): 50%\n- Internal Assessment (Individual investigation): 25%`,
+    coreThemes: `Overview of the Course: Concepts, Content, and Contexts\n\nConcepts:\nSystems - Systems and models - Local and global environmental challenges\nSustainability - Sustainability, natural capital - Resource consumption and environmental degradation\nStewardship - Conservation, environmental ethics - Human responsibilities and policy implications\nChange - Climate change, ecological succession - Historical and future trends in biodiversity\nEquity - Access to resources - Global inequalities and environmental justice\n\nContent:\nSystems and models\nSustainability, natural capital\nConservation, environmental ethics\nClimate change, ecological succession\nAccess to resources\n\nContexts:\nLocal and global environmental challenges\nResource consumption and environmental degradation\nHuman responsibilities and policy implications\nHistorical and future trends in biodiversity\nGlobal inequalities and environmental justice`,
+    detailedRubrics: `Assessment Guidelines – Individual Investigation\n\nCriterion A: Investigation planning\nClarity of research focus and development of investigation objectives\nMarks: 6\n\nCriterion B: Data gathering and analysis\nSuitability of methods and analytical approaches employed\nMarks: 6\n\nCriterion C: Results interpretation and evaluation\nAnalysis of findings and demonstration of critical reasoning\nMarks: 6\n\nCriterion D: Real-world connections\nBroader environmental relevance and practical implications\nMarks: 6\n\nCriterion E: Student involvement\nIndividual initiative, understanding, and dedication\nMarks: 6`,
+    essTips: `Top 10 Study Tips for Success – Environmental Systems and Societies\n\n• Master the key concepts of systems, models, and sustainability.\n\n• Use diagrams to represent flows, feedback loops, and models.\n\n• Regularly practice past paper questions on data-based analysis.\n\n• Link theory with real-world environmental case studies.\n\n• Understand terminology and use it precisely in assessments.\n\n• Engage with current environmental news and debates.\n\n• Keep clear, detailed notes during practical investigations.\n\n• Apply systems thinking in analyzing environmental problems.\n\n• Reflect on human impacts from ethical and economic perspectives.\n\n• Review IA criteria while planning and writing your report.`,
   };
   const sectionKeys: Array<'overview' | 'essentials' | 'coreThemes' | 'detailedRubrics' | 'essTips'> = ['overview', 'essentials', 'coreThemes', 'detailedRubrics', 'essTips'];
 
@@ -97,7 +97,7 @@ const EnvironmentalSystemsScreen = ({ navigation, route }: { navigation: any; ro
     const sectionTitles = {
       'overview': 'Course Overview',
       'essentials': 'Subject Essentials', 
-      'coreThemes': 'Core Themes & Skills',
+      'coreThemes': 'Prescribed Literature',
       'detailedRubrics': 'Detailed Rubrics',
       'essTips': 'ESS Tips',
     };
@@ -280,7 +280,7 @@ const EnvironmentalSystemsScreen = ({ navigation, route }: { navigation: any; ro
             <View style={{ height: 2, backgroundColor: '#7EC3FF', marginBottom: 8 }} />
           </View>
           {/* Dropdowns */}
-          {[{ key: 'overview', title: 'Course Overview' }, { key: 'essentials', title: 'Subject Essentials' }, { key: 'coreThemes', title: 'Core Themes & Skills' }, { key: 'detailedRubrics', title: 'Detailed Rubrics' }].map((section, idx, arr) => (
+          {[{ key: 'overview', title: 'Course Overview' }, { key: 'essentials', title: 'Subject Essentials' }, { key: 'coreThemes', title: 'Prescribed Literature' }, { key: 'detailedRubrics', title: 'Detailed Rubrics' }].map((section, idx, arr) => (
             <View key={section.key}>
               <List.Item
                 title={section.title}
@@ -299,34 +299,51 @@ const EnvironmentalSystemsScreen = ({ navigation, route }: { navigation: any; ro
                       {section.key === 'essentials' && (
                         <View>
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>Syllabus Outline and Teaching Hours</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("SL only: 150 hours", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("SL/HL – 150 hours", highlightedText)}</Text>
                           
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>Core Topics</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("• Topic 1: Foundations of environmental systems and societies\n• Topic 2: Ecosystems and ecology\n• Topic 3: Biodiversity and conservation\n• Topic 4: Water and aquatic food production systems\n• Topic 5: Soil systems and terrestrial food production systems\n• Topic 6: Atmospheric systems and societies\n• Topic 7: Climate change and energy production\n• Topic 8: Human systems and resource use", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("• Foundations of environmental systems and societies\n• Ecosystems and ecology\n• Biodiversity and conservation\n• Water and aquatic food production systems and societies\n• Soil systems and terrestrial food production systems and societies\n• Atmospheric systems and societies\n• Climate change and energy production\n• Human systems and resource use\n• Practical scheme of work (hands-on investigations, fieldwork)", highlightedText)}</Text>
                           
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>Assessment Objectives</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("• AO1: Demonstrate knowledge and understanding of environmental systems and societies\n• AO2: Apply knowledge and understanding to analyze environmental issues\n• AO3: Synthesize knowledge from different areas to construct arguments\n• AO4: Use a variety of skills and techniques to investigate environmental issues", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>Assessment Objectives in Practice</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("• AO1: Demonstrate knowledge and understanding of environmental issues, systems, and terminology.\n• AO2: Apply knowledge and understanding to analyze environmental issues and solve problems.\n• AO3: Synthesize, evaluate and reflect upon environmental data, scenarios, and policies.\n• AO4: Demonstrate the use of skills in practical and investigative work.", highlightedText)}</Text>
                           
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>Assessment Outline and Weightage</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 8 }}>{highlightText("Standard Level (SL) - ESS is only offered at SL", highlightedText)}</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("• Paper 1: Core topics (40%)\n• Paper 2: Options and case studies (40%)\n• Internal Assessment: Individual investigation (20%)", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 8 }}>{highlightText("Standard Level (SL):\n• Paper 1 (Case study): 25%\n• Paper 2 (Short and extended response): 50%\n• Internal Assessment (Individual investigation): 25%", highlightedText)}</Text>
                         </View>
                       )}
                       {section.key === 'coreThemes' && (
                         <View>
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginBottom: 8 }}>Systems Thinking</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 20 }}>{highlightText("• Inputs, outputs, transfers, and transformations\n• Feedback mechanisms and equilibrium\n• Open and closed systems\n• System models and flows", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginBottom: 16 }}>Overview of the Course: Concepts, Content, and Contexts</Text>
                           
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginTop: 16, marginBottom: 8 }}>Key Concepts</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 20 }}>{highlightText("• Sustainability and sustainable development\n• Environmental value systems\n• Equilibrium and change\n• Biodiversity and conservation\n• Pollution management\n• Resource management\n• Climate change mitigation and adaptation", highlightedText)}</Text>
-                          
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginTop: 16, marginBottom: 8 }}>Interdisciplinary Approach</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 20 }}>{highlightText("• Scientific methodology and data analysis\n• Socio-political factors and decision-making\n• Economic considerations and cost-benefit analysis\n• Ethical perspectives and environmental philosophy\n• Cultural and historical contexts\n• International cooperation and governance", highlightedText)}</Text>
+                          {/* Table */}
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            {/* Table Header */}
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 12, fontSize: 14, fontWeight: 'bold' }}>Concepts</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 12, fontSize: 14, fontWeight: 'bold' }}>Content</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 12, fontSize: 14, fontWeight: 'bold' }}>Contexts</Text>
+                            </View>
+                            
+                            {/* Table Rows */}
+                            {[
+                              { concept: 'Systems', content: 'Systems and models', context: 'Local and global environmental challenges' },
+                              { concept: 'Sustainability', content: 'Sustainability, natural capital', context: 'Resource consumption and environmental degradation' },
+                              { concept: 'Stewardship', content: 'Conservation, environmental ethics', context: 'Human responsibilities and policy implications' },
+                              { concept: 'Change', content: 'Climate change, ecological succession', context: 'Historical and future trends in biodiversity' },
+                              { concept: 'Equity', content: 'Access to resources', context: 'Global inequalities and environmental justice' }
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.concept, highlightedText)}</Text>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.content, highlightedText)}</Text>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.context, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
                         </View>
                       )}
                       {section.key === 'detailedRubrics' && (
                         <View>
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginBottom: 12 }}>Assessment Rubrics – Internal Assessment (Individual Investigation)</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginBottom: 12 }}>Assessment Guidelines – Individual Investigation</Text>
                           
                           {/* Internal Assessment Rubric Table */}
                           <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
@@ -336,10 +353,11 @@ const EnvironmentalSystemsScreen = ({ navigation, route }: { navigation: any; ro
                               <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 0.8, padding: 8, textAlign: 'center' }}>Marks</Text>
                             </View>
                             {[
-                              { criterion: 'A: Research question and planning', description: 'Formulating a focused research question and developing an appropriate investigation plan.', marks: '0-6' },
-                              { criterion: 'B: Data collection and processing', description: 'Gathering relevant data using appropriate methods and processing it effectively.', marks: '0-6' },
-                              { criterion: 'C: Analysis and evaluation', description: 'Analyzing data to identify patterns and evaluating the reliability of results.', marks: '0-6' },
-                              { criterion: 'D: Communication and application', description: 'Communicating findings clearly and applying results to broader environmental contexts.', marks: '0-6' }
+                              { criterion: 'A: Investigation planning', description: 'Clarity of research focus and development of investigation objectives', marks: '6' },
+                              { criterion: 'B: Data gathering and analysis', description: 'Suitability of methods and analytical approaches employed', marks: '6' },
+                              { criterion: 'C: Results interpretation and evaluation', description: 'Analysis of findings and demonstration of critical reasoning', marks: '6' },
+                              { criterion: 'D: Real-world connections', description: 'Broader environmental relevance and practical implications', marks: '6' },
+                              { criterion: 'E: Student involvement', description: 'Individual initiative, understanding, and dedication', marks: '6' }
                             ].map((row, idx) => (
                               <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
                                 <Text style={{ flex: 2.2, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.criterion, highlightedText)}</Text>
@@ -393,7 +411,7 @@ const EnvironmentalSystemsScreen = ({ navigation, route }: { navigation: any; ro
                       <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginBottom: 16 }}>Top 10 Study Tips for Success – Environmental Systems and Societies</Text>
                       
                       <View style={{ marginBottom: 8 }}>
-                        <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', lineHeight: 22 }}>{highlightText("• Master the systems approach and apply it to all environmental issues.\n\n• Learn to identify and analyze inputs, outputs, and feedback loops in systems.\n\n• Understand different environmental value systems and their implications.\n\n• Practice analyzing case studies from multiple perspectives (scientific, economic, social).\n\n• Develop skills in data interpretation and graphical analysis.\n\n• Stay current with environmental news and global sustainability initiatives.\n\n• For IA, choose a local environmental issue you can investigate directly.\n\n• Practice writing balanced arguments that consider multiple stakeholder views.\n\n• Understand the connections between different environmental topics.\n\n• Use real-world examples to support your understanding of concepts.", highlightedText)}</Text>
+                        <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', lineHeight: 22 }}>{highlightText("• Master the key concepts of systems, models, and sustainability.\n\n• Use diagrams to represent flows, feedback loops, and models.\n\n• Regularly practice past paper questions on data-based analysis.\n\n• Link theory with real-world environmental case studies.\n\n• Understand terminology and use it precisely in assessments.\n\n• Engage with current environmental news and debates.\n\n• Keep clear, detailed notes during practical investigations.\n\n• Apply systems thinking in analyzing environmental problems.\n\n• Reflect on human impacts from ethical and economic perspectives.\n\n• Review IA criteria while planning and writing your report.", highlightedText)}</Text>
                       </View>
                     </View>
                   ))}
