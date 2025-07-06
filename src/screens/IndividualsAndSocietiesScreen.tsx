@@ -57,6 +57,14 @@ const INDIVIDUALS_SOCIETIES_SUBJECTS = [
     color: '#B6C7F7',
     group: 'individuals-societies',
   },
+  {
+    key: 'economics',
+    icon: 'trending-up',
+    title: 'Economics',
+    subtitle: 'Markets, behavior, and policy',
+    color: '#B6C7F7',
+    group: 'individuals-societies',
+  },
 ];
 
 const IndividualsAndSocietiesScreen: React.FC<Props> = ({ navigation, route }) => {
@@ -85,6 +93,8 @@ const IndividualsAndSocietiesScreen: React.FC<Props> = ({ navigation, route }) =
             navigation.navigate('Geography', { userType });
           } else if (item.key === 'environmental-systems') {
             navigation.navigate('EnvironmentalSystems', { userType });
+          } else if (item.key === 'economics') {
+            navigation.navigate('Economics', { userType });
           }
         }}
         elevation={0}

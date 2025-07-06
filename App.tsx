@@ -29,6 +29,7 @@ import HistoryScreen from './src/screens/HistoryScreen';
 import GlobalPoliticsScreen from './src/screens/GlobalPoliticsScreen';
 import GeographyScreen from './src/screens/GeographyScreen';
 import EnvironmentalSystemsScreen from './src/screens/EnvironmentalSystemsScreen';
+import EconomicsScreen from './src/screens/EconomicsScreen';
 
 const { DarkTheme } = adaptNavigationTheme({
   reactNavigationDark: NavigationDarkTheme,
@@ -253,6 +254,17 @@ export default function App() {
               component={EnvironmentalSystemsScreen} 
               options={{ 
                 title: 'Environmental Systems',
+                headerStyle: {
+                  backgroundColor: theme.colors.primary,
+                },
+                headerTintColor: theme.colors.onPrimary,
+              }}
+            />
+            <Stack.Screen 
+              name="Economics" 
+              component={EconomicsScreen} 
+              options={{ 
+                title: 'Economics',
                 headerStyle: {
                   backgroundColor: theme.colors.primary,
                 },
