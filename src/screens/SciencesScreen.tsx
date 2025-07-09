@@ -25,6 +25,14 @@ const SCIENCES_SUBJECTS = [
     color: '#B6C7F7',
     group: 'sciences',
   },
+  {
+    key: 'chemistry',
+    icon: 'zap',
+    title: 'Chemistry',
+    subtitle: 'Matter and molecular interactions',
+    color: '#B6C7F7',
+    group: 'sciences',
+  },
 ];
 
 const SciencesScreen: React.FC<Props> = ({ navigation, route }) => {
@@ -45,6 +53,8 @@ const SciencesScreen: React.FC<Props> = ({ navigation, route }) => {
         onPress={() => {
           if (item.key === 'biology') {
             navigation.navigate('Biology', { userType });
+          } else if (item.key === 'chemistry') {
+            navigation.navigate('Chemistry', { userType });
           }
         }}
         elevation={0}

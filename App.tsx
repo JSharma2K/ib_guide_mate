@@ -33,6 +33,7 @@ import EconomicsScreen from './src/screens/EconomicsScreen';
 import DigitalSocietyScreen from './src/screens/DigitalSocietyScreen';
 import SciencesScreen from './src/screens/SciencesScreen';
 import BiologyScreen from './src/screens/BiologyScreen';
+import ChemistryScreen from './src/screens/ChemistryScreen';
 
 const { DarkTheme } = adaptNavigationTheme({
   reactNavigationDark: NavigationDarkTheme,
@@ -345,6 +346,17 @@ export default function App() {
               component={BiologyScreen}
               options={{
                 title: 'Biology',
+                headerStyle: {
+                  backgroundColor: theme.colors.primary,
+                },
+                headerTintColor: theme.colors.onPrimary,
+              }}
+            />
+            <Stack.Screen
+              name="Chemistry"
+              component={ChemistryScreen}
+              options={{
+                title: 'Chemistry',
                 headerStyle: {
                   backgroundColor: theme.colors.primary,
                 },
