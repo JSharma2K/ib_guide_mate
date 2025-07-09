@@ -39,9 +39,27 @@ const ChemistryScreen = ({ navigation, route }: { navigation: any; route: any })
   const sectionContentStrings: Record<'overview' | 'essentials' | 'coreThemes' | 'detailedRubrics' | 'chemistryTips', string> = {
     overview: `The Chemistry course develops students' understanding of chemical principles, scientific methodology, and real-world applications. Through practical work and conceptual knowledge, students explore the behavior of matter, chemical reactions, and energy changes. This course also promotes inquiry and investigation through experimental design.`,
     essentials: `**Course Structure and Teaching Hours**\nStandard Level: 150 hours, Higher Level: 240 hours\n- Stoichiometric relationships\n- Atomic structure\n- Periodicity\n- Chemical bonding and structure\n- Energetics/thermochemistry\n- Chemical kinetics\n- Equilibrium\n- Acids and bases\n- Redox processes\n- Organic chemistry\n- Measurement and data processing (Analytical techniques for Higher Level)\n- Option topic (Higher Level only)\n- Practical work including Individual Investigation\n\n**Learning Objectives in Practice**\nLO1: Demonstrate knowledge and understanding of facts, concepts, and theories.\nLO2: Apply knowledge to solve problems, interpret data and predict outcomes.\nLO3: Formulate, analyze and evaluate hypotheses and experimental procedures.\nLO4: Demonstrate the ability to collect, process and present scientific information.\n\n**Assessment Structure and Weightings**\nStandard Level: Paper 1 (20%), Paper 2 (40%), Paper 3 (20%), Individual Investigation (20%)\nHigher Level: Paper 1 (20%), Paper 2 (36%), Paper 3 (24%), Individual Investigation (20%)`,
-    coreThemes: `Course Topics & Skills\n• Stoichiometric Relationships: Mole concept, empirical and molecular formulas, chemical equations, limiting reactants\n• Atomic Structure: Atomic theory, electron configuration, mass spectrometry\n• Periodicity: Periodic table trends, properties of elements\n• Chemical Bonding: Ionic, covalent, metallic bonding, intermolecular forces\n• Energetics: Enthalpy changes, Hess's law, bond enthalpies\n• Chemical Kinetics: Rate of reaction, collision theory, catalysts\n• Equilibrium: Dynamic equilibrium, Le Chatelier's principle\n• Acids and Bases: Brønsted-Lowry theory, pH calculations\n• Redox Processes: Oxidation and reduction, electrochemical cells\n• Organic Chemistry: Functional groups, nomenclature, reactions\n• Measurement and Analysis: Uncertainties, error analysis, spectroscopy`,
-    detailedRubrics: `Individual Investigation Evaluation Criteria\n\nExternal Assessment (80%)\nPaper 1: Multiple choice questions (20%)\nPaper 2: Short answer and extended response questions (40%)\nPaper 3: Data analysis and evaluation questions (20%)\n\nIndividual Investigation (20%)\nChemistry Investigation: Independent laboratory investigation\n\nEvaluation Criteria:\n• Research Question: Clear, focused, and investigable question\n• Background Information: Relevant chemical theory and context\n• Methodology: Appropriate methods and controls\n• Results: Data collection, processing, and presentation\n• Conclusion and Evaluation: Analysis of results and evaluation of methodology`,
-    chemistryTips: `• Understand the underlying concepts rather than just memorizing formulas.\n\n• Practice drawing Lewis structures and molecular geometries regularly.\n\n• Practice past paper questions to familiarize with question styles.\n\n• Relate chemical concepts to real-world applications and industries.\n\n• Review evaluation criteria frequently while working on the individual investigation.\n\n• Use concept maps to connect different areas of chemistry.\n\n• Master calculations involving moles, concentrations, and stoichiometry.\n\n• Engage in laboratory work to understand practical aspects.\n\n• Create a formula sheet and practice using it effectively.\n\n• Balance theoretical learning with hands-on experimentation.`,
+    coreThemes: `Overview of the Course: Concepts, Content, and Contexts\n\nStructure: Atomic structure, Periodicity, Bonding - Periodic trends and atomic models\nChange: Energetics, Kinetics, Equilibrium - Thermodynamics and rates\nIdentity: Organic Chemistry, Redox - Structure-based identification\nMeasurement: Analytical techniques - Quantitative chemistry in context\nInteraction: Acids & bases, Redox - Chemical reactions in real life\n\nConcepts Content Contexts Structure Atomic Periodicity Bonding Periodic trends atomic models Change Energetics Kinetics Equilibrium Thermodynamics rates Identity Organic Chemistry Redox Structure-based identification Measurement Analytical techniques Quantitative chemistry context Interaction Acids bases Redox Chemical reactions real life`,
+    detailedRubrics: `Assessment Framework - Individual Investigation\n\nStudent engagement: Shows personal curiosity, original thinking, and authentic interest in the topic - 2 marks\nInvestigation design: Clear research focus with solid theoretical foundation and suitable experimental approach - 6 marks\nData analysis: Effective processing and interpretation of results with appropriate mathematical treatment - 6 marks\nEvaluation: Evidence-based conclusions with thoughtful discussion of study limitations and potential improvements - 6 marks\nCommunication: Clear organization, appropriate scientific terminology, and proper source attribution - 4 marks\nTotal: 24 marks\n\nCriterion Description Marks Student engagement Investigation design Data analysis Evaluation Communication personal curiosity original thinking authentic interest research focus theoretical foundation experimental approach processing interpretation results mathematical treatment evidence-based conclusions limitations improvements organization scientific terminology source attribution`,
+    chemistryTips: `• Master stoichiometric conversions and chemical equation balancing.
+
+• Use flashcards for periodic trends and organic reactions.
+
+• Regularly practice IB-style data-based and calculation questions.
+
+• Review practicals to understand how lab techniques support concepts.
+
+• Apply concepts to real-world examples for better retention.
+
+• Highlight common misconceptions in bonding, energetics, and equilibrium.
+
+• Use flowcharts for reaction mechanisms and topic interlinking.
+
+• Understand command terms—especially explain, compare, and evaluate.
+
+• Time yourself with practice papers for each paper format.
+
+• Maintain a revision journal and review errors actively.`,
   };
   const sectionKeys: Array<'overview' | 'essentials' | 'coreThemes' | 'detailedRubrics' | 'chemistryTips'> = ['overview', 'essentials', 'coreThemes', 'detailedRubrics', 'chemistryTips'];
 
@@ -312,7 +330,7 @@ const ChemistryScreen = ({ navigation, route }: { navigation: any; route: any })
                         <View>
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginBottom: 8 }}>Overview of the Course: Concepts, Content, and Contexts</Text>
                           
-                          {/* Table */}
+                          {/* First Table - Concepts, Content, and Contexts */}
                           <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginTop: 16 }}>
                             {/* Header Row */}
                             <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
@@ -323,11 +341,11 @@ const ChemistryScreen = ({ navigation, route }: { navigation: any; route: any })
                             
                             {/* Data Rows */}
                             {[
-                              { concept: 'Quantitative Chemistry', content: 'Stoichiometry, Atomic structure', context: 'Mole calculations and atomic theory' },
-                              { concept: 'Structure and Bonding', content: 'Chemical bonding, Periodicity', context: 'Molecular geometry and material properties' },
-                              { concept: 'Energy Changes', content: 'Energetics, Chemical kinetics', context: 'Reaction thermodynamics and rates' },
-                              { concept: 'Chemical Equilibrium', content: 'Equilibrium, Acids and bases', context: 'Dynamic systems and pH control' },
-                              { concept: 'Scientific Investigation', content: 'Experimental design, Individual investigation', context: 'Application of the scientific method' }
+                              { concept: 'Structure', content: 'Atomic structure, Periodicity, Bonding', context: 'Periodic trends and atomic models' },
+                              { concept: 'Change', content: 'Energetics, Kinetics, Equilibrium', context: 'Thermodynamics and rates' },
+                              { concept: 'Identity', content: 'Organic Chemistry, Redox', context: 'Structure-based identification' },
+                              { concept: 'Measurement', content: 'Analytical techniques', context: 'Quantitative chemistry in context' },
+                              { concept: 'Interaction', content: 'Acids & bases, Redox', context: 'Chemical reactions in real life' }
                             ].map((row, idx) => (
                               <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
                                 <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.concept, highlightedText)}</Text>
@@ -340,36 +358,36 @@ const ChemistryScreen = ({ navigation, route }: { navigation: any; route: any })
                       )}
                       {section.key === 'detailedRubrics' && (
                         <View>
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginBottom: 8 }}>Individual Investigation Evaluation Criteria</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginBottom: 8 }}>Assessment Framework - Individual Investigation</Text>
                           
-                          {/* Table */}
+                          {/* Assessment Criteria Table */}
                           <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginTop: 16 }}>
                             {/* Header Row */}
                             <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
-                              <Text style={{ flex: 2, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Criterion</Text>
-                              <Text style={{ flex: 3, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Description</Text>
+                              <Text style={{ flex: 2.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Criterion</Text>
+                              <Text style={{ flex: 2.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Description</Text>
                               <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Marks</Text>
                             </View>
                             
                             {/* Data Rows */}
                             {[
-                              { criterion: 'Student involvement', description: 'Demonstrates personal significance and initiative', marks: '2' },
-                              { criterion: 'Research planning', description: 'Research question, background, and methodology', marks: '6' },
-                              { criterion: 'Data interpretation', description: 'Appropriate and sufficient data processing', marks: '6' },
-                              { criterion: 'Critical assessment', description: 'Discusses conclusion and limitations', marks: '6' },
-                              { criterion: 'Presentation quality', description: 'Structure, terminology, and visual representation', marks: '4' }
+                              { criterion: 'Student engagement', description: 'Shows personal curiosity, original thinking, and authentic interest in the topic', marks: '2' },
+                              { criterion: 'Investigation design', description: 'Clear research focus with solid theoretical foundation and suitable experimental approach', marks: '6' },
+                              { criterion: 'Data analysis', description: 'Effective processing and interpretation of results with appropriate mathematical treatment', marks: '6' },
+                              { criterion: 'Evaluation', description: 'Evidence-based conclusions with thoughtful discussion of study limitations and potential improvements', marks: '6' },
+                              { criterion: 'Communication', description: 'Clear organization, appropriate scientific terminology, and proper source attribution', marks: '4' }
                             ].map((row, idx) => (
                               <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
-                                <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.criterion, highlightedText)}</Text>
-                                <Text style={{ flex: 3, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.description, highlightedText)}</Text>
+                                <Text style={{ flex: 2.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.criterion, highlightedText)}</Text>
+                                <Text style={{ flex: 2.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.description, highlightedText)}</Text>
                                 <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, textAlign: 'center' }}>{highlightText(row.marks, highlightedText)}</Text>
                               </View>
                             ))}
                             
                             {/* Total Row */}
                             <View style={{ flexDirection: 'row', borderTopWidth: 2, borderColor: '#7EC3FF', backgroundColor: 'rgba(126, 195, 255, 0.1)' }}>
-                              <Text style={{ flex: 2, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Total</Text>
-                              <Text style={{ flex: 3, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular' }}> </Text>
+                              <Text style={{ flex: 2.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Total</Text>
+                              <Text style={{ flex: 2.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular' }}> </Text>
                               <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>24</Text>
                             </View>
                           </View>
