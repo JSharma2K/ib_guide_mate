@@ -33,6 +33,14 @@ const SCIENCES_SUBJECTS = [
     color: '#B6C7F7',
     group: 'sciences',
   },
+  {
+    key: 'computer-science',
+    icon: 'cpu',
+    title: 'Computer Science',
+    subtitle: 'Programming and systems',
+    color: '#B6C7F7',
+    group: 'sciences',
+  },
 ];
 
 const SciencesScreen: React.FC<Props> = ({ navigation, route }) => {
@@ -55,6 +63,8 @@ const SciencesScreen: React.FC<Props> = ({ navigation, route }) => {
             navigation.navigate('Biology', { userType });
           } else if (item.key === 'chemistry') {
             navigation.navigate('Chemistry', { userType });
+          } else if (item.key === 'computer-science') {
+            navigation.navigate('ComputerScience', { userType });
           }
         }}
         elevation={0}

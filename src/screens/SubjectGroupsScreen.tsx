@@ -56,7 +56,7 @@ const SubjectGroupsScreen: React.FC<Props> = ({ navigation, route }) => {
       title: 'Sciences',
       subtitle: 'Group 4',
       icon: 'zap',
-      subjects: ['Biology', 'Chemistry'],
+      subjects: ['Biology', 'Chemistry', 'Computer Science'],
       color: '#7EC3FF',
       gradient: ['rgba(126, 195, 255, 0.2)', 'rgba(126, 195, 255, 0.05)']
     },
