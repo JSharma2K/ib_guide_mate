@@ -25,6 +25,14 @@ const THE_ARTS_SUBJECTS = [
     color: '#B6C7F7',
     group: 'arts',
   },
+  {
+    key: 'filmstudies',
+    icon: 'film',
+    title: 'Film Studies',
+    subtitle: 'Cinema and visual storytelling',
+    color: '#B6C7F7',
+    group: 'arts',
+  },
 ];
 
 const TheArtsScreen: React.FC<Props> = ({ navigation, route }) => {
@@ -45,6 +53,8 @@ const TheArtsScreen: React.FC<Props> = ({ navigation, route }) => {
         onPress={() => {
           if (item.key === 'dance') {
             navigation.navigate('Dance', { userType });
+          } else if (item.key === 'filmstudies') {
+            navigation.navigate('FilmStudies', { userType });
           }
         }}
         elevation={0}

@@ -39,6 +39,7 @@ import PhysicsScreen from './src/screens/PhysicsScreen';
 import SportsExerciseHealthScienceScreen from './src/screens/SportsExerciseHealthScienceScreen';
 import TheArtsScreen from './src/screens/TheArtsScreen';
 import DanceScreen from './src/screens/DanceScreen';
+import FilmStudiesScreen from './src/screens/FilmStudiesScreen';
 
 const { DarkTheme } = adaptNavigationTheme({
   reactNavigationDark: NavigationDarkTheme,
@@ -417,6 +418,17 @@ export default function App() {
               component={DanceScreen}
               options={{
                 title: 'Dance',
+                headerStyle: {
+                  backgroundColor: theme.colors.primary,
+                },
+                headerTintColor: theme.colors.onPrimary,
+              }}
+            />
+            <Stack.Screen
+              name="FilmStudies"
+              component={FilmStudiesScreen}
+              options={{
+                title: 'Film Studies',
                 headerStyle: {
                   backgroundColor: theme.colors.primary,
                 },

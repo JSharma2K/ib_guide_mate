@@ -32,6 +32,7 @@ export type RootStackParamList = {
   MathAI: { userType: 'student' | 'teacher' };
   TheArts: { userType: 'student' | 'teacher' };
   Dance: { userType: 'student' | 'teacher' };
+  FilmStudies: { userType: 'student' | 'teacher' };
   ExtendedEssay: { userType: 'student' | 'teacher' };
   GradePrediction: { subject: string; userType: 'student' | 'teacher' };
   AddGuide: undefined;
