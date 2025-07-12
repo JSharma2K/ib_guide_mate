@@ -41,6 +41,14 @@ const SCIENCES_SUBJECTS = [
     color: '#B6C7F7',
     group: 'sciences',
   },
+  {
+    key: 'physics',
+    icon: 'zap-off',
+    title: 'Physics',
+    subtitle: 'Matter, energy, and motion',
+    color: '#B6C7F7',
+    group: 'sciences',
+  },
 ];
 
 const SciencesScreen: React.FC<Props> = ({ navigation, route }) => {
@@ -65,6 +73,8 @@ const SciencesScreen: React.FC<Props> = ({ navigation, route }) => {
             navigation.navigate('Chemistry', { userType });
           } else if (item.key === 'computer-science') {
             navigation.navigate('ComputerScience', { userType });
+          } else if (item.key === 'physics') {
+            navigation.navigate('Physics', { userType });
           }
         }}
         elevation={0}
