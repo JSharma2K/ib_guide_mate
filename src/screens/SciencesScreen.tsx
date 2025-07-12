@@ -49,6 +49,14 @@ const SCIENCES_SUBJECTS = [
     color: '#B6C7F7',
     group: 'sciences',
   },
+  {
+    key: 'sports-exercise-health-science',
+    icon: 'heart',
+    title: 'Sports, Exercise & Health',
+    subtitle: 'Human performance and health',
+    color: '#B6C7F7',
+    group: 'sciences',
+  },
 ];
 
 const SciencesScreen: React.FC<Props> = ({ navigation, route }) => {
@@ -75,6 +83,8 @@ const SciencesScreen: React.FC<Props> = ({ navigation, route }) => {
             navigation.navigate('ComputerScience', { userType });
           } else if (item.key === 'physics') {
             navigation.navigate('Physics', { userType });
+          } else if (item.key === 'sports-exercise-health-science') {
+            navigation.navigate('SportsExerciseHealthScience', { userType });
           }
         }}
         elevation={0}

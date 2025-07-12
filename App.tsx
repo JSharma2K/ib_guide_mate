@@ -36,6 +36,7 @@ import BiologyScreen from './src/screens/BiologyScreen';
 import ChemistryScreen from './src/screens/ChemistryScreen';
 import ComputerScienceScreen from './src/screens/ComputerScienceScreen';
 import PhysicsScreen from './src/screens/PhysicsScreen';
+import SportsExerciseHealthScienceScreen from './src/screens/SportsExerciseHealthScienceScreen';
 
 const { DarkTheme } = adaptNavigationTheme({
   reactNavigationDark: NavigationDarkTheme,
@@ -381,6 +382,17 @@ export default function App() {
               component={PhysicsScreen}
               options={{
                 title: 'Physics',
+                headerStyle: {
+                  backgroundColor: theme.colors.primary,
+                },
+                headerTintColor: theme.colors.onPrimary,
+              }}
+            />
+            <Stack.Screen
+              name="SportsExerciseHealthScience"
+              component={SportsExerciseHealthScienceScreen}
+              options={{
+                title: 'Sports, Exercise and Health Science',
                 headerStyle: {
                   backgroundColor: theme.colors.primary,
                 },
