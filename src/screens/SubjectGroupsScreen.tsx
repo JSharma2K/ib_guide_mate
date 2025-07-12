@@ -56,7 +56,7 @@ const SubjectGroupsScreen: React.FC<Props> = ({ navigation, route }) => {
       title: 'Sciences',
       subtitle: 'Group 4',
       icon: 'zap',
-      subjects: ['Biology', 'Chemistry', 'Computer Science', 'Physics'],
+      subjects: ['Biology', 'Chemistry', 'Computer Science', 'Physics', 'Sports, Exercise & Health Science'],
       color: '#7EC3FF',
       gradient: ['rgba(126, 195, 255, 0.2)', 'rgba(126, 195, 255, 0.05)']
     },
@@ -74,7 +74,7 @@ const SubjectGroupsScreen: React.FC<Props> = ({ navigation, route }) => {
       title: 'The Arts',
       subtitle: 'Group 6',
       icon: 'image',
-      subjects: ['Coming Soon'],
+      subjects: ['Dance'],
       color: '#7EC3FF',
       gradient: ['rgba(126, 195, 255, 0.2)', 'rgba(126, 195, 255, 0.05)']
     }
@@ -96,6 +96,9 @@ const SubjectGroupsScreen: React.FC<Props> = ({ navigation, route }) => {
     } else if (groupId === 5) {
       // Navigate to Home with Math subjects
       navigation.navigate('Home', { userType, subjectGroup: 'mathematics' });
+    } else if (groupId === 6) {
+      // Navigate to The Arts subject selection screen
+      navigation.navigate('TheArts', { userType });
     } else {
       // For other groups, show coming soon or navigate accordingly
       // You can add more navigation logic here as you add more subjects
