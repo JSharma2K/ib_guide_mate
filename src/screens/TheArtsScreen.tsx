@@ -33,6 +33,22 @@ const THE_ARTS_SUBJECTS = [
     color: '#B6C7F7',
     group: 'arts',
   },
+  {
+    key: 'music',
+    icon: 'headphones',
+    title: 'Music',
+    subtitle: 'Sound, composition, and performance',
+    color: '#B6C7F7',
+    group: 'arts',
+  },
+  {
+    key: 'theater',
+    icon: 'users',
+    title: 'Theater',
+    subtitle: 'Performance and dramatic arts',
+    color: '#B6C7F7',
+    group: 'arts',
+  },
 ];
 
 const TheArtsScreen: React.FC<Props> = ({ navigation, route }) => {
@@ -55,6 +71,10 @@ const TheArtsScreen: React.FC<Props> = ({ navigation, route }) => {
             navigation.navigate('Dance', { userType });
           } else if (item.key === 'filmstudies') {
             navigation.navigate('FilmStudies', { userType });
+          } else if (item.key === 'music') {
+            navigation.navigate('Music', { userType });
+          } else if (item.key === 'theater') {
+            navigation.navigate('Theater', { userType });
           }
         }}
         elevation={0}
