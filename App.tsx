@@ -42,6 +42,7 @@ import DanceScreen from './src/screens/DanceScreen';
 import FilmStudiesScreen from './src/screens/FilmStudiesScreen';
 import MusicScreen from './src/screens/MusicScreen';
 import TheaterScreen from './src/screens/TheaterScreen';
+import VisualArtsScreen from './src/screens/VisualArtsScreen';
 
 const { DarkTheme } = adaptNavigationTheme({
   reactNavigationDark: NavigationDarkTheme,
@@ -453,6 +454,17 @@ export default function App() {
               component={TheaterScreen}
               options={{
                 title: 'Theater',
+                headerStyle: {
+                  backgroundColor: theme.colors.primary,
+                },
+                headerTintColor: theme.colors.onPrimary,
+              }}
+            />
+            <Stack.Screen
+              name="VisualArts"
+              component={VisualArtsScreen}
+              options={{
+                title: 'Visual Arts',
                 headerStyle: {
                   backgroundColor: theme.colors.primary,
                 },

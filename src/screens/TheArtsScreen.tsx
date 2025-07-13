@@ -49,6 +49,14 @@ const THE_ARTS_SUBJECTS = [
     color: '#B6C7F7',
     group: 'arts',
   },
+  {
+    key: 'visualarts',
+    icon: 'edit-3',
+    title: 'Visual Arts',
+    subtitle: 'Creative expression through visual media',
+    color: '#B6C7F7',
+    group: 'arts',
+  },
 ];
 
 const TheArtsScreen: React.FC<Props> = ({ navigation, route }) => {
@@ -75,6 +83,8 @@ const TheArtsScreen: React.FC<Props> = ({ navigation, route }) => {
             navigation.navigate('Music', { userType });
           } else if (item.key === 'theater') {
             navigation.navigate('Theater', { userType });
+          } else if (item.key === 'visualarts') {
+            navigation.navigate('VisualArts', { userType });
           }
         }}
         elevation={0}

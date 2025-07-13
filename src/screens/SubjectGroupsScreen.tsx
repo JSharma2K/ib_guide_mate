@@ -74,7 +74,7 @@ const SubjectGroupsScreen: React.FC<Props> = ({ navigation, route }) => {
       title: 'The Arts',
       subtitle: 'Group 6',
       icon: 'image',
-      subjects: ['Dance', 'Film Studies', 'Music', 'Theater'],
+      subjects: ['Dance', 'Film Studies', 'Music', 'Theater', 'Visual Arts'],
       color: '#7EC3FF',
       gradient: ['rgba(126, 195, 255, 0.2)', 'rgba(126, 195, 255, 0.05)']
     }

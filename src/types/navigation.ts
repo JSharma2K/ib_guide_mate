@@ -35,6 +35,7 @@ export type RootStackParamList = {
   FilmStudies: { userType: 'student' | 'teacher' };
   Music: { userType: 'student' | 'teacher' };
   Theater: { userType: 'student' | 'teacher' };
+  VisualArts: { userType: 'student' | 'teacher' };
   ExtendedEssay: { userType: 'student' | 'teacher' };
   GradePrediction: { subject: string; userType: 'student' | 'teacher' };
   AddGuide: undefined;

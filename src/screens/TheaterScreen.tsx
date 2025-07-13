@@ -38,77 +38,60 @@ const TheaterScreen = ({ navigation, route }: { navigation: any; route: any }) =
   // Section keys and content for search
   const sectionContentStrings: Record<'overview' | 'essentials' | 'coreThemes' | 'detailedRubrics' | 'theaterTips', string> = {
     overview: `Syllabus Overview
-The Theater course in the IB Diploma Programme develops students' understanding of theater as both an art form and a means of communication. Students explore theater through practical work, theoretical study, and research, engaging with diverse theatrical traditions and contemporary practices.`,
-    essentials: `Syllabus Outline & Teaching Hours
-SL: 150 hours | HL: 240 hours
-Core Areas: Theater in context, Theater processes, Presenting theater
-HL Extension: Independent theater project
+The IB Theatre course is an experiential and reflective journey that explores theatre in its forms across time, space, and cultures. The syllabus is designed to develop creative skills, broaden knowledge, and encourage inquiry and collaboration. Students investigate, create, perform, and reflect on theatre practices, processes, and perspectives both as individuals and in ensemble settings. At SL and HL, the course supports understanding through active engagement in making theatre and developing a critical understanding of performances and practices from a range of cultural contexts.`,
+    essentials: `Syllabus Outline and Teaching Hours
+The course is organized around three core areas: Theatre in Context, Theatre Processes, and Presenting Theatre. The following hours apply:
+Theatre in context: SL 45 hours, HL 90 hours
+Theatre processes: SL 45 hours, HL 90 hours
+Presenting theatre: SL 30 hours, HL 60 hours
 
 Assessment Objectives in Practice
-1. Demonstrate knowledge and understanding of theater in various contexts.
-2. Apply theater skills in creating and presenting theatrical work.
-3. Analyze and evaluate theatrical works and processes.
-4. Reflect on and communicate about theater experiences.
+Demonstrate knowledge and understanding of theatre performance, production, and theorists
+Develop creative and collaborative processes to generate theatre work
+Critically reflect on choices and evaluate theatrical processes and performances
+Explore perspectives of different cultures and traditions through theatre
 
 Assessment Outline and Weightages
-SL:
-- Theater in Context (External, 30%)
-- Theater Processes (External, 35%)
-- Presenting Theater (External, 35%)
-
-HL:
-- Includes all SL components and an additional Internal assessment:
-- Independent Theater Project (Internal, 25%)`,
+Production Proposal: External, SL 30%, HL 20%
+Research: External, SL 30%, HL 20%
+Presentation: Internal, SL 40%, HL 25%
+Collaborative Project: Internal, SL 40%, HL 25%
+Solo Theatre Piece: External, HL only 35%`,
     coreThemes: `Concepts, Content, and Contexts
 
 Concepts:
-Identity, Culture, Creativity, Communication, Collaboration
+Theatre theorists, directorial vision, cultural expression, interdisciplinary theatre
 
 Content:
-Performance, Devising, Directing, Design, Playwriting, Research
+Research, devising, staging, collaboration, performance analysis
 
 Contexts:
-Personal, Local, Global, Historical, Social, Cultural`,
-    detailedRubrics: `Assessment Standards
+Local, national and global theatre traditions and practices`,
+    detailedRubrics: `Detailed Rubrics Summary
+Each assessment component is assessed through distinct criteria, graded from 0 to 10 or 0 to 12 depending on the task. Criteria typically include:
+Criterion A: Knowledge and understanding of theatre practices
+Criterion B: Application and analysis
+Criterion C: Reflection and evaluation
+Criterion D (where applicable): Creative process and collaboration`,
+    theaterTips: `• Engage with a wide range of global and local theatre practices.
 
-Theater in Context
-Standard A: Understanding of theatrical traditions and practices (6 points)
-Standard B: Analysis of theatrical works in cultural context (6 points)
-Standard C: Communication and presentation of ideas (6 points)
+• Keep a reflective journal to track your development and ideas.
 
-Theater Processes
-Standard A: Development of theatrical skills and techniques (6 points)
-Standard B: Creative exploration and experimentation (6 points)
-Standard C: Reflection on artistic choices and processes (6 points)
+• Practice analyzing live and recorded performances.
 
-Presenting Theater
-Standard A: Preparation and rehearsal process (6 points)
-Standard B: Performance execution and presentation (6 points)
-Standard C: Evaluation and artistic reflection (6 points)
+• Collaborate consistently and respectfully in ensemble settings.
 
-Independent Theater Project (HL only)
-Standard A: Research and investigation methodology (6 points)
-Standard B: Creative development and implementation (6 points)
-Standard C: Documentation and critical evaluation (6 points)`,
-    theaterTips: `1. Engage with diverse theatrical traditions from different cultures and time periods.
+• Balance research and creativity in your proposals and presentations.
 
-2. Keep a detailed process journal documenting your creative development.
+• Use theatre theorists purposefully in both practical and research-based tasks.
 
-3. Practice improvisation and devising techniques regularly.
+• Rehearse presentations and performances multiple times.
 
-4. Analyze professional theater productions and performances critically.
+• Film your own performances to self-assess and improve.
 
-5. Experiment with different roles: actor, director, designer, playwright.
+• Seek feedback regularly from peers and mentors.
 
-6. Collaborate effectively with peers in ensemble work.
-
-7. Use assessment criteria to guide your creative choices and reflections.
-
-8. Attend live theater performances whenever possible.
-
-9. Research the historical and cultural contexts of plays you study.
-
-10. Reflect on your artistic growth and creative process throughout the course.`,
+• Manage time wisely across all components, especially for HL.`,
   };
   const sectionKeys: Array<'overview' | 'essentials' | 'coreThemes' | 'detailedRubrics' | 'theaterTips'> = ['overview', 'essentials', 'coreThemes', 'detailedRubrics', 'theaterTips'];
 
@@ -363,19 +346,88 @@ Standard C: Documentation and critical evaluation (6 points)`,
                       {section.key === 'overview' && (
                         <View>
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginBottom: 8 }}>Syllabus Overview</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular' }}>{highlightText("The Theater course in the IB Diploma Programme develops students' understanding of theater as both an art form and a means of communication. Students explore theater through practical work, theoretical study, and research, engaging with diverse theatrical traditions and contemporary practices.", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular' }}>{highlightText("The IB Theatre course is an experiential and reflective journey that explores theatre in its forms across time, space, and cultures. The syllabus is designed to develop creative skills, broaden knowledge, and encourage inquiry and collaboration. Students investigate, create, perform, and reflect on theatre practices, processes, and perspectives both as individuals and in ensemble settings. At SL and HL, the course supports understanding through active engagement in making theatre and developing a critical understanding of performances and practices from a range of cultural contexts.", highlightedText)}</Text>
                         </View>
                       )}
                       {section.key === 'essentials' && (
                         <View>
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>Syllabus Outline & Teaching Hours</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("SL: 150 hours | HL: 240 hours\nCore Areas: Theater in context, Theater processes, Presenting theater\nHL Extension: Independent theater project", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>Syllabus Outline and Teaching Hours</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 16 }}>{highlightText("The course is organized around three core areas: Theatre in Context, Theatre Processes, and Presenting Theatre. The following hours apply:", highlightedText)}</Text>
+                          
+                          {/* Syllabus Hours Table */}
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginBottom: 16 }}>
+                            {/* Header Row */}
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Component</Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>SL Hours</Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>HL Hours</Text>
+                            </View>
+                            
+                            {/* Data Rows */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>{highlightText("Theatre in context", highlightedText)}</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>45</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>90</Text>
+                            </View>
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>{highlightText("Theatre processes", highlightedText)}</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>45</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>90</Text>
+                            </View>
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>{highlightText("Presenting theatre", highlightedText)}</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>30</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>60</Text>
+                            </View>
+                          </View>
                           
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>Assessment Objectives in Practice</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("1. Demonstrate knowledge and understanding of theater in various contexts.\n2. Apply theater skills in creating and presenting theatrical work.\n3. Analyze and evaluate theatrical works and processes.\n4. Reflect on and communicate about theater experiences.", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 16 }}>{highlightText("- Demonstrate knowledge and understanding of theatre performance, production, and theorists\n- Develop creative and collaborative processes to generate theatre work\n- Critically reflect on choices and evaluate theatrical processes and performances\n- Explore perspectives of different cultures and traditions through theatre", highlightedText)}</Text>
                           
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>Assessment Outline and Weightages</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("SL:\n- Theater in Context (External, 30%)\n- Theater Processes (External, 35%)\n- Presenting Theater (External, 35%)\n\nHL:\n- Includes all SL components and an additional Internal assessment:\n- Independent Theater Project (Internal, 25%)", highlightedText)}</Text>
+                          
+                          {/* Assessment Outline Table */}
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginTop: 8 }}>
+                            {/* Header Row */}
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Assessment Component</Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Type</Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>SL (%)</Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>HL (%)</Text>
+                            </View>
+                            
+                            {/* Data Rows */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>{highlightText("Production Proposal", highlightedText)}</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>External</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>30</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>20</Text>
+                            </View>
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>{highlightText("Research", highlightedText)}</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>External</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>30</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>20</Text>
+                            </View>
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>{highlightText("Presentation", highlightedText)}</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>Internal</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>40</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>25</Text>
+                            </View>
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>{highlightText("Collaborative Project", highlightedText)}</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>Internal</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>40</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>25</Text>
+                            </View>
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>{highlightText("Solo Theatre Piece (HL only)", highlightedText)}</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>External</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>-</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>35</Text>
+                            </View>
+                          </View>
                         </View>
                       )}
                       {section.key === 'coreThemes' && (
@@ -386,102 +438,31 @@ Standard C: Documentation and critical evaluation (6 points)`,
                           <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginTop: 16 }}>
                             {/* Header Row */}
                             <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
-                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Concepts</Text>
-                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Content</Text>
+                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Concepts</Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Content</Text>
                               <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Contexts</Text>
                             </View>
                             
                             {/* Data Row */}
                             <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
-                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>{highlightText("Identity, Culture, Creativity, Communication, Collaboration", highlightedText)}</Text>
-                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>{highlightText("Performance, Devising, Directing, Design, Playwriting, Research", highlightedText)}</Text>
-                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>{highlightText("Personal, Local, Global, Historical, Social, Cultural", highlightedText)}</Text>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>{highlightText("Theatre theorists, directorial vision, cultural expression, interdisciplinary theatre", highlightedText)}</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>{highlightText("Research, devising, staging, collaboration, performance analysis", highlightedText)}</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>{highlightText("Local, national and global theatre traditions and practices", highlightedText)}</Text>
                             </View>
                           </View>
                         </View>
                       )}
                       {section.key === 'detailedRubrics' && (
                         <View>
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginBottom: 8 }}>Assessment Standards</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginBottom: 8 }}>Detailed Rubrics Summary</Text>
                           
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 14, marginTop: 16 }}>Theater in Context</Text>
-                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginTop: 8 }}>
-                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
-                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Standard</Text>
-                              <Text style={{ flex: 2, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Description</Text>
-                            </View>
-                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
-                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Standard A</Text>
-                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>{highlightText("Understanding of theatrical traditions and practices (6 points)", highlightedText)}</Text>
-                            </View>
-                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
-                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Standard B</Text>
-                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>{highlightText("Analysis of theatrical works in cultural context (6 points)", highlightedText)}</Text>
-                            </View>
-                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
-                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Standard C</Text>
-                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>{highlightText("Communication and presentation of ideas (6 points)", highlightedText)}</Text>
-                            </View>
-                          </View>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 16 }}>{highlightText("Each assessment component is assessed through distinct criteria, graded from 0 to 10 or 0 to 12 depending on the task. Criteria typically include:", highlightedText)}</Text>
                           
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 14, marginTop: 16 }}>Theater Processes</Text>
-                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginTop: 8 }}>
-                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
-                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Standard</Text>
-                              <Text style={{ flex: 2, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Description</Text>
-                            </View>
-                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
-                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Standard A</Text>
-                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>{highlightText("Development of theatrical skills and techniques (6 points)", highlightedText)}</Text>
-                            </View>
-                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
-                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Standard B</Text>
-                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>{highlightText("Creative exploration and experimentation (6 points)", highlightedText)}</Text>
-                            </View>
-                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
-                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Standard C</Text>
-                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>{highlightText("Reflection on artistic choices and processes (6 points)", highlightedText)}</Text>
-                            </View>
-                          </View>
-                          
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 14, marginTop: 16 }}>Presenting Theater</Text>
-                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginTop: 8 }}>
-                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
-                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Standard</Text>
-                              <Text style={{ flex: 2, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Description</Text>
-                            </View>
-                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
-                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Standard A</Text>
-                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>{highlightText("Preparation and rehearsal process (6 points)", highlightedText)}</Text>
-                            </View>
-                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
-                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Standard B</Text>
-                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>{highlightText("Performance execution and presentation (6 points)", highlightedText)}</Text>
-                            </View>
-                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
-                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Standard C</Text>
-                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>{highlightText("Evaluation and artistic reflection (6 points)", highlightedText)}</Text>
-                            </View>
-                          </View>
-                          
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 14, marginTop: 16 }}>Independent Theater Project (HL only)</Text>
-                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginTop: 8 }}>
-                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
-                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Standard</Text>
-                              <Text style={{ flex: 2, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Description</Text>
-                            </View>
-                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
-                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Standard A</Text>
-                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>{highlightText("Research and investigation methodology (6 points)", highlightedText)}</Text>
-                            </View>
-                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
-                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Standard B</Text>
-                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>{highlightText("Creative development and implementation (6 points)", highlightedText)}</Text>
-                            </View>
-                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
-                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Standard C</Text>
-                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>{highlightText("Documentation and critical evaluation (6 points)", highlightedText)}</Text>
-                            </View>
+                          <View style={{ marginLeft: 16, marginBottom: 16 }}>
+                            <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 8 }}>{highlightText("- Criterion A: Knowledge and understanding of theatre practices", highlightedText)}</Text>
+                            <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 8 }}>{highlightText("- Criterion B: Application and analysis", highlightedText)}</Text>
+                            <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 8 }}>{highlightText("- Criterion C: Reflection and evaluation", highlightedText)}</Text>
+                            <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("- Criterion D (where applicable): Creative process and collaboration", highlightedText)}</Text>
                           </View>
                         </View>
                       )}
