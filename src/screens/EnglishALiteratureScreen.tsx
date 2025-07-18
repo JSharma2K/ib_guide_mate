@@ -429,7 +429,7 @@ const EnglishALiteratureScreen = ({ navigation, route }: { navigation: any; rout
               <Text style={{ fontSize: 22, color: '#fff', fontFamily: 'ScopeOne-Regular', fontWeight: '700', marginBottom: 4 }}>Student Resources</Text>
               <View style={{ height: 2, backgroundColor: '#7EC3FF', marginBottom: 8 }} />
             </View>
-            
+
             {/* English Literature dropdown */}
             <View>
               <List.Item
