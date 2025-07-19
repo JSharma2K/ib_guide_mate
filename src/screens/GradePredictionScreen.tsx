@@ -82,6 +82,27 @@ const paperWeightages = {
       'EXPLORATION': 0.20       // 20%
     }
   },
+  'GLOBAL POLITICS': {
+    HL: {
+      'EXTENSION ORAL': 0.20,        // 20%
+      'INTERNAL ASSESSMENT': 0.20,  // 20%
+      'PAPER ONE': 0.20,            // 20%
+      'PAPER TWO': 0.40             // 40%
+    },
+    SL: {
+      'INTERNAL ASSESSMENT': 0.25,  // 25%
+      'PAPER ONE': 0.30,            // 30%
+      'PAPER TWO': 0.45             // 45%
+    }
+  },
+  'HISTORY': {
+
+    SL: {
+      'PAPER ONE': 0.3,
+      'PAPER TWO': 0.45,
+      'INTERNAL ASSESSMENT': 0.25
+    }
+  },
   'PHILOSOPHY': {
     HL: {
       'PAPER ONE': 0.4,
@@ -432,6 +453,38 @@ const gradeBoundaries = {
       }
     }
   },
+  'HISTORY': {
+    SL: {
+      may: {
+        timezone1: {
+          'INTERNAL ASSESSMENT': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 12], 5: [13, 15], 6: [16, 19], 7: [20, 25] },
+          'PAPER ONE': { 1: [0, 4], 2: [5, 8], 3: [9, 11], 4: [12, 14], 5: [15, 16], 6: [17, 19], 7: [20, 24] },
+          'PAPER TWO': { 1: [0, 5], 2: [6, 10], 3: [11, 12], 4: [13, 15], 5: [16, 19], 6: [20, 22], 7: [23, 30] },
+          FINAL: { 1: [0, 13], 2: [14, 28], 3: [29, 38], 4: [39, 52], 5: [53, 62], 6: [63, 76], 7: [77, 100] }
+        },
+        timezone2: {
+          'INTERNAL ASSESSMENT': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 12], 5: [13, 15], 6: [16, 19], 7: [20, 25] },
+          'PAPER ONE': { 1: [0, 4], 2: [5, 8], 3: [9, 11], 4: [12, 14], 5: [15, 16], 6: [17, 19], 7: [20, 24] },
+          'PAPER TWO': { 1: [0, 5], 2: [6, 10], 3: [11, 12], 4: [13, 15], 5: [16, 19], 6: [20, 22], 7: [23, 30] },
+          FINAL: { 1: [0, 14], 2: [15, 30], 3: [31, 40], 4: [41, 52], 5: [53, 63], 6: [64, 76], 7: [77, 100] }
+        }
+      },
+      november: {
+        timezone1: {
+          'INTERNAL ASSESSMENT': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 12], 5: [13, 15], 6: [16, 19], 7: [20, 25] },
+          'PAPER ONE': { 1: [0, 4], 2: [5, 8], 3: [9, 11], 4: [12, 14], 5: [15, 16], 6: [17, 19], 7: [20, 24] },
+          'PAPER TWO': { 1: [0, 5], 2: [6, 10], 3: [11, 12], 4: [13, 15], 5: [16, 19], 6: [20, 22], 7: [23, 30] },
+          FINAL: { 1: [0, 13], 2: [14, 28], 3: [29, 38], 4: [39, 52], 5: [53, 62], 6: [63, 76], 7: [77, 100] }
+        },
+        timezone2: {
+          'INTERNAL ASSESSMENT': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 12], 5: [13, 15], 6: [16, 19], 7: [20, 25] },
+          'PAPER ONE': { 1: [0, 4], 2: [5, 8], 3: [9, 11], 4: [12, 14], 5: [15, 16], 6: [17, 19], 7: [20, 24] },
+          'PAPER TWO': { 1: [0, 5], 2: [6, 10], 3: [11, 12], 4: [13, 15], 5: [16, 19], 6: [20, 22], 7: [23, 30] },
+          FINAL: { 1: [0, 14], 2: [15, 30], 3: [31, 40], 4: [41, 52], 5: [53, 63], 6: [64, 76], 7: [77, 100] }
+        }
+      }
+    }
+  },
   'PHILOSOPHY': {
     HL: {
       may: {
@@ -524,6 +577,59 @@ const gradeBoundaries = {
         }
       }
     }
+  },
+  'GLOBAL POLITICS': {
+    HL: {
+      may: {
+        timezone1: {
+          'EXTENSION ORAL': { 1: [0, 2], 2: [3, 4], 3: [5, 8], 4: [9, 11], 5: [12, 13], 6: [14, 16], 7: [17, 20] },
+          'INTERNAL ASSESSMENT': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 10], 5: [11, 13], 6: [14, 15], 7: [16, 20] },
+          'PAPER ONE': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [12, 13], 6: [14, 16], 7: [17, 25] },
+          'PAPER TWO': { 1: [0, 8], 2: [9, 16], 3: [17, 21], 4: [22, 30], 5: [31, 39], 6: [40, 48], 7: [49, 75] },
+          FINAL: { 1: [0, 10], 2: [11, 22], 3: [23, 34], 4: [35, 46], 5: [47, 57], 6: [58, 69], 7: [70, 100] }
+        },
+        timezone2: {
+          'EXTENSION ORAL': { 1: [0, 2], 2: [3, 4], 3: [5, 8], 4: [9, 11], 5: [12, 13], 6: [14, 16], 7: [17, 20] },
+          'INTERNAL ASSESSMENT': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 10], 5: [11, 13], 6: [14, 15], 7: [16, 20] },
+          'PAPER ONE': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [12, 13], 6: [14, 16], 7: [17, 25] },
+          'PAPER TWO': { 1: [0, 8], 2: [9, 16], 3: [17, 21], 4: [22, 30], 5: [31, 39], 6: [40, 48], 7: [49, 75] },
+          FINAL: { 1: [0, 10], 2: [11, 22], 3: [23, 34], 4: [35, 46], 5: [47, 57], 6: [58, 69], 7: [70, 100] }
+        }
+      },
+      november: {
+        timezone0: {
+          'EXTENSION ORAL': { 1: [0, 2], 2: [3, 4], 3: [5, 8], 4: [9, 11], 5: [12, 13], 6: [14, 16], 7: [17, 20] },
+          'INTERNAL ASSESSMENT': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 10], 5: [11, 13], 6: [14, 15], 7: [16, 20] },
+          'PAPER ONE': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [12, 15], 6: [16, 18], 7: [19, 25] },
+          'PAPER TWO': { 1: [0, 7], 2: [8, 15], 3: [16, 21], 4: [22, 30], 5: [31, 39], 6: [40, 48], 7: [49, 75] },
+          FINAL: { 1: [0, 9], 2: [10, 21], 3: [22, 34], 4: [35, 46], 5: [47, 59], 6: [60, 71], 7: [72, 100] }
+        }
+      }
+    },
+    SL: {
+      may: {
+        timezone1: {
+          'INTERNAL ASSESSMENT': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 10], 5: [11, 13], 6: [14, 15], 7: [16, 20] },
+          'PAPER ONE': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [12, 13], 6: [14, 16], 7: [17, 25] },
+          'PAPER TWO': { 1: [0, 5], 2: [6, 10], 3: [11, 14], 4: [15, 18], 5: [19, 22], 6: [23, 27], 7: [28, 50] },
+          FINAL: { 1: [0, 9], 2: [10, 21], 3: [22, 32], 4: [33, 42], 5: [43, 52], 6: [53, 62], 7: [63, 100] }
+        },
+        timezone2: {
+          'INTERNAL ASSESSMENT': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 10], 5: [11, 13], 6: [14, 15], 7: [16, 20] },
+          'PAPER ONE': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [12, 13], 6: [14, 16], 7: [17, 25] },
+          'PAPER TWO': { 1: [0, 5], 2: [6, 10], 3: [11, 14], 4: [15, 18], 5: [19, 22], 6: [23, 27], 7: [28, 50] },
+          FINAL: { 1: [0, 9], 2: [10, 21], 3: [22, 32], 4: [33, 42], 5: [43, 52], 6: [53, 62], 7: [63, 100] }
+        }
+      },
+      november: {
+        timezone0: {
+          'INTERNAL ASSESSMENT': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 10], 5: [11, 13], 6: [14, 15], 7: [16, 20] },
+          'PAPER ONE': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [12, 15], 6: [16, 18], 7: [19, 25] },
+          'PAPER TWO': { 1: [0, 4], 2: [5, 9], 3: [10, 13], 4: [14, 18], 5: [19, 23], 6: [24, 28], 7: [29, 50] },
+          FINAL: { 1: [0, 8], 2: [9, 20], 3: [21, 31], 4: [32, 42], 5: [43, 55], 6: [56, 66], 7: [67, 100] }
+        }
+      }
+    }
   }
 };
 
@@ -592,6 +698,26 @@ const paperMaxScores = {
       'EXPLORATION': 20
     }
   },
+  'HISTORY': {
+    SL: {
+      'PAPER ONE': 24,
+      'PAPER TWO': 30,
+      'INTERNAL ASSESSMENT': 25
+    }
+  },
+  'GLOBAL POLITICS': {
+    SL: {
+      'PAPER ONE': 25,
+      'PAPER TWO': 50,
+      'INTERNAL ASSESSMENT': 20
+    },
+    HL: {
+      'PAPER ONE': 25,
+      'PAPER TWO': 75,
+      'EXTENSION ORAL': 20,
+      'INTERNAL ASSESSMENT': 20
+    }
+  },
   'PHILOSOPHY': {
     HL: {
       'PAPER ONE': 75,
@@ -610,7 +736,9 @@ const paperMaxScores = {
 const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
   const { subject, userType } = route.params;
   const [selectedLevel, setSelectedLevel] = useState<'HL' | 'SL'>(() => {
-    return subject === 'ENGLISH A LIT AND PERF' ? 'SL' : 'HL';
+    if (subject === 'ENGLISH A LIT AND PERF') return 'SL';
+    if (subject === 'HISTORY') return 'SL';
+    return 'HL';
   });
   const [selectedTimezone, setSelectedTimezone] = useState<'timezone0' | 'timezone1' | 'timezone2'>(() => {
     if (subject === 'MATH AI') return 'timezone0';
@@ -619,6 +747,8 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
   const [selectedSeason, setSelectedSeason] = useState<'november' | 'may'>(() => {
     if (subject === 'ENGLISH A LIT AND PERF') return 'may';
     if (subject === 'MATH AI') return 'november';
+    if (subject === 'HISTORY') return 'may';
+    if (subject === 'GLOBAL POLITICS') return 'may';
     return 'november';
   });
   const [scores, setScores] = useState<Record<string, number>>({});
@@ -650,6 +780,22 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
       }
       // All other combinations are available for Math Analysis
       return true;
+    }
+    
+    if (subject === 'HISTORY') {
+      // Only SL for May and November timezone 1 and 2 are available
+      return level === 'SL' && (season === 'may' || season === 'november') && (timezone === 'timezone1' || timezone === 'timezone2');
+    }
+    
+    if (subject === 'GLOBAL POLITICS') {
+      // May HL and SL timezone 1 and 2, November HL and SL timezone 0
+      if (season === 'may') {
+        return timezone === 'timezone1' || timezone === 'timezone2';
+      }
+      if (season === 'november') {
+        return timezone === 'timezone0';
+      }
+      return false;
     }
     
     // For all other subjects, all combinations are available
@@ -707,7 +853,7 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     const subjectData = gradeBoundaries[subject as keyof typeof gradeBoundaries];
     if (!subjectData) return null;
     
-    const levelData = subjectData[selectedLevel];
+    const levelData = (subjectData as any)[selectedLevel];
     if (!levelData) return null;
     
     const seasonData = (levelData as any)[selectedSeason];
@@ -720,13 +866,13 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     if (!boundaries) return null;
 
     const weightageData = paperWeightages[subject as keyof typeof paperWeightages];
-    if (!weightageData || !weightageData[selectedLevel]) return null;
+    if (!weightageData || !(weightageData as any)[selectedLevel]) return null;
     
-    const weights = weightageData[selectedLevel];
+    const weights = (weightageData as any)[selectedLevel];
     const maxScoresData = paperMaxScores[subject as keyof typeof paperMaxScores];
-    if (!maxScoresData || !maxScoresData[selectedLevel]) return null;
+    if (!maxScoresData || !(maxScoresData as any)[selectedLevel]) return null;
     
-    const maxScores = maxScoresData[selectedLevel];
+    const maxScores = (maxScoresData as any)[selectedLevel];
 
     let weightedScore = 0;
     
@@ -768,13 +914,13 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
 
   const calculateWeightedScore = () => {
     const weightageData = paperWeightages[subject as keyof typeof paperWeightages];
-    if (!weightageData || !weightageData[selectedLevel]) return 0;
+    if (!weightageData || !(weightageData as any)[selectedLevel]) return 0;
     
-    const weights = weightageData[selectedLevel];
+    const weights = (weightageData as any)[selectedLevel];
     const maxScoresData = paperMaxScores[subject as keyof typeof paperMaxScores];
-    if (!maxScoresData || !maxScoresData[selectedLevel]) return 0;
+    if (!maxScoresData || !(maxScoresData as any)[selectedLevel]) return 0;
     
-    const maxScores = maxScoresData[selectedLevel];
+    const maxScores = (maxScoresData as any)[selectedLevel];
 
     let weightedScore = 0;
     
@@ -794,8 +940,8 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
   // Update scores when level changes
   useEffect(() => {
     const subjectData = paperMaxScores[subject as keyof typeof paperMaxScores];
-    if (subjectData && subjectData[selectedLevel]) {
-      const papers = Object.keys(subjectData[selectedLevel]);
+    if (subjectData && (subjectData as any)[selectedLevel]) {
+      const papers = Object.keys((subjectData as any)[selectedLevel]);
       const newScores: Record<string, number> = {};
       papers.forEach(paper => {
         newScores[paper] = 0;
@@ -823,9 +969,9 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
   }
 
   const subjectData = paperMaxScores[subject as keyof typeof paperMaxScores];
-  const maxScores = subjectData?.[selectedLevel];
+  const maxScores = subjectData ? (subjectData as any)[selectedLevel] : null;
   const papers = maxScores ? Object.keys(maxScores) : [];
-  const totalMaxScore = maxScores ? Object.values(maxScores).reduce((sum, score) => sum + score, 0) : 0;
+  const totalMaxScore = maxScores ? Object.values(maxScores).reduce((sum: number, score: any) => sum + score, 0) : 0;
 
   return (
     <ImageBackground
@@ -916,6 +1062,16 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
                         setSelectedTimezone(validCombo.timezone);
                       } else if (isAvailable) {
                         setSelectedLevel(level as 'HL' | 'SL');
+                        // After changing level, check if current timezone is still valid, if not, find a valid one
+                        if (!isCombinationAvailable(level as 'HL' | 'SL', selectedSeason, selectedTimezone)) {
+                          const timezones = ['timezone0', 'timezone1', 'timezone2'];
+                          const validTimezone = timezones.find(tz => 
+                            isCombinationAvailable(level as 'HL' | 'SL', selectedSeason, tz as 'timezone0' | 'timezone1' | 'timezone2')
+                          );
+                          if (validTimezone) {
+                            setSelectedTimezone(validTimezone as 'timezone0' | 'timezone1' | 'timezone2');
+                          }
+                        }
                       }
                     }}
                     disabled={subject !== 'MATH AI' && !isAvailable}
@@ -1026,7 +1182,12 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
                 { key: 'november', label: 'November' },
                 { key: 'may', label: 'May' }
               ].map((season) => {
-                const isAvailable = isCombinationAvailable(selectedLevel, season.key as 'november' | 'may', selectedTimezone);
+                // Check if ANY combination is available for this season (not just current level/timezone)
+                const isAvailable = ['HL', 'SL'].some(level => 
+                  ['timezone0', 'timezone1', 'timezone2'].some(timezone => 
+                    isCombinationAvailable(level as 'HL' | 'SL', season.key as 'november' | 'may', timezone as 'timezone0' | 'timezone1' | 'timezone2')
+                  )
+                );
                 const isSelected = selectedSeason === season.key;
                 
                 return (
@@ -1041,6 +1202,29 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
                         setSelectedTimezone(validCombo.timezone);
                       } else if (isAvailable) {
                         setSelectedSeason(season.key as 'november' | 'may');
+                        // After changing season, check if current level and timezone are still valid
+                        if (!isCombinationAvailable(selectedLevel, season.key as 'november' | 'may', selectedTimezone)) {
+                          // Try to find a valid combination with current level first
+                          const timezones = ['timezone0', 'timezone1', 'timezone2'];
+                          const validTimezone = timezones.find(tz => 
+                            isCombinationAvailable(selectedLevel, season.key as 'november' | 'may', tz as 'timezone0' | 'timezone1' | 'timezone2')
+                          );
+                          
+                          if (validTimezone) {
+                            setSelectedTimezone(validTimezone as 'timezone0' | 'timezone1' | 'timezone2');
+                          } else {
+                            // If no valid timezone with current level, try the other level
+                            const otherLevel = selectedLevel === 'HL' ? 'SL' : 'HL';
+                            const validTimezoneOtherLevel = timezones.find(tz => 
+                              isCombinationAvailable(otherLevel, season.key as 'november' | 'may', tz as 'timezone0' | 'timezone1' | 'timezone2')
+                            );
+                            
+                            if (validTimezoneOtherLevel) {
+                              setSelectedLevel(otherLevel);
+                              setSelectedTimezone(validTimezoneOtherLevel as 'timezone0' | 'timezone1' | 'timezone2');
+                            }
+                          }
+                        }
                       }
                     }}
                     disabled={subject !== 'MATH AI' && !isAvailable}
@@ -1086,7 +1270,7 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
             
             {papers.map((paper) => {
               const weightageData = paperWeightages[subject as keyof typeof paperWeightages];
-              const weight = weightageData?.[selectedLevel]?.[paper as keyof typeof weightageData[typeof selectedLevel]] || 0;
+              const weight = (weightageData as any)?.[selectedLevel]?.[paper] || 0;
               const rawScore = scores[paper] || 0;
               const maxScore = maxScores?.[paper as keyof typeof maxScores] || 0;
               const percentage = maxScore > 0 ? (rawScore / maxScore) * 100 : 0;
