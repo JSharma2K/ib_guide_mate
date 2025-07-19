@@ -95,6 +95,19 @@ const paperWeightages = {
       'PAPER TWO': 0.45             // 45%
     }
   },
+  'GEOGRAPHY': {
+    HL: {
+      'PAPER THREE': 0.20,        // 20%
+      'INTERNAL ASSESSMENT': 0.20,  // 20%
+      'PAPER ONE': 0.35,            // 20%
+      'PAPER TWO': 0.25             // 40%
+    },
+    SL: {
+      'INTERNAL ASSESSMENT': 0.25,  // 25%
+      'PAPER ONE': 0.35,            // 35%
+      'PAPER TWO': 0.40             // 45%
+    }
+  },
   'HISTORY': {
 
     SL: {
@@ -578,6 +591,59 @@ const gradeBoundaries = {
       }
     }
   },
+  'GEOGRAPHY': {
+    HL: {
+      may: {
+        timezone1: {
+          'INTERNAL ASSESSMENT': { 1: [0, 2], 2: [3, 5], 3: [6, 10], 4: [11, 13], 5: [14, 17], 6: [18, 20], 7: [21, 25]},
+          'PAPER ONE': { 1: [0, 8], 2: [9, 16], 3: [17, 23], 4: [24, 29], 5: [30, 35], 6: [36,41], 7: [42, 60] },
+          'PAPER TWO': { 1: [0, 6], 2: [7, 13], 3: [14, 20], 4: [21, 26], 5: [27, 32], 6: [33, 38], 7: [39, 50] },
+          'PAPER THREE': { 1: [0, 4], 2: [5, 9], 3: [10, 14], 4: [15, 16], 5: [17, 18], 6: [19, 20], 7: [21, 28] },
+          FINAL: { 1: [0, 12], 2: [13, 26], 3: [27, 41], 4: [42, 52], 5: [53, 63], 6: [64, 73], 7: [74, 100] }
+        },
+        timezone2: {
+          'INTERNAL ASSESSMENT': {1: [0, 2], 2: [3, 5], 3: [6, 10], 4: [11, 13], 5: [14, 17], 6: [18, 20], 7: [21, 25]},
+          'PAPER ONE': { 1: [0, 8], 2: [9, 16], 3: [17, 23], 4: [24, 29], 5: [30, 35], 6: [36,41], 7: [42, 60] },
+          'PAPER TWO': { 1: [0, 5], 2: [6, 11], 3: [12, 16], 4: [17, 22], 5: [23, 28], 6: [29, 34], 7: [35, 50] },
+          'PAPER THREE': { 1: [0, 4], 2: [5, 9], 3: [10, 14], 4: [15, 16], 5: [17, 18], 6: [19, 20], 7: [21, 28] },
+          FINAL: { 1: [0, 12], 2: [13, 25], 3: [26, 39], 4: [40, 50], 5: [51, 61], 6: [62, 71], 7: [72 , 100] }
+        },
+      },
+      november: {
+        timezone0: {
+          'INTERNAL ASSESSMENT': { 1: [0, 2], 2: [3, 5], 3: [6, 10], 4: [11, 13], 5: [14, 17], 6: [18, 20], 7: [21, 25] },
+          'PAPER ONE': { 1: [0, 9], 2: [10, 18], 3: [19, 27], 4: [28, 32], 5: [33, 38], 6: [39, 43], 7: [44, 60] },
+          'PAPER THREE': { 1: [0, 5], 2: [6, 10], 3: [11, 13], 4: [14, 16], 5: [17, 18], 6: [19, 21], 7: [22, 28] },
+          'PAPER TWO': { 1: [0, 6], 2: [7, 13], 3: [14, 18], 4: [19, 24], 5: [25, 31], 6: [32, 37], 7: [38, 50] },
+          FINAL: { 1: [0, 13], 2: [14, 28], 3: [29, 42], 4: [43, 52], 5: [53, 64], 6: [65, 75], 7: [76, 100] }
+        },
+      }
+    },
+    SL: {
+      may: {
+        timezone1: {
+          'INTERNAL ASSESSMENT': { 1: [0, 2], 2: [3, 5], 3: [6, 10], 4: [11, 13], 5: [14, 17], 6: [18, 20], 7: [21, 25] },
+          'PAPER ONE': { 1: [0, 5], 2: [6, 10], 3: [11, 15], 4: [16, 19], 5: [20, 23], 6: [24, 27], 7: [28, 40] },
+          'PAPER TWO': { 1: [0, 5], 2: [6, 11], 3: [12, 16], 4: [17, 22], 5: [23, 28], 6: [29, 34], 7: [35, 50] },
+          FINAL: { 1: [0, 10], 2: [11, 23], 3: [24, 36], 4: [37, 47], 5: [48, 60], 6: [61, 71], 7: [72, 100] }
+        },
+        timezone2: {
+          'INTERNAL ASSESSMENT': { 1: [0, 2], 2: [3, 5], 3: [6, 10], 4: [11, 13], 5: [14, 17], 6: [18, 20], 7: [21, 25] },
+          'PAPER ONE': { 1: [0, 5], 2: [6, 10], 3: [11, 15], 4: [16, 19], 5: [20, 23], 6: [24, 27], 7: [28, 40] },
+          'PAPER TWO': { 1: [0, 5], 2: [6, 11], 3: [12, 16], 4: [17, 22], 5: [23, 28], 6: [29, 34], 7: [35, 50] },
+          FINAL: { 1: [0, 10], 2: [11, 23], 3: [24, 36], 4: [37, 47], 5: [48, 60], 6: [61, 71], 7: [72, 100] }
+        },
+      },
+      november: {
+        timezone0: {
+          'INTERNAL ASSESSMENT': { 1: [0, 2], 2: [3, 5], 3: [6, 10], 4: [11, 13], 5: [14, 17], 6: [18, 20], 7: [21, 25] },
+          'PAPER ONE': { 1: [0, 7], 2: [8, 14], 3: [15, 18], 4: [19, 22], 5: [23, 26], 6: [27, 30], 7: [31, 40] },
+          'PAPER TWO': { 1: [0, 6], 2: [7, 13], 3: [14, 18], 4: [19, 24], 5: [25, 31], 6: [32, 37], 7: [38, 50] },
+          FINAL: { 1: [0, 13], 2: [14, 28], 3: [29, 40], 4: [41, 51], 5: [52, 65], 6: [66, 76], 7: [77, 100] }
+        },
+      }
+    }
+  },
   'GLOBAL POLITICS': {
     HL: {
       may: {
@@ -730,6 +796,19 @@ const paperMaxScores = {
       'PAPER TWO': 25,
       'INTERNAL ASSESSMENT': 25
     }
+  },
+  'GEOGRAPHY': {
+    HL: {
+      'PAPER ONE': 60,
+      'PAPER TWO': 50,
+      'PAPER THREE': 28,
+      'INTERNAL ASSESSMENT': 25
+    },
+    SL: {
+      'PAPER ONE': 40,
+      'PAPER TWO': 50,
+      'INTERNAL ASSESSMENT': 25
+    }
   }
 };
 
@@ -749,6 +828,7 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     if (subject === 'MATH AI') return 'november';
     if (subject === 'HISTORY') return 'may';
     if (subject === 'GLOBAL POLITICS') return 'may';
+    if (subject === 'GEOGRAPHY') return 'may';
     return 'november';
   });
   const [scores, setScores] = useState<Record<string, number>>({});
@@ -788,6 +868,17 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     }
     
     if (subject === 'GLOBAL POLITICS') {
+      // May HL and SL timezone 1 and 2, November HL and SL timezone 0
+      if (season === 'may') {
+        return timezone === 'timezone1' || timezone === 'timezone2';
+      }
+      if (season === 'november') {
+        return timezone === 'timezone0';
+      }
+      return false;
+    }
+    
+    if (subject === 'GEOGRAPHY') {
       // May HL and SL timezone 1 and 2, November HL and SL timezone 0
       if (season === 'may') {
         return timezone === 'timezone1' || timezone === 'timezone2';
