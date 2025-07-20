@@ -442,7 +442,7 @@ const EnvironmentalSystemsScreen = ({ navigation, route }: { navigation: any; ro
           activeOpacity={0.8}
           onPress={() => {
             navigation.navigate('GradePrediction', { 
-              subject: 'ENVIRONMENTAL SYSTEMS AND SOCIETIES', 
+              subject: 'ESS', 
               userType: userType 
             });
           }}
