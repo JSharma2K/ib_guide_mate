@@ -439,7 +439,7 @@ const DigitalSocietyScreen = ({ navigation, route }: { navigation: any; route: a
           activeOpacity={0.8}
           onPress={() => {
             navigation.navigate('GradePrediction', { 
-              subject: 'DIGITAL_SOCIETY', 
+              subject: 'DIGITAL SOCIETY', 
               userType: userType 
             });
           }}

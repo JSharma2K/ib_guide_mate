@@ -108,6 +108,19 @@ const paperWeightages = {
       'PAPER TWO': 0.40             // 45%
     }
   },
+  'DIGITAL SOCIETY': {
+    HL: {
+      'INQUIRY PROJECT': 0.20,        // 20%
+      'PAPER ONE': 0.35,            // 20%
+      'PAPER TWO': 0.20,             // 40%
+      'PAPER THREE': 0.25,             // 40%
+    },
+    SL: {
+      'INQUIRY PROJECT': 0.30,  // 25%
+      'PAPER ONE': 0.40,            // 35%
+      'PAPER TWO': 0.30             // 45%
+    }
+  },
   'ECONOMICS': {
     HL: {
       'PAPER ONE': 0.20,
@@ -814,6 +827,59 @@ const gradeBoundaries = {
         }
       }
     }
+  },
+  'DIGITAL SOCIETY': {
+    HL: {
+      may: {
+        timezone1: {
+          'INQUIRY PROJECT': { 1: [0, 3], 2: [4, 6], 3: [7, 9], 4: [10, 12], 5: [13, 15], 6: [16, 18], 7: [19, 24] },
+          'PAPER ONE': { 1: [0, 8], 2: [9, 16], 3: [17, 21], 4: [22, 26], 5: [27, 30], 6: [31, 35], 7: [36, 52] },
+          'PAPER THREE': { 1: [0, 2], 2: [3, 5], 3: [6, 11], 4: [12, 14], 5: [15, 17], 6: [18, 20], 7: [21, 30] },
+          'PAPER TWO': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [12, 13], 6: [14, 16], 7: [17, 24] },
+          FINAL: { 1: [0, 11], 2: [12, 24], 3: [25, 37], 4: [38, 48], 5: [49, 58], 6: [59, 69], 7: [70, 100] }
+        },
+        timezone2: {
+          'INQUIRY PROJECT': { 1: [0, 3], 2: [4, 6], 3: [7, 9], 4: [10, 12], 5: [13, 15], 6: [16, 18], 7: [19, 24] },
+          'PAPER ONE': { 1: [0, 8], 2: [9, 16], 3: [17, 21], 4: [22, 26], 5: [27, 30], 6: [31, 35], 7: [36, 52] },
+          'PAPER THREE': { 1: [0, 2], 2: [3, 5], 3: [6, 11], 4: [12, 14], 5: [15, 17], 6: [18, 20], 7: [21, 30] },
+          'PAPER TWO': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [12, 13], 6: [14, 16], 7: [17, 24] },
+          FINAL: { 1: [0, 11], 2: [12, 24], 3: [25, 37], 4: [38, 48], 5: [49, 58], 6: [59, 69], 7: [70, 100] }
+        }
+      },
+      november: {
+        timezone0: {
+          'INQUIRY PROJECT': { 1: [0, 3], 2: [4, 6], 3: [7, 9], 4: [10, 12], 5: [13, 15], 6: [16, 18], 7: [19, 24] },
+          'PAPER ONE': { 1: [0, 6], 2: [7, 12], 3: [13, 18], 4: [19, 23], 5: [24, 28], 6: [29, 33], 7: [34, 52] },
+          'PAPER THREE': { 1: [0, 4], 2: [5, 9], 3: [10, 16], 4: [17, 19], 5: [20, 21], 6: [22, 24], 7: [25, 30] },
+          'PAPER TWO': { 1: [0, 3], 2: [4, 6], 3: [7, 9], 4: [10, 11], 5: [12, 14], 6: [15, 16], 7: [17, 24] },
+          FINAL: { 1: [0, 12], 2: [13, 26], 3: [27, 40], 4: [41, 50], 5: [51, 61], 6: [62, 71], 7: [72, 100] }
+        },
+      }
+    },
+    SL: {
+      may: {
+        timezone1: {
+          'INQUIRY PROJECT': { 1: [0, 3], 2: [4, 6], 3: [7, 9], 4: [10, 12], 5: [13, 15], 6: [16, 18], 7: [19, 24] },
+          'PAPER ONE': { 1: [0, 6], 2: [7, 13], 3: [14, 17], 4: [18, 21], 5: [22, 24], 6: [25, 28], 7: [29, 40] },
+          'PAPER TWO': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [12, 13], 6: [14, 16], 7: [17, 24] },
+          FINAL: { 1: [0, 12], 2: [13, 27], 3: [28, 38], 4: [39, 50], 5: [51, 59], 6: [60, 70], 7: [71, 100] }
+        },
+        timezone2: {
+          'INQUIRY PROJECT': { 1: [0, 3], 2: [4, 6], 3: [7, 9], 4: [10, 12], 5: [13, 15], 6: [16, 18], 7: [19, 24] },
+          'PAPER ONE': { 1: [0, 6], 2: [7, 13], 3: [14, 17], 4: [18, 21], 5: [22, 24], 6: [25, 28], 7: [29, 40] },
+          'PAPER TWO': { 1: [0, 2], 2: [3, 5], 3: [6, 8], 4: [9, 11], 5: [12, 13], 6: [14, 16], 7: [17, 24] },
+          FINAL: { 1: [0, 12], 2: [13, 27], 3: [28, 38], 4: [39, 50], 5: [51, 59], 6: [60, 70], 7: [71, 100] }
+        }
+      },
+      november: {
+        timezone0: {
+          'INQUIRY PROJECT': { 1: [0, 3], 2: [4, 6], 3: [7, 9], 4: [10, 12], 5: [13, 15], 6: [16, 18], 7: [19, 24] },
+          'PAPER ONE': { 1: [0, 3], 2: [4, 7], 3: [8, 13], 4: [14, 17], 5: [18, 20], 6: [21, 24], 7: [25, 40] },
+          'PAPER TWO': { 1: [0, 3], 2: [4, 6], 3: [7, 9], 4: [10, 11], 5: [12, 14], 6: [15, 16], 7: [17, 24] },
+          FINAL: { 1: [0, 10], 2: [11, 22], 3: [23, 35], 4: [36, 46], 5: [47, 56], 6: [57, 66], 7: [67, 100] }
+        },
+      }
+    }
   }
 };
 
@@ -941,6 +1007,19 @@ const paperMaxScores = {
       'INTERNAL ASSESSMENT': 45
     }
   },
+  'DIGITAL SOCIETY': {
+    HL: {
+      'PAPER ONE': 52,
+      'PAPER TWO': 24,
+      'PAPER THREE': 30,
+      'INQUIRY PROJECT': 24
+    },
+    SL: {
+      'PAPER ONE': 25,
+      'PAPER TWO': 24,
+      'INQUIRY PROJECT': 45
+    }
+  },
   'ESS': {
     SL: {
       'PAPER ONE': 35,
@@ -957,12 +1036,14 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     if (subject === 'HISTORY') return 'SL';
     if (subject === 'ESS') return 'SL';
     if (subject === 'ECONOMICS') return 'HL';
+    if (subject === 'DIGITAL SOCIETY') return 'HL';
     return 'HL';
   });
   const [selectedTimezone, setSelectedTimezone] = useState<'timezone0' | 'timezone1' | 'timezone2'>(() => {
     if (subject === 'MATH AI') return 'timezone0';
     if (subject === 'ESS') return 'timezone1';
     if (subject === 'ECONOMICS') return 'timezone1';
+    if (subject === 'DIGITAL SOCIETY') return 'timezone1';
     return 'timezone1';
   });
   const [selectedSeason, setSelectedSeason] = useState<'november' | 'may'>(() => {
@@ -973,6 +1054,7 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     if (subject === 'GEOGRAPHY') return 'may';
     if (subject === 'ESS') return 'may';
     if (subject === 'ECONOMICS') return 'may';
+    if (subject === 'DIGITAL SOCIETY') return 'may';
     return 'november';
   });
   const [scores, setScores] = useState<Record<string, number>>({});
@@ -1041,6 +1123,19 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
       }
       if (season === 'november') {
         return timezone === 'timezone1' || timezone === 'timezone2';
+      }
+      return false;
+    }
+    
+    if (subject === 'DIGITAL SOCIETY') {
+      // Digital Society has both HL and SL levels
+      // HL: May timezone1 and timezone2, November timezone0
+      // SL: May timezone1 and timezone2, November timezone0
+      if (season === 'may') {
+        return timezone === 'timezone1' || timezone === 'timezone2';
+      }
+      if (season === 'november') {
+        return timezone === 'timezone0';
       }
       return false;
     }
