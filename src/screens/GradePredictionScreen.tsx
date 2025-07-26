@@ -149,6 +149,20 @@ const paperWeightages = {
       'PRACTICAL WORK': 0.25
     }
   },
+  'ENGLISH B': {
+    HL: {
+      'PAPER ONE': 0.25,
+      'PAPER TWO READING': 0.25,
+      'PAPER TWO LISTENING': 0.25,
+      'INTERNAL ASSESSMENT': 0.25
+    },
+    SL: {
+      'PAPER ONE': 0.25,
+      'PAPER TWO READING': 0.25,
+      'PAPER TWO LISTENING': 0.25,
+      'INTERNAL ASSESSMENT': 0.25
+    }
+  },
   'PHILOSOPHY': {
     HL: {
       'PAPER ONE': 0.4,
@@ -160,6 +174,20 @@ const paperWeightages = {
       'PAPER ONE': 0.5,
       'PAPER TWO': 0.25,
       'INTERNAL ASSESSMENT': 0.25
+    }
+  },
+  'BIOLOGY': {
+    HL: {
+      'PAPER ONE': 0.20,        // 20%
+      'PAPER TWO': 0.36,        // 36%
+      'PAPER THREE': 0.24,      // 24%
+      'INTERNAL ASSESSMENT': 0.20  // 20%
+    },
+    SL: {
+      'PAPER ONE': 0.20,        // 20%
+      'PAPER TWO': 0.40,        // 36%
+      'PAPER THREE': 0.20,      // 24%
+      'INTERNAL ASSESSMENT': 0.20 
     }
   }
 };
@@ -655,7 +683,7 @@ const gradeBoundaries = {
     SL: {
       may: {
         timezone1: {
-          'INTERNAL ASSESSMENT': { 1: [0, 2], 2: [3, 5], 3: [6, 10], 4: [11, 13], 5: [14, 17], 6: [18, 20], 7: [21, 25] },
+          'INTERNAL ASSESSMENT': { 1: [0, 2], 2: [3, 5], 3: [6, 10], 4: [11, 15], 5: [16, 21], 6: [22, 26], 7: [27, 30] },
           'PAPER ONE': { 1: [0, 5], 2: [6, 10], 3: [11, 15], 4: [16, 19], 5: [20, 23], 6: [24, 27], 7: [28, 40] },
           'PAPER TWO': { 1: [0, 5], 2: [6, 11], 3: [12, 16], 4: [17, 22], 5: [23, 28], 6: [29, 34], 7: [35, 50] },
           FINAL: { 1: [0, 10], 2: [11, 23], 3: [24, 36], 4: [37, 47], 5: [48, 60], 6: [61, 71], 7: [72, 100] }
@@ -880,6 +908,132 @@ const gradeBoundaries = {
         },
       }
     }
+  },
+  'BIOLOGY': {
+    HL: {
+      may: {
+        timezone1: {
+          'PAPER ONE': { 1: [0, 10], 2: [11, 13], 3: [14, 15], 4: [16, 20], 5: [21, 24], 6: [25, 29], 7: [30, 38] },
+          'PAPER TWO': { 1: [0, 5], 2: [6, 11], 3: [12, 19], 4: [20, 30], 5: [31, 41], 6: [42, 52], 7: [53, 72] },
+          'PAPER THREE': { 1: [0, 6], 2: [7, 12], 3: [13, 18], 4: [19, 23], 5: [24, 28], 6: [29, 33], 7: [34, 45] },
+          'INTERNAL ASSESSMENT': { 1: [0, 3], 2: [4, 6], 3: [7, 10], 4: [11, 13], 5: [14, 16], 6: [17, 19], 7: [20, 24] },
+          FINAL: { 1: [0, 13], 2: [14, 24], 3: [25, 35], 4: [36, 49], 5: [50, 61], 6: [62, 75], 7: [76, 100] }
+        },
+        timezone2: {
+          'PAPER ONE': { 1: [0, 10], 2: [11, 12], 3: [13, 14], 4: [15, 19], 5: [20, 23], 6: [24, 28], 7: [29, 40] },
+          'PAPER TWO': { 1: [0, 8], 2: [9, 16], 3: [17, 23], 4: [24, 34], 5: [35, 44], 6: [45, 55], 7: [56, 72] },
+          'PAPER THREE': { 1: [0, 4], 2: [5, 9], 3: [10, 14], 4: [15, 21], 5: [22, 27], 6: [28, 34], 7: [35, 45] },
+          'INTERNAL ASSESSMENT': { 1: [0, 3], 2: [4, 6], 3: [7, 10], 4: [11, 13], 5: [14, 16], 6: [17, 19], 7: [20, 24] },
+          FINAL: { 1: [0, 14], 2: [15, 24], 3: [25, 34], 4: [35, 49], 5: [50, 61], 6: [62, 75], 7: [76, 100] }
+        },
+      },
+      november: {
+        timezone0: {
+          'PAPER ONE': { 1: [0, 10], 2: [11, 16], 3: [17, 18], 4: [19, 23], 5: [24, 28], 6: [29, 33], 7: [34, 40] },
+          'PAPER TWO': { 1: [0, 5], 2: [6, 10], 3: [11, 20], 4: [21, 32], 5: [33, 43], 6: [44, 55], 7: [56, 72] },
+          'PAPER THREE': { 1: [0, 4], 2: [5, 8], 3: [9, 13], 4: [14, 20], 5: [21, 27], 6: [28, 34], 7: [35, 45] },
+          'INTERNAL ASSESSMENT': { 1: [0, 3], 2: [4, 6], 3: [7, 10], 4: [11, 13], 5: [14, 16], 6: [17, 19], 7: [20, 24] },
+          FINAL: { 1: [0, 12], 2: [13, 22], 3: [23, 34], 4: [35, 49], 5: [50, 63], 6: [64, 78], 7: [79, 100] }
+        }
+      }
+    },
+    SL: {
+      may: {
+        timezone1: {
+          'PAPER ONE': { 1: [0, 7], 2: [8, 10], 3: [11, 12], 4: [13, 14], 5: [15, 17], 6: [18, 19], 7: [20, 29] },
+          'PAPER TWO': { 1: [0, 5], 2: [6, 11], 3: [12, 17], 4: [18, 24], 5: [25, 30], 6: [31, 37], 7: [38, 50] },
+          'PAPER THREE': { 1: [0, 4], 2: [5, 9], 3: [10, 16], 4: [17, 20], 5: [21, 24], 6: [25, 28], 7: [29, 35] },
+          'INTERNAL ASSESSMENT': { 1: [0, 3], 2: [4, 6], 3: [7, 10], 4: [11, 13], 5: [14, 16], 6: [17, 19], 7: [20, 24] },
+          FINAL: { 1: [0, 14], 2: [15, 26], 3: [27, 39], 4: [40, 51], 5: [52, 63], 6: [64, 75], 7: [76, 100] }
+        },
+        timezone2: {
+          'PAPER ONE': { 1: [0, 7], 2: [8, 9], 3: [10, 11], 4: [12, 13], 5: [14, 15], 6: [16, 17], 7: [18, 29] },
+          'PAPER TWO': { 1: [0, 5], 2: [6, 10], 3: [11, 16], 4: [17, 24], 5: [25, 31], 6: [32, 39], 7: [40, 50] },
+          'PAPER THREE': { 1: [0, 4], 2: [5, 9], 3: [10, 14], 4: [15, 18], 5: [19, 23], 6: [24, 27], 7: [28, 35] },
+          'INTERNAL ASSESSMENT': { 1: [0, 3], 2: [4, 6], 3: [7, 10], 4: [11, 13], 5: [14, 16], 6: [17, 19], 7: [20, 24] },
+          FINAL: { 1: [0, 14], 2: [15, 24], 3: [25, 37], 4: [38, 49], 5: [50, 62], 6: [63, 74], 7: [75, 100] }
+        },
+      },
+      november: {
+        timezone1: {
+          'PAPER ONE': { 1: [0, 7], 2: [8, 10], 3: [11, 12], 4: [13, 16], 5: [17, 19], 6: [20, 23], 7: [24, 30] },
+          'PAPER TWO': { 1: [0, 5], 2: [6, 11], 3: [12, 19], 4: [20, 25], 5: [26, 32], 6: [33, 38], 7: [39, 50] },
+          'PAPER THREE': { 1: [0, 4], 2: [5, 8], 3: [9, 13], 4: [14, 17], 5: [18, 20], 6: [21, 24], 7: [25, 35] },
+          'INTERNAL ASSESSMENT': { 1: [0, 3], 2: [4, 6], 3: [7, 10], 4: [11, 13], 5: [14, 16], 6: [17, 19], 7: [20, 24] },
+          FINAL: { 1: [0, 13], 2: [14, 25], 3: [26, 39], 4: [40, 51], 5: [52, 63], 6: [64, 75], 7: [76, 100] }
+        },
+        timezone2: {
+          'PAPER ONE': { 1: [0, 7], 2: [8, 10], 3: [11, 14], 4: [15, 18], 5: [19, 23], 6: [24, 27], 7: [28, 30] },
+          'PAPER TWO': { 1: [0, 7], 2: [8, 14], 3: [15, 21], 4: [22, 27], 5: [28, 32], 6: [33, 38], 7: [39, 50] },
+          'PAPER THREE': { 1: [0, 4], 2: [5, 8], 3: [9, 13], 4: [14, 17], 5: [18, 22], 6: [23, 26], 7: [27, 34] },
+          'INTERNAL ASSESSMENT': { 1: [0, 3], 2: [4, 6], 3: [7, 10], 4: [11, 13], 5: [14, 16], 6: [17, 19], 7: [20, 24] },
+          FINAL: { 1: [0, 15], 2: [16, 28], 3: [29, 42], 4: [43, 54], 5: [55, 67], 6: [68, 80], 7: [81, 100] }
+        },
+      }
+    }
+  },
+  'ENGLISH B': {
+    HL: {
+      may: {
+        timezone1: {
+          'PAPER ONE': { 1: [0, 7], 2: [8, 10], 3: [11, 12], 4: [13, 14], 5: [15, 17], 6: [18, 19], 7: [20, 29] },
+          'PAPER TWO': { 1: [0, 5], 2: [6, 11], 3: [12, 17], 4: [18, 24], 5: [25, 30], 6: [31, 37], 7: [38, 50] },
+          'PAPER THREE': { 1: [0, 4], 2: [5, 9], 3: [10, 16], 4: [17, 20], 5: [21, 24], 6: [25, 28], 7: [29, 35] },
+          'INTERNAL ASSESSMENT': { 1: [0, 3], 2: [4, 6], 3: [7, 10], 4: [11, 13], 5: [14, 16], 6: [17, 19], 7: [20, 24] },
+          FINAL: { 1: [0, 14], 2: [15, 26], 3: [27, 39], 4: [40, 51], 5: [52, 63], 6: [64, 75], 7: [76, 100] }
+        },
+        timezone2: {
+          'INTERNAL ASSESSMENT': { 1: [0, 3], 2: [4, 6], 3: [7, 12], 4: [13, 17], 5: [18, 21], 6: [22, 26], 7: [27, 30] },
+          'PAPER ONE': { 1: [0, 2], 2: [3, 5], 3: [6, 10], 4: [11, 15], 5: [16, 21], 6: [22, 26], 7: [27, 30] },
+          'PAPER TWO LISTENING': { 1: [0, 4], 2: [5, 8], 3: [9, 13], 4: [14, 16], 5: [17, 20], 6: [21, 23], 7: [24, 25] },
+          'PAPER TWO READING': { 1: [0, 5], 2: [6, 11], 3: [12, 15], 4: [16, 21], 5: [22, 28], 6: [29, 34], 7: [35, 40] },
+          FINAL: { 1: [0, 11], 2: [12, 24], 3: [25, 41], 4: [42, 56], 5: [57, 72], 6: [73, 88], 7: [89, 100] }
+        }
+      },
+      november: {
+        timezone1: {
+          'INTERNAL ASSESSMENT': { 1: [0, 3], 2: [4, 6], 3: [7, 12], 4: [13, 17], 5: [18, 21], 6: [22, 26], 7: [27, 30] },
+          'PAPER ONE': { 1: [0, 3], 2: [4, 6], 3: [7, 9], 4: [10, 15], 5: [16, 21], 6: [22, 27], 7: [28, 30] },
+          'PAPER TWO LISTENING': { 1: [0, 3], 2: [4, 6], 3: [7, 9], 4: [10, 13], 5: [14, 18], 6: [19, 22], 7: [23, 25] },
+          'PAPER TWO READING': { 1: [0, 5], 2: [6, 11], 3: [12, 19], 4: [20, 25], 5: [26, 30], 6: [31, 36], 7: [37, 40] },
+          FINAL: { 1: [0, 11], 2: [12, 23], 3: [24, 38], 4: [39, 55], 5: [56, 72], 6: [73, 89], 7: [90, 100] }
+        },
+        timezone2: {
+          'INTERNAL ASSESSMENT': { 1: [0, 3], 2: [4, 6], 3: [7, 12], 4: [13, 17], 5: [18, 21], 6: [22, 26], 7: [27, 30] },
+          'PAPER ONE': { 1: [0, 3], 2: [4, 6], 3: [7, 9], 4: [10, 15], 5: [16, 21], 6: [22, 27], 7: [28, 30] },
+          'PAPER TWO LISTENING': { 1: [0, 3], 2: [4, 6], 3: [7, 9], 4: [10, 13], 5: [14, 18], 6: [19, 22], 7: [23, 25] },
+          'PAPER TWO READING': { 1: [0, 6], 2: [7, 12], 3: [13, 16], 4: [17, 23], 5: [24, 29], 6: [30, 36], 7: [37, 40] },
+          FINAL: { 1: [0, 12], 2: [13, 23], 3: [24, 36], 4: [37, 54], 5: [55, 70], 6: [71, 88], 7: [89, 100] }
+        }
+      }
+    },
+    SL: {
+      may: {
+        timezone1: {
+          'INTERNAL ASSESSMENT': { 1: [0, 2], 2: [3, 5], 3: [6, 10], 4: [11, 15], 5: [16, 21], 6: [22, 26], 7: [27, 30] },
+          'PAPER ONE': { 1: [0, 3], 2: [4, 7], 3: [8, 10], 4: [11, 15], 5: [16, 20], 6: [21, 25], 7: [26, 30] },
+          'PAPER TWO LISTENING': { 1: [0, 3], 2: [4, 7], 3: [8, 11], 4: [12, 15], 5: [16, 19], 6: [20, 23], 7: [24, 25] },
+          'PAPER TWO READING': { 1: [0, 5], 2: [6, 10], 3: [11, 17], 4: [18, 23], 5: [24, 28], 6: [29, 34], 7: [35, 39] },
+          FINAL: { 1: [0, 10], 2: [11, 23], 3: [24, 39], 4: [40, 55], 5: [56, 71], 6: [72, 87], 7: [88, 100] }
+        },
+        timezone2: {
+          'INTERNAL ASSESSMENT': { 1: [0, 2], 2: [3, 5], 3: [6, 10], 4: [11, 15], 5: [16, 21], 6: [22, 26], 7: [27, 30] },
+          'PAPER ONE': { 1: [0, 3], 2: [4, 7], 3: [8, 11], 4: [12, 15], 5: [16, 20], 6: [21, 25], 7: [26, 30] },
+          'PAPER TWO LISTENING': { 1: [0, 3], 2: [4, 7], 3: [8, 11], 4: [12, 15], 5: [16, 19], 6: [20, 23], 7: [24, 25] },
+          'PAPER TWO READING': { 1: [0, 5], 2: [6, 11], 3: [12, 17], 4: [18, 23], 5: [24, 29], 6: [30, 35], 7: [36, 40] },
+          FINAL: { 1: [0, 10], 2: [11, 24], 3: [25, 39], 4: [40, 54], 5: [55, 71], 6: [72, 87], 7: [88, 100] }
+        }
+      },
+      november: {
+        timezone0: {
+          'INTERNAL ASSESSMENT': { 1: [0, 2], 2: [3, 5], 3: [6, 10], 4: [11, 15], 5: [16, 21], 6: [22, 26], 7: [27, 30] },
+          'PAPER ONE': { 1: [0, 5], 2: [6, 11], 3: [12, 14], 4: [15, 17], 5: [18, 21], 6: [22, 24], 7: [25, 30] },
+          'PAPER TWO LISTENING': { 1: [0, 2], 2: [3, 5], 3: [6, 9], 4: [10, 14], 5: [15, 18], 6: [19, 23], 7: [24, 25] },
+          'PAPER TWO READING': { 1: [0, 8], 2: [9, 16], 3: [17, 24], 4: [25, 28], 5: [29, 32], 6: [33, 36], 7: [37, 40] },
+          FINAL: { 1: [0, 13], 2: [14, 28], 3: [29, 44], 4: [45, 58], 5: [59, 73], 6: [74, 87], 7: [88, 100] }
+        },
+      }
+    }
   }
 };
 
@@ -1020,13 +1174,41 @@ const paperMaxScores = {
       'INQUIRY PROJECT': 45
     }
   },
+  'ENGLISH B': {
+    HL: {
+      'PAPER ONE': 30,
+      'PAPER TWO READING': 40,
+      'PAPER TWO LISTENING': 25,
+      'INTERNAL ASSESSMENT': 30
+    },
+    SL: {
+      'PAPER ONE': 30,
+      'PAPER TWO READING': 40,
+      'PAPER TWO LISTENING': 25,
+      'INTERNAL ASSESSMENT': 30
+    }
+  },
+  'BIOLOGY': {
+    HL: {
+      'PAPER ONE': 40,
+      'PAPER TWO': 72,
+      'PAPER THREE': 45,
+      'INTERNAL ASSESSMENT': 24
+    },
+    SL: {
+      'PAPER ONE': 30,
+      'PAPER TWO': 50,
+      'PAPER THREE': 35,
+      'INTERNAL ASSESSMENT': 24
+    }
+  },
   'ESS': {
     SL: {
       'PAPER ONE': 35,
       'PAPER TWO': 65,
       'PRACTICAL WORK': 30
     }
-  }
+  },
 };
 
 const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
@@ -1037,6 +1219,7 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     if (subject === 'ESS') return 'SL';
     if (subject === 'ECONOMICS') return 'HL';
     if (subject === 'DIGITAL SOCIETY') return 'HL';
+    if (subject === 'ENGLISH B') return 'HL'; // Ensure ENGLISH B starts with HL
     return 'HL';
   });
   const [selectedTimezone, setSelectedTimezone] = useState<'timezone0' | 'timezone1' | 'timezone2'>(() => {
@@ -1044,6 +1227,8 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     if (subject === 'ESS') return 'timezone1';
     if (subject === 'ECONOMICS') return 'timezone1';
     if (subject === 'DIGITAL SOCIETY') return 'timezone1';
+    if (subject === 'ENGLISH B') return 'timezone1'; // ENGLISH B HL has timezone1 for both may and november
+    if (subject === 'BIOLOGY') return 'timezone1'; // Start with timezone1 which is available for both HL and SL
     return 'timezone1';
   });
   const [selectedSeason, setSelectedSeason] = useState<'november' | 'may'>(() => {
@@ -1055,6 +1240,8 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     if (subject === 'ESS') return 'may';
     if (subject === 'ECONOMICS') return 'may';
     if (subject === 'DIGITAL SOCIETY') return 'may';
+    if (subject === 'ENGLISH B') return 'may'; // Start with may which has more timezone options
+    if (subject === 'BIOLOGY') return 'may'; // Start with may which has timezone1 and timezone2 for both HL and SL
     return 'november';
   });
   const [scores, setScores] = useState<Record<string, number>>({});
@@ -1103,6 +1290,27 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
       }
       return false;
     }
+    if (subject === 'ENGLISH B') {
+      if (level === 'HL') {
+        if (season === 'may') {
+          return timezone === 'timezone1' || timezone === 'timezone2';
+        }
+        if (season === 'november') {
+          return timezone === 'timezone1' || timezone === 'timezone2';
+        }
+        return false;
+      }
+      if (level === 'SL') {
+        if (season === 'may') {
+          return timezone === 'timezone1' || timezone === 'timezone2';
+        }
+        if (season === 'november') {
+          return timezone === 'timezone0';
+        }
+        return false;
+      }
+      return false;
+    }
     
     if (subject === 'GEOGRAPHY') {
       // May HL and SL timezone 1 and 2, November HL and SL timezone 0
@@ -1136,6 +1344,29 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
       }
       if (season === 'november') {
         return timezone === 'timezone0';
+      }
+      return false;
+    }
+    
+    if (subject === 'BIOLOGY') {
+      // Biology combinations based on available grade boundaries
+      if (level === 'HL') {
+        if (season === 'may') {
+          return timezone === 'timezone1' || timezone === 'timezone2';
+        }
+        if (season === 'november') {
+          return timezone === 'timezone0'; // Only timezone0 available for HL November
+        }
+        return false;
+      }
+      if (level === 'SL') {
+        if (season === 'may') {
+          return timezone === 'timezone1' || timezone === 'timezone2';
+        }
+        if (season === 'november') {
+          return timezone === 'timezone1' || timezone === 'timezone2'; // timezone1 and timezone2 available for SL November
+        }
+        return false;
       }
       return false;
     }
@@ -1314,6 +1545,7 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
   const maxScores = subjectData ? (subjectData as any)[selectedLevel] : null;
   const papers = maxScores ? Object.keys(maxScores) : [];
   const totalMaxScore = maxScores ? Object.values(maxScores).reduce((sum: number, score: any) => sum + score, 0) : 0;
+
 
 
   return (
@@ -1611,44 +1843,58 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
               Enter Your Scores
             </Text>
             
-            {papers.map((paper) => {
-              const weightageData = paperWeightages[subject as keyof typeof paperWeightages];
-              const weight = (weightageData as any)?.[selectedLevel]?.[paper] || 0;
-              const rawScore = scores[paper] || 0;
-              const maxScore = maxScores?.[paper as keyof typeof maxScores] || 0;
-              const percentage = maxScore > 0 ? (rawScore / maxScore) * 100 : 0;
-              const contribution = percentage * weight;
-              
-              return (
-                <View key={paper} style={{ marginBottom: 24 }}>
-                  <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-                    <Text style={{ color: '#7EC3FF', fontFamily: 'ScopeOne-Regular', fontSize: 16, flex: 1 }}>
-                      {paper}
-                    </Text>
-                    <Text style={{ color: '#fff', fontFamily: 'ScopeOne-Regular', fontSize: 16, fontWeight: 'bold' }}>
-                      {rawScore} / {maxScore}
-                    </Text>
+            {papers.length === 0 ? (
+              <View style={{ alignItems: 'center', padding: 20 }}>
+                <Text style={{ color: '#FFA500', fontFamily: 'ScopeOne-Regular', fontSize: 16, textAlign: 'center', marginBottom: 12 }}>
+                  No papers available for this combination
+                </Text>
+                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 14, textAlign: 'center' }}>
+                  Try selecting a different level, season, or timezone combination.
+                </Text>
+                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 12, textAlign: 'center', marginTop: 8, fontStyle: 'italic' }}>
+                  Current: {selectedLevel} • {selectedSeason} • {selectedTimezone}
+                </Text>
+              </View>
+            ) : (
+              papers.map((paper) => {
+                const weightageData = paperWeightages[subject as keyof typeof paperWeightages];
+                const weight = (weightageData as any)?.[selectedLevel]?.[paper] || 0;
+                const rawScore = scores[paper] || 0;
+                const maxScore = maxScores?.[paper as keyof typeof maxScores] || 0;
+                const percentage = maxScore > 0 ? (rawScore / maxScore) * 100 : 0;
+                const contribution = percentage * weight;
+                
+                return (
+                  <View key={paper} style={{ marginBottom: 24 }}>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+                      <Text style={{ color: '#7EC3FF', fontFamily: 'ScopeOne-Regular', fontSize: 16, flex: 1 }}>
+                        {paper}
+                      </Text>
+                      <Text style={{ color: '#fff', fontFamily: 'ScopeOne-Regular', fontSize: 16, fontWeight: 'bold' }}>
+                        {rawScore} / {maxScore}
+                      </Text>
+                    </View>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+                      <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 14 }}>
+                        Weight: {Math.round(weight * 100)}%
+                      </Text>
+                      <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 14 }}>
+                        Contributes: {contribution.toFixed(1)}%
+                      </Text>
+                    </View>
+                    <Slider
+                      style={{ width: '100%', height: 40 }}
+                      minimumValue={0}
+                      maximumValue={maxScores?.[paper as keyof typeof maxScores] || 0}
+                      value={scores[paper] || 0}
+                      onValueChange={(value: number) => setScores(prev => ({ ...prev, [paper]: Math.round(value) }))}
+                      minimumTrackTintColor="#7EC3FF"
+                      maximumTrackTintColor="#444"
+                    />
                   </View>
-                  <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-                    <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 14 }}>
-                      Weight: {Math.round(weight * 100)}%
-                    </Text>
-                    <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 14 }}>
-                      Contributes: {contribution.toFixed(1)}%
-                    </Text>
-                  </View>
-                  <Slider
-                    style={{ width: '100%', height: 40 }}
-                    minimumValue={0}
-                    maximumValue={maxScores?.[paper as keyof typeof maxScores] || 0}
-                    value={scores[paper] || 0}
-                    onValueChange={(value: number) => setScores(prev => ({ ...prev, [paper]: Math.round(value) }))}
-                    minimumTrackTintColor="#7EC3FF"
-                    maximumTrackTintColor="#444"
-                  />
-                </View>
-              );
-            })}
+                );
+              })
+            )}
           </View>
         </View>
 

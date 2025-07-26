@@ -458,7 +458,7 @@ const LanguageBScreen = ({ navigation, route }: { navigation: any; route: any })
           activeOpacity={0.8}
           onPress={() => {
             navigation.navigate('GradePrediction', { 
-              subject: 'LANGUAGE B', 
+              subject: 'ENGLISH B', 
               userType: userType 
             });
           }}
