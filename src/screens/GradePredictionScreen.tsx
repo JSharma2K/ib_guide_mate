@@ -203,6 +203,33 @@ const paperWeightages = {
       'PAPER THREE': 0.20,      // 24%
       'INTERNAL ASSESSMENT': 0.20 
     }
+  },
+  'CHEMISTRY': {
+    HL: {
+      'PAPER ONE': 0.20,        // 20%
+      'PAPER TWO': 0.36,        // 36%
+      'PAPER THREE': 0.24,      // 24%
+      'INTERNAL ASSESSMENT': 0.20  // 20%
+    },
+    SL: {
+      'PAPER ONE': 0.20,        // 20%
+      'PAPER TWO': 0.40,        // 36%
+      'PAPER THREE': 0.20,      // 24%
+      'INTERNAL ASSESSMENT': 0.20 
+    }
+  },
+  'COMPUTER_SCIENCE': {
+    HL: {
+      'PAPER ONE': 0.4,
+      'PAPER TWO': 0.2,
+      'PAPER THREE': 0.2,
+      'SOLUTION': 0.2
+    },
+    SL: {
+      'PAPER ONE': 0.45,
+      'PAPER TWO': 0.25,
+      'SOLUTION': 0.30
+    }
   }
 };
 
@@ -1104,6 +1131,115 @@ const gradeBoundaries = {
         }
       }
     }
+  },
+  'COMPUTER_SCIENCE': {
+    HL: {
+      may: {
+        timezone1: {
+          'PAPER ONE': { 1: [0, 11], 2: [12, 23], 3: [24, 35], 4: [36, 45], 5: [46, 54], 6: [55, 64], 7: [65, 100] },
+          'PAPER TWO': { 1: [0, 10], 2: [11, 20], 3: [21, 24], 4: [25, 31], 5: [32, 37], 6: [38, 44], 7: [45, 65] },
+          'PAPER THREE': { 1: [0, 5], 2: [6, 11], 3: [12, 14], 4: [15, 17], 5: [18, 19], 6: [20, 22], 7: [23, 30] },
+          'SOLUTION': { 1: [0, 4], 2: [5, 9], 3: [10, 14], 4: [15, 18], 5: [19, 22], 6: [23, 26], 7: [27, 34] },
+          FINAL: { 1: [0, 13], 2: [14, 28], 3: [29, 39], 4: [40, 49], 5: [50, 59], 6: [60, 69], 7: [70, 100] }
+        },
+        timezone2: {
+          'PAPER ONE': { 1: [0, 11], 2: [12, 23], 3: [24, 35], 4: [36, 45], 5: [46, 54], 6: [55, 64], 7: [65, 100] },
+          'PAPER TWO': { 1: [0, 10], 2: [11, 20], 3: [21, 24], 4: [25, 31], 5: [32, 37], 6: [38, 44], 7: [45, 65] },
+          'PAPER THREE': { 1: [0, 3], 2: [4, 7], 3: [8, 10], 4: [11, 13], 5: [14, 16], 6: [17, 19], 7: [20, 30] },
+          'SOLUTION': { 1: [0, 4], 2: [5, 9], 3: [10, 14], 4: [15, 18], 5: [19, 22], 6: [23, 26], 7: [27, 34] },
+          FINAL: { 1: [0, 12], 2: [13, 25], 3: [26, 36], 4: [37, 47], 5: [48, 57], 6: [58, 67], 7: [68, 100] }
+        }
+      },
+      november: {
+        timezone0: {
+          'PAPER ONE': { 1: [0, 14], 2: [15, 29], 3: [30, 47], 4: [48, 54], 5: [55, 61], 6: [62, 68], 7: [69, 100] },
+          'PAPER TWO': { 1: [0, 10], 2: [11, 20], 3: [21, 25], 4: [26, 32], 5: [33, 39], 6: [40, 46], 7: [47, 65] },
+          'PAPER THREE': { 1: [0, 4], 2: [5, 8], 3: [9, 11], 4: [12, 13], 5: [14, 16], 6: [17, 18], 7: [19, 30] },
+          'SOLUTION': { 1: [0, 4], 2: [5, 9], 3: [10, 14], 4: [15, 18], 5: [19, 22], 6: [23, 26], 7: [27, 34] },
+          FINAL: { 1: [0, 14], 2: [15, 28], 3: [29, 42], 4: [43, 51], 5: [52, 60], 6: [61, 69], 7: [70, 100] }
+        }
+      }
+    },
+    SL: {
+      may: {
+        timezone1: {
+          'PAPER ONE': { 1: [0, 5], 2: [6, 11], 3: [12, 20], 4: [21, 29], 5: [30, 37], 6: [38, 46], 7: [47, 70] },
+          'PAPER TWO': { 1: [0, 7], 2: [8, 15], 3: [16, 20], 4: [21, 22], 5: [23, 25], 6: [26, 27], 7: [28, 45] },
+          'SOLUTION': { 1: [0, 4], 2: [5, 9], 3: [10, 14], 4: [15, 18], 5: [19, 22], 6: [23, 26], 7: [27, 34] },
+          FINAL: { 1: [0, 11], 2: [12, 23], 3: [24, 36], 4: [37, 47], 5: [48, 57], 6: [58, 68], 7: [69, 100] }
+        },
+        timezone2: {
+          'PAPER ONE': { 1: [0, 5], 2: [6, 11], 3: [12, 20], 4: [21, 29], 5: [30, 37], 6: [38, 46], 7: [47, 70] },
+          'PAPER TWO': { 1: [0, 7], 2: [8, 15], 3: [16, 20], 4: [21, 22], 5: [23, 25], 6: [26, 27], 7: [28, 45] },
+          'SOLUTION': { 1: [0, 4], 2: [5, 9], 3: [10, 14], 4: [15, 18], 5: [19, 22], 6: [23, 26], 7: [27, 34] },
+          FINAL: { 1: [0, 11], 2: [12, 23], 3: [24, 36], 4: [37, 47], 5: [48, 57], 6: [58, 68], 7: [69, 100] }
+        }
+      },
+      november: {
+        timezone0: {
+          'PAPER ONE': { 1: [0, 10], 2: [11, 21], 3: [22, 32], 4: [33, 38], 5: [39, 44], 6: [45, 50], 7: [51, 70] },
+          'PAPER TWO': { 1: [0, 8], 2: [9, 17], 3: [18, 20], 4: [21, 24], 5: [25, 27], 6: [28, 31], 7: [32, 45] },
+          'SOLUTION': { 1: [0, 4], 2: [5, 9], 3: [10, 14], 4: [15, 18], 5: [19, 22], 6: [23, 26], 7: [27, 34] },
+          FINAL: { 1: [0, 14], 2: [15, 31], 3: [32, 44], 4: [45, 54], 5: [55, 63], 6: [64, 72], 7: [73, 100] }
+        }
+      }
+    }
+  },
+  'CHEMISTRY': {
+    HL: {
+      may: {
+        timezone1: {
+          'PAPER ONE': { 1: [0, 10], 2: [11, 12], 3: [13, 18], 4: [19, 23], 5: [24, 28], 6: [29, 33], 7: [34, 40] },
+          'PAPER TWO': { 1: [0, 13], 2: [14, 26], 3: [27, 35], 4: [36, 46], 5: [47, 56], 6: [57, 66], 7: [67, 90] },
+          'PAPER THREE': { 1: [0, 4], 2: [5, 9], 3: [10, 15], 4: [16, 20], 5: [21, 25], 6: [26, 30], 7: [31, 45] },
+          'INTERNAL ASSESSMENT': { 1: [0, 3], 2: [4, 6], 3: [7, 10], 4: [11, 13], 5: [14, 16], 6: [17, 19], 7: [20, 24] },
+          FINAL: { 1: [0, 15], 2: [16, 26], 3: [27, 39], 4: [40, 51], 5: [52, 63], 6: [64, 75], 7: [76, 100] }
+        },
+        timezone2: {
+          'PAPER ONE': { 1: [0, 10], 2: [11, 11], 3: [12, 15], 4: [16, 19], 5: [20, 24], 6: [25, 29], 7: [30, 39] },
+          'PAPER TWO': { 1: [0, 11], 2: [12, 22], 3: [23, 35], 4: [36, 46], 5: [47, 57], 6: [58, 68], 7: [69, 90] },
+          'PAPER THREE': { 1: [0, 5], 2: [6, 11], 3: [12, 16], 4: [17, 22], 5: [23, 27], 6: [28, 33], 7: [34, 45] },
+          'INTERNAL ASSESSMENT': { 1: [0, 3], 2: [4, 6], 3: [7, 10], 4: [11, 13], 5: [14, 16], 6: [17, 19], 7: [20, 24] },
+          FINAL: { 1: [0, 15], 2: [16, 25], 3: [26, 39], 4: [40, 51], 5: [52, 63], 6: [64, 76], 7: [77, 100] }
+        }
+      },
+      november: {
+        timezone0: {
+          'PAPER ONE': { 1: [0, 10], 2: [11, 13], 3: [14, 17], 4: [18, 21], 5: [22, 25], 6: [26, 29], 7: [30, 40] },
+          'PAPER TWO': { 1: [0, 10], 2: [11, 21], 3: [22, 33], 4: [34, 45], 5: [46, 56], 6: [57, 68], 7: [69, 90] },
+          'PAPER THREE': { 1: [0, 6], 2: [7, 12], 3: [13, 16], 4: [17, 22], 5: [23, 28], 6: [29, 34], 7: [35, 45] },
+          'INTERNAL ASSESSMENT': { 1: [0, 3], 2: [4, 6], 3: [7, 10], 4: [11, 13], 5: [14, 16], 6: [17, 19], 7: [20, 24] },
+          FINAL: { 1: [0, 15], 2: [16, 26], 3: [27, 39], 4: [40, 51], 5: [52, 63], 6: [64, 76], 7: [77, 100] }
+        }
+      }
+    },
+    SL: {
+      may: {
+        timezone1: {
+          'PAPER ONE': { 1: [0, 7], 2: [8, 9], 3: [10, 14], 4: [15, 17], 5: [18, 20], 6: [21, 23], 7: [24, 30] },
+          'PAPER TWO': { 1: [0, 6], 2: [7, 12], 3: [13, 18], 4: [19, 24], 5: [25, 30], 6: [31, 37], 7: [38, 50] },
+          'PAPER THREE': { 1: [0, 3], 2: [4, 7], 3: [8, 9], 4: [10, 13], 5: [14, 16], 6: [17, 20], 7: [21, 35] },
+          'INTERNAL ASSESSMENT': { 1: [0, 3], 2: [4, 6], 3: [7, 10], 4: [11, 13], 5: [14, 16], 6: [17, 19], 7: [20, 24] },
+          FINAL: { 1: [0, 14], 2: [15, 25], 3: [26, 37], 4: [38, 49], 5: [50, 60], 6: [61, 72], 7: [73, 100] }
+        },
+        timezone2: {
+          'PAPER ONE': { 1: [0, 7], 2: [8, 9], 3: [10, 12], 4: [13, 15], 5: [16, 18], 6: [19, 21], 7: [22, 30] },
+          'PAPER TWO': { 1: [0, 7], 2: [8, 14], 3: [15, 18], 4: [19, 24], 5: [25, 30], 6: [31, 37], 7: [38, 50] },
+          'PAPER THREE': { 1: [0, 4], 2: [5, 8], 3: [9, 10], 4: [11, 13], 5: [14, 17], 6: [18, 20], 7: [21, 35] },
+          'INTERNAL ASSESSMENT': { 1: [0, 3], 2: [4, 6], 3: [7, 10], 4: [11, 13], 5: [14, 16], 6: [17, 19], 7: [20, 24] },
+          FINAL: { 1: [0, 15], 2: [16, 27], 3: [28, 36], 4: [37, 47], 5: [48, 59], 6: [60, 71], 7: [72, 100] }
+        }
+      },
+      november: {
+        timezone0: {
+          'PAPER ONE': { 1: [0, 7], 2: [8, 10], 3: [11, 13], 4: [14, 16], 5: [17, 19], 6: [20, 21], 7: [22, 29] },
+          'PAPER TWO': { 1: [0, 7], 2: [8, 14], 3: [15, 24], 4: [25, 29], 5: [30, 34], 6: [35, 39], 7: [40, 50] },
+          'PAPER THREE': { 1: [0, 4], 2: [5, 8], 3: [9, 12], 4: [13, 15], 5: [16, 19], 6: [20, 22], 7: [23, 35] },
+          'INTERNAL ASSESSMENT': { 1: [0, 3], 2: [4, 6], 3: [7, 10], 4: [11, 13], 5: [14, 16], 6: [17, 19], 7: [20, 24] },
+          FINAL: { 1: [0, 15], 2: [16, 28], 3: [29, 43], 4: [44, 54], 5: [55, 64], 6: [65, 74], 7: [75, 100] }
+        }
+      }
+    }
   }
 };
 
@@ -1286,6 +1422,33 @@ const paperMaxScores = {
       'INTERNAL ASSESSMENT': 24
     }
   },
+  'COMPUTER_SCIENCE': {
+    HL: {
+      'PAPER ONE': 100,
+      'PAPER TWO': 65,
+      'PAPER THREE': 30,
+      'SOLUTION': 34
+    },
+    SL: {
+      'PAPER ONE': 70,
+      'PAPER TWO': 45,
+      'SOLUTION': 34
+    }
+  },
+ 'CHEMISTRY': {
+    HL: {
+      'PAPER ONE': 40,
+      'PAPER TWO': 90,
+      'PAPER THREE': 45,
+      'INTERNAL ASSESSMENT': 24
+    },
+    SL: {
+      'PAPER ONE': 30,
+      'PAPER TWO': 50,
+      'PAPER THREE': 35,
+      'INTERNAL ASSESSMENT': 24
+    }
+  },
   'ESS': {
     SL: {
       'PAPER ONE': 35,
@@ -1305,6 +1468,8 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     if (subject === 'DIGITAL SOCIETY') return 'HL';
     if (subject === 'ENGLISH B') return 'HL'; // Ensure ENGLISH B starts with HL
     if (subject === 'PHYSICS') return 'HL'; // Start with HL for Physics
+    if (subject === 'CHEMISTRY') return 'HL'; // Start with HL for Chemistry
+    if (subject === 'COMPUTER SCIENCE' || subject === 'COMPUTER_SCIENCE') return 'HL'; // Start with HL for Computer Science
     return 'HL';
   });
   const [selectedTimezone, setSelectedTimezone] = useState<'timezone0' | 'timezone1' | 'timezone2'>(() => {
@@ -1315,6 +1480,8 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     if (subject === 'ENGLISH B') return 'timezone1'; // ENGLISH B HL has timezone1 for both may and november
     if (subject === 'BIOLOGY') return 'timezone1'; // Start with timezone1 which is available for both HL and SL
     if (subject === 'PHYSICS') return 'timezone1'; // Start with timezone1 which is available for both HL and SL May
+    if (subject === 'CHEMISTRY') return 'timezone1'; // Start with timezone1 which is available for both HL and SL May
+    if (subject === 'COMPUTER SCIENCE' || subject === 'COMPUTER_SCIENCE') return 'timezone1'; // Start with timezone1 which is available for both HL and SL May
     return 'timezone1';
   });
   const [selectedSeason, setSelectedSeason] = useState<'november' | 'may'>(() => {
@@ -1329,6 +1496,8 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     if (subject === 'ENGLISH B') return 'may'; // Start with may which has more timezone options
     if (subject === 'BIOLOGY') return 'may'; // Start with may which has timezone1 and timezone2 for both HL and SL
     if (subject === 'PHYSICS') return 'may'; // Start with may which has timezone1 and timezone2 for both HL and SL
+    if (subject === 'CHEMISTRY') return 'may'; // Start with may which has timezone1 and timezone2 for both HL and SL
+    if (subject === 'COMPUTER SCIENCE' || subject === 'COMPUTER_SCIENCE') return 'may'; // Start with may which has timezone1 and timezone2 for both HL and SL
     return 'november';
   });
   const [scores, setScores] = useState<Record<string, number>>({});
@@ -1460,6 +1629,52 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     
     if (subject === 'PHYSICS') {
       // Physics combinations based on available grade boundaries
+      if (level === 'HL') {
+        if (season === 'may') {
+          return timezone === 'timezone1' || timezone === 'timezone2';
+        }
+        if (season === 'november') {
+          return timezone === 'timezone0'; // Only timezone0 available for HL November
+        }
+        return false;
+      }
+      if (level === 'SL') {
+        if (season === 'may') {
+          return timezone === 'timezone1' || timezone === 'timezone2';
+        }
+        if (season === 'november') {
+          return timezone === 'timezone0'; // Only timezone0 available for SL November
+        }
+        return false;
+      }
+      return false;
+    }
+    
+    if (subject === 'CHEMISTRY') {
+      // Chemistry combinations based on available grade boundaries
+      if (level === 'HL') {
+        if (season === 'may') {
+          return timezone === 'timezone1' || timezone === 'timezone2';
+        }
+        if (season === 'november') {
+          return timezone === 'timezone0'; // Only timezone0 available for HL November
+        }
+        return false;
+      }
+      if (level === 'SL') {
+        if (season === 'may') {
+          return timezone === 'timezone1' || timezone === 'timezone2';
+        }
+        if (season === 'november') {
+          return timezone === 'timezone0'; // Only timezone0 available for SL November
+        }
+        return false;
+      }
+      return false;
+    }
+    
+    if (subject === 'COMPUTER SCIENCE' || subject === 'COMPUTER_SCIENCE') {
+      // Computer Science combinations based on available grade boundaries
       if (level === 'HL') {
         if (season === 'may') {
           return timezone === 'timezone1' || timezone === 'timezone2';
