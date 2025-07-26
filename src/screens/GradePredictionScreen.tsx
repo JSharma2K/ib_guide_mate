@@ -189,6 +189,20 @@ const paperWeightages = {
       'PAPER THREE': 0.20,      // 24%
       'INTERNAL ASSESSMENT': 0.20 
     }
+  },
+  'PHYSICS': {
+    HL: {
+      'PAPER ONE': 0.20,        // 20%
+      'PAPER TWO': 0.36,        // 36%
+      'PAPER THREE': 0.24,      // 24%
+      'INTERNAL ASSESSMENT': 0.20  // 20%
+    },
+    SL: {
+      'PAPER ONE': 0.20,        // 20%
+      'PAPER TWO': 0.40,        // 36%
+      'PAPER THREE': 0.20,      // 24%
+      'INTERNAL ASSESSMENT': 0.20 
+    }
   }
 };
 
@@ -1034,6 +1048,62 @@ const gradeBoundaries = {
         },
       }
     }
+  },
+  'PHYSICS': {
+    HL: {
+      may: {
+        timezone1: {
+          'PAPER ONE': { 1: [0, 10], 2: [11, 12], 3: [13, 16], 4: [17, 20], 5: [21, 24], 6: [25, 28], 7: [29, 39] },
+          'PAPER TWO': { 1: [0, 7], 2: [8, 14], 3: [15, 25], 4: [26, 37], 5: [38, 48], 6: [49, 60], 7: [61, 90] },
+          'PAPER THREE': { 1: [0, 6], 2: [7, 12], 3: [13, 19], 4: [20, 24], 5: [25, 29], 6: [30, 34], 7: [35, 45] },
+          'INTERNAL ASSESSMENT': { 1: [0, 3], 2: [4, 6], 3: [7, 10], 4: [11, 13], 5: [14, 16], 6: [17, 19], 7: [20, 24] },
+          FINAL: { 1: [0, 14], 2: [15, 23], 3: [24, 37], 4: [38, 49], 5: [50, 60], 6: [61, 72], 7: [73, 100] }
+        },
+        timezone2: {
+          'PAPER ONE': { 1: [0, 10], 2: [11, 12], 3: [13, 14], 4: [15, 17], 5: [18, 20], 6: [21, 23], 7: [24, 39] },
+          'PAPER TWO': { 1: [0, 7], 2: [8, 15], 3: [16, 25], 4: [26, 34], 5: [35, 44], 6: [45, 53], 7: [54, 90] },
+          'PAPER THREE': { 1: [0, 5], 2: [6, 11], 3: [12, 22], 4: [23, 26], 5: [27, 31], 6: [32, 35], 7: [36, 45] },
+          'INTERNAL ASSESSMENT': { 1: [0, 3], 2: [4, 6], 3: [7, 10], 4: [11, 13], 5: [14, 16], 6: [17, 19], 7: [20, 24] },
+          FINAL: { 1: [0, 13], 2: [14, 23], 3: [24, 37], 4: [38, 47], 5: [48, 58], 6: [59, 67], 7: [68, 100] }
+        }
+      },
+      november: {
+        timezone0: {
+          'PAPER ONE': { 1: [0, 10], 2: [11, 12], 3: [13, 14], 4: [15, 17], 5: [18, 20], 6: [21, 24], 7: [25, 40] },
+          'PAPER TWO': { 1: [0, 8], 2: [9, 18], 3: [19, 29], 4: [30, 39], 5: [40, 50], 6: [51, 60], 7: [61, 90] },
+          'PAPER THREE': { 1: [0, 5], 2: [6, 10], 3: [11, 18], 4: [19, 22], 5: [23, 26], 6: [27, 30], 7: [31, 45] },
+          'INTERNAL ASSESSMENT': { 1: [0, 3], 2: [4, 6], 3: [7, 10], 4: [11, 13], 5: [14, 16], 6: [17, 19], 7: [20, 24] },
+          FINAL: { 1: [0, 13], 2: [14, 24], 3: [25, 37], 4: [38, 47], 5: [48, 57], 6: [58, 68], 7: [69, 100] }
+        }
+      }
+    },
+    SL: {
+      may: {
+        timezone1: {
+          'PAPER ONE': { 1: [0, 7], 2: [8, 8], 3: [9, 10], 4: [11, 13], 5: [14, 16], 6: [17, 20], 7: [21, 30] },
+          'PAPER TWO': { 1: [0, 4], 2: [5, 9], 3: [10, 18], 4: [19, 24], 5: [25, 30], 6: [31, 36], 7: [37, 50] },
+          'PAPER THREE': { 1: [0, 4], 2: [5, 9], 3: [10, 13], 4: [14, 17], 5: [18, 21], 6: [22, 25], 7: [26, 35] },
+          'INTERNAL ASSESSMENT': { 1: [0, 3], 2: [4, 6], 3: [7, 10], 4: [11, 13], 5: [14, 16], 6: [17, 19], 7: [20, 24] },
+          FINAL: { 1: [0, 13], 2: [14, 23], 3: [24, 37], 4: [38, 48], 5: [49, 60], 6: [61, 72], 7: [73, 100] }
+        },
+        timezone2: {
+          'PAPER ONE': { 1: [0, 7], 2: [8, 8], 3: [9, 10], 4: [11, 12], 5: [13, 14], 6: [15, 16], 7: [17, 29] },
+          'PAPER TWO': { 1: [0, 2], 2: [3, 6], 3: [7, 13], 4: [14, 18], 5: [19, 24], 6: [25, 29], 7: [30, 50] },
+          'PAPER THREE': { 1: [0, 4], 2: [5, 9], 3: [10, 15], 4: [16, 18], 5: [19, 21], 6: [22, 25], 7: [26, 35] },
+          'INTERNAL ASSESSMENT': { 1: [0, 3], 2: [4, 6], 3: [7, 10], 4: [11, 13], 5: [14, 16], 6: [17, 19], 7: [20, 24] },
+          FINAL: { 1: [0, 11], 2: [12, 20], 3: [21, 34], 4: [35, 44], 5: [45, 54], 6: [55, 64], 7: [65, 100] }
+        }
+      },
+      november: {
+        timezone0: {
+          'PAPER ONE': { 1: [0, 7], 2: [8, 9], 3: [10, 12], 4: [13, 14], 5: [15, 16], 6: [17, 18], 7: [19, 30] },
+          'PAPER TWO': { 1: [0, 4], 2: [5, 10], 3: [11, 16], 4: [17, 20], 5: [21, 24], 6: [25, 29], 7: [30, 46] },
+          'PAPER THREE': { 1: [0, 4], 2: [5, 9], 3: [10, 15], 4: [16, 18], 5: [19, 22], 6: [23, 26], 7: [27, 35] },
+          'INTERNAL ASSESSMENT': { 1: [0, 3], 2: [4, 6], 3: [7, 10], 4: [11, 13], 5: [14, 16], 6: [17, 19], 7: [20, 24] },
+          FINAL: { 1: [0, 13], 2: [14, 25], 3: [26, 39], 4: [40, 48], 5: [49, 57], 6: [58, 68], 7: [69, 100] }
+        }
+      }
+    }
   }
 };
 
@@ -1202,6 +1272,20 @@ const paperMaxScores = {
       'INTERNAL ASSESSMENT': 24
     }
   },
+  'PHYSICS': {
+    HL: {
+      'PAPER ONE': 40,
+      'PAPER TWO': 90,
+      'PAPER THREE': 45,
+      'INTERNAL ASSESSMENT': 24
+    },
+    SL: {
+      'PAPER ONE': 30,
+      'PAPER TWO': 50,
+      'PAPER THREE': 35,
+      'INTERNAL ASSESSMENT': 24
+    }
+  },
   'ESS': {
     SL: {
       'PAPER ONE': 35,
@@ -1220,6 +1304,7 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     if (subject === 'ECONOMICS') return 'HL';
     if (subject === 'DIGITAL SOCIETY') return 'HL';
     if (subject === 'ENGLISH B') return 'HL'; // Ensure ENGLISH B starts with HL
+    if (subject === 'PHYSICS') return 'HL'; // Start with HL for Physics
     return 'HL';
   });
   const [selectedTimezone, setSelectedTimezone] = useState<'timezone0' | 'timezone1' | 'timezone2'>(() => {
@@ -1229,6 +1314,7 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     if (subject === 'DIGITAL SOCIETY') return 'timezone1';
     if (subject === 'ENGLISH B') return 'timezone1'; // ENGLISH B HL has timezone1 for both may and november
     if (subject === 'BIOLOGY') return 'timezone1'; // Start with timezone1 which is available for both HL and SL
+    if (subject === 'PHYSICS') return 'timezone1'; // Start with timezone1 which is available for both HL and SL May
     return 'timezone1';
   });
   const [selectedSeason, setSelectedSeason] = useState<'november' | 'may'>(() => {
@@ -1242,6 +1328,7 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     if (subject === 'DIGITAL SOCIETY') return 'may';
     if (subject === 'ENGLISH B') return 'may'; // Start with may which has more timezone options
     if (subject === 'BIOLOGY') return 'may'; // Start with may which has timezone1 and timezone2 for both HL and SL
+    if (subject === 'PHYSICS') return 'may'; // Start with may which has timezone1 and timezone2 for both HL and SL
     return 'november';
   });
   const [scores, setScores] = useState<Record<string, number>>({});
@@ -1365,6 +1452,29 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
         }
         if (season === 'november') {
           return timezone === 'timezone1' || timezone === 'timezone2'; // timezone1 and timezone2 available for SL November
+        }
+        return false;
+      }
+      return false;
+    }
+    
+    if (subject === 'PHYSICS') {
+      // Physics combinations based on available grade boundaries
+      if (level === 'HL') {
+        if (season === 'may') {
+          return timezone === 'timezone1' || timezone === 'timezone2';
+        }
+        if (season === 'november') {
+          return timezone === 'timezone0'; // Only timezone0 available for HL November
+        }
+        return false;
+      }
+      if (level === 'SL') {
+        if (season === 'may') {
+          return timezone === 'timezone1' || timezone === 'timezone2';
+        }
+        if (season === 'november') {
+          return timezone === 'timezone0'; // Only timezone0 available for SL November
         }
         return false;
       }
