@@ -282,6 +282,19 @@ const paperWeightages = {
       'EXPLORING MUSIC IN CONTEXT': 0.3,
       'PRESENTING MUSIC': 0.4
     }
+  },
+  'THEATER': {
+    HL: {
+      'RESEARCH PRESENTATION': 0.2,
+      'COLLABORATIVE PROJECT': 0.25,
+      'SOLO THEATER PIECE': 0.35,
+      'PRODUCTION PROPOSAL': 0.20,
+    },
+    SL: {
+      'RESEARCH PRESENTATION': 0.3,
+      'COLLABORATIVE PROJECT': 0.4,
+      'PRODUCTION PROPOSAL': 0.3
+    }
   }
 };
 
@@ -1442,6 +1455,46 @@ const gradeBoundaries = {
         }
       }
     }
+  },
+  'THEATER': {
+    HL: {
+      may: {
+        timezone0: {
+          'COLLABORATIVE PROJECT': { 1: [0, 2], 2: [3, 4], 3: [5, 7], 4: [8, 11], 5: [12, 16], 6: [17, 20], 7: [21, 24] },
+          'PRODUCTION PROPOSAL': { 1: [0, 2], 2: [3, 5], 3: [6, 9], 4: [10, 12], 5: [13, 15], 6: [16, 18], 7: [19, 20] },
+          'RESEARCH PRESENTATION': { 1: [0, 2], 2: [3, 4], 3: [5, 7], 4: [8, 11], 5: [12, 15], 6: [16, 19], 7: [20, 24] },
+          'SOLO THEATRE PIECE': { 1: [0, 2], 2: [3, 5], 3: [6, 9], 4: [10, 12], 5: [13, 16], 6: [17, 19], 7: [20, 24] },
+          FINAL: { 1: [0, 9], 2: [10, 20], 3: [21, 35], 4: [36, 50], 5: [51, 67], 6: [68, 82], 7: [83, 100] }
+        }
+      },
+      november: {
+        timezone0: {
+          'COLLABORATIVE PROJECT': { 1: [0, 2], 2: [3, 4], 3: [5, 7], 4: [8, 11], 5: [12, 16], 6: [17, 20], 7: [21, 24] },
+          'PRODUCTION PROPOSAL': { 1: [0, 2], 2: [3, 5], 3: [6, 9], 4: [10, 12], 5: [13, 14], 6: [15, 17], 7: [18, 20] },
+          'RESEARCH PRESENTATION': { 1: [0, 2], 2: [3, 4], 3: [5, 7], 4: [8, 11], 5: [12, 15], 6: [16, 19], 7: [20, 24] },
+          'SOLO THEATRE PIECE': { 1: [0, 2], 2: [3, 5], 3: [6, 9], 4: [10, 13], 5: [14, 16], 6: [17, 20], 7: [21, 24] },
+          FINAL: { 1: [0, 9], 2: [10, 20], 3: [21, 35], 4: [36, 52], 5: [53, 66], 6: [67, 83], 7: [84, 100] }
+        }
+      }
+    },
+    SL: {
+      may: {
+        timezone0: {
+          'COLLABORATIVE PROJECT': { 1: [0, 2], 2: [3, 4], 3: [5, 7], 4: [8, 11], 5: [12, 16], 6: [17, 20], 7: [21, 24] },
+          'PRODUCTION PROPOSAL': { 1: [0, 2], 2: [3, 5], 3: [6, 9], 4: [10, 12], 5: [13, 15], 6: [16, 18], 7: [19, 20] },
+          'RESEARCH PRESENTATION': { 1: [0, 2], 2: [3, 4], 3: [5, 7], 4: [8, 11], 5: [12, 15], 6: [16, 19], 7: [20, 24] },
+          FINAL: { 1: [0, 9], 2: [10, 19], 3: [20, 34], 4: [35, 50], 5: [51, 68], 6: [69, 84], 7: [85, 100] }
+        }
+      },
+      november: {
+        timezone0: {
+          'COLLABORATIVE PROJECT': { 1: [0, 2], 2: [3, 4], 3: [5, 7], 4: [8, 11], 5: [12, 16], 6: [17, 20], 7: [21, 24] },
+          'PRODUCTION PROPOSAL': { 1: [0, 2], 2: [3, 5], 3: [6, 9], 4: [10, 12], 5: [13, 14], 6: [15, 17], 7: [18, 20] },
+          'RESEARCH PRESENTATION': { 1: [0, 2], 2: [3, 4], 3: [5, 7], 4: [8, 11], 5: [12, 15], 6: [16, 19], 7: [20, 24] },
+          FINAL: { 1: [0, 9], 2: [10, 19], 3: [20, 34], 4: [35, 50], 5: [51, 66], 6: [67, 83], 7: [84, 100] }
+        }
+      }
+    }
   }
 };
 
@@ -1703,6 +1756,19 @@ const paperMaxScores = {
       'PRESENTING MUSIC': 38
     }
   },
+  'THEATER': {
+    HL: {
+      'RESEARCH PRESENTATION': 24,
+      'COLLABORATIVE PROJECT': 24,
+      'SOLO THEATER PIECE': 24,
+      'PRODUCTION PROPOSAL': 20,
+    },
+    SL: {
+      'RESEARCH PRESENTATION': 24,
+      'COLLABORATIVE PROJECT': 24,
+      'PRODUCTION PROPOSAL': 20
+    }
+  },
   'ESS': {
     SL: {
       'PAPER ONE': 35,
@@ -1728,6 +1794,7 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     if (subject === 'DANCE') return 'HL'; // Start with HL for Dance
     if (subject === 'FILM') return 'HL'; // Start with HL for Film
     if (subject === 'MUSIC') return 'HL'; // Start with HL for Music
+    if (subject === 'THEATER') return 'HL'; // Start with HL for Theater
     return 'HL';
   });
   const [selectedTimezone, setSelectedTimezone] = useState<'timezone0' | 'timezone1' | 'timezone2'>(() => {
@@ -1744,6 +1811,7 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     if (subject === 'DANCE') return 'timezone0'; // Start with timezone0 which is the only available timezone for Dance
     if (subject === 'FILM') return 'timezone0'; // Start with timezone0 which is the only available timezone for Film
     if (subject === 'MUSIC') return 'timezone0'; // Start with timezone0 which is the only available timezone for Music
+    if (subject === 'THEATER') return 'timezone0'; // Start with timezone0 which is the only available timezone for Theater
     return 'timezone1';
   });
   const [selectedSeason, setSelectedSeason] = useState<'november' | 'may'>(() => {
@@ -1764,6 +1832,7 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     if (subject === 'DANCE') return 'may'; // Start with may which is the only available season for Dance
     if (subject === 'FILM') return 'may'; // Start with may which has timezone0 available for Film
     if (subject === 'MUSIC') return 'may'; // Start with may which has timezone0 available for Music
+    if (subject === 'THEATER') return 'may'; // Start with may which has timezone0 available for Theater
     return 'november';
   });
   const [scores, setScores] = useState<Record<string, number>>({});
@@ -2005,6 +2074,15 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     
     if (subject === 'MUSIC') {
       // Music combinations based on available grade boundaries
+      // Only May timezone0 and November timezone0 are available for both HL and SL
+      if (timezone === 'timezone0') {
+        return season === 'may' || season === 'november'; // Both HL and SL available for May and November timezone0
+      }
+      return false; // All other combinations are not available
+    }
+    
+    if (subject === 'THEATER') {
+      // Theater combinations based on available grade boundaries
       // Only May timezone0 and November timezone0 are available for both HL and SL
       if (timezone === 'timezone0') {
         return season === 'may' || season === 'november'; // Both HL and SL available for May and November timezone0
