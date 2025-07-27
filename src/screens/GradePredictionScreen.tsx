@@ -244,6 +244,31 @@ const paperWeightages = {
       'PAPER THREE': 0.25,
       'INTERNAL ASSESSMENT': 0.20
     }
+  },
+  'DANCE': {
+    HL: {
+      'DANCE INVESTIGATION': 0.25,
+      'COMPOSITION AND ANALYSIS': 0.35,
+      'DANCE PERFORMANCE': 0.40
+    },
+    SL: {
+      'DANCE INVESTIGATION': 0.20,
+      'COMPOSITION AND ANALYSIS': 0.40,
+      'DANCE PERFORMANCE': 0.40
+    }
+  },
+  'FILM': {
+    HL: {
+      'TEXTUAL ANALYSIS': 0.20,
+      'COMPARATIVE STUDY': 0.20,
+      'FILM PORTFOLIO': 0.25,
+      'COLLABORATIVE FILM PROJECT': 0.35
+    },
+    SL: {
+      'TEXTUAL ANALYSIS': 0.30,
+      'COMPARATIVE STUDY': 0.30,
+      'FILM PORTFOLIO': 0.40
+    }
   }
 };
 
@@ -1310,6 +1335,60 @@ const gradeBoundaries = {
         }
       }
     }
+  },
+  'DANCE': {
+    HL: {
+      may: {
+        timezone0: {
+          'COMPOSITION AND ANALYSIS': { 1: [0, 4], 2: [5, 9], 3: [10, 12], 4: [13, 16], 5: [17, 19], 6: [20, 23], 7: [24, 30] },
+          'DANCE INVESTIGATION': { 1: [0, 4], 2: [5, 9], 3: [10, 13], 4: [14, 16], 5: [17, 19], 6: [20, 22], 7: [23, 25] },
+          'DANCE PERFORMANCE': { 1: [0, 4], 2: [5, 8], 3: [9, 12], 4: [13, 14], 5: [15, 15], 6: [16, 17], 7: [18, 22] },
+          FINAL: { 1: [0, 16], 2: [17, 34], 3: [35, 49], 4: [50, 60], 5: [61, 68], 6: [69, 80], 7: [81, 100] }
+        }
+      },
+    },
+    SL: {
+      may: {
+        timezone0: {
+          'COMPOSITION AND ANALYSIS': { 1: [0, 3], 2: [4, 7], 3: [8, 9], 4: [10, 11], 5: [12, 14], 6: [15, 16], 7: [17, 20] },
+          'DANCE INVESTIGATION': { 1: [0, 3], 2: [4, 7], 3: [8, 11], 4: [12, 13], 5: [14, 15], 6: [16, 17], 7: [18, 20] },
+          'DANCE PERFORMANCE': { 1: [0, 4], 2: [5, 8], 3: [9, 12], 4: [13, 14], 5: [15, 15], 6: [16, 17], 7: [18, 22] },
+          FINAL: { 1: [0, 16], 2: [17, 36], 3: [37, 51], 4: [52, 60], 5: [61, 70], 6: [71, 80], 7: [81, 100] }
+        }
+      },
+    }
+  },
+  'FILM': {
+    HL: {
+      may: {
+        timezone0: {
+          'COLLABORATIVE FILM PROJECT': { 1: [0, 3], 2: [4, 7], 3: [8, 9], 4: [10, 13], 5: [14, 16], 6: [17, 20], 7: [21, 24] },
+          'COMPARATIVE STUDY': { 1: [0, 4], 2: [5, 8], 3: [9, 14], 4: [15, 19], 5: [20, 23], 6: [24, 28], 7: [29, 32] },
+          'FILM PORTFOLIO': { 1: [0, 3], 2: [4, 6], 3: [7, 9], 4: [10, 13], 5: [14, 16], 6: [17, 20], 7: [21, 24] },
+          'TEXTUAL ANALYSIS': { 1: [0, 4], 2: [5, 8], 3: [9, 11], 4: [12, 15], 5: [16, 19], 6: [20, 23], 7: [24, 28] },
+          FINAL: { 1: [0, 13], 2: [14, 27], 3: [28, 39], 4: [40, 55], 5: [56, 68], 6: [69, 84], 7: [85, 100] }
+        }
+      },
+      november: {
+        timezone0: {
+          'COLLABORATIVE FILM PROJECT': { 1: [0, 3], 2: [4, 6], 3: [7, 8], 4: [9, 11], 5: [12, 15], 6: [16, 18], 7: [19, 24] },
+          'COMPARATIVE STUDY': { 1: [0, 4], 2: [5, 8], 3: [9, 14], 4: [15, 18], 5: [19, 23], 6: [24, 27], 7: [28, 32] },
+          'FILM PORTFOLIO': { 1: [0, 3], 2: [4, 6], 3: [7, 9], 4: [10, 13], 5: [14, 16], 6: [17, 20], 7: [21, 24] },
+          'TEXTUAL ANALYSIS': { 1: [0, 4], 2: [5, 8], 3: [9, 11], 4: [12, 15], 5: [16, 19], 6: [20, 22], 7: [23, 28] },
+          FINAL: { 1: [0, 13], 2: [14, 26], 3: [27, 38], 4: [39, 52], 5: [53, 66], 6: [67, 80], 7: [81, 100] }
+        }
+      }
+    },
+    SL: {
+      may: {
+        timezone0: {
+          'COMPARATIVE STUDY': { 1: [0, 4], 2: [5, 8], 3: [9, 14], 4: [15, 19], 5: [20, 23], 6: [24, 28], 7: [29, 32] },
+          'FILM PORTFOLIO': { 1: [0, 3], 2: [4, 6], 3: [7, 9], 4: [10, 13], 5: [14, 16], 6: [17, 20], 7: [21, 24] },
+          'TEXTUAL ANALYSIS': { 1: [0, 4], 2: [5, 8], 3: [9, 11], 4: [12, 15], 5: [16, 19], 6: [20, 23], 7: [24, 28] },
+          FINAL: { 1: [0, 13], 2: [14, 26], 3: [27, 40], 4: [41, 56], 5: [57, 69], 6: [70, 84], 7: [85, 100] }
+        }
+      },
+    }
   }
 };
 
@@ -1533,6 +1612,31 @@ const paperMaxScores = {
       'INTERNAL ASSESSMENT': 24
     }
   },
+  'DANCE': {
+    HL: {
+      'DANCE INVESTIGATION': 25,
+      'COMPOSITION AND ANALYSIS': 30,
+      'DANCE PERFORMANCE': 22
+    },
+    SL: {
+      'DANCE INVESTIGATION': 20,
+      'COMPOSITION AND ANALYSIS': 20,
+      'DANCE PERFORMANCE': 22
+    }
+  },
+  'FILM': {
+    HL: {
+      'TEXTUAL ANALYSIS': 28,
+      'COMPARATIVE STUDY': 32,
+      'FILM PORTFOLIO': 24,
+      'COLLABORATIVE FILM PROJECT': 24
+    },
+    SL: {
+      'TEXTUAL ANALYSIS': 28,
+      'COMPARATIVE STUDY': 32,
+      'FILM PORTFOLIO': 24
+    }
+  },
   'ESS': {
     SL: {
       'PAPER ONE': 35,
@@ -1555,6 +1659,8 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     if (subject === 'CHEMISTRY') return 'HL'; // Start with HL for Chemistry
     if (subject === 'COMPUTER SCIENCE' || subject === 'COMPUTER_SCIENCE') return 'HL'; // Start with HL for Computer Science
     if (subject === 'SPORTS_EXERCISE_HEALTH_SCIENCE') return 'HL'; // Start with HL for Sports Exercise Health Science
+    if (subject === 'DANCE') return 'HL'; // Start with HL for Dance
+    if (subject === 'FILM') return 'HL'; // Start with HL for Film
     return 'HL';
   });
   const [selectedTimezone, setSelectedTimezone] = useState<'timezone0' | 'timezone1' | 'timezone2'>(() => {
@@ -1568,6 +1674,8 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     if (subject === 'CHEMISTRY') return 'timezone1'; // Start with timezone1 which is available for both HL and SL May
     if (subject === 'COMPUTER SCIENCE' || subject === 'COMPUTER_SCIENCE') return 'timezone1'; // Start with timezone1 which is available for both HL and SL May
     if (subject === 'SPORTS_EXERCISE_HEALTH_SCIENCE') return 'timezone1'; // Start with timezone1 which is available for both HL and SL May
+    if (subject === 'DANCE') return 'timezone0'; // Start with timezone0 which is the only available timezone for Dance
+    if (subject === 'FILM') return 'timezone0'; // Start with timezone0 which is the only available timezone for Film
     return 'timezone1';
   });
   const [selectedSeason, setSelectedSeason] = useState<'november' | 'may'>(() => {
@@ -1585,6 +1693,8 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     if (subject === 'CHEMISTRY') return 'may'; // Start with may which has timezone1 and timezone2 for both HL and SL
     if (subject === 'COMPUTER SCIENCE' || subject === 'COMPUTER_SCIENCE') return 'may'; // Start with may which has timezone1 and timezone2 for both HL and SL
     if (subject === 'SPORTS_EXERCISE_HEALTH_SCIENCE') return 'may'; // Start with may which has timezone1 and timezone2 for both HL and SL
+    if (subject === 'DANCE') return 'may'; // Start with may which is the only available season for Dance
+    if (subject === 'FILM') return 'may'; // Start with may which has timezone0 available for Film
     return 'november';
   });
   const [scores, setScores] = useState<Record<string, number>>({});
@@ -1804,6 +1914,24 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
         return false;
       }
       return false;
+    }
+    
+    if (subject === 'DANCE') {
+      // Dance combinations based on available grade boundaries
+      // Only May timezone0 is available for both HL and SL
+      if (season === 'may' && timezone === 'timezone0') {
+        return true; // Both HL and SL available for May timezone0
+      }
+      return false; // All other combinations are not available
+    }
+    
+    if (subject === 'FILM') {
+      // Film combinations based on available grade boundaries
+      // Only May timezone0 and November timezone0 are available for both HL and SL
+      if (timezone === 'timezone0') {
+        return season === 'may' || season === 'november'; // Both HL and SL available for May and November timezone0
+      }
+      return false; // All other combinations are not available
     }
     
     // For all other subjects, all combinations are available

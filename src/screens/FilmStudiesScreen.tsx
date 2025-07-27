@@ -496,7 +496,7 @@ Standard C: Communication and formatting (6 points)`,
           activeOpacity={0.8}
           onPress={() => {
             navigation.navigate('GradePrediction', { 
-              subject: 'FILM_STUDIES', 
+              subject: 'FILM', 
               userType: userType 
             });
           }}
