@@ -269,6 +269,19 @@ const paperWeightages = {
       'COMPARATIVE STUDY': 0.30,
       'FILM PORTFOLIO': 0.40
     }
+  },
+  'MUSIC': {
+    HL: {
+      'EXPERIMENTING WITH MUSIC': 0.2,
+      'EXPLORING MUSIC IN CONTEXT': 0.2,
+      'PRESENTING MUSIC': 0.3,
+      'THE CONTEMPORARY MUSIC-MAKER': 0.3
+    },
+    SL: {
+      'EXPERIMENTING WITH MUSIC': 0.3,
+      'EXPLORING MUSIC IN CONTEXT': 0.3,
+      'PRESENTING MUSIC': 0.4
+    }
   }
 };
 
@@ -1389,6 +1402,46 @@ const gradeBoundaries = {
         }
       },
     }
+  },
+  'MUSIC': {
+    HL: {
+      may: {
+        timezone0: {
+          'EXPERIMENTING WITH MUSIC': { 1: [0, 2], 2: [3, 4], 3: [5, 10], 4: [11, 14], 5: [15, 17], 6: [18, 21], 7: [22, 28] },
+          'EXPLORING MUSIC IN CONTEXT': { 1: [0, 2], 2: [3, 4], 3: [5, 7], 4: [8, 10], 5: [11, 13], 6: [14, 16], 7: [17, 24] },
+          'PRESENTING MUSIC': { 1: [0, 5], 2: [6, 10], 3: [11, 16], 4: [17, 21], 5: [22, 27], 6: [28, 32], 7: [33, 38] },
+          'THE CONTEMPORARY MUSIC-MAKER': { 1: [0, 3], 2: [4, 7], 3: [8, 12], 4: [13, 17], 5: [18, 23], 6: [24, 28], 7: [29, 32] },
+          FINAL: { 1: [0, 10], 2: [11, 21], 3: [22, 37], 4: [38, 51], 5: [52, 66], 6: [67, 80], 7: [81, 100] }
+        }
+      },
+      november: {
+        timezone0: {
+          'EXPERIMENTING WITH MUSIC': { 1: [0, 2], 2: [3, 4], 3: [5, 10], 4: [11, 14], 5: [15, 17], 6: [18, 21], 7: [22, 28] },
+          'EXPLORING MUSIC IN CONTEXT': { 1: [0, 2], 2: [3, 4], 3: [5, 8], 4: [9, 11], 5: [12, 14], 6: [15, 17], 7: [18, 24] },
+          'PRESENTING MUSIC': { 1: [0, 5], 2: [6, 10], 3: [11, 16], 4: [17, 21], 5: [22, 27], 6: [28, 32], 7: [33, 38] },
+          'THE CONTEMPORARY MUSIC-MAKER': { 1: [0, 3], 2: [4, 7], 3: [8, 12], 4: [13, 17], 5: [18, 22], 6: [23, 27], 7: [28, 32] },
+          FINAL: { 1: [0, 10], 2: [11, 21], 3: [22, 38], 4: [39, 52], 5: [53, 66], 6: [67, 80], 7: [81, 100] }
+        }
+      }
+    },
+    SL: {
+      may: {
+        timezone0: {
+          'EXPERIMENTING WITH MUSIC': { 1: [0, 2], 2: [3, 4], 3: [5, 10], 4: [11, 14], 5: [15, 17], 6: [18, 21], 7: [22, 28] },
+          'EXPLORING MUSIC IN CONTEXT': { 1: [0, 2], 2: [3, 4], 3: [5, 7], 4: [8, 10], 5: [11, 13], 6: [14, 16], 7: [17, 24] },
+          'PRESENTING MUSIC': { 1: [0, 5], 2: [6, 10], 3: [11, 16], 4: [17, 21], 5: [22, 27], 6: [28, 32], 7: [33, 38] },
+          FINAL: { 1: [0, 10], 2: [11, 20], 3: [21, 36], 4: [37, 50], 5: [51, 63], 6: [64, 76], 7: [77, 100] }
+        }
+      },
+      november: {
+        timezone0: {
+          'EXPERIMENTING WITH MUSIC': { 1: [0, 2], 2: [3, 4], 3: [5, 10], 4: [11, 14], 5: [15, 17], 6: [18, 21], 7: [22, 28] },
+          'EXPLORING MUSIC IN CONTEXT': { 1: [0, 2], 2: [3, 4], 3: [5, 8], 4: [9, 11], 5: [12, 14], 6: [15, 17], 7: [18, 24] },
+          'PRESENTING MUSIC': { 1: [0, 5], 2: [6, 10], 3: [11, 16], 4: [17, 21], 5: [22, 27], 6: [28, 32], 7: [33, 38] },
+          FINAL: { 1: [0, 10], 2: [11, 20], 3: [21, 38], 4: [39, 51], 5: [52, 64], 6: [65, 77], 7: [78, 100] }
+        }
+      }
+    }
   }
 };
 
@@ -1637,6 +1690,19 @@ const paperMaxScores = {
       'FILM PORTFOLIO': 24
     }
   },
+  'MUSIC': {
+    HL: {
+      'EXPERIMENTING WITH MUSIC': 28,
+      'EXPLORING MUSIC IN CONTEXT': 24,
+      'PRESENTING MUSIC': 38,
+      'THE CONTEMPORARY MUSIC-MAKER': 32
+    },
+    SL: {
+      'EXPERIMENTING WITH MUSIC': 28,
+      'EXPLORING MUSIC IN CONTEXT': 24,
+      'PRESENTING MUSIC': 38
+    }
+  },
   'ESS': {
     SL: {
       'PAPER ONE': 35,
@@ -1661,6 +1727,7 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     if (subject === 'SPORTS_EXERCISE_HEALTH_SCIENCE') return 'HL'; // Start with HL for Sports Exercise Health Science
     if (subject === 'DANCE') return 'HL'; // Start with HL for Dance
     if (subject === 'FILM') return 'HL'; // Start with HL for Film
+    if (subject === 'MUSIC') return 'HL'; // Start with HL for Music
     return 'HL';
   });
   const [selectedTimezone, setSelectedTimezone] = useState<'timezone0' | 'timezone1' | 'timezone2'>(() => {
@@ -1676,6 +1743,7 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     if (subject === 'SPORTS_EXERCISE_HEALTH_SCIENCE') return 'timezone1'; // Start with timezone1 which is available for both HL and SL May
     if (subject === 'DANCE') return 'timezone0'; // Start with timezone0 which is the only available timezone for Dance
     if (subject === 'FILM') return 'timezone0'; // Start with timezone0 which is the only available timezone for Film
+    if (subject === 'MUSIC') return 'timezone0'; // Start with timezone0 which is the only available timezone for Music
     return 'timezone1';
   });
   const [selectedSeason, setSelectedSeason] = useState<'november' | 'may'>(() => {
@@ -1695,6 +1763,7 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     if (subject === 'SPORTS_EXERCISE_HEALTH_SCIENCE') return 'may'; // Start with may which has timezone1 and timezone2 for both HL and SL
     if (subject === 'DANCE') return 'may'; // Start with may which is the only available season for Dance
     if (subject === 'FILM') return 'may'; // Start with may which has timezone0 available for Film
+    if (subject === 'MUSIC') return 'may'; // Start with may which has timezone0 available for Music
     return 'november';
   });
   const [scores, setScores] = useState<Record<string, number>>({});
@@ -1927,6 +1996,15 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     
     if (subject === 'FILM') {
       // Film combinations based on available grade boundaries
+      // Only May timezone0 and November timezone0 are available for both HL and SL
+      if (timezone === 'timezone0') {
+        return season === 'may' || season === 'november'; // Both HL and SL available for May and November timezone0
+      }
+      return false; // All other combinations are not available
+    }
+    
+    if (subject === 'MUSIC') {
+      // Music combinations based on available grade boundaries
       // Only May timezone0 and November timezone0 are available for both HL and SL
       if (timezone === 'timezone0') {
         return season === 'may' || season === 'november'; // Both HL and SL available for May and November timezone0
