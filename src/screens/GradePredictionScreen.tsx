@@ -295,6 +295,18 @@ const paperWeightages = {
       'COLLABORATIVE PROJECT': 0.4,
       'PRODUCTION PROPOSAL': 0.3
     }
+  },
+  'VISUAL_ARTS': {
+    HL: {
+      'COMPARATIVE STUDY': 0.20,
+      'PROCESS PORTFOLIO': 0.40,
+      'EXHIBITION': 0.40
+    },
+    SL: {
+      'COMPARATIVE STUDY': 0.20,
+      'PROCESS PORTFOLIO': 0.40,
+      'EXHIBITION': 0.40
+    }
   }
 };
 
@@ -1495,6 +1507,45 @@ const gradeBoundaries = {
         }
       }
     }
+  },
+  'VISUAL_ARTS': {
+    HL: {
+      may: {
+
+        timezone0: {
+          'COMPARATIVE STUDY': { 1: [0, 5], 2: [6, 11], 3: [12, 17], 4: [18, 23], 5: [24, 29], 6: [30, 35], 7: [36, 42] },
+          'EXHIBITION': { 1: [0, 3], 2: [4, 6], 3: [7, 12], 4: [13, 16], 5: [17, 20], 6: [21, 24], 7: [25, 30] },
+          'PROCESS PORTFOLIO': { 1: [0, 3], 2: [4, 7], 3: [8, 12], 4: [13, 17], 5: [18, 22], 6: [23, 27], 7: [28, 34] },
+          FINAL: { 1: [0, 10], 2: [11, 21], 3: [22, 38], 4: [39, 52], 5: [53, 66], 6: [67, 80], 7: [81, 100] }
+        }
+      },
+      november: {
+        timezone0: {
+          'COMPARATIVE STUDY': { 1: [0, 5], 2: [6, 10], 3: [11, 16], 4: [17, 22], 5: [23, 27], 6: [28, 34], 7: [35, 42] },
+          'EXHIBITION': { 1: [0, 3], 2: [4, 6], 3: [7, 12], 4: [13, 16], 5: [17, 20], 6: [21, 24], 7: [25, 30] },
+          'PROCESS PORTFOLIO': { 1: [0, 2], 2: [3, 5], 3: [6, 12], 4: [13, 17], 5: [18, 22], 6: [23, 27], 7: [28, 34] },
+          FINAL: { 1: [0, 9], 2: [10, 19], 3: [20, 38], 4: [39, 52], 5: [53, 65], 6: [66, 80], 7: [81, 100] }
+        }
+      }
+    },
+    SL: {
+      may: {
+        timezone0: {
+          'COMPARATIVE STUDY': { 1: [0, 4], 2: [5, 9], 3: [10, 14], 4: [15, 18], 5: [19, 22], 6: [23, 26], 7: [27, 30] },
+          'EXHIBITION': { 1: [0, 3], 2: [4, 6], 3: [7, 10], 4: [11, 15], 5: [16, 19], 6: [20, 24], 7: [25, 30] },
+          'PROCESS PORTFOLIO': { 1: [0, 3], 2: [4, 6], 3: [7, 9], 4: [10, 15], 5: [16, 20], 6: [21, 26], 7: [27, 34] },
+          FINAL: { 1: [0, 10], 2: [11, 21], 3: [22, 33], 4: [34, 50], 5: [51, 64], 6: [65, 80], 7: [81, 100] }
+        }
+      },
+      november: {
+        timezone0: {
+          'COMPARATIVE STUDY': { 1: [0, 4], 2: [5, 9], 3: [10, 14], 4: [15, 18], 5: [19, 22], 6: [23, 26], 7: [27, 30] },
+          'EXHIBITION': { 1: [0, 3], 2: [4, 6], 3: [7, 10], 4: [11, 15], 5: [16, 19], 6: [20, 24], 7: [25, 30] },
+          'PROCESS PORTFOLIO': { 1: [0, 3], 2: [4, 6], 3: [7, 9], 4: [10, 14], 5: [15, 20], 6: [21, 25], 7: [26, 34] },
+          FINAL: { 1: [0, 10], 2: [11, 21], 3: [22, 33], 4: [34, 48], 5: [49, 64], 6: [65, 79], 7: [80, 100] }
+        }
+      }
+    }
   }
 };
 
@@ -1769,6 +1820,18 @@ const paperMaxScores = {
       'PRODUCTION PROPOSAL': 20
     }
   },
+  'VISUAL_ARTS': {
+    HL: {
+      'COMPARATIVE STUDY': 42,
+      'PROCESS PORTFOLIO': 34,
+      'EXHIBITION': 30
+    },
+    SL: {
+      'COMPARATIVE STUDY': 30,
+      'PROCESS PORTFOLIO': 34,
+      'EXHIBITION': 30
+    }
+  },
   'ESS': {
     SL: {
       'PAPER ONE': 35,
@@ -1795,6 +1858,7 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     if (subject === 'FILM') return 'HL'; // Start with HL for Film
     if (subject === 'MUSIC') return 'HL'; // Start with HL for Music
     if (subject === 'THEATER') return 'HL'; // Start with HL for Theater
+    if (subject === 'VISUAL_ARTS') return 'HL'; // Start with HL for Visual Arts
     return 'HL';
   });
   const [selectedTimezone, setSelectedTimezone] = useState<'timezone0' | 'timezone1' | 'timezone2'>(() => {
@@ -1812,6 +1876,7 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     if (subject === 'FILM') return 'timezone0'; // Start with timezone0 which is the only available timezone for Film
     if (subject === 'MUSIC') return 'timezone0'; // Start with timezone0 which is the only available timezone for Music
     if (subject === 'THEATER') return 'timezone0'; // Start with timezone0 which is the only available timezone for Theater
+    if (subject === 'VISUAL_ARTS') return 'timezone0'; // Start with timezone0 which is the only available timezone for Visual Arts
     return 'timezone1';
   });
   const [selectedSeason, setSelectedSeason] = useState<'november' | 'may'>(() => {
@@ -1833,6 +1898,7 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     if (subject === 'FILM') return 'may'; // Start with may which has timezone0 available for Film
     if (subject === 'MUSIC') return 'may'; // Start with may which has timezone0 available for Music
     if (subject === 'THEATER') return 'may'; // Start with may which has timezone0 available for Theater
+    if (subject === 'VISUAL_ARTS') return 'may'; // Start with may which has timezone0 available for Visual Arts
     return 'november';
   });
   const [scores, setScores] = useState<Record<string, number>>({});
@@ -2083,6 +2149,15 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     
     if (subject === 'THEATER') {
       // Theater combinations based on available grade boundaries
+      // Only May timezone0 and November timezone0 are available for both HL and SL
+      if (timezone === 'timezone0') {
+        return season === 'may' || season === 'november'; // Both HL and SL available for May and November timezone0
+      }
+      return false; // All other combinations are not available
+    }
+    
+    if (subject === 'VISUAL_ARTS') {
+      // Visual Arts combinations based on available grade boundaries
       // Only May timezone0 and November timezone0 are available for both HL and SL
       if (timezone === 'timezone0') {
         return season === 'may' || season === 'november'; // Both HL and SL available for May and November timezone0

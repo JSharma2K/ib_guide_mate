@@ -182,12 +182,16 @@ const EnvironmentalSystemsScreen = ({ navigation, route }: { navigation: any; ro
       'essTips': essTipsAnimation,
     }[section];
     if (!animationValue) return null;
+    
+    // Increase max height for detailed rubrics to accommodate all tables
+    const maxHeight = section === 'detailedRubrics' ? 6000 : 3000;
+    
     return (
       <Animated.View
         style={{
           maxHeight: animationValue.interpolate({
             inputRange: [0, 1],
-            outputRange: [0, 3000],
+            outputRange: [0, maxHeight],
           }),
           opacity: animationValue,
           overflow: 'hidden',
@@ -366,6 +370,171 @@ const EnvironmentalSystemsScreen = ({ navigation, route }: { navigation: any; ro
                               </View>
                             ))}
                           </View>
+                          
+                          {/* Criterion A: Research question and inquiry Table */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Criterion A: Research Question and Inquiry (Max 4 marks)</Text>
+                          
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>Level Descriptor</Text>
+                            </View>
+                                                         {[
+                               { score: '0', description: 'The report does not reach a standard described by the descriptors below.' },
+                               { score: '1-2', description: 'Talks about a nearby or worldwide environmental topic with mistakes or missing parts.\n• Asks a main question but it is not clear or does not fit well with the topic.\n• Shows little background reading or preparation.' },
+                               { score: '3-4', description: 'Clearly explains a nearby or worldwide environmental topic with good background reading.\n• Asks a clear main question that directly relates to the chosen topic or problem.\n• Strong connection between the main question and the environmental situation.' }
+                             ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText(row.score, highlightedText)}</Text>
+                                <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', lineHeight: 18 }}>{highlightText(row.description, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+                          
+                          {/* Criterion B: Strategy Table */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Criterion B: Strategy (Max 4 marks)</Text>
+                          
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>Level Descriptor</Text>
+                            </View>
+                                                         {[
+                               { score: '0', description: 'The report does not reach a standard described by the descriptors below.' },
+                               { score: '1-2', description: 'Mentions a solution for an environmental problem connected to the main question.\n• Points out disagreements between different viewpoints (money, social, cultural, political, or environmental concerns).\n• Shows basic awareness of what different groups of people think.' },
+                               { score: '3-4', description: 'Explains a solution for the problem with good reasons why it would work.\n• Clearly shows how the solution creates disagreements between different viewpoints.\n• Shows understanding of complicated relationships between different groups and what they give up.' }
+                             ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText(row.score, highlightedText)}</Text>
+                                <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', lineHeight: 18 }}>{highlightText(row.description, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+                          
+                          {/* Criterion C: Method Table */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Criterion C: Method (Max 4 marks)</Text>
+                          
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>Level Descriptor</Text>
+                            </View>
+                                                         {[
+                               { score: '0', description: 'The report does not reach a standard described by the descriptors below.' },
+                               { score: '1-2', description: 'Explains a process that others cannot easily follow or copy.\n• Does not collect enough information to properly answer the main question.\n• The steps are unclear and lack important details needed to repeat the work.' },
+                               { score: '3-4', description: 'Explains a clear process that others can follow step-by-step.\n• Collects enough information to thoroughly answer the main question.\n• The steps are detailed and well-organized for others to understand and repeat.' }
+                             ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText(row.score, highlightedText)}</Text>
+                                <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', lineHeight: 18 }}>{highlightText(row.description, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+                          
+                          {/* Criterion D: Treatment of data Table */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Criterion D: Working with Data (Max 6 marks)</Text>
+                          
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>Level Descriptor</Text>
+                            </View>
+                            {[
+                              { score: '0', description: 'The report does not reach a standard described by the descriptors below.' },
+                              { score: '1-2', description: 'Writing is hard to understand.\n• Working with information contains big mistakes.\n• Results do not answer the main question.' },
+                              { score: '3-4', description: 'Writing is easy to understand.\n• Working with information has small mistakes.\n• Results do not completely answer the main question.' },
+                              { score: '5-6', description: 'Writing is easy to understand and has good detail.\n• Working with information is done correctly.\n• Results completely answer the main question.' }
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText(row.score, highlightedText)}</Text>
+                                <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', lineHeight: 18 }}>{highlightText(row.description, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+                          
+                          {/* Criterion E: Analysis and conclusion Table */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Criterion E: Understanding Results and Final Thoughts (Max 6 marks)</Text>
+                          
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>Level Descriptor</Text>
+                            </View>
+                            {[
+                              { score: '0', description: 'The report does not reach a standard described by the descriptors below.' },
+                              { score: '1-2', description: 'Points out patterns or trends in the information.\n• Final thoughts are not backed up by the work done or do not answer the main question.\n• Limited understanding of what the results mean.' },
+                              { score: '3-4', description: 'Explains trends and discusses problems with accuracy, reliability, and uncertainty.\n• Final thoughts are somewhat backed up by the work.\n• Shows partial understanding of result limitations and meanings.' },
+                              { score: '5-6', description: 'Clearly explains trends and fully discusses how accurate and reliable the results are.\n• Final thoughts are completely backed up by the detailed work done.\n• Shows full understanding of what results mean and their limitations.' }
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText(row.score, highlightedText)}</Text>
+                                <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', lineHeight: 18 }}>{highlightText(row.description, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+                          
+                          {/* Criterion F: Evaluation Table */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Criterion F: Looking Back and Moving Forward (Max 6 marks)</Text>
+                          
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>Level Descriptor</Text>
+                            </View>
+                            {[
+                              { score: '0', description: 'The report does not reach a standard described by the descriptors below.' },
+                              { score: '1-2', description: 'Mentions general problems with the approach used.\n• Lists basic ways to make the work better.\n• Points out unanswered questions without much detail.' },
+                              { score: '3-4', description: 'Explains problems and ways to improve the work with some detail.\n• Lists unanswered questions that came up during the study.\n• Shows understanding of what could be done differently.' },
+                              { score: '5-6', description: 'Carefully examines specific problems and suggests detailed improvements.\n• Clearly explains how unanswered questions affect the final thoughts.\n• Shows deep understanding of study limitations and future research possibilities.' }
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText(row.score, highlightedText)}</Text>
+                                <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', lineHeight: 18 }}>{highlightText(row.description, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+                          
+                          {/* External Assessment Markbands Table */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>External Assessment Markbands – SL (Paper 2 Section B Essay)</Text>
+                          
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>Level Descriptor</Text>
+                            </View>
+                                                         {[
+                               { score: '0', description: 'The work does not reach a standard described by the descriptors below.' },
+                               { score: '1-3', description: 'Minimal understanding of environmental concepts or systems issues.\n• Disconnected statements with poor structure.\n• Weak terminology usage and unclear examples.\n• Absent or vague conclusions.' },
+                               { score: '4-6', description: 'Basic understanding with appropriate terminology and examples.\n• Limited explanations with some structural organization.\n• Some balanced perspectives and basic conclusions presented.' },
+                               { score: '7-9', description: 'Strong understanding with precise terminology and relevant examples.\n• Well-developed analysis with logical structure.\n• Balanced evaluation leading to sound conclusions.' }
+                             ].map((row, idx) => (
+                               <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                 <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText(row.score, highlightedText)}</Text>
+                                 <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', lineHeight: 18 }}>{highlightText(row.description, highlightedText)}</Text>
+                               </View>
+                             ))}
+                           </View>
+                           
+                           {/* External Assessment Markbands HL Table */}
+                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>External Assessment Markbands – HL (Paper 2 Section B Essay)</Text>
+                           
+                           <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                             <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                               <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Marks</Text>
+                               <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>Level Descriptor</Text>
+                             </View>
+                             {[
+                               { score: '0', description: 'The work does not reach a standard described by the descriptors below.' },
+                               { score: '1-3', description: 'Minimal understanding of environmental systems concepts or HL content.\n• Fragmented knowledge with poor structure.\n• Weak examples and unsupported judgments.' },
+                               { score: '4-6', description: 'Basic understanding with appropriate terminology and some examples.\n• Limited explanations with basic organization.\n• Some conclusions supported by limited arguments.' },
+                               { score: '7-9', description: 'Strong understanding with precise terminology and well-explained examples.\n• Thorough analysis with logical structure.\n• Well-supported and reflective conclusions.' }
+                             ].map((row, idx) => (
+                               <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                 <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText(row.score, highlightedText)}</Text>
+                                 <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', lineHeight: 18 }}>{highlightText(row.description, highlightedText)}</Text>
+                               </View>
+                             ))}
+                           </View>
                           
                           <Text style={{ 
                             fontSize: 11, 

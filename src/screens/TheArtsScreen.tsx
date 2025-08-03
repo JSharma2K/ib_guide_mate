@@ -53,7 +53,7 @@ const THE_ARTS_SUBJECTS = [
     key: 'visualarts',
     icon: 'edit-3',
     title: 'Visual Arts',
-    subtitle: 'Creative expression through visual media',
+    subtitle: 'Creative visual expression',
     color: '#B6C7F7',
     group: 'arts',
   },

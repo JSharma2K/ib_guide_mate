@@ -182,12 +182,16 @@ const GeographyScreen = ({ navigation, route }: { navigation: any; route: any })
       'geographyTips': geographyTipsAnimation,
     }[section];
     if (!animationValue) return null;
+    
+    // Increase max height for detailed rubrics to accommodate all tables
+    const maxHeight = section === 'detailedRubrics' ? 6000 : 3000;
+    
     return (
       <Animated.View
         style={{
           maxHeight: animationValue.interpolate({
             inputRange: [0, 1],
-            outputRange: [0, 3000],
+            outputRange: [0, maxHeight],
           }),
           opacity: animationValue,
           overflow: 'hidden',
@@ -366,6 +370,73 @@ const GeographyScreen = ({ navigation, route }: { navigation: any; route: any })
                               </View>
                             ))}
                           </View>
+                          
+                          {/* Additional Assessment Table - Paper Marking Scheme */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Paper Assessment Framework (Max Score: 10)</Text>
+                          
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Score Range</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>Performance Indicators</Text>
+                            </View>
+                            {[
+                              { score: '0', description: 'Work fails to meet any assessment standards outlined below.' },
+                              { score: '1-2', description: 'Response lacks focus and structure, with minimal relevant content.\n• Contains brief, disconnected statements\n• Shows no clear analytical approach\n• Lacks appropriate geographic terminology' },
+                              { score: '3-4', description: 'General response with limited development and weak supporting evidence.\n• Includes basic information with poor organization\n• Minimal use of geographic concepts and terminology\n• Limited analytical depth' },
+                              { score: '5-6', description: 'Addresses the question partially with some relevant analysis.\n• Shows limited evaluation and reasoning\n• Basic use of geographic terminology\n• Some organization present but inconsistent' },
+                              { score: '7-8', description: 'Comprehensive response with strong analytical content.\n• Clear conclusions supported by evidence\n• Appropriate use of geographic concepts\n• Well-structured argument with some evaluation' },
+                              { score: '9-10', description: 'Thorough, well-developed response demonstrating deep understanding.\n• Sophisticated analysis with multiple perspectives\n• Excellent use of geographic terminology\n• Clear structure with strong evaluative conclusions' }
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText(row.score, highlightedText)}</Text>
+                                <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', lineHeight: 18 }}>{highlightText(row.description, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+                          
+                          {/* Paper 3 HL Assessment Table */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Paper 3 HL - Extended Response Assessment (Max Score: 12)</Text>
+                          
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Score Range</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>Performance Characteristics</Text>
+                            </View>
+                                     {[
+           { score: '0', description: 'Work does not meet the minimum standards described below.' },
+           { score: '1-3', description: 'Basic response with significant limitations in scope and development.\n• Contains unconnected factual information\n• Lacks synthesis and evaluative thinking\n• Poor paragraph organization and flow' },
+           { score: '4-6', description: 'Partially developed response addressing some aspects of the question.\n• Combines relevant and irrelevant supporting material\n• Shows minimal synthesis with basic conclusions\n• Inconsistent structural organization' },
+           { score: '7-9', description: 'Well-developed response covering most question requirements with analytical depth.\n• Presents balanced arguments with some brief development\n• Uses mostly accurate and relevant supporting evidence\n• Shows some paragraph connectivity and logical flow' },
+           { score: '10-12', description: 'Comprehensive response fully addressing the question with sophisticated analysis.\n• Demonstrates integrated evidence with clear, well-reasoned arguments\n• Excellent structural organization with strong paragraph cohesion\n• Note: Advanced synthesis not required at this level' }
+         ].map((row, idx) => (
+           <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+             <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText(row.score, highlightedText)}</Text>
+             <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', lineHeight: 18 }}>{highlightText(row.description, highlightedText)}</Text>
+           </View>
+         ))}
+       </View>
+       
+       {/* Paper 3 HL - Part B Assessment Table */}
+       <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Paper 3 (HL) - Part B Assessment (Max Mark: 16)</Text>
+       
+       <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+         <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+           <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Marks</Text>
+           <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>Level Descriptor</Text>
+         </View>
+         {[
+           { score: '0', description: 'The work does not reach a standard described by the descriptors below.' },
+           { score: '1-4', description: 'General, lacks focus and structure.\n• Unconnected facts, no synthesis.\n• Weak or no conclusion.' },
+           { score: '5-8', description: 'Partially addresses the question with limited links.\n• Some valid but weak perspectives.\n• Basic grouping of ideas.' },
+           { score: '9-12', description: 'Addresses most of the question, some evaluation.\n• Multiple guide links listed but not integrated.\n• Good evidence, but paragraph connections weak.' },
+           { score: '13-16', description: 'Fully addresses question with evaluated analysis.\n• Logical flow, linked paragraphs.\n• Clear opinion supported by evidence.\n• Explicit links to guide and perspectives.' }
+         ].map((row, idx) => (
+           <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+             <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText(row.score, highlightedText)}</Text>
+             <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', lineHeight: 18 }}>{highlightText(row.description, highlightedText)}</Text>
+           </View>
+         ))}
+       </View>
                           
                           <Text style={{ 
                             fontSize: 11, 
