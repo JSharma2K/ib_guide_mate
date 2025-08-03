@@ -182,12 +182,16 @@ const DigitalSocietyScreen = ({ navigation, route }: { navigation: any; route: a
       'digitalSocietyTips': digitalSocietyTipsAnimation,
     }[section];
     if (!animationValue) return null;
+    
+    // Increase max height for detailed rubrics to accommodate all tables
+    const maxHeight = section === 'detailedRubrics' ? 7000 : 3000;
+    
     return (
       <Animated.View
         style={{
           maxHeight: animationValue.interpolate({
             inputRange: [0, 1],
-            outputRange: [0, 3000],
+            outputRange: [0, maxHeight],
           }),
           opacity: animationValue,
           overflow: 'hidden',
@@ -364,16 +368,233 @@ const DigitalSocietyScreen = ({ navigation, route }: { navigation: any; route: a
                             </View>
                           </View>
                           
-                          <Text style={{ 
-                            fontSize: 11, 
-                            color: 'rgba(255, 255, 255, 0.5)', 
-                            fontFamily: 'ScopeOne-Regular', 
-                            marginTop: 16, 
-                            textAlign: 'center',
-                            fontStyle: 'italic'
-                          }}>
-                            *This is interpreted material for educational guidance and not official assessment criteria.
-                          </Text>
+                          {/* SL Paper 1 Structure Table */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>SL Paper 1 Test Layout</Text>
+                          
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.5, padding: 8 }}>Section / Points</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Skill Level</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 2, padding: 8 }}>What You Need to Do</Text>
+                            </View>
+                            {[
+                              { part: 'Part A / 6 points', level: 'Basic', description: 'Show what you know and understand. Questions might be split into smaller parts.' },
+                              { part: 'Part B / 6 points', level: 'Apply', description: 'Use what you know to examine and break down information. Questions might be split into smaller parts.' },
+                              { part: 'Part C / 8 points', level: 'Judge', description: 'Make judgments and combine different ideas together.' }
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.part, highlightedText)}</Text>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText(row.level, highlightedText)}</Text>
+                                <Text style={{ flex: 2, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', lineHeight: 18 }}>{highlightText(row.description, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+                          
+                          {/* SL/HL Paper 2 Structure Table */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>SL/HL Paper 2 Test Layout</Text>
+                          
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.5, padding: 8 }}>Question / Points</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Skill Level</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 2, padding: 8 }}>What You Need to Do</Text>
+                            </View>
+                            {[
+                              { question: 'Question 1 / 2 points', level: 'Basic', description: 'Show what you know and understand about the given material. You might need to identify claims or explain visuals and charts.' },
+                              { question: 'Question 2 / 4 points', level: 'Apply', description: 'Use and examine information from the given material. You might need to analyze word choices or explain claims.' },
+                              { question: 'Question 3 / 6 points', level: 'Judge', description: 'Compare and contrast two different sources. You might need to discuss different viewpoints, claims, and what you learned in class.' },
+                              { question: 'Question 4 / 12 points', level: 'Judge', description: 'Make judgments and combine sources with what you learned in class.' }
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.question, highlightedText)}</Text>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText(row.level, highlightedText)}</Text>
+                                <Text style={{ flex: 2, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', lineHeight: 18 }}>{highlightText(row.description, highlightedText)}</Text>
+                              </View>
+                            ))}
+                                                     </View>
+                           
+                           {/* HL Paper 1 Section B Structure Table */}
+                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>HL Paper 1 Section B Test Layout</Text>
+                           
+                           <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                             <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                               <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Points</Text>
+                               <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Skill Level</Text>
+                               <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 2.5, padding: 8 }}>What You Need to Do</Text>
+                             </View>
+                             {[
+                               { marks: '12 points', level: 'Judge', description: 'Write a longer answer that requires making judgments and combining ideas with opposing arguments. May include given materials.' }
+                             ].map((row, idx) => (
+                               <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                 <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText(row.marks, highlightedText)}</Text>
+                                 <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText(row.level, highlightedText)}</Text>
+                                 <Text style={{ flex: 2.5, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', lineHeight: 18 }}>{highlightText(row.description, highlightedText)}</Text>
+                               </View>
+                             ))}
+                           </View>
+                           
+                           {/* HL Paper 3 Structure Table */}
+                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>HL Paper 3 Test Layout</Text>
+                           
+                           <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                             <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                               <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.5, padding: 8 }}>Question / Points</Text>
+                               <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Skill Level</Text>
+                               <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 2, padding: 8 }}>What You Need to Do</Text>
+                             </View>
+                             {[
+                               { question: 'Question 1 / 4 points', level: 'Basic', description: 'Show what you know and understand about future challenges or solutions.' },
+                               { question: 'Question 2 / 6 points', level: 'Apply', description: 'Use and examine information about future challenges or solutions.' },
+                               { question: 'Question 3 / 8 points', level: 'Judge', description: 'Make judgments about future challenges or solutions.' },
+                               { question: 'Question 4 / 12 points', level: 'Judge', description: 'Give suggestions for future actions on challenges or solutions.' }
+                             ].map((row, idx) => (
+                               <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                 <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.question, highlightedText)}</Text>
+                                 <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText(row.level, highlightedText)}</Text>
+                                 <Text style={{ flex: 2, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', lineHeight: 18 }}>{highlightText(row.description, highlightedText)}</Text>
+                               </View>
+                             ))}
+                                                       </View>
+                            
+                            {/* IA Overview Table */}
+                            <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Digital Society - Project Overview</Text>
+                            
+                            <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                              <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                                <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.5, padding: 8 }}>Area</Text>
+                                <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.5, padding: 8 }}>Project Part</Text>
+                                <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Points</Text>
+                              </View>
+                              {[
+                                { criterion: 'A: Main Focus', element: 'Research process document', marks: '3' },
+                                { criterion: 'B: Ideas and Viewpoints', element: 'Research process document', marks: '6' },
+                                { criterion: 'C: Examining and Judging', element: 'Presentation', marks: '6' },
+                                { criterion: 'D: Final Thoughts', element: 'Presentation', marks: '6' },
+                                { criterion: 'E: Sharing Your Work', element: 'Presentation', marks: '3' }
+                              ].map((row, idx) => (
+                                <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                  <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.criterion, highlightedText)}</Text>
+                                  <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.element, highlightedText)}</Text>
+                                  <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText(row.marks, highlightedText)}</Text>
+                                </View>
+                              ))}
+                            </View>
+                            
+                            {/* Criterion A: Inquiry Focus Table */}
+                            <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Criterion A: Main Focus</Text>
+                            
+                            <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                              <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                                <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Points</Text>
+                                <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>What You Need to Show</Text>
+                              </View>
+                              {[
+                                { mark: '0', description: 'The work does not reach a standard described by the descriptors below.' },
+                                { mark: '1', description: 'The main topic is unclear or incomplete. Missing important parts and not relevant examples.' },
+                                { mark: '2', description: 'Good focus with some explanation of how it connects to real-world examples and class content.' },
+                                { mark: '3', description: 'Clear and focused topic with thorough explanation of how it connects to real-world examples and class content.' }
+                              ].map((row, idx) => (
+                                <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                  <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText(row.mark, highlightedText)}</Text>
+                                  <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', lineHeight: 18 }}>{highlightText(row.description, highlightedText)}</Text>
+                                </View>
+                              ))}
+                            </View>
+                            
+                            {/* Criterion B: Claims and Perspectives Table */}
+                            <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Criterion B: Ideas and Viewpoints</Text>
+                            
+                            <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                              <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                                <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Points</Text>
+                                <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>What You Need to Show</Text>
+                              </View>
+                              {[
+                                { mark: '0', description: 'The work does not reach a standard described by the descriptors below.' },
+                                { mark: '1-2', description: 'Basic discussion of ideas with limited explanation. Uses fewer than 3 sources or weak support for arguments.' },
+                                { mark: '3-4', description: 'Some discussion with partial support for arguments, but not fully developed.' },
+                                { mark: '5-6', description: 'Complete discussion with clear support and reasoning for each source used.' }
+                              ].map((row, idx) => (
+                                <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                  <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText(row.mark, highlightedText)}</Text>
+                                  <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', lineHeight: 18 }}>{highlightText(row.description, highlightedText)}</Text>
+                                </View>
+                              ))}
+                                                         </View>
+                             
+                             {/* Criterion C: Analysis and Evaluation Table */}
+                             <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Criterion C: Examining and Judging</Text>
+                             
+                             <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                               <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                                 <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Points</Text>
+                                 <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>What You Need to Show</Text>
+                               </View>
+                               {[
+                                 { mark: '0', description: 'The work does not reach a standard described by the descriptors below.' },
+                                 { mark: '1-2', description: 'Basic examination and judgment; mostly just describing or not staying focused.' },
+                                 { mark: '3-4', description: 'Good but not always consistent or well-backed examination.' },
+                                 { mark: '5-6', description: 'Strong, consistent and well-backed examination with proof.' }
+                               ].map((row, idx) => (
+                                 <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                   <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText(row.mark, highlightedText)}</Text>
+                                   <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', lineHeight: 18 }}>{highlightText(row.description, highlightedText)}</Text>
+                                 </View>
+                               ))}
+                             </View>
+                             
+                             {/* Criterion D: Trends and Developments Table */}
+                             <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Criterion D: Patterns and Future Changes</Text>
+                             
+                             <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                               <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                                 <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Points</Text>
+                                 <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>What You Need to Show</Text>
+                               </View>
+                               {[
+                                 { mark: '0', description: 'The work does not reach a standard described by the descriptors below.' },
+                                 { mark: '1-2', description: 'Basic understanding; patterns and future changes barely discussed.' },
+                                 { mark: '3-4', description: 'Good understanding; some discussion of patterns and changes.' },
+                                 { mark: '5-6', description: 'Strong understanding; thorough discussion of patterns and changes.' }
+                               ].map((row, idx) => (
+                                 <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                   <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText(row.mark, highlightedText)}</Text>
+                                   <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', lineHeight: 18 }}>{highlightText(row.description, highlightedText)}</Text>
+                                 </View>
+                               ))}
+                             </View>
+                             
+                             {/* Criterion E: Communication Table */}
+                             <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Criterion E: Sharing Your Work</Text>
+                             
+                             <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                               <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                                 <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Points</Text>
+                                 <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>What You Need to Show</Text>
+                               </View>
+                               {[
+                                 { mark: '0', description: 'The work does not reach a standard described by the descriptors below.' },
+                                 { mark: '1', description: 'Poor organization and use of media; does not help understanding.' },
+                                 { mark: '2', description: 'Good organization and use of media; only somewhat helpful.' },
+                                 { mark: '3', description: 'Well-organized and clear use of media that helps understanding.' }
+                               ].map((row, idx) => (
+                                 <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                   <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText(row.mark, highlightedText)}</Text>
+                                   <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', lineHeight: 18 }}>{highlightText(row.description, highlightedText)}</Text>
+                                 </View>
+                               ))}
+                             </View>
+                             
+                             <Text style={{ 
+                               fontSize: 11, 
+                               color: 'rgba(255, 255, 255, 0.5)', 
+                               fontFamily: 'ScopeOne-Regular', 
+                               marginTop: 16, 
+                               textAlign: 'center',
+                               fontStyle: 'italic'
+                             }}>
+                               *This is interpreted material for educational guidance and not official assessment criteria.
+                             </Text>
                         </View>
                       )}
                     </View>

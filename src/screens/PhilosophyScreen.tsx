@@ -199,12 +199,16 @@ const PhilosophyScreen = ({ navigation, route }: { navigation: any; route: any }
       'philosophyTips': philosophyTipsAnimation,
     }[section];
     if (!animationValue) return null;
+    
+    // Increase max height for detailed rubrics to accommodate all tables
+            const maxHeight = section === 'detailedRubrics' ? 6000 : 3000;
+    
     return (
       <Animated.View
         style={{
           maxHeight: animationValue.interpolate({
             inputRange: [0, 1],
-            outputRange: [0, 3000],
+            outputRange: [0, maxHeight],
           }),
           opacity: animationValue,
           overflow: 'hidden',
@@ -378,16 +382,128 @@ const PhilosophyScreen = ({ navigation, route }: { navigation: any; route: any }
                             ))}
                           </View>
                           
-                          <Text style={{ 
-                            fontSize: 11, 
-                            color: 'rgba(255, 255, 255, 0.5)', 
-                            fontFamily: 'ScopeOne-Regular', 
-                            marginTop: 16, 
-                            textAlign: 'center',
-                            fontStyle: 'italic'
-                          }}>
-                            *This is interpreted material for educational guidance and not official assessment criteria.
-                          </Text>
+                          {/* Internal Assessment Criteria - SL and HL */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Internal Assessment Criteria — SL and HL</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#B6B6B6', marginBottom: 12 }}>The analysis is assessed using the following five criteria.</Text>
+                          
+                          {/* Criterion A: Identification of issue and justification Table */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, marginBottom: 12 }}>Criterion A: Finding the Problem and Explaining Why (3 marks)</Text>
+                          
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Points</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>What You Need to Show</Text>
+                            </View>
+                            {[
+                              { marks: '0', description: 'The work does not reach a standard described by the descriptors below.' },
+                              { marks: '1', description: 'The thinking problem brought up by the given material is hinted at but not clearly pointed out. There is no explanation of the connection between the given material and the thinking problem identified.' },
+                              { marks: '2', description: 'The thinking problem brought up by the given material is clearly pointed out. There is some explanation of the connection between the given material and the thinking problem identified.' },
+                              { marks: '3', description: 'The thinking problem brought up by the given material is clearly and directly pointed out. There is a clear explanation of the connection between the given material and the thinking problem identified.' }
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText(row.marks, highlightedText)}</Text>
+                                <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', lineHeight: 18 }}>{highlightText(row.description, highlightedText)}</Text>
+                              </View>
+                            ))}
+                                                     </View>
+                           
+                           {/* Criterion B: Clarity Table */}
+                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Criterion B: Clear Writing (4 marks)</Text>
+                           
+                           <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                             <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                               <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Points</Text>
+                               <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>What You Need to Show</Text>
+                             </View>
+                             {[
+                               { marks: '0', description: 'The work does not reach a standard described by the descriptors below.' },
+                               { marks: '1', description: 'The writing is poorly organized, or where there is some organization there is little focus on the task. Most points are unclear and hard to understand.' },
+                               { marks: '2', description: 'The writing tries to follow an organized approach although it is sometimes unclear what it is trying to say. Many points lack clarity and exactness.' },
+                               { marks: '3', description: 'The writing is organized and generally well-structured, and can be easily followed. Points are generally clear and make sense together.' },
+                               { marks: '4', description: 'The writing is focused and well-organized. All or nearly all of the points made are clear and make sense together.' }
+                             ].map((row, idx) => (
+                               <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                 <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText(row.marks, highlightedText)}</Text>
+                                 <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', lineHeight: 18 }}>{highlightText(row.description, highlightedText)}</Text>
+                               </View>
+                             ))}
+                                                       </View>
+                            
+                            {/* Criterion C: Knowledge and understanding Table */}
+                            <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Criterion C: What You Know and How Well You Understand (4 marks)</Text>
+                            
+                            <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                              <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                                <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Points</Text>
+                                <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>What You Need to Show</Text>
+                              </View>
+                              {[
+                                { marks: '0', description: 'The work does not reach a standard described by the descriptors below.' },
+                                { marks: '1', description: 'There is little helpful information. The explanation of the thinking problem is very basic. Special thinking words are not used or are used wrong.' },
+                                { marks: '2', description: 'Some information is shown but this is not accurate and not helpful. There is a basic explanation of the thinking problem. Special thinking words are used, sometimes correctly.' },
+                                { marks: '3', description: 'Information is mostly accurate and helpful. There is a good explanation of the thinking problem. Special thinking words are used, mostly correctly.' },
+                                { marks: '4', description: 'The writing contains helpful, accurate and detailed information. There is a well-developed explanation of the thinking problem. There is correct use of special thinking words throughout the writing.' }
+                              ].map((row, idx) => (
+                                <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                  <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText(row.marks, highlightedText)}</Text>
+                                  <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', lineHeight: 18 }}>{highlightText(row.description, highlightedText)}</Text>
+                                </View>
+                              ))}
+                            </View>
+                            
+                            {/* Criterion D: Analysis Table */}
+                            <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Criterion D: Deep Thinking and Analysis (8 marks)</Text>
+                            
+                            <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                              <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                                <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Points</Text>
+                                <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>What You Need to Show</Text>
+                              </View>
+                              {[
+                                { marks: '0', description: 'The work does not reach a standard described by the descriptors below.' },
+                                { marks: '1-2', description: 'The writing is mostly just telling facts. There is very little deep thinking. Where examples are included, these don\'t work well and/or aren\'t helpful.' },
+                                { marks: '3-4', description: 'The writing contains some deep thinking but is more about telling facts than analyzing. Some examples are included.' },
+                                { marks: '5-6', description: 'The writing contains deep thinking, but this thinking needs more development. Helpful examples are used to support the argument.' },
+                                { marks: '7-8', description: 'The writing contains well-developed deep thinking. Helpful and clearly presented examples are used effectively to support the argument.' }
+                              ].map((row, idx) => (
+                                <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                  <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText(row.marks, highlightedText)}</Text>
+                                  <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', lineHeight: 18 }}>{highlightText(row.description, highlightedText)}</Text>
+                                </View>
+                              ))}
+                            </View>
+                            
+                            {/* Criterion E: Evaluation Table */}
+                            <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Criterion E: Weighing Different Views and Making Judgments (6 marks)</Text>
+                            
+                            <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                              <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                                <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Points</Text>
+                                <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>What You Need to Show</Text>
+                              </View>
+                              {[
+                                { marks: '0', description: 'The work does not reach a standard described by the descriptors below.' },
+                                { marks: '1-2', description: 'There is little thoughtful discussion of different viewpoints. Few of the main points are backed up with good reasons. There is no conclusion, or the conclusion doesn\'t relate to the topic.' },
+                                { marks: '3-4', description: 'There is some thoughtful discussion of different viewpoints. Some of the main points are backed up with good reasons. The conclusion is stated but is shallow or doesn\'t fully match the argument.' },
+                                { marks: '5-6', description: 'There is clear thoughtful discussion of different viewpoints. All or nearly all of the main points are backed up with good reasons. The writing argues from a consistently held position. The conclusion is clearly stated and matches the argument.' }
+                              ].map((row, idx) => (
+                                <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                  <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText(row.marks, highlightedText)}</Text>
+                                  <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', lineHeight: 18 }}>{highlightText(row.description, highlightedText)}</Text>
+                                </View>
+                              ))}
+                            </View>
+                            
+                            <Text style={{ 
+                              fontSize: 11, 
+                              color: 'rgba(255, 255, 255, 0.5)', 
+                              fontFamily: 'ScopeOne-Regular', 
+                              marginTop: 16, 
+                              textAlign: 'center',
+                              fontStyle: 'italic'
+                            }}>
+                              *This is interpreted material for educational guidance and not official assessment criteria.
+                            </Text>
                         </View>
                       )}
                     </View>

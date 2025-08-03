@@ -182,12 +182,16 @@ const EconomicsScreen = ({ navigation, route }: { navigation: any; route: any })
       'economicsTips': economicsTipsAnimation,
     }[section];
     if (!animationValue) return null;
+    
+    // Increase max height for detailed rubrics to accommodate all tables
+    const maxHeight = section === 'detailedRubrics' ? 7000 : 3000;
+    
     return (
       <Animated.View
         style={{
           maxHeight: animationValue.interpolate({
             inputRange: [0, 1],
-            outputRange: [0, 3000],
+            outputRange: [0, maxHeight],
           }),
           opacity: animationValue,
           overflow: 'hidden',
@@ -402,16 +406,166 @@ const EconomicsScreen = ({ navigation, route }: { navigation: any; route: any })
                             </View>
                           </View>
                           
-                          <Text style={{ 
-                            fontSize: 11, 
-                            color: 'rgba(255, 255, 255, 0.5)', 
-                            fontFamily: 'ScopeOne-Regular', 
-                            marginTop: 16, 
-                            textAlign: 'center',
-                            fontStyle: 'italic'
-                          }}>
-                            *This is interpreted material for educational guidance and not official assessment criteria.
-                          </Text>
+                          {/* Economics IA Overview Table */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Economics - Project Overview</Text>
+                          
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.5, padding: 8 }}>Area</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.5, padding: 8 }}>Checked In</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Points</Text>
+                            </View>
+                            {[
+                              { criterion: 'A: Charts and Graphs', assessed: 'Each commentary', marks: '3' },
+                              { criterion: 'B: Key Words', assessed: 'Each commentary', marks: '2' },
+                              { criterion: 'C: Using Ideas & Breaking Down', assessed: 'Each commentary', marks: '3' },
+                              { criterion: 'D: Main Ideas', assessed: 'Each commentary', marks: '3' },
+                              { criterion: 'E: Making Judgments', assessed: 'Each commentary', marks: '3' },
+                              { criterion: 'F: Guidelines Requirements', assessed: 'Each commentary', marks: '3' }
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.criterion, highlightedText)}</Text>
+                                <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.assessed, highlightedText)}</Text>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText(row.marks, highlightedText)}</Text>
+                              </View>
+                            ))}
+                                                     </View>
+                           
+                           {/* Economics IA Criterion A - Charts and Graphs */}
+                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Economics IA Criterion A - Charts and Graphs</Text>
+                           
+                           <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                             <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                               <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Points</Text>
+                               <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>What You Need to Show</Text>
+                             </View>
+                             {[
+                               { marks: '0', description: 'Does not meet minimum requirements.' },
+                               { marks: '1', description: 'Includes a helpful chart but does not explain it.' },
+                               { marks: '2', description: 'Correct chart with some explanation.' },
+                               { marks: '3', description: 'Correct chart with complete explanation.' }
+                             ].map((row, idx) => (
+                               <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                 <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText(row.marks, highlightedText)}</Text>
+                                 <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', lineHeight: 18 }}>{highlightText(row.description, highlightedText)}</Text>
+                               </View>
+                             ))}
+                           </View>
+                           
+                           {/* Economics IA Criterion B - Key Words */}
+                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Economics IA Criterion B - Key Words</Text>
+                           
+                           <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                             <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                               <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Points</Text>
+                               <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>What You Need to Show</Text>
+                             </View>
+                             {[
+                               { marks: '0', description: 'Does not meet minimum requirements.' },
+                               { marks: '1', description: 'Uses helpful economic words.' },
+                               { marks: '2', description: 'Uses economic words correctly throughout.' }
+                             ].map((row, idx) => (
+                               <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                 <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText(row.marks, highlightedText)}</Text>
+                                 <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', lineHeight: 18 }}>{highlightText(row.description, highlightedText)}</Text>
+                               </View>
+                             ))}
+                           </View>
+                           
+                           {/* Economics IA Criterion C - Using Ideas and Breaking Down */}
+                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Economics IA Criterion C - Using Ideas and Breaking Down</Text>
+                           
+                           <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                             <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                               <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Points</Text>
+                               <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>What You Need to Show</Text>
+                             </View>
+                             {[
+                               { marks: '0', description: 'Does not meet minimum requirements.' },
+                               { marks: '1', description: 'Uses economic ideas with basic examination.' },
+                               { marks: '2', description: 'Uses good economic ideas and examination throughout.' },
+                               { marks: '3', description: 'Uses strong economic ideas and examination throughout.' }
+                             ].map((row, idx) => (
+                               <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                 <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText(row.marks, highlightedText)}</Text>
+                                 <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', lineHeight: 18 }}>{highlightText(row.description, highlightedText)}</Text>
+                               </View>
+                             ))}
+                                                       </View>
+                            
+                            {/* Economics IA Criterion D - Main Ideas */}
+                            <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Economics IA Criterion D - Main Ideas</Text>
+                            
+                            <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                              <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                                <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Points</Text>
+                                <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>What You Need to Show</Text>
+                              </View>
+                              {[
+                                { marks: '0', description: 'No new important ideas or not connected to the topic.' },
+                                { marks: '1', description: 'Main idea mentioned with some attempt to connect.' },
+                                { marks: '2', description: 'Main idea somewhat connected to the topic.' },
+                                { marks: '3', description: 'Main idea fully connected and explained clearly.' }
+                              ].map((row, idx) => (
+                                <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                  <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText(row.marks, highlightedText)}</Text>
+                                  <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', lineHeight: 18 }}>{highlightText(row.description, highlightedText)}</Text>
+                                </View>
+                              ))}
+                            </View>
+                            
+                            {/* Economics IA Criterion E - Making Judgments */}
+                            <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Economics IA Criterion E - Making Judgments</Text>
+                            
+                            <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                              <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                                <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Points</Text>
+                                <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>What You Need to Show</Text>
+                              </View>
+                              {[
+                                { marks: '0', description: 'Does not meet minimum requirements.' },
+                                { marks: '1', description: 'Basic reasoning supports decisions made.' },
+                                { marks: '2', description: 'Good reasoning supports decisions made.' },
+                                { marks: '3', description: 'Strong and balanced reasoning supports decisions made.' }
+                              ].map((row, idx) => (
+                                <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                  <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText(row.marks, highlightedText)}</Text>
+                                  <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', lineHeight: 18 }}>{highlightText(row.description, highlightedText)}</Text>
+                                </View>
+                              ))}
+                            </View>
+                            
+                            {/* Economics IA Criterion F - Guidelines Requirements */}
+                            <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Economics IA Criterion F - Guidelines Requirements</Text>
+                            
+                            <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                              <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                                <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Points</Text>
+                                <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>What You Need to Show</Text>
+                              </View>
+                              {[
+                                { marks: '0', description: 'Does not meet minimum requirements.' },
+                                { marks: '1', description: 'Follows one guideline requirement.' },
+                                { marks: '2', description: 'Follows two guideline requirements.' },
+                                { marks: '3', description: 'Follows all three guideline requirements.' }
+                              ].map((row, idx) => (
+                                <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                  <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText(row.marks, highlightedText)}</Text>
+                                  <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', lineHeight: 18 }}>{highlightText(row.description, highlightedText)}</Text>
+                                </View>
+                              ))}
+                            </View>
+                            
+                            <Text style={{ 
+                              fontSize: 11, 
+                              color: 'rgba(255, 255, 255, 0.5)', 
+                              fontFamily: 'ScopeOne-Regular', 
+                              marginTop: 16, 
+                              textAlign: 'center',
+                              fontStyle: 'italic'
+                            }}>
+                              *This is interpreted material for educational guidance and not official assessment criteria.
+                            </Text>
                         </View>
                       )}
                     </View>
