@@ -204,7 +204,7 @@ const HistoryScreen = ({ navigation, route }: { navigation: any; route: any }) =
         style={{
           maxHeight: animationValue.interpolate({
             inputRange: [0, 1],
-            outputRange: [0, 3000],
+            outputRange: [0, 6000],
           }),
           opacity: animationValue,
           overflow: 'hidden',
@@ -364,6 +364,71 @@ const HistoryScreen = ({ navigation, route }: { navigation: any; route: any }) =
                                 <Text style={{ flex: 2.2, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.criterion, highlightedText)}</Text>
                                 <Text style={{ flex: 2.8, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.description, highlightedText)}</Text>
                                 <Text style={{ flex: 0.8, color: '#B6B6B6', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.marks, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+
+                          {/* Paper 1 — Source Questions (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, marginBottom: 8 }}>Paper 1 — Source Questions (Paraphrased)</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 2.2, padding: 8 }}>Question</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 2.6, padding: 8 }}>Description</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.0, padding: 8, textAlign: 'center' }}>Marks</Text>
+                            </View>
+                            {[
+                              { q: 'First question, part A', desc: 'Checks basic understanding of one source.', marks: '3' },
+                              { q: 'First question, part B', desc: 'Further checks understanding of one source.', marks: '2' },
+                              { q: 'Second question', desc: 'Judge strengths and limits of one source. Consider who made it, why it was made, and what it says.', marks: '4' },
+                              { q: 'Third question', desc: 'Compare and contrast what two sources show about the topic.', marks: '6' },
+                              { q: 'Fourth question', desc: 'Use the sources and your own knowledge to argue and reach a conclusion.', marks: '9' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 2.2, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.q, highlightedText)}</Text>
+                                <Text style={{ flex: 2.8, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.desc, highlightedText)}</Text>
+                                <Text style={{ flex: 0.8, color: '#B6B6B6', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.marks, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+                          
+                          {/* Paper 1 — Fourth Question Markbands (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, marginBottom: 8 }}>Paper 1 — Fourth Question Markbands (Paraphrased)</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.0, padding: 8 }}>Marks</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 4.0, padding: 8 }}>Level Descriptor</Text>
+                            </View>
+                            {[
+                              { band: '0', desc: 'Does not meet the basic expectations described below.' },
+                              { band: '1–3', desc: 'Not really on task. Mentions sources but mainly describes them with little or no analysis. Own knowledge is missing, off-topic, or inaccurate.' },
+                              { band: '4–6', desc: 'Mostly on task. Uses sources to support points. Own knowledge may be thin or partially accurate. Some linking of ideas from sources and knowledge.' },
+                              { band: '7–9', desc: 'Clearly on task. Sources are used well to support arguments. Own knowledge is accurate and relevant. Strong integration of sources with personal knowledge.' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1.0, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.band, highlightedText)}</Text>
+                                <Text style={{ flex: 4.0, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.desc, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+
+                          {/* Paper 2 — Essay Markbands (SL/HL, Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, marginBottom: 8 }}>Paper 2 — Essay Markbands (SL/HL, Paraphrased)</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.0, padding: 8 }}>Marks</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 4.0, padding: 8 }}>Level Descriptor</Text>
+                            </View>
+                            {[
+                              { band: '0', desc: 'Does not meet the basic expectations described below.' },
+                              { band: '1–3', desc: 'Very limited grasp of the question. Disorganized response. Minimal or inaccurate knowledge. Almost no analysis.' },
+                              { band: '4–6', desc: 'Some understanding of the task. Structure is unclear. Examples are thin or vague. Mostly descriptive with little analysis.' },
+                              { band: '7–9', desc: 'Partial understanding. Attempts a structure. Some accurate knowledge. Moves beyond description with limited, uneven analysis.' },
+                              { band: '10–12', desc: 'Understands what the question is asking. Generally well structured. Mostly accurate knowledge. Some effective analysis and evaluation with supported points.' },
+                              { band: '13–15', desc: 'Clearly focused and well organized. Accurate, relevant knowledge. Strong examples and thoughtful evaluation. Consistent, well‑supported argument.' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1.0, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.band, highlightedText)}</Text>
+                                <Text style={{ flex: 4.0, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.desc, highlightedText)}</Text>
                               </View>
                             ))}
                           </View>

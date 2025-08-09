@@ -187,7 +187,7 @@ const GlobalPoliticsScreen = ({ navigation, route }: { navigation: any; route: a
         style={{
           maxHeight: animationValue.interpolate({
             inputRange: [0, 1],
-            outputRange: [0, 3000],
+            outputRange: [0, 6000],
           }),
           opacity: animationValue,
           overflow: 'hidden',
@@ -372,6 +372,74 @@ const GlobalPoliticsScreen = ({ navigation, route }: { navigation: any; route: a
                                 <Text style={{ flex: 2.2, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.criterion, highlightedText)}</Text>
                                 <Text style={{ flex: 2.8, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.description, highlightedText)}</Text>
                                 <Text style={{ flex: 0.8, color: '#B6B6B6', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.marks, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+                          
+                          {/* Paper 1 — Overview (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, marginBottom: 8 }}>Paper 1 — Overview (Paraphrased)</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.8, padding: 8 }}>Ques.</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 2.0, padding: 8 }}>Objective</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3.2, padding: 8 }}>Summary</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.0, padding: 8, textAlign: 'center' }}>Marks</Text>
+                            </View>
+                            {[
+                              { q: 'First Question', ao: 'AO1: Knowledge and understanding', desc: 'Show understanding of a source, like identifying the key political issue or explaining information in the source.', marks: '3' },
+                              { q: 'Second Question', ao: 'AO2: Application and analysis', desc: 'Apply knowledge to the source context; explain a term or topic from the source using supporting examples.', marks: '4' },
+                              { q: 'Third Question', ao: 'AO3/AO4: Synthesis, evaluation, and skills', desc: 'Compare or contrast ideas in two sources; may include wider course knowledge. Needs clear, coherent comparison.', marks: '8' },
+                              { q: 'Fourth Question', ao: 'AO3/AO4: Synthesis, evaluation, and skills', desc: 'Evaluate sources together with your own knowledge; combine course content with source analysis to reach a reasoned judgment.', marks: '10' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1.8, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.q, highlightedText)}</Text>
+                                <Text style={{ flex: 2.0, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.ao, highlightedText)}</Text>
+                                <Text style={{ flex: 3.2, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.desc, highlightedText)}</Text>
+                                <Text style={{ flex: 1.0, color: '#B6B6B6', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.marks, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+                          
+                          {/* Paper 1 — Markbands for Fourth Question (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, marginBottom: 8 }}>Paper 1 — Markbands for Fourth Question (Paraphrased)</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.0, padding: 8 }}>Marks</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 4.0, padding: 8 }}>Level Descriptor</Text>
+                            </View>
+                            {[
+                              { band: '0', desc: 'Does not meet the basic expectations described below.' },
+                              { band: '1–2', desc: 'Very limited understanding; little relevant knowledge; mostly descriptive with minimal analysis.' },
+                              { band: '3–4', desc: 'Limited understanding; some relevant knowledge; counterarguments not addressed.' },
+                              { band: '5–6', desc: 'Understanding shown; mostly accurate knowledge; limited synthesis; counterarguments implied rather than discussed.' },
+                              { band: '7–8', desc: 'Focused response; good understanding; relevant knowledge; counterarguments considered.' },
+                              { band: '9–10', desc: 'High understanding; accurate knowledge; clear synthesis; counterarguments evaluated with judgment.' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1.0, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.band, highlightedText)}</Text>
+                                <Text style={{ flex: 4.0, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.desc, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+                          
+                          {/* Paper 2 — Markbands (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, marginBottom: 8 }}>Paper 2 — Markbands (Paraphrased)</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.0, padding: 8 }}>Marks</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 4.0, padding: 8 }}>Level Descriptor</Text>
+                            </View>
+                            {[
+                              { band: '0', desc: 'Does not meet the basic expectations described below.' },
+                              { band: '1–5', desc: 'Limited understanding; poorly structured; mostly descriptive with little relevant knowledge.' },
+                              { band: '6–10', desc: 'Some understanding; attempts structure; some relevant knowledge; limited justification of points.' },
+                              { band: '11–15', desc: 'Mostly addresses the question; structured; relevant knowledge; some counterarguments considered.' },
+                              { band: '16–20', desc: 'Well structured; accurate knowledge; strong examples; counterarguments explored.' },
+                              { band: '21–25', desc: 'Very well structured; comprehensive knowledge; persuasive arguments; counterarguments evaluated.' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1.0, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.band, highlightedText)}</Text>
+                                <Text style={{ flex: 4.0, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.desc, highlightedText)}</Text>
                               </View>
                             ))}
                           </View>
