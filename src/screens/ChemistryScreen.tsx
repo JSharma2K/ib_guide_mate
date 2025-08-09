@@ -205,7 +205,7 @@ const ChemistryScreen = ({ navigation, route }: { navigation: any; route: any })
         style={{
           maxHeight: animationValue.interpolate({
             inputRange: [0, 1],
-            outputRange: [0, 3000],
+            outputRange: [0, 6000],
           }),
           opacity: animationValue,
           overflow: 'hidden',
@@ -358,37 +358,217 @@ const ChemistryScreen = ({ navigation, route }: { navigation: any; route: any })
                       )}
                       {section.key === 'detailedRubrics' && (
                         <View>
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginBottom: 8 }}>Assessment Framework - Individual Investigation</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginBottom: 8 }}>Internal assessment</Text>
                           
-                          {/* Assessment Criteria Table */}
+                          {/* Internal Assessment Table (Paraphrased) */}
                           <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginTop: 16 }}>
                             {/* Header Row */}
                             <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
-                              <Text style={{ flex: 2.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Criterion</Text>
-                              <Text style={{ flex: 2.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Description</Text>
-                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ flex: 2.0, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Criterion</Text>
+                              <Text style={{ flex: 1.6, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Max marks</Text>
+                              <Text style={{ flex: 1.4, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Weight (%)</Text>
                             </View>
-                            
                             {/* Data Rows */}
                             {[
-                              { criterion: 'Student engagement', description: 'Shows personal curiosity, original thinking, and authentic interest in the topic', marks: '2' },
-                              { criterion: 'Investigation design', description: 'Clear research focus with solid theoretical foundation and suitable experimental approach', marks: '6' },
-                              { criterion: 'Data analysis', description: 'Effective processing and interpretation of results with appropriate mathematical treatment', marks: '6' },
-                              { criterion: 'Evaluation', description: 'Evidence-based conclusions with thoughtful discussion of study limitations and potential improvements', marks: '6' },
-                              { criterion: 'Communication', description: 'Clear organization, appropriate scientific terminology, and proper source attribution', marks: '4' }
+                              { criterion: 'Research design', max: '6', weight: '25' },
+                              { criterion: 'Data analysis', max: '6', weight: '25' },
+                              { criterion: 'Conclusion', max: '6', weight: '25' },
+                              { criterion: 'Evaluation', max: '6', weight: '25' },
                             ].map((row, idx) => (
                               <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
-                                <Text style={{ flex: 2.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.criterion, highlightedText)}</Text>
-                                <Text style={{ flex: 2.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.description, highlightedText)}</Text>
-                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, textAlign: 'center' }}>{highlightText(row.marks, highlightedText)}</Text>
+                                <Text style={{ flex: 2.0, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.criterion, highlightedText)}</Text>
+                                <Text style={{ flex: 1.6, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, textAlign: 'center' }}>{highlightText(row.max, highlightedText)}</Text>
+                                <Text style={{ flex: 1.4, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, textAlign: 'center' }}>{highlightText(row.weight, highlightedText)}</Text>
                               </View>
                             ))}
-                            
                             {/* Total Row */}
                             <View style={{ flexDirection: 'row', borderTopWidth: 2, borderColor: '#7EC3FF', backgroundColor: 'rgba(126, 195, 255, 0.1)' }}>
-                              <Text style={{ flex: 2.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Total</Text>
-                              <Text style={{ flex: 2.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular' }}> </Text>
-                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>24</Text>
+                              <Text style={{ flex: 2.0, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Total</Text>
+                              <Text style={{ flex: 1.6, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>24</Text>
+                              <Text style={{ flex: 1.4, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>100</Text>
+                            </View>
+                          </View>
+                          
+                          {/* Research design — Markbands (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginTop: 16, marginBottom: 8 }}>Research design — Markbands (Paraphrased)</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginBottom: 8 }}>
+                            {/* Header Row */}
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 1.0, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ flex: 4.0, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Level descriptor</Text>
+                            </View>
+                            {[
+                              { band: '0', desc: 'Does not meet the basic expectations described below.' },
+                              { band: '1–2', desc: 'Question is stated without context. Notes about how data will be gathered are mentioned but not connected to the question. Method steps lack enough detail to repeat the work.' },
+                              { band: '3–4', desc: 'Question is placed within a broad context. How relevant data will be gathered is described. Method steps mostly allow someone else to repeat the work with few gaps.' },
+                              { band: '5–6', desc: 'Question is clearly framed within a specific, appropriate context. How sufficient and relevant data will be gathered is explained. Method steps clearly allow repetition of the work.' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1.0, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText(row.band, highlightedText)}</Text>
+                                <Text style={{ flex: 4.0, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.desc, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+                          
+                          {/* Data analysis — Markbands (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginTop: 16, marginBottom: 8 }}>Data analysis — Markbands (Paraphrased)</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 1.0, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ flex: 4.0, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Level descriptor</Text>
+                            </View>
+                            {[
+                              { band: '0', desc: 'Does not meet the basic expectations described below.' },
+                              { band: '1–2', desc: 'Data recording/processing is shown but is unclear or imprecise. Little consideration of uncertainties. Some relevant processing attempted but with major gaps or errors.' },
+                              { band: '3–4', desc: 'Recording/processing is clear or precise (one but not both). Evidence of thinking about uncertainties, but with notable omissions or inaccuracies. Processing relevant to the question is done but has significant gaps or mistakes.' },
+                              { band: '5–6', desc: 'Recording and processing are both clear and precise. Uncertainties are handled appropriately. Processing relevant to the question is carried out carefully and accurately.' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1.0, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText(row.band, highlightedText)}</Text>
+                                <Text style={{ flex: 4.0, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.desc, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+                          
+                          {/* Conclusion — Markbands (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginTop: 16, marginBottom: 8 }}>Conclusion — Markbands (Paraphrased)</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 1.0, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ flex: 4.0, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Level descriptor</Text>
+                            </View>
+                            {[
+                              { band: '0', desc: 'Does not meet the basic expectations described below.' },
+                              { band: '1–2', desc: 'States a conclusion that fits the question but is not supported by the analysis. Any comparison to accepted science is superficial.' },
+                              { band: '3–4', desc: 'Describes a conclusion that fits the question but is not fully consistent with the analysis. Makes some relevant comparison to accepted science.' },
+                              { band: '5–6', desc: 'Justifies a conclusion that fits the question and fully matches the analysis. Supports it with relevant comparison to accepted science.' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1.0, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText(row.band, highlightedText)}</Text>
+                                <Text style={{ flex: 4.0, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.desc, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+                          
+                          {/* Evaluation — Markbands (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginTop: 16, marginBottom: 8 }}>Evaluation — Markbands (Paraphrased)</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 1.0, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ flex: 4.0, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Level descriptor</Text>
+                            </View>
+                            {[
+                              { band: '0', desc: 'Does not meet the basic expectations described below.' },
+                              { band: '1–2', desc: 'States general weaknesses or limits in the method. Lists improvements, but only as statements.' },
+                              { band: '3–4', desc: 'Describes specific weaknesses or limits. Describes realistic improvements that relate to those issues.' },
+                              { band: '5–6', desc: 'Explains the impact of specific weaknesses or limits. Explains realistic, relevant improvements that address those issues.' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1.0, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText(row.band, highlightedText)}</Text>
+                                <Text style={{ flex: 4.0, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.desc, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+                          
+                          {/* Assessment Outline — SL (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginTop: 16, marginBottom: 8 }}>Assessment Outline — SL (Paraphrased)</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 3, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Assessment Component</Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Weighting</Text>
+                            </View>
+                            {/* External Assessment */}
+                            <View style={{ borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: '600' }}>External assessment (3 hours)</Text>
+                              <View style={{ borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular' }}>Paper 1 (1 hour 30 minutes)</Text>
+                                <Text style={{ color: '#B6B6B6', paddingHorizontal: 12, fontFamily: 'ScopeOne-Regular' }}>• Paper 1A — Multiple‑choice questions</Text>
+                                <Text style={{ color: '#B6B6B6', paddingHorizontal: 12, fontFamily: 'ScopeOne-Regular' }}>• Paper 1B — Data‑based questions</Text>
+                                <Text style={{ color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontStyle: 'italic' }}>(Total 55 marks)</Text>
+                              </View>
+                              <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF', backgroundColor: 'rgba(126, 195, 255, 0.06)' }}>
+                                <View style={{ flex: 3 }}>
+                                  <Text style={{ color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular' }}>Paper 2 (1 hour 30 minutes)</Text>
+                                  <Text style={{ color: '#B6B6B6', paddingHorizontal: 12, fontFamily: 'ScopeOne-Regular' }}>• Short‑answer and extended‑response questions</Text>
+                                  <Text style={{ color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontStyle: 'italic' }}>(Total 50 marks)</Text>
+                                </View>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>44%</Text>
+                              </View>
+                              <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <View style={{ flex: 3 }}>
+                                  <Text style={{ color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular' }}>Paper 1 combined weighting</Text>
+                                </View>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>36%</Text>
+                              </View>
+                              <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <View style={{ flex: 3 }}>
+                                  <Text style={{ color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: '600' }}>External assessment total</Text>
+                                </View>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>80%</Text>
+                              </View>
+                            </View>
+                            {/* Internal Assessment */}
+                            <View style={{ borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <View style={{ flexDirection: 'row' }}>
+                                <View style={{ flex: 3 }}>
+                                  <Text style={{ color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: '600' }}>Internal assessment (10 hours)</Text>
+                                  <Text style={{ color: '#B6B6B6', paddingHorizontal: 12, fontFamily: 'ScopeOne-Regular' }}>• One task: a scientific investigation</Text>
+                                  <Text style={{ color: '#B6B6B6', paddingHorizontal: 12, fontFamily: 'ScopeOne-Regular' }}>• Marked by the school and checked by external moderators at the end of the course</Text>
+                                  <Text style={{ color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontStyle: 'italic' }}>(Total 24 marks)</Text>
+                                </View>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>20%</Text>
+                              </View>
+                            </View>
+                          </View>
+                          
+                          {/* Assessment Outline — HL (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginTop: 16, marginBottom: 8 }}>Assessment Outline — HL (Paraphrased)</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 3, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Assessment Component</Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Weighting</Text>
+                            </View>
+                            {/* External Assessment */}
+                            <View style={{ borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: '600' }}>External assessment (4 hours 30 minutes)</Text>
+                              <View style={{ borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular' }}>Paper 1 (2 hours)</Text>
+                                <Text style={{ color: '#B6B6B6', paddingHorizontal: 12, fontFamily: 'ScopeOne-Regular' }}>• Paper 1A — Multiple‑choice questions</Text>
+                                <Text style={{ color: '#B6B6B6', paddingHorizontal: 12, fontFamily: 'ScopeOne-Regular' }}>• Paper 1B — Data‑based questions</Text>
+                                <Text style={{ color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontStyle: 'italic' }}>(Total 75 marks)</Text>
+                              </View>
+                              <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF', backgroundColor: 'rgba(126, 195, 255, 0.06)' }}>
+                                <View style={{ flex: 3 }}>
+                                  <Text style={{ color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular' }}>Paper 2 (2 hours 30 minutes)</Text>
+                                  <Text style={{ color: '#B6B6B6', paddingHorizontal: 12, fontFamily: 'ScopeOne-Regular' }}>• Short‑answer and extended‑response questions</Text>
+                                  <Text style={{ color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontStyle: 'italic' }}>(Total 90 marks)</Text>
+                                </View>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>44%</Text>
+                              </View>
+                              <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <View style={{ flex: 3 }}>
+                                  <Text style={{ color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular' }}>Paper 1 combined weighting</Text>
+                                </View>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>36%</Text>
+                              </View>
+                              <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <View style={{ flex: 3 }}>
+                                  <Text style={{ color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: '600' }}>External assessment total</Text>
+                                </View>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>80%</Text>
+                              </View>
+                            </View>
+                            {/* Internal Assessment */}
+                            <View style={{ borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <View style={{ flexDirection: 'row' }}>
+                                <View style={{ flex: 3 }}>
+                                  <Text style={{ color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: '600' }}>Internal assessment (10 hours)</Text>
+                                  <Text style={{ color: '#B6B6B6', paddingHorizontal: 12, fontFamily: 'ScopeOne-Regular' }}>• One task: a scientific investigation</Text>
+                                  <Text style={{ color: '#B6B6B6', paddingHorizontal: 12, fontFamily: 'ScopeOne-Regular' }}>• Marked by the school and checked by external moderators at the end of the course</Text>
+                                  <Text style={{ color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontStyle: 'italic' }}>(Total 24 marks)</Text>
+                                </View>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>20%</Text>
+                              </View>
                             </View>
                           </View>
                           
