@@ -57,7 +57,7 @@ const ClassicalLanguagesScreen = ({ navigation, route }: { navigation: any; rout
     overview: `The Classical Languages course enables students to read and engage with Latin or Classical Greek literature in its original form. It fosters an integrated understanding of language, literature, and culture. Students develop proficiency in grammar and syntax, literary analysis, and contextual knowledge of the ancient world. The course uses three key areas of exploration: Meaning, Form and Language; Text, Author and Audience; and Time, Space and Culture. These act as interpretative lenses to deepen inquiry. At HL, students also complete a creative composition task in the classical language, while both HL and SL students produce a research dossier. The distinction between SL and HL lies in the number and complexity of texts studied, the assessment components, and the expectation of original composition at HL.`,
     essentials: `Assessment Objectives in Practice\n• Demonstrate understanding of classical language and texts through translation and analysis (Papers 1 & 2, IA).\n• Interpret and analyse texts in their historical and cultural contexts (Paper 2, IA, HL composition).\n• Synthesize evidence from primary, secondary and reference sources (All components).\n• Construct arguments supported by relevant textual analysis (Paper 2, Research Dossier, HL composition rationale).\n\nAssessment Outline & Weightages\n• SL External: Paper 1 (35%), Paper 2 (40%)\n• SL Internal: Research Dossier (25%)\n• HL External: Paper 1 (30%), Paper 2 (35%)\n• HL Internal: Research Dossier (20%), HL Composition (15%)`,
     literature: `Internal and External Assessment Details\n• Paper 1: Unseen text analysis for SL/HL with short answers and translation.\n• Paper 2: Analysis of prepared core text; includes extended response and contextual questions.\n• Research Dossier: Inquiry-based project using classical texts and sources to address a research question.\n• HL Composition: Original prose piece in classical language with rationale and references.\n\nAreas of Exploration\n• 1. Meaning, Form, and Language: Explore syntax, diction, and literary technique to interpret meaning.\n• 2. Text, Author, and Audience: Understand how authors shape meaning and how different audiences interpret texts.\n• 3. Time, Space, and Culture: Analyze texts in their historical, political, and social contexts across time periods.\n\nPrescribed Core and Companion Texts\n• SL: One core text (either prose or verse), HL: Two core texts (one prose, one verse).\n• Both SL and HL: Any two companion texts that offer different literary forms and styles.\n• Examples – Latin Core: Cicero, Livy, Vergil, Ovid | Greek Core: Thucydides, Antiphon, Homer, Euripides\n• Companion texts are not assessed directly but enrich understanding and support IA and Paper 2.`,
-    detailedRubrics: `Paper 1 – Unseen Text Analysis\nAssessment of language comprehension, structural understanding, and textual interpretation skills.\nTotal Marks: 30\n\nPaper 2 – Core Text Analysis\nDeep examination of prepared texts through extended analytical writing demonstrating literary and cultural insights.\nTotal Marks: 35\n\nResearch Dossier – Independent Investigation\nEvaluation of research methodology, source quality, organizational structure, and critical thinking skills.\nTotal Marks: 25\n\nHL Composition – Creative Writing\nAssessment of classical language proficiency, creative expression, and fulfillment of compositional goals.\nTotal Marks: To be determined`,
+    detailedRubrics: `Paper 1 – Unseen Text Analysis; Paper 2 – Core Text Analysis; Research Dossier; HL Composition.\n\nTranslation Markbands (SL & HL): holistic quality of translation, vocabulary, syntax, morphology, accuracy, clarity.\nGuided analysis (HL): analysis of textual features and author choices, use of relevant evidence.\nExtended response (SL & HL): Criterion A (knowledge, understanding, use of evidence), Criterion B (analysis and evaluation).\nHL Composition: Criterion A (introduction/intentions: form, meaning, audience, purpose), Criterion B (language and communication), Criterion C (rationale – use of sources), Criterion D (rationale – explanation of choices).`,
     classicalTips: `1. Build daily vocabulary and grammar habits using flashcards and scaffolded translations.\n\n2. Translate and retranslate core and companion texts for deeper syntactic understanding.\n\n3. Practice identifying stylistic devices and rhetorical techniques in prepared texts.\n\n4. Annotate texts with literary, cultural, and historical notes to support Paper 2 responses.\n\n5. Develop source organization strategies early for the Research Dossier.\n\n6. For HL, plan compositions in English first, then translate ideas with accurate classical structure.\n\n7. Use past Paper 1 unseen texts weekly for practice with dictionary support.\n\n8. Link study with TOK and CAS by reflecting on how classical ideas resonate in today's world.\n\n9. Compare interpretations with peers to explore multiple viewpoints.\n\n10. Use maps, timelines, and glossaries to contextualize characters, settings, and themes.`,
   };
   const sectionKeys: Array<'overview' | 'essentials' | 'literature' | 'detailedRubrics' | 'classicalTips'> = ['overview', 'essentials', 'literature', 'detailedRubrics', 'classicalTips'];
@@ -204,7 +204,7 @@ const ClassicalLanguagesScreen = ({ navigation, route }: { navigation: any; rout
         style={{
           maxHeight: animationValue.interpolate({
             inputRange: [0, 1],
-            outputRange: [0, 3000],
+            outputRange: [0, 7000],
           }),
           opacity: animationValue,
           overflow: 'hidden',
@@ -346,16 +346,226 @@ const ClassicalLanguagesScreen = ({ navigation, route }: { navigation: any; rout
                             highlightedText={highlightedText}
                           />
                           
-                          <Text style={{ 
-                            fontSize: 11, 
-                            color: 'rgba(255, 255, 255, 0.5)', 
-                            fontFamily: 'ScopeOne-Regular', 
-                            marginTop: 16, 
-                            textAlign: 'center',
-                            fontStyle: 'italic'
-                          }}>
-                            *This is interpreted material for educational guidance and not official assessment criteria.
-                          </Text>
+                          {/* Paper 1 — Translation (SL) Markbands (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>Paper 1 — Translation (SL) Markbands (Paraphrased)</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 0.8, padding: 8, textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3.2, padding: 8 }}>Level descriptor</Text>
+                            </View>
+                            {[
+                              { band: '0', desc: 'Does not meet the basic expectations described below.' },
+                              { band: '1–2', desc: 'Translation does not clearly convey the meaning. Frequent word/grammar issues throughout.' },
+                              { band: '3–4', desc: 'General meaning comes across, but notable word/grammar issues remain.' },
+                              { band: '5–6', desc: 'Accurately communicates the meaning. Word choice and grammar issues, if present, do not affect understanding.' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 0.8, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText(row.band, highlightedText)}</Text>
+                                <Text style={{ flex: 3.2, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.desc, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+                          
+                          {/* Paper 1 — Translation (HL) Markbands (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>Paper 1 — Translation (HL) Markbands (Paraphrased)</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 0.8, padding: 8, textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3.2, padding: 8 }}>Level descriptor</Text>
+                            </View>
+                            {[
+                              { band: '0', desc: 'Does not meet the basic expectations described below.' },
+                              { band: '1–2', desc: 'Meaning is not clearly communicated. Frequent vocabulary/grammar issues across the translation.' },
+                              { band: '3–4', desc: 'General meaning is conveyed, but key vocabulary/grammar mistakes persist.' },
+                              { band: '5–6', desc: 'Accurately conveys the meaning of the original text. Vocabulary/grammar issues, if present, do not reduce clarity.' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 0.8, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText(row.band, highlightedText)}</Text>
+                                <Text style={{ flex: 3.2, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.desc, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+
+                          {/* Paper 1 — HL Precision Sub‑marks (Paraphrased) */}
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.2, padding: 8 }}>Domain</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 0.8, padding: 8, textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3.0, padding: 8 }}>Description</Text>
+                            </View>
+                            {[
+                              { domain: 'Vocabulary', marks: '2–4 (text‑dependent)', desc: 'Credit for context‑appropriate word/phrase choices.' },
+                              { domain: 'Syntax and morphology', marks: '6–8 (text‑dependent)', desc: 'Credit for accurate structure (case, tense, agreement, etc.), even if a word choice is imperfect.' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1.2, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.domain, highlightedText)}</Text>
+                                <Text style={{ flex: 0.8, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText(row.marks, highlightedText)}</Text>
+                                <Text style={{ flex: 3.0, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.desc, highlightedText)}</Text>
+                              </View>
+                            ))}
+                                                    </View>
+  
+                          {/* Paper 1 — Guided analysis (HL) Markbands (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>Paper 1 — Guided analysis (HL) Markbands (Paraphrased)</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 0.8, padding: 8, textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3.2, padding: 8 }}>Description</Text>
+                            </View>
+                            {[
+                              { band: '0', desc: 'Does not meet the basic expectations described below.' },
+                              { band: '1–2', desc: 'Mostly describes or summarizes examples with little analysis of features or author choices. Evidence is irrelevant or misunderstood.' },
+                              { band: '3–4', desc: 'Some analysis of features/author choices and how they shape meaning, but relies on description. Evidence is only partly relevant or understood.' },
+                              { band: '5–6', desc: 'Plausible analysis throughout; draws conclusions from evidence. Evidence is relevant and correctly understood.' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 0.8, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText(row.band, highlightedText)}</Text>
+                                <Text style={{ flex: 3.2, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.desc, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+
+                          {/* Paper 2 — Extended Response (HL) Criterion A (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>Paper 2 — Extended Response (HL): Criterion A</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 0.8, padding: 8, textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3.2, padding: 8 }}>Description</Text>
+                            </View>
+                            {[
+                              { band: '0', desc: 'Does not meet the basic expectations described below.' },
+                              { band: '1–2', desc: 'Shows little knowledge or understanding of the core text/context. Evidence beyond the core text is not used meaningfully.' },
+                              { band: '3–4', desc: 'Shows some knowledge/understanding with partial relevance. Some evidence beyond the core text is included.' },
+                              { band: '5–6', desc: 'Shows good knowledge/understanding of the core text and context. Uses well‑chosen examples from beyond the core text that directly support the response.' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 0.8, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText(row.band, highlightedText)}</Text>
+                                <Text style={{ flex: 3.2, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.desc, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+
+                          {/* Paper 2 — Extended Response (SL) Criterion A (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>Paper 2 — Extended Response: Criterion A (Knowledge, understanding, use of evidence)</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 0.8, padding: 8, textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3.2, padding: 8 }}>Description</Text>
+                            </View>
+                            {[
+                              { band: '0', desc: 'Does not meet the basic expectations described below.' },
+                              { band: '1–2', desc: 'Shows little grasp of the core text or its context. Evidence from outside the core text is not used in a meaningful way.' },
+                              { band: '3–4', desc: 'Shows some understanding of the core text and its context. Includes some evidence from beyond the core text with partial relevance.' },
+                              { band: '5–6', desc: 'Shows good understanding of the core text and its context. Uses relevant examples from beyond the core text that directly support the response.' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 0.8, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText(row.band, highlightedText)}</Text>
+                                <Text style={{ flex: 3.2, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.desc, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+
+                          {/* Paper 2 — Extended Response (SL) Criterion B (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>Paper 2 — Extended Response: Criterion B (Analysis and evaluation)</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 0.8, padding: 8, textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3.2, padding: 8 }}>Description</Text>
+                            </View>
+                            {[
+                              { band: '0', desc: 'Does not meet the basic expectations described below.' },
+                              { band: '1–2', desc: 'Mostly description with little relevant analysis of language features or broader author choices. Little or no evaluation of effects.' },
+                              { band: '3–4', desc: 'Some appropriate analysis of features and author choices, but relies on description. Some evaluation of how choices shape meaning/effect.' },
+                              { band: '5–6', desc: 'Appropriate and sometimes convincing analysis of features and broader choices. Effective evaluation of how choices shape meaning/effect.' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 0.8, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText(row.band, highlightedText)}</Text>
+                                <Text style={{ flex: 3.2, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.desc, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+
+                          {/* HL Composition — Criterion A (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>HL Composition — Criterion A: Introduction and intentions</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 0.8, padding: 8, textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3.2, padding: 8 }}>Level descriptor</Text>
+                            </View>
+                            {[
+                              { band: '0', desc: 'Does not meet the basic expectations described below.' },
+                              { band: '1', desc: 'Introduction does not clearly set out form, meaning, audience, and purpose, or how these elements connect to the goals.' },
+                              { band: '2', desc: 'Introduction outlines form, meaning, audience, and purpose and suggests how they should connect to the goals.' },
+                              { band: '3', desc: 'Introduction clearly sets out form, meaning, audience, and purpose and specifies how they connect to achieve the goals.' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 0.8, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText(row.band, highlightedText)}</Text>
+                                <Text style={{ flex: 3.2, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.desc, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+
+                          {/* HL Composition — Criterion B (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>HL Composition — Criterion B: Language and communication</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 0.8, padding: 8, textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3.2, padding: 8 }}>Level descriptor</Text>
+                            </View>
+                            {[
+                              { band: '0', desc: 'Does not meet the basic expectations described below.' },
+                              { band: '1–2', desc: 'Meaning is not communicated effectively. Frequent vocabulary/grammar errors that interfere with reading.' },
+                              { band: '3–4', desc: 'Generally communicates the intended meaning. Errors are isolated but still affect clarity at points.' },
+                              { band: '5–6', desc: 'Communicates the intended meaning effectively. Vocabulary/grammar errors do not reduce clarity.' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 0.8, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText(row.band, highlightedText)}</Text>
+                                <Text style={{ flex: 3.2, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.desc, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+
+                          {/* HL Composition — Criterion C (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>HL Composition — Criterion C: Rationale — use of sources</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 0.8, padding: 8, textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3.2, padding: 8 }}>Level descriptor</Text>
+                            </View>
+                            {[
+                              { band: '0', desc: 'Does not meet the basic expectations described below.' },
+                              { band: '1–2', desc: 'Shows little engagement with sources relevant to the task (including those in the classical language). Limited understanding of sources.' },
+                              { band: '3–4', desc: 'Engagement with sources is narrow; includes some relevant sources (including classical) with partial understanding.' },
+                              { band: '5–6', desc: 'Consistent engagement with relevant sources (including classical) and a general understanding of those sources.' },
+                              { band: '7–8', desc: 'Broad/deep engagement with relevant sources (including classical) and thorough understanding of those sources.' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 0.8, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText(row.band, highlightedText)}</Text>
+                                <Text style={{ flex: 3.2, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.desc, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+
+                          {/* HL Composition — Criterion D (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>HL Composition — Criterion D: Rationale — explanation of choices</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 0.8, padding: 8, textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3.2, padding: 8 }}>Level descriptor</Text>
+                            </View>
+                            {[
+                              { band: '0', desc: 'Does not meet the basic expectations described below.' },
+                              { band: '1–2', desc: 'Rationale rarely focuses on choices relevant to the stated intentions; mainly lists choices with few reasons.' },
+                              { band: '3–4', desc: 'Sometimes focuses on relevant choices; outlines choices with brief accounts or summaries of reasons.' },
+                              { band: '5–6', desc: 'Generally focuses on relevant choices; describes choices with some detail and supporting reasons.' },
+                              { band: '7–8', desc: 'Almost always focuses on relevant choices; explains choices with thorough accounts and detailed reasons.' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 0.8, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText(row.band, highlightedText)}</Text>
+                                <Text style={{ flex: 3.2, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.desc, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
                         </View>
                       )}
                     </View>

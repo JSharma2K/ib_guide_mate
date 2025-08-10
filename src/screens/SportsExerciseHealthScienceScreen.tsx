@@ -445,25 +445,29 @@ Criterion Marks Description Personal engagement Demonstrates personal involvemen
                           <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginTop: 16 }}>
                             {/* Header Row */}
                             <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
-                              <Text style={{ flex: 2, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Criterion</Text>
-                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Marks</Text>
-                              <Text style={{ flex: 3, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Description</Text>
+                              <Text style={{ flex: 2.0, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Criterion</Text>
+                              <Text style={{ flex: 1.6, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Max marks</Text>
+                              <Text style={{ flex: 1.4, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Weight (%)</Text>
                             </View>
-                            
                             {/* Data Rows */}
                             {[
-                              { criterion: 'Personal Engagement', marks: '2', description: 'Demonstrates personal involvement, initiative, and genuine interest in the topic.' },
-                              { criterion: 'Exploration', marks: '6', description: 'Includes background, rationale, clear research question, and relevant scientific context. Method is appropriate and addresses the research question.' },
-                              { criterion: 'Analysis', marks: '6', description: 'Data is analyzed using appropriate techniques; trends and patterns are interpreted logically.' },
-                              { criterion: 'Evaluation', marks: '6', description: 'Discusses strengths and weaknesses, improvements, and limitations. Conclusion is consistent with data.' },
-                              { criterion: 'Communication', marks: '4', description: 'Report is structured logically, with appropriate use of scientific terminology and consistent referencing format.' }
+                              { criterion: 'Research design', max: '6', weight: '25' },
+                              { criterion: 'Data analysis', max: '6', weight: '25' },
+                              { criterion: 'Conclusion', max: '6', weight: '25' },
+                              { criterion: 'Evaluation', max: '6', weight: '25' },
                             ].map((row, idx) => (
                               <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
-                                <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.criterion, highlightedText)}</Text>
-                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, textAlign: 'center' }}>{highlightText(row.marks, highlightedText)}</Text>
-                                <Text style={{ flex: 3, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.description, highlightedText)}</Text>
+                                <Text style={{ flex: 2.0, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.criterion, highlightedText)}</Text>
+                                <Text style={{ flex: 1.6, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, textAlign: 'center' }}>{highlightText(row.max, highlightedText)}</Text>
+                                <Text style={{ flex: 1.4, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, textAlign: 'center' }}>{highlightText(row.weight, highlightedText)}</Text>
                               </View>
                             ))}
+                            {/* Total Row */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 2, borderColor: '#7EC3FF', backgroundColor: 'rgba(126, 195, 255, 0.1)' }}>
+                              <Text style={{ flex: 2.0, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Total</Text>
+                              <Text style={{ flex: 1.6, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>24</Text>
+                              <Text style={{ flex: 1.4, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>100</Text>
+                            </View>
                           </View>
                           
                           {/* Paper 1 (SL & HL) – Multiple Choice */}
@@ -476,24 +480,17 @@ Criterion Marks Description Personal engagement Demonstrates personal involvemen
                           {/* Paper 2 (Short Answer and Data-based Questions) */}
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginBottom: 8, marginTop: 32 }}>Paper 2 – Short Answer and Data-based Questions</Text>
                           
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 16 }}>
-                            {highlightText("SL: 1 hour 15 mins | HL: 2 hours 15 mins\nAssesses application, analysis, and evaluation skills.", highlightedText)}
-                          </Text>
-                          
-                          {/* Paper 2 Rubric Table */}
+                          {/* Paper 2 – Criteria vs Explanation (Paraphrased) */}
                           <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginTop: 16 }}>
-                            {/* Header Row */}
                             <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
                               <Text style={{ flex: 2, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Criteria</Text>
                               <Text style={{ flex: 3, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Explanation</Text>
                             </View>
-                            
-                            {/* Data Rows */}
                             {[
-                              { criterion: 'Basic Knowledge', explanation: 'Remembering key facts about human body systems, exercise science principles, and health concepts.' },
-                              { criterion: 'Problem Solving', explanation: 'Using scientific knowledge to analyze new situations, interpret data charts, and work through step-by-step problems.' },
-                              { criterion: 'Critical Thinking', explanation: 'Drawing conclusions from evidence, questioning research findings, and recognizing study limitations.' },
-                              { criterion: 'Scientific Writing', explanation: 'Presenting ideas clearly using proper terminology, creating effective charts and graphs, and expressing thoughts logically.' }
+                              { criterion: 'AO1: Knowledge and understanding', explanation: 'Recall and explain key scientific facts, ideas, and processes.' },
+                              { criterion: 'AO2: Application', explanation: 'Apply knowledge to new situations, analyze data, and solve structured problems.' },
+                              { criterion: 'AO3: Synthesis and evaluation', explanation: 'Interpret results, judge explanations, and identify limits in methods or data.' },
+                              { criterion: 'AO4: Communication', explanation: 'Use clear scientific language and formats (e.g., graphs/tables) with readable structure.' },
                             ].map((row, idx) => (
                               <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
                                 <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.criterion, highlightedText)}</Text>
@@ -501,29 +498,45 @@ Criterion Marks Description Personal engagement Demonstrates personal involvemen
                               </View>
                             ))}
                           </View>
-                          
-                          {/* Paper 2 Assessment Objectives Table */}
-                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginTop: 24 }}>
-                            {/* Header Row */}
+
+                          {/* Paper 2 – Markbands and Expected Levels (Paraphrased) */}
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginTop: 16 }}>
                             <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
-                              <Text style={{ flex: 2, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Criteria</Text>
-                              <Text style={{ flex: 3, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Explanation</Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Level</Text>
+                              <Text style={{ flex: 4, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Descriptors</Text>
                             </View>
-                            
-                            {/* Data Rows */}
                             {[
-                              { criterion: 'AO1: Knowledge and understanding', explanation: 'Recalling and explaining scientific facts, concepts, and processes.' },
-                              { criterion: 'AO2: Application', explanation: 'Applying knowledge to unfamiliar scenarios, analyzing data, and solving structured problems.' },
-                              { criterion: 'AO3: Synthesis and Evaluation', explanation: 'Interpreting results, evaluating hypotheses, identifying limitations.' },
-                              { criterion: 'AO4: Communication', explanation: 'Using appropriate scientific vocabulary, formats (e.g., graphs, tables), and clarity of expression.' }
+                              { level: '0', descriptor: 'No answer or off-topic.' },
+                              { level: '1–2', descriptor: 'Basic recall, limited grasp, weak structure, little relevance.' },
+                              { level: '3–4', descriptor: 'Adequate knowledge, some application, basic structure, lacks depth.' },
+                              { level: '5–6', descriptor: 'Good understanding with clear application; organized responses with some critical thinking.' },
+                              { level: '7–8', descriptor: 'Excellent understanding; well‑developed answers showing synthesis, analysis, and coherent organization.' },
                             ].map((row, idx) => (
                               <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
-                                <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.criterion, highlightedText)}</Text>
-                                <Text style={{ flex: 3, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.explanation, highlightedText)}</Text>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, textAlign: 'center' }}>{highlightText(row.level, highlightedText)}</Text>
+                                <Text style={{ flex: 4, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.descriptor, highlightedText)}</Text>
                               </View>
                             ))}
                           </View>
-                          
+
+                          {/* Paper 3 – Option Topic (SL & HL, Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginBottom: 8, marginTop: 32 }}>Paper 3 – Option Topic (SL & HL)</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginTop: 16 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 2, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Question Type</Text>
+                              <Text style={{ flex: 3, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Criteria</Text>
+                            </View>
+                            {[
+                              { questionType: 'Short Answer', criteria: 'Tests focused knowledge from the chosen option. Clear, concise, accurate responses.' },
+                              { questionType: 'Extended Response', criteria: 'Requires linking ideas, examples, and evaluation. Emphasize coherence and a reasoned argument.' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.questionType, highlightedText)}</Text>
+                                <Text style={{ flex: 3, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.criteria, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+
                           <Text style={{ 
                             fontSize: 11, 
                             color: 'rgba(255, 255, 255, 0.5)', 
@@ -535,57 +548,9 @@ Criterion Marks Description Personal engagement Demonstrates personal involvemen
                             *This is interpreted material for educational guidance and not official assessment criteria.
                           </Text>
                           
-                          {/* Scoring Levels and Performance Standards */}
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginBottom: 8, marginTop: 32 }}>Scoring Levels and Performance Standards</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 16, fontSize: 13, color: '#B6B6B6' }}>
-                            {highlightText("(Applied to data analysis questions and essay-style responses)", highlightedText)}
-                          </Text>
+
                           
-                          {/* Markbands Table */}
-                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginTop: 16 }}>
-                            {/* Header Row */}
-                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
-                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Level</Text>
-                              <Text style={{ flex: 4, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Descriptors</Text>
-                            </View>
-                            
-                            {/* Data Rows */}
-                            {[
-                              { level: '0', descriptor: 'Missing or completely off-topic response.' },
-                              { level: '1-2', descriptor: 'Simple facts remembered, shows confusion, disorganized writing, not very relevant.' },
-                              { level: '3-4', descriptor: 'Decent grasp of topics, tries to apply knowledge, organized but shallow analysis.' },
-                              { level: '5-6', descriptor: 'Strong comprehension with practical application, well-structured answers showing some deeper thinking.' },
-                              { level: '7-8', descriptor: 'Exceptional mastery, comprehensive responses demonstrating analysis, connections, and logical flow.' }
-                            ].map((row, idx) => (
-                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
-                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, textAlign: 'center' }}>{highlightText(row.level, highlightedText)}</Text>
-                                <Text style={{ flex: 4, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.descriptor, highlightedText)}</Text>
-                              </View>
-                            ))}
-                          </View>
-                          
-                          {/* Specialty Area Exam Details */}
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginBottom: 8, marginTop: 32 }}>Paper 3 – Option Topic (SL & HL)</Text>
-                          
-                          {/* Paper 3 Table */}
-                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginTop: 16 }}>
-                            {/* Header Row */}
-                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
-                              <Text style={{ flex: 2, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Question Type</Text>
-                              <Text style={{ flex: 3, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Criteria</Text>
-                            </View>
-                            
-                            {/* Data Rows */}
-                            {[
-                              { questionType: 'Brief Questions', criteria: 'Checks detailed knowledge from your chosen specialty area. Answers should be direct, precise, and factually correct.' },
-                              { questionType: 'Long-form Questions', criteria: 'Demands combining multiple ideas, real examples, and critical assessment. Emphasis on logical structure and strong reasoning.' }
-                            ].map((row, idx) => (
-                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
-                                <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.questionType, highlightedText)}</Text>
-                                <Text style={{ flex: 3, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.criteria, highlightedText)}</Text>
-                              </View>
-                            ))}
-                          </View>
+
                         </View>
                       )}
                     </View>

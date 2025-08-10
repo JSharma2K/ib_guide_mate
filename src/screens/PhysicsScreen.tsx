@@ -395,29 +395,170 @@ Criterion Description Marks Personal engagement Shows original thinking innovati
                         <View>
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginBottom: 8 }}>Detailed Rubrics – Internal Assessment</Text>
                           
-                          {/* Internal Assessment Rubric Table */}
+                          {/* Internal Assessment Table (Paraphrased) */}
                           <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginTop: 16 }}>
                             {/* Header Row */}
                             <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
-                              <Text style={{ flex: 2, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Criterion</Text>
-                              <Text style={{ flex: 2.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Description</Text>
-                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ flex: 2.0, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Criterion</Text>
+                              <Text style={{ flex: 1.6, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Max marks</Text>
+                              <Text style={{ flex: 1.4, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Weight (%)</Text>
                             </View>
-                            
                             {/* Data Rows */}
                             {[
-                              { criterion: 'Personal engagement', description: 'Shows original thinking, innovative approaches, and genuine curiosity in the investigation.', marks: '2' },
-                              { criterion: 'Exploration', description: 'Clear research focus with appropriate scientific background methodology.', marks: '6' },
-                              { criterion: 'Analysis', description: 'Effective data interpretation with appropriate mathematical processing calculations.', marks: '6' },
-                              { criterion: 'Evaluation', description: 'Valid conclusions drawn from results with awareness of experimental limitations and potential improvements.', marks: '6' },
-                              { criterion: 'Communication', description: 'Clear organization, appropriate scientific terminology, and proper citation of sources.', marks: '4' }
+                              { criterion: 'Research design', max: '6', weight: '25' },
+                              { criterion: 'Data analysis', max: '6', weight: '25' },
+                              { criterion: 'Conclusion', max: '6', weight: '25' },
+                              { criterion: 'Evaluation', max: '6', weight: '25' },
                             ].map((row, idx) => (
                               <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
-                                <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.criterion, highlightedText)}</Text>
-                                <Text style={{ flex: 2.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.description, highlightedText)}</Text>
-                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, textAlign: 'center' }}>{highlightText(row.marks, highlightedText)}</Text>
+                                <Text style={{ flex: 2.0, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.criterion, highlightedText)}</Text>
+                                <Text style={{ flex: 1.6, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, textAlign: 'center' }}>{highlightText(row.max, highlightedText)}</Text>
+                                <Text style={{ flex: 1.4, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, textAlign: 'center' }}>{highlightText(row.weight, highlightedText)}</Text>
                               </View>
                             ))}
+                            {/* Total Row */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 2, borderColor: '#7EC3FF', backgroundColor: 'rgba(126, 195, 255, 0.1)' }}>
+                              <Text style={{ flex: 2.0, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Total</Text>
+                              <Text style={{ flex: 1.6, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>24</Text>
+                              <Text style={{ flex: 1.4, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>100</Text>
+                            </View>
+                          </View>
+                          
+                          {/* Research design — Markbands (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginTop: 16, marginBottom: 8 }}>Research design — Markbands (Paraphrased)</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 1.0, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ flex: 4.0, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Level descriptor</Text>
+                            </View>
+                            {[
+                              { band: '0', desc: 'Does not meet the basic expectations described below.' },
+                              { band: '1–2', desc: 'Question is stated without context. Notes on how data will be gathered are mentioned but not linked to the question. Method steps lack enough detail to repeat the work.' },
+                              { band: '3–4', desc: 'Question is set within a broad context. How relevant data will be gathered is described. Method steps mostly allow someone else to repeat the work with few gaps.' },
+                              { band: '5–6', desc: 'Question is clearly framed within a specific, appropriate context. How sufficient and relevant data will be gathered is explained. Method steps clearly allow repetition of the work.' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1.0, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText(row.band, highlightedText)}</Text>
+                                <Text style={{ flex: 4.0, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.desc, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+                          
+                          {/* Data analysis — Markbands (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginTop: 16, marginBottom: 8 }}>Data analysis — Markbands (Paraphrased)</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 1.0, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ flex: 4.0, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Level descriptor</Text>
+                            </View>
+                            {[
+                              { band: '0', desc: 'Does not meet the basic expectations described below.' },
+                              { band: '1–2', desc: 'Data recording/processing is shown but is unclear or imprecise. Little consideration of uncertainties. Some relevant processing attempted but with major gaps or errors.' },
+                              { band: '3–4', desc: 'Recording/processing is clear or precise (one but not both). Evidence of thinking about uncertainties, but with notable omissions or inaccuracies. Processing related to the question has significant gaps or mistakes.' },
+                              { band: '5–6', desc: 'Recording and processing are both clear and precise. Uncertainties are handled appropriately. Processing relevant to the question is carried out carefully and accurately.' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1.0, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText(row.band, highlightedText)}</Text>
+                                <Text style={{ flex: 4.0, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.desc, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+                          
+                          {/* Conclusion — Markbands (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginTop: 16, marginBottom: 8 }}>Conclusion — Markbands (Paraphrased)</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 1.0, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ flex: 4.0, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Level descriptor</Text>
+                            </View>
+                            {[
+                              { band: '0', desc: 'Does not meet the basic expectations described below.' },
+                              { band: '1–2', desc: 'States a conclusion relevant to the question but not supported by the analysis. Any comparison to accepted science is superficial.' },
+                              { band: '3–4', desc: 'Describes a conclusion relevant to the question but not fully consistent with the analysis. Makes some relevant comparison to accepted science.' },
+                              { band: '5–6', desc: 'Justifies a conclusion relevant to the question and fully consistent with the analysis. Supports it with relevant comparison to accepted science.' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1.0, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText(row.band, highlightedText)}</Text>
+                                <Text style={{ flex: 4.0, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.desc, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+                          
+                          {/* Evaluation — Markbands (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginTop: 16, marginBottom: 8 }}>Evaluation — Markbands (Paraphrased)</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 1.0, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ flex: 4.0, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Level descriptor</Text>
+                            </View>
+                            {[
+                              { band: '0', desc: 'Does not meet the basic expectations described below.' },
+                              { band: '1–2', desc: 'States general weaknesses or limits in the method. Lists improvements, but only as statements.' },
+                              { band: '3–4', desc: 'Describes specific weaknesses or limits. Describes realistic improvements that relate to those issues.' },
+                              { band: '5–6', desc: 'Explains the impact of specific weaknesses or limits. Explains realistic, relevant improvements that address those issues.' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1.0, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText(row.band, highlightedText)}</Text>
+                                <Text style={{ flex: 4.0, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.desc, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+                          
+                          {/* External Assessment — SL (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginTop: 16, marginBottom: 8 }}>External Assessment — SL (Paraphrased)</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 3, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Component & details</Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Weight (%)</Text>
+                            </View>
+                            {/* Paper 1 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF', backgroundColor: 'rgba(126, 195, 255, 0.06)' }}>
+                              <View style={{ flex: 3, padding: 12 }}>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular' }}>Paper 1 (1h 30m) — 45 marks</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular' }}>• Two booklets taken together: 1A (25 marks, 25 multiple‑choice on SL content, no penalty for wrong answers) and 1B (20 marks, questions based on data)</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular' }}>• Checks knowledge, understanding and analysis</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular' }}>• Calculators allowed; bring the Physics data booklet (school provides copies)</Text>
+                              </View>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>36</Text>
+                            </View>
+                            {/* Paper 2 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <View style={{ flex: 3, padding: 12 }}>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular' }}>Paper 2 (1h 30m) — 50 marks</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular' }}>• Short‑answer and extended response on SL content</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular' }}>• Checks core objectives (knowledge, understanding, analysis)</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular' }}>• Calculators allowed; Physics data booklet required (school ensures copies)</Text>
+                              </View>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>44</Text>
+                            </View>
+                          </View>
+                          
+                          {/* External Assessment — HL (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginTop: 16, marginBottom: 8 }}>External Assessment — HL (Paraphrased)</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 3, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Component & details</Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Weight (%)</Text>
+                            </View>
+                            {/* Paper 1 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF', backgroundColor: 'rgba(126, 195, 255, 0.06)' }}>
+                              <View style={{ flex: 3, padding: 12 }}>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular' }}>Paper 1 (2h) — 60 marks</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular' }}>• Two booklets taken together: 1A (40 marks, 40 multiple‑choice on SL + HL content, no penalty for wrong answers) and 1B (20 marks, questions based on data)</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular' }}>• Checks knowledge, understanding and analysis (objectives 1–3)</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular' }}>• Calculators allowed; Physics data booklet required (school provides copies)</Text>
+                              </View>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>36</Text>
+                            </View>
+                            {/* Paper 2 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <View style={{ flex: 3, padding: 12 }}>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular' }}>Paper 2 (2h 30m) — 90 marks</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular' }}>• Short‑answer and extended response on SL + HL content</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular' }}>• Checks objectives 1–3; calculators and Physics data booklet allowed</Text>
+                              </View>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>44</Text>
+                            </View>
                           </View>
                           
                           <Text style={{ 

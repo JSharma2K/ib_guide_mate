@@ -357,7 +357,7 @@ const ComputerScienceScreen = ({ navigation, route }: { navigation: any; route: 
                       )}
                       {section.key === 'detailedRubrics' && (
                         <View>
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginBottom: 8 }}>Primary Assessment – Foundation Topics (Standard and Advanced Level)</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginBottom: 8 }}>Paper 1 – Core (SL and HL)</Text>
                           
                           <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', marginBottom: 16 }}>
                             {highlightText("Weighting: Standard – 45%, Advanced – 40%", highlightedText)}
@@ -391,7 +391,7 @@ const ComputerScienceScreen = ({ navigation, route }: { navigation: any; route: 
                           </View>
                           
                           {/* Paper 2 Section */}
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginBottom: 8, marginTop: 32 }}>Secondary Assessment – Specialized Topics (Standard and Advanced Level)</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginBottom: 8, marginTop: 32 }}>Paper 2 – Option (SL and HL)</Text>
                           
                           <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', marginBottom: 16 }}>
                             {highlightText("Weighting: Standard – 25%, Advanced – 20%", highlightedText)}
@@ -425,7 +425,7 @@ const ComputerScienceScreen = ({ navigation, route }: { navigation: any; route: 
                           </View>
                           
                           {/* Paper 3 Section */}
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginBottom: 8, marginTop: 32 }}>Tertiary Assessment – Scenario Analysis (Advanced Level Only)</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginBottom: 8, marginTop: 32 }}>Paper 3 – Case Study (HL only)</Text>
                           
                           <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', marginBottom: 16 }}>
                             {highlightText("Weighting: Advanced – 20%", highlightedText)}
