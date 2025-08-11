@@ -7,9 +7,11 @@ import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { Feather } from '@expo/vector-icons';
 
+const escapeRegExp = (input: string) => input.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const highlightText = (text: string, highlightedText: string) => {
   if (!highlightedText) return text;
-  const parts = text.split(new RegExp(`(${highlightedText})`, 'gi'));
+  const safe = escapeRegExp(highlightedText);
+  const parts = text.split(new RegExp(`(${safe})`, 'gi'));
   return parts.map((part, i) =>
     part.toLowerCase() === highlightedText.toLowerCase() ?
       <Text key={i} style={themeStyles.highlightedText}>{part}</Text> :
@@ -37,6 +39,9 @@ const RubricTable = ({ data, highlightedText }: { data: { criterion: string; sum
 const PhilosophyScreen = ({ navigation, route }: { navigation: any; route: any }) => {
   const userType = route?.params?.userType || 'student';
   const [searchQuery, setSearchQuery] = useState('');
+  const scrollViewRef = useRef<ScrollView | null>(null);
+  const sectionYPositionsRef = useRef<Record<string, number>>({});
+  const sectionAnchorsYRef = useRef<Record<string, number>>({});
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [highlightedText, setHighlightedText] = useState('');
   const [matchingSections, setMatchingSections] = useState<string[]>([]);
@@ -57,10 +62,50 @@ const PhilosophyScreen = ({ navigation, route }: { navigation: any; route: any }
     overview: `The IB Philosophy course encourages students to engage critically with fundamental questions about life, existence, knowledge, ethics, and the nature of reality. The curriculum provides a foundation in philosophical methods and traditions while developing the ability to analyze, construct, and evaluate arguments. Students explore key ideas through prescribed texts, internally assessed tasks, and optional themes.`,
     essentials: `Syllabus Outline and Teaching Hours\nSL – 150 hours | HL – 240 hours\n- Core theme: Being Human\n- Optional themes (e.g., Aesthetics, Epistemology, Ethics, Philosophy of Religion, Political Philosophy)\n- Prescribed text (chosen from the IB-approved list)\n- Internal assessment: Philosophical analysis of a non-philosophical stimulus\n- HL extension: Exploration of the nature of philosophical activity\n\nAssessment Objectives in Practice\nAO1: Demonstrate knowledge and understanding of philosophical content.\nAO2: Analyze philosophical concepts, positions, and arguments.\nAO3: Construct and evaluate philosophical arguments.\nAO4 (HL only): Demonstrate understanding of the nature, function, and methodology of philosophy.\n\nAssessment Outline and Weightage\nStandard Level (SL):\n- Paper 1 (Core theme and one optional theme): 50%\n- Internal Assessment (Philosophical analysis): 25%\n- Paper 2 (Prescribed text): 25%\n\nHigher Level (HL):\n- Paper 1 (Core theme and one optional theme): 40%\n- Internal Assessment: 20%\n- Paper 2 (Prescribed text): 20%\n- Paper 3 (HL extension): 20%`,
     coreThemes: `Overview of the SL and HL Course: Concepts, Content, and Contexts\n\nConcepts\nIdentity\nTruth\nReality\nValues\nJustification\n\nContent\nCore theme – Being human\nOptional themes (e.g., Epistemology, Ethics)\nPhilosophical traditions and methods\nPrescribed texts\nPhilosophical argumentation\n\nContexts\nSocial, historical, cultural contexts\nPersonal beliefs, global ideologies\nInterdisciplinary connections\nMoral and political frameworks\nPhilosophical, literary, and artistic sources`,
-    detailedRubrics: `Assessment Rubrics – Internal Assessment\n\nCriterion A: Philosophical Issue\nRecognition and clear explanation of the philosophical problem presented in the given material\nMarks: 6\n\nCriterion B: Philosophical Analysis\nThoroughness and precision in examining and discussing the philosophical problem\nMarks: 12\n\nCriterion C: Relevance and Support\nApplication of relevant examples and sources to strengthen the philosophical discussion\nMarks: 6`,
+    detailedRubrics: `Assessment Rubrics – Internal Assessment\n\nA: Philosophical Issue — Recognition and clear explanation of the philosophical problem presented in the given material. (Max 6)\nB: Philosophical Analysis — Thoroughness and precision in examining and discussing the philosophical problem. (Max 12)\nC: Relevance and Support — Application of relevant examples and sources to strengthen the philosophical discussion. (Max 6)\n\nInternal Assessment Criteria — SL and HL (overview) — The analysis is assessed using the following five criteria.\n\nCriterion A: Finding the Problem and Explaining Why (3 marks)\n0: The work does not reach a standard described by the descriptors below.\n1: The thinking problem brought up by the given material is hinted at but not clearly pointed out. There is no explanation of the connection between the given material and the thinking problem identified.\n2: The thinking problem brought up by the given material is clearly pointed out. There is some explanation of the connection between the given material and the thinking problem identified.\n3: The thinking problem brought up by the given material is clearly and directly pointed out. There is a clear explanation of the connection between the given material and the thinking problem identified.\n\nCriterion B: Clear Writing (4 marks)\n0: The work does not reach a standard described by the descriptors below.\n1: The writing is poorly organized, or where there is some organization there is little focus on the task. Most points are unclear and hard to understand.\n2: The writing tries to follow an organized approach although it is sometimes unclear what it is trying to say. Many points lack clarity and exactness.\n3: The writing is organized and generally well-structured, and can be easily followed. Points are generally clear and make sense together.\n4: The writing is focused and well-organized. All or nearly all of the points made are clear and make sense together.\n\nCriterion C: What You Know and How Well You Understand (4 marks)\n0: The work does not reach a standard described by the descriptors below.\n1: There is little helpful information. The explanation of the thinking problem is very basic. Special thinking words are not used or are used wrong.\n2: Some information is shown but this is not accurate and not helpful. There is a basic explanation of the thinking problem. Special thinking words are used, sometimes correctly.\n3: Information is mostly accurate and helpful. There is a good explanation of the thinking problem. Special thinking words are used, mostly correctly.\n4: The writing contains helpful, accurate and detailed information. There is a well-developed explanation of the thinking problem. There is correct use of special thinking words throughout the writing.\n\nCriterion D: Deep Thinking and Analysis (8 marks)\n0: The work does not reach a standard described by the descriptors below.\n1–2: The writing is mostly just telling facts. There is very little deep thinking. Where examples are included, these don't work well and/or aren't helpful.\n3–4: The writing contains some deep thinking but is more about telling facts than analyzing. Some examples are included.\n5–6: The writing contains deep thinking, but this thinking needs more development. Helpful examples are used to support the argument.\n7–8: The writing contains well-developed deep thinking. Helpful and clearly presented examples are used effectively to support the argument.\n\nCriterion E: Weighing Different Views and Making Judgments (6 marks)\n0: The work does not reach a standard described by the descriptors below.\n1–2: There is little thoughtful discussion of different viewpoints. Few of the main points are backed up with good reasons. There is no conclusion, or the conclusion doesn't relate to the topic.\n3–4: There is some thoughtful discussion of different viewpoints. Some of the main points are backed up with good reasons. The conclusion is stated but is shallow or doesn't fully match the argument.\n5–6: There is clear thoughtful discussion of different viewpoints. All or nearly all of the main points are backed up with good reasons. The writing argues from a consistently held position. The conclusion is clearly stated and matches the argument.`,
     philosophyTips: `Top 10 Study Tips for Success – Philosophy\n\n1. Read prescribed texts multiple times with annotation.\n2. Practice outlining arguments before writing full responses.\n3. Master the core theme thoroughly—it appears in all exam levels.\n4. Use real-world examples to ground abstract arguments.\n5. Compare and contrast philosophical perspectives in essays.\n6. Practice explaining complex ideas clearly and concisely.\n7. Use feedback from past papers to refine essay structure.\n8. Understand the assessment rubrics and apply them to your writing.\n9. Use philosophical vocabulary accurately and consistently.\n10. Discuss your ideas with peers to test clarity and logic.`,
   };
   const sectionKeys: Array<'overview' | 'essentials' | 'coreThemes' | 'detailedRubrics' | 'philosophyTips'> = ['overview', 'essentials', 'coreThemes', 'detailedRubrics', 'philosophyTips'];
+
+  // Full-text blob of Detailed Rubrics table content to improve search coverage
+  const detailedRubricsSearchContent = `
+  A: Philosophical Issue — Recognition and clear explanation of the philosophical problem presented in the given material.
+  B: Philosophical Analysis — Thoroughness and precision in examining and discussing the philosophical problem.
+  C: Relevance and Support — Application of relevant examples and sources to strengthen the philosophical discussion.
+
+  Criterion A: Finding the Problem and Explaining Why (3 marks)
+  0: The work does not reach a standard described by the descriptors below.
+  1: The thinking problem brought up by the given material is hinted at but not clearly pointed out. There is no explanation of the connection between the given material and the thinking problem identified.
+  2: The thinking problem brought up by the given material is clearly pointed out. There is some explanation of the connection between the given material and the thinking problem identified.
+  3: The thinking problem brought up by the given material is clearly and directly pointed out. There is a clear explanation of the connection between the given material and the thinking problem identified.
+
+  Criterion B: Clear Writing (4 marks)
+  0: The work does not reach a standard described by the descriptors below.
+  1: The writing is poorly organized, or where there is some organization there is little focus on the task. Most points are unclear and hard to understand.
+  2: The writing tries to follow an organized approach although it is sometimes unclear what it is trying to say. Many points lack clarity and exactness.
+  3: The writing is organized and generally well-structured, and can be easily followed. Points are generally clear and make sense together.
+  4: The writing is focused and well-organized. All or nearly all of the points made are clear and make sense together.
+
+  Criterion C: What You Know and How Well You Understand (4 marks)
+  0: The work does not reach a standard described by the descriptors below.
+  1: There is little helpful information. The explanation of the thinking problem is very basic. Special thinking words are not used or are used wrong.
+  2: Some information is shown but this is not accurate and not helpful. There is a basic explanation of the thinking problem. Special thinking words are used, sometimes correctly.
+  3: Information is mostly accurate and helpful. There is a good explanation of the thinking problem. Special thinking words are used, mostly correctly.
+  4: The writing contains helpful, accurate and detailed information. There is a well-developed explanation of the thinking problem. There is correct use of special thinking words throughout the writing.
+
+  Criterion D: Deep Thinking and Analysis (8 marks)
+  0: The work does not reach a standard described by the descriptors below.
+  1-2: The writing is mostly just telling facts. There is very little deep thinking. Where examples are included, these don't work well and/or aren't helpful.
+  3-4: The writing contains some deep thinking but is more about telling facts than analyzing. Some examples are included.
+  5-6: The writing contains deep thinking, but this thinking needs more development. Helpful examples are used to support the argument.
+  7-8: The writing contains well-developed deep thinking. Helpful and clearly presented examples are used effectively to support the argument.
+
+  Criterion E: Weighing Different Views and Making Judgments (6 marks)
+  0: The work does not reach a standard described by the descriptors below.
+  1-2: There is little thoughtful discussion of different viewpoints. Few of the main points are backed up with good reasons. There is no conclusion, or the conclusion doesn't relate to the topic.
+  3-4: There is some thoughtful discussion of different viewpoints. Some of the main points are backed up with good reasons. The conclusion is stated but is shallow or doesn't fully match the argument.
+  5-6: There is clear thoughtful discussion of different viewpoints. All or nearly all of the main points are backed up with good reasons. The writing argues from a consistently held position. The conclusion is clearly stated and matches the argument.
+  `;
 
   const handleScroll = (event: any) => {
     const scrollY = event.nativeEvent.contentOffset.y;
@@ -79,6 +124,54 @@ const PhilosophyScreen = ({ navigation, route }: { navigation: any; route: any }
         useNativeDriver: true,
       }).start();
     }
+  };
+
+  const scrollToSection = (sectionKey: string) => {
+    const y = sectionYPositionsRef.current[sectionKey];
+    if (scrollViewRef.current && typeof y === 'number') {
+      // Offset so the section header sits below the top bar
+      const offset = 96;
+      scrollViewRef.current.scrollTo({ y: Math.max(y - offset, 0), animated: true });
+    }
+  };
+
+  const scrollToY = (y: number) => {
+    if (scrollViewRef.current && typeof y === 'number') {
+      const offset = 96;
+      scrollViewRef.current.scrollTo({ y: Math.max(y - offset, 0), animated: true });
+    }
+  };
+
+  const registerSectionAnchor = (sectionKey: string, anchorKey: string, yWithinSection: number) => {
+    const sectionHeaderY = sectionYPositionsRef.current[sectionKey] || 0;
+    // Account for padding/margins between header and content
+    const paddingAllowance = 40;
+    sectionAnchorsYRef.current[anchorKey] = sectionHeaderY + yWithinSection + paddingAllowance;
+  };
+
+  const findRubricAnchorForQuery = (q: string): string | null => {
+    const lower = q.toLowerCase();
+    if (
+      lower.includes('criterion e') ||
+      lower.includes('weighing different views') ||
+      lower.includes('making judgments') ||
+      lower.includes('making judgement') ||
+      lower.includes('viewpoint') ||
+      lower.includes('viewpoints') ||
+      lower.includes('conclusion') ||
+      lower.includes('conclusions') ||
+      lower.includes('position') ||
+      lower.includes('consistently held') ||
+      lower.includes('reasons') ||
+      lower.includes('reasoning')
+    ) return 'rubrics_critE';
+    if (lower.includes('criterion d') || lower.includes('deep thinking') || lower.includes('analysis')) return 'rubrics_critD';
+    if (lower.includes('criterion c') || lower.includes('what you know') || lower.includes('understand')) return 'rubrics_critC';
+    if (lower.includes('criterion b') || lower.includes('clear writing')) return 'rubrics_critB';
+    if (lower.includes('criterion a') || lower.includes('finding the problem')) return 'rubrics_critA';
+    if (lower.includes('internal assessment criteria')) return 'rubrics_criteria_overview';
+    if (lower.includes('philosophical issue') || lower.includes('philosophical analysis') || lower.includes('relevance and support')) return 'rubrics_ia_table';
+    return null;
   };
 
   const toggleSection = (section: string) => {
@@ -119,14 +212,25 @@ const PhilosophyScreen = ({ navigation, route }: { navigation: any; route: any }
       'philosophyTips': 'Philosophy Tips',
     };
     
-    const matches = sectionKeys.filter(key =>
+    let matches = sectionKeys.filter(key =>
       sectionContentStrings[key].toLowerCase().includes(trimmedQuery.toLowerCase()) ||
       sectionTitles[key].toLowerCase().includes(trimmedQuery.toLowerCase())
     );
-    setMatchingSections(matches);
+
+    // If query appears inside the detailed rubrics tables, include that section as a match
+    if (detailedRubricsSearchContent.toLowerCase().includes(trimmedQuery.toLowerCase()) && !matches.includes('detailedRubrics')) {
+      matches = [...matches, 'detailedRubrics'];
+    }
+
+    // Prioritize opening Detailed Rubrics when it matches
+    const prioritizedMatches = matches.includes('detailedRubrics')
+      ? (['detailedRubrics', ...matches.filter(k => k !== 'detailedRubrics')])
+      : matches;
+
+    setMatchingSections(prioritizedMatches);
     setCurrentMatchIndex(0);
-    if (matches.length > 0) {
-      setExpandedSection(matches[0]);
+    if (prioritizedMatches.length > 0) {
+      setExpandedSection(prioritizedMatches[0]);
     } else {
       setExpandedSection(null);
     }
@@ -182,6 +286,23 @@ const PhilosophyScreen = ({ navigation, route }: { navigation: any; route: any }
         }
       }
     });
+
+    // After expanding due to search, scroll to the section header
+    if (highlightedText) {
+      setTimeout(() => {
+        if (expandedSection === 'detailedRubrics') {
+          const anchor = findRubricAnchorForQuery(highlightedText);
+          const y = anchor ? sectionAnchorsYRef.current[anchor] : undefined;
+          if (typeof y === 'number') {
+            scrollToY(y);
+          } else {
+            scrollToSection(expandedSection);
+          }
+        } else {
+          scrollToSection(expandedSection);
+        }
+      }, 200);
+    }
   }, [expandedSection]);
 
   useEffect(() => {
@@ -253,6 +374,7 @@ const PhilosophyScreen = ({ navigation, route }: { navigation: any; route: any }
         </Animated.View>
       </View>
       <ScrollView 
+        ref={scrollViewRef}
         keyboardShouldPersistTaps="handled" 
         contentContainerStyle={{ paddingTop: 112, paddingBottom: 32, paddingHorizontal: 16 }}
         onScroll={handleScroll}
@@ -302,7 +424,7 @@ const PhilosophyScreen = ({ navigation, route }: { navigation: any; route: any }
           </View>
           {/* Dropdowns */}
           {[{ key: 'overview', title: 'Course Overview' }, { key: 'essentials', title: 'Subject Essentials' }, { key: 'coreThemes', title: 'Prescribed Literature' }, { key: 'detailedRubrics', title: 'Detailed Rubrics' }].map((section, idx, arr) => (
-            <View key={section.key}>
+            <View key={section.key} onLayout={(e) => { sectionYPositionsRef.current[section.key] = e.nativeEvent.layout.y; }}>
               <List.Item
                 title={section.title}
                 titleStyle={{ color: '#fff', fontFamily: 'ScopeOne-Regular', fontSize: 18 }}
@@ -360,7 +482,7 @@ const PhilosophyScreen = ({ navigation, route }: { navigation: any; route: any }
                       )}
                       {section.key === 'detailedRubrics' && (
                         <View>
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginBottom: 12 }}>Assessment Rubrics – Internal Assessment</Text>
+                          <Text onLayout={(e) => registerSectionAnchor('detailedRubrics', 'rubrics_ia_table', e.nativeEvent.layout.y)} style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginBottom: 12 }}>Assessment Rubrics – Internal Assessment</Text>
                           
                           {/* Internal Assessment Rubric Table */}
                           <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
@@ -383,11 +505,11 @@ const PhilosophyScreen = ({ navigation, route }: { navigation: any; route: any }
                           </View>
                           
                           {/* Internal Assessment Criteria - SL and HL */}
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Internal Assessment Criteria — SL and HL</Text>
+                          <Text onLayout={(e) => registerSectionAnchor('detailedRubrics', 'rubrics_criteria_overview', e.nativeEvent.layout.y)} style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Internal Assessment Criteria — SL and HL</Text>
                           <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#B6B6B6', marginBottom: 12 }}>The analysis is assessed using the following five criteria.</Text>
                           
                           {/* Criterion A: Identification of issue and justification Table */}
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, marginBottom: 12 }}>Criterion A: Finding the Problem and Explaining Why (3 marks)</Text>
+                          <Text onLayout={(e) => registerSectionAnchor('detailedRubrics', 'rubrics_critA', e.nativeEvent.layout.y)} style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, marginBottom: 12 }}>Criterion A: Finding the Problem and Explaining Why (3 marks)</Text>
                           
                           <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
                             <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
@@ -408,7 +530,7 @@ const PhilosophyScreen = ({ navigation, route }: { navigation: any; route: any }
                                                      </View>
                            
                            {/* Criterion B: Clarity Table */}
-                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Criterion B: Clear Writing (4 marks)</Text>
+                           <Text onLayout={(e) => registerSectionAnchor('detailedRubrics', 'rubrics_critB', e.nativeEvent.layout.y)} style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Criterion B: Clear Writing (4 marks)</Text>
                            
                            <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
                              <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
@@ -430,7 +552,7 @@ const PhilosophyScreen = ({ navigation, route }: { navigation: any; route: any }
                                                        </View>
                             
                             {/* Criterion C: Knowledge and understanding Table */}
-                            <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Criterion C: What You Know and How Well You Understand (4 marks)</Text>
+                            <Text onLayout={(e) => registerSectionAnchor('detailedRubrics', 'rubrics_critC', e.nativeEvent.layout.y)} style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Criterion C: What You Know and How Well You Understand (4 marks)</Text>
                             
                             <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
                               <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
@@ -452,7 +574,7 @@ const PhilosophyScreen = ({ navigation, route }: { navigation: any; route: any }
                             </View>
                             
                             {/* Criterion D: Analysis Table */}
-                            <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Criterion D: Deep Thinking and Analysis (8 marks)</Text>
+                            <Text onLayout={(e) => registerSectionAnchor('detailedRubrics', 'rubrics_critD', e.nativeEvent.layout.y)} style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Criterion D: Deep Thinking and Analysis (8 marks)</Text>
                             
                             <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
                               <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
@@ -474,7 +596,7 @@ const PhilosophyScreen = ({ navigation, route }: { navigation: any; route: any }
                             </View>
                             
                             {/* Criterion E: Evaluation Table */}
-                            <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Criterion E: Weighing Different Views and Making Judgments (6 marks)</Text>
+                            <Text onLayout={(e) => registerSectionAnchor('detailedRubrics', 'rubrics_critE', e.nativeEvent.layout.y)} style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Criterion E: Weighing Different Views and Making Judgments (6 marks)</Text>
                             
                             <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
                               <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>

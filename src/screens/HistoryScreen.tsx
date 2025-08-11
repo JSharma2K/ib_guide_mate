@@ -7,9 +7,11 @@ import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { Feather } from '@expo/vector-icons';
 
+const escapeRegExp = (input: string) => input.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const highlightText = (text: string, highlightedText: string) => {
   if (!highlightedText) return text;
-  const parts = text.split(new RegExp(`(${highlightedText})`, 'gi'));
+  const safe = escapeRegExp(highlightedText);
+  const parts = text.split(new RegExp(`(${safe})`, 'gi'));
   return parts.map((part, i) =>
     part.toLowerCase() === highlightedText.toLowerCase() ?
       <Text key={i} style={themeStyles.highlightedText}>{part}</Text> :
@@ -41,6 +43,9 @@ const HistoryScreen = ({ navigation, route }: { navigation: any; route: any }) =
   const [highlightedText, setHighlightedText] = useState('');
   const [matchingSections, setMatchingSections] = useState<string[]>([]);
   const [currentMatchIndex, setCurrentMatchIndex] = useState(0);
+  const scrollViewRef = useRef<ScrollView | null>(null);
+  const sectionYPositionsRef = useRef<Record<string, number>>({});
+  const sectionAnchorsYRef = useRef<Record<string, number>>({});
 
   // Animation values for each section
   const overviewAnimation = useRef(new Animated.Value(0)).current;
@@ -57,7 +62,14 @@ const HistoryScreen = ({ navigation, route }: { navigation: any; route: any }) =
     overview: `The IB History course develops students' understanding of the past through critical engagement with historical sources and concepts. It emphasizes the development of historical skills such as evaluation of evidence, comparison, causation, and understanding change over time. Students explore a range of world history topics while considering multiple perspectives and interpretations.`,
     essentials: `Syllabus Outline and Teaching Hours\nSL: 150 hours\nHL: 240 hours\n\nAssessment Objectives in Practice\nAO1: Demonstrate detailed, relevant and accurate historical knowledge.\nAO2: Demonstrate understanding of historical concepts and methods.\nAO3: Analyse and evaluate historical sources and evidence.\nAO4: Construct clear, focused, and coherent arguments based on evidence.\n\nAssessment Outline and Weightage\nStandard Level (SL)\n- Paper 1: Source-based paper on prescribed subjects (1 hour) – 30%\n- Paper 2: Essay paper on world history topics (1.5 hours) – 45%\n- Internal Assessment: Historical investigation – 25%\n\nHigher Level (HL)\n- Paper 1: Source-based paper on prescribed subjects – 20%\n- Paper 2: Essay paper on world history topics – 25%\n- Paper 3: Essay paper based on regional option (2.5 hours) – 35%\n- Internal Assessment: Historical investigation – 20%\n\nInternal Assessment\nHistorical Investigation – 20 hours (SL and HL)`,
     coreThemes: `Prescribed Subjects (SL/HL)\n- Military leaders\n- Conquest and its impact\n- The move to global war\n- Rights and protest\n- Conflict and intervention\n\nWorld History Topics (SL/HL)\n- Society and economy (750–1400)\n- Causes and effects of medieval wars (750–1500)\n- Dynasties and rulers (750–1500)\n- Societies in transition (1400–1700)\n- Early Modern states (1450–1789)\n- Origins, development and impact of industrialization (1750–2005)\n- Independence movements (1800–2000)\n- Evolution and development of democratic states (1848–2000)\n- Authoritarian states (20th century)\n- Causes and effects of 20th-century wars\n- The Cold War: Superpower tensions and rivalries (20th century)\n\nHL Regional Options (HL only)\n- History of Africa and the Middle East\n- History of the Americas\n- History of Asia and Oceania\n- History of Europe`,
-    detailedRubrics: `Detailed Rubrics – Internal Assessment (Historical Investigation)\n\nCriterion A: Identification and evaluation of sources\nRecognition and assessment of two sources considering their background, intent, worth, and constraints.\nMarks: 0-6\n\nCriterion B: Investigation\nStructured, coherent and focused inquiry with meaningful analysis and assessment using appropriate historical sources.\nMarks: 0-15\n\nCriterion C: Reflection\nThoughtful consideration of what the inquiry revealed about the approaches used by historians.\nMarks: 0-4`,
+    detailedRubrics: `Detailed Rubrics – Internal Assessment (Historical Investigation)
+
+Criteria A–C: Identification and evaluation of sources; Investigation; Reflection.
+
+Also included for search coverage:
+• Paper 1 — Source Questions (Ques., Description, Marks) – comprehension, source value/limits, compare/contrast, argue using sources + own knowledge
+• Paper 1 — Fourth Question Markbands – bands 0, 1–3, 4–6, 7–9 with level descriptors (relevance, knowledge accuracy, analysis, synthesis)
+• Paper 2 — Essay Markbands (SL/HL) – bands 0, 1–3, 4–6, 7–9, 10–12, 13–15 with descriptors (structure, knowledge, examples, evaluation)`,
     historyTips: `Top 10 Study Tips for Success – History\n\n1. Familiarize yourself with historical concepts such as causation, change, and significance.\n2. Use a study timeline to organize world history topics chronologically.\n3. Practice Paper 1 by working through source-based questions under timed conditions.\n4. Develop thematic essay skills for Paper 2 by linking content across different topics.\n5. For HL, regularly write full-length essays for Paper 3 using past paper prompts.\n6. Choose a well-defined and original topic for your Historical Investigation.\n7. Evaluate sources critically, focusing on origin, purpose, value, and limitations.\n8. Make flashcards of key dates, events, and historiographical interpretations.\n9. Use planning structures (e.g., PEEL) for clear and coherent essays.\n10. Self-assess your writing against rubrics to improve clarity and analytical depth.`,
   };
   const sectionKeys: Array<'overview' | 'essentials' | 'coreThemes' | 'detailedRubrics' | 'historyTips'> = ['overview', 'essentials', 'coreThemes', 'detailedRubrics', 'historyTips'];
@@ -79,6 +91,41 @@ const HistoryScreen = ({ navigation, route }: { navigation: any; route: any }) =
         useNativeDriver: true,
       }).start();
     }
+  };
+
+  const scrollToSection = (sectionKey: string) => {
+    const y = sectionYPositionsRef.current[sectionKey];
+    if (scrollViewRef.current && typeof y === 'number') {
+      const offset = 96;
+      scrollViewRef.current.scrollTo({ y: Math.max(y - offset, 0), animated: true });
+    }
+  };
+
+  const scrollToY = (y: number) => {
+    if (scrollViewRef.current && typeof y === 'number') {
+      const offset = 96;
+      scrollViewRef.current.scrollTo({ y: Math.max(y - offset, 0), animated: true });
+    }
+  };
+
+  const registerSectionAnchor = (sectionKey: string, anchorKey: string, yWithinSection: number) => {
+    const sectionHeaderY = sectionYPositionsRef.current[sectionKey] || 0;
+    const paddingAllowance = 40;
+    sectionAnchorsYRef.current[anchorKey] = sectionHeaderY + yWithinSection + paddingAllowance;
+  };
+
+  const findHistoryRubricAnchorForQuery = (q: string): string | null => {
+    const lower = q.toLowerCase();
+    // IA criteria anchors
+    if (lower.includes('criterion a') || lower.includes('identification and evaluation of sources')) return 'hist_critA';
+    if (lower.includes('criterion b') || lower.includes('investigation')) return 'hist_critB';
+    if (lower.includes('criterion c') || lower.includes('reflection')) return 'hist_critC';
+    // Paper 1 anchors
+    if (lower.includes('paper 1') && (lower.includes('source questions') || lower.includes('first question'))) return 'hist_p1_overview';
+    if (lower.includes('fourth question') || lower.includes('q4') || lower.includes('markbands')) return 'hist_p1_q4_bands';
+    // Paper 2 anchors
+    if (lower.includes('paper 2') || lower.includes('essay markbands')) return 'hist_p2_bands';
+    return null;
   };
 
   const toggleSection = (section: string) => {
@@ -119,10 +166,14 @@ const HistoryScreen = ({ navigation, route }: { navigation: any; route: any }) =
       'historyTips': 'History Tips',
     };
     
-    const matches = sectionKeys.filter(key =>
+    let matches = sectionKeys.filter(key =>
       sectionContentStrings[key].toLowerCase().includes(trimmedQuery.toLowerCase()) ||
       sectionTitles[key].toLowerCase().includes(trimmedQuery.toLowerCase())
     );
+    // If query clearly targets a specific rubric subsection, ensure detailedRubrics is included
+    if (findHistoryRubricAnchorForQuery(trimmedQuery) && !matches.includes('detailedRubrics')) {
+      matches = [...matches, 'detailedRubrics'];
+    }
     setMatchingSections(matches);
     setCurrentMatchIndex(0);
     if (matches.length > 0) {
@@ -182,6 +233,23 @@ const HistoryScreen = ({ navigation, route }: { navigation: any; route: any }) =
         }
       }
     });
+
+    // After expanding, scroll to matching anchor if the search query targets a subsection
+    if (highlightedText) {
+      setTimeout(() => {
+        if (expandedSection === 'detailedRubrics') {
+          const anchor = findHistoryRubricAnchorForQuery(highlightedText);
+          const y = anchor ? sectionAnchorsYRef.current[anchor] : undefined;
+          if (typeof y === 'number') {
+            scrollToY(y);
+          } else {
+            scrollToSection(expandedSection);
+          }
+        } else {
+          scrollToSection(expandedSection);
+        }
+      }, 200);
+    }
   }, [expandedSection]);
 
   useEffect(() => {
@@ -249,6 +317,7 @@ const HistoryScreen = ({ navigation, route }: { navigation: any; route: any }) =
         </Animated.View>
       </View>
       <ScrollView 
+        ref={scrollViewRef}
         keyboardShouldPersistTaps="handled" 
         contentContainerStyle={{ paddingTop: 112, paddingBottom: 32, paddingHorizontal: 16 }}
         onScroll={handleScroll}
@@ -298,7 +367,7 @@ const HistoryScreen = ({ navigation, route }: { navigation: any; route: any }) =
           </View>
           {/* Dropdowns */}
           {[{ key: 'overview', title: 'Course Overview' }, { key: 'essentials', title: 'Subject Essentials' }, { key: 'coreThemes', title: 'Prescribed Literature' }, { key: 'detailedRubrics', title: 'Detailed Rubrics' }].map((section, idx, arr) => (
-            <View key={section.key}>
+            <View key={section.key} onLayout={(e) => { sectionYPositionsRef.current[section.key] = e.nativeEvent.layout.y; }}>
               <List.Item
                 title={section.title}
                 titleStyle={{ color: '#fff', fontFamily: 'ScopeOne-Regular', fontSize: 18 }}
@@ -346,9 +415,12 @@ const HistoryScreen = ({ navigation, route }: { navigation: any; route: any }) =
                       )}
                       {section.key === 'detailedRubrics' && (
                         <View>
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginBottom: 12 }}>Detailed Rubrics – Internal Assessment (Historical Investigation)</Text>
+                          <Text onLayout={(e) => registerSectionAnchor('detailedRubrics', 'hist_ia_header', e.nativeEvent.layout.y)} style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginBottom: 12 }}>Detailed Rubrics – Internal Assessment (Historical Investigation)</Text>
                           
                           {/* Internal Assessment Rubric Table */}
+                          <Text onLayout={(e) => registerSectionAnchor('detailedRubrics', 'hist_critA', e.nativeEvent.layout.y)} style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 8, marginBottom: 4 }}>
+                            Criterion A: Identification and evaluation of sources
+                          </Text>
                           <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
                             <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
                               <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 2.2, padding: 8 }}>Criterion</Text>
@@ -368,8 +440,17 @@ const HistoryScreen = ({ navigation, route }: { navigation: any; route: any }) =
                             ))}
                           </View>
 
+                          <Text onLayout={(e) => registerSectionAnchor('detailedRubrics', 'hist_critB', e.nativeEvent.layout.y)} style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 12, marginBottom: 4 }}>
+                            Criterion B: Investigation
+                          </Text>
+                          <View />
+
+                          <Text onLayout={(e) => registerSectionAnchor('detailedRubrics', 'hist_critC', e.nativeEvent.layout.y)} style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 12, marginBottom: 4 }}>
+                            Criterion C: Reflection
+                          </Text>
+
                           {/* Paper 1 — Source Questions (Paraphrased) */}
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, marginBottom: 8 }}>Paper 1 — Source Questions (Paraphrased)</Text>
+                          <Text onLayout={(e) => registerSectionAnchor('detailedRubrics', 'hist_p1_overview', e.nativeEvent.layout.y)} style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, marginBottom: 8 }}>Paper 1 — Source Questions (Paraphrased)</Text>
                           <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
                             <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
                               <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 2.2, padding: 8 }}>Question</Text>
@@ -392,7 +473,7 @@ const HistoryScreen = ({ navigation, route }: { navigation: any; route: any }) =
                           </View>
                           
                           {/* Paper 1 — Fourth Question Markbands (Paraphrased) */}
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, marginBottom: 8 }}>Paper 1 — Fourth Question Markbands (Paraphrased)</Text>
+                          <Text onLayout={(e) => registerSectionAnchor('detailedRubrics', 'hist_p1_q4_bands', e.nativeEvent.layout.y)} style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, marginBottom: 8 }}>Paper 1 — Fourth Question Markbands (Paraphrased)</Text>
                           <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
                             <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
                               <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.0, padding: 8 }}>Marks</Text>
@@ -412,7 +493,7 @@ const HistoryScreen = ({ navigation, route }: { navigation: any; route: any }) =
                           </View>
 
                           {/* Paper 2 — Essay Markbands (SL/HL, Paraphrased) */}
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, marginBottom: 8 }}>Paper 2 — Essay Markbands (SL/HL, Paraphrased)</Text>
+                          <Text onLayout={(e) => registerSectionAnchor('detailedRubrics', 'hist_p2_bands', e.nativeEvent.layout.y)} style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, marginBottom: 8 }}>Paper 2 — Essay Markbands (SL/HL, Paraphrased)</Text>
                           <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
                             <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
                               <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.0, padding: 8 }}>Marks</Text>

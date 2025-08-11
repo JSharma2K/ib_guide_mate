@@ -7,9 +7,11 @@ import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { Feather } from '@expo/vector-icons';
 
+const escapeRegExp = (input: string) => input.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const highlightText = (text: string, highlightedText: string) => {
   if (!highlightedText) return text;
-  const parts = text.split(new RegExp(`(${highlightedText})`, 'gi'));
+  const safe = escapeRegExp(highlightedText);
+  const parts = text.split(new RegExp(`(${safe})`, 'gi'));
   return parts.map((part, i) =>
     part.toLowerCase() === highlightedText.toLowerCase() ?
       <Text key={i} style={themeStyles.highlightedText}>{part}</Text> :
@@ -24,6 +26,9 @@ const GlobalPoliticsScreen = ({ navigation, route }: { navigation: any; route: a
   const [highlightedText, setHighlightedText] = useState('');
   const [matchingSections, setMatchingSections] = useState<string[]>([]);
   const [currentMatchIndex, setCurrentMatchIndex] = useState(0);
+  const scrollViewRef = useRef<ScrollView | null>(null);
+  const sectionYPositionsRef = useRef<Record<string, number>>({});
+  const sectionAnchorsYRef = useRef<Record<string, number>>({});
 
   // Animation values for each section
   const overviewAnimation = useRef(new Animated.Value(0)).current;
@@ -40,10 +45,50 @@ const GlobalPoliticsScreen = ({ navigation, route }: { navigation: any; route: a
     overview: `The IB Global Politics course explores fundamental political concepts such as power, sovereignty, legitimacy, and justice. Students examine these concepts in a variety of contexts and through a diverse range of perspectives. The course emphasizes the interconnectedness of global issues and promotes critical thinking, engagement, and reflective discussion on political activity at local, national, and international levels.`,
     essentials: `Syllabus Outline and Teaching Hours\nSL: 150 hours\nHL: 240 hours\nCore Units\n- Power, Sovereignty and International Relations\n- Human Rights\n- Development\n- Peace and Conflict\nHL Extension\n- HL students undertake an extension: Global Political Challenges (Two from six topics)\nEngagement Activity\n- Research-based investigation on a political issue of personal interest\n\nAssessment Objectives in Practice\n• AO1: Demonstrate knowledge and understanding of key political concepts and contemporary political issues.\n• AO2: Apply political concepts and examples to analyse and construct arguments.\n• AO3: Demonstrate awareness of multiple perspectives and their implications.\n• AO4: Evaluate political issues and arguments, including their implications and limitations.\n\nAssessment Outline and Weightage\nStandard Level (SL)\n- Paper 1 (Stimulus-based questions): 30%\n- Paper 2 (Extended response): 45%\n- Engagement activity (Internal Assessment): 25%\nHigher Level (HL)\n- Paper 1: 20%\n- Paper 2: 35%\n- HL Extension (Global Political Challenges): 20%\n- Engagement activity (Internal Assessment): 25%`,
     coreThemes: `Overview of the SL and HL Course: Concepts, Content, and Contexts\n\nConcepts:\nPower, Sovereignty, Legitimacy, Interdependence, Human Rights, Justice, Development, Globalization, Inequality, Sustainability, Peace, Conflict, Violence, Security\n\nContexts:\nLocal, National, Regional, International, Global\n\nContent / Topics:\n• Core Units:\n- Power, Sovereignty and International Relations\n- Human Rights\n- Development\n- Peace and Conflict\n• HL Extension: Global Political Challenges\n• Engagement Activity`,
-    detailedRubrics: `Detailed Rubrics – Internal Assessment (Engagement Activity)\n\nCriterion A: Identification of issue\nSelects a well-defined political topic with clear connection to local community.\nMarks: 0-4\n\nCriterion B: Explanation of engagement\nProvides comprehensive description of the political activity or involvement undertaken.\nMarks: 0-4\n\nCriterion C: Demonstration of political knowledge\nSuccessfully connects theoretical political ideas to practical experience.\nMarks: 0-8\n\nCriterion D: Analysis of issue\nThoughtful examination that considers multiple viewpoints and consequences.\nMarks: 0-8\n\nCriterion E: Evaluation\nReflective assessment of the activity and deeper understanding of the political topic.\nMarks: 0-8\n\nCriterion F: Communication\nOrganized and clearly presented written work.\nMarks: 0-4`,
+    detailedRubrics: `Detailed Rubrics – Internal Assessment (Engagement Activity)
+
+Criteria A–F: Identification of issue; Explanation of engagement; Demonstration of political knowledge; Analysis of issue; Evaluation; Communication.
+
+Also included for search coverage:
+• Paper 1 — Overview (Ques., Objective, Summary, Marks) – AO1/2/3/4 mapping
+• Paper 1 — Markbands for Fourth Question – bands 0, 1–2, 3–4, 5–6, 7–8, 9–10 with descriptors (understanding, knowledge, synthesis, evaluation)
+• Paper 2 — Markbands – bands 0, 1–5, 6–10, 11–15, 16–20, 21–25 with descriptors (structure, relevance, examples, counterarguments, evaluation)`,
     globalPoliticsTips: `Top 10 Study Tips for Success – Global Politics\n\n• Understand and apply the key political concepts across all themes and papers.\n• Use current events and case studies to make your arguments relevant and real.\n• Practice writing extended responses with critical evaluation and multiple perspectives.\n• Be concise and clear in Paper 1 responses — aim for precision under timed conditions.\n• For HL, choose your global political challenges wisely and research deeply.\n• Engage actively in political discussions to build real-world understanding.\n• Organize your IA early — connect your engagement meaningfully to course content.\n• Use diagrams and comparative frameworks to visualize complex issues.\n• Practice structuring arguments with evidence, counterclaims, and implications.\n• Self-assess using rubrics to refine your analytical writing and structure.`,
   };
   const sectionKeys: Array<'overview' | 'essentials' | 'coreThemes' | 'detailedRubrics' | 'globalPoliticsTips'> = ['overview', 'essentials', 'coreThemes', 'detailedRubrics', 'globalPoliticsTips'];
+
+  // Full-text blob of Detailed Rubrics content to improve search coverage
+  const detailedRubricsSearchContent = `
+  Engagement Activity (Internal Assessment) – Criteria A–F
+  A: Identification of issue – Well-defined political topic linked to local community. Marks 0–4.
+  B: Explanation of engagement – Clear description of activity or involvement. Marks 0–4.
+  C: Demonstration of political knowledge – Connects theory to practical experience. Marks 0–8.
+  D: Analysis of issue – Multiple viewpoints and consequences considered. Marks 0–8.
+  E: Evaluation – Reflective assessment and deeper understanding. Marks 0–8.
+  F: Communication – Organization and clarity of written work. Marks 0–4.
+
+  Paper 1 — Overview (Paraphrased)
+  First Question (Ques. 1) – AO1: Knowledge and understanding – Identify/explain a key political issue from a source. Marks 3.
+  Second Question (Ques. 2) – AO2: Application and analysis – Apply knowledge to explain a term/topic using the source. Marks 4.
+  Third Question (Ques. 3) – AO3/AO4: Synthesis, evaluation, and skills – Compare/contrast ideas in two sources; coherent comparison. Marks 8.
+  Fourth Question (Ques. 4) – AO3/AO4: Synthesis, evaluation, and skills – Evaluate sources with own knowledge; reasoned judgment. Marks 10.
+
+  Paper 1 — Markbands for Fourth Question (Paraphrased)
+  Band 0 – Does not meet basic expectations.
+  Band 1–2 – Very limited understanding; minimal relevant knowledge; mostly descriptive.
+  Band 3–4 – Limited understanding; some knowledge; counterarguments not addressed.
+  Band 5–6 – Understanding shown; mostly accurate knowledge; limited synthesis; counterarguments implied.
+  Band 7–8 – Focused response; relevant knowledge; counterarguments considered.
+  Band 9–10 – High understanding; accurate knowledge; clear synthesis; counterarguments evaluated with judgment.
+
+  Paper 2 — Markbands (Paraphrased)
+  Band 0 – Does not meet basic expectations.
+  Band 1–5 – Limited understanding; poorly structured; mostly descriptive; little relevant knowledge.
+  Band 6–10 – Some understanding; attempts structure; some relevant knowledge; limited justification of points.
+  Band 11–15 – Mostly addresses the question; structured; relevant knowledge; some counterarguments considered.
+  Band 16–20 – Well structured; accurate knowledge; strong examples; counterarguments explored.
+  Band 21–25 – Very well structured; comprehensive knowledge; persuasive arguments; counterarguments evaluated.
+  `;
 
   const handleScroll = (event: any) => {
     const scrollY = event.nativeEvent.contentOffset.y;
@@ -62,6 +107,44 @@ const GlobalPoliticsScreen = ({ navigation, route }: { navigation: any; route: a
         useNativeDriver: true,
       }).start();
     }
+  };
+
+  const scrollToSection = (sectionKey: string) => {
+    const y = sectionYPositionsRef.current[sectionKey];
+    if (scrollViewRef.current && typeof y === 'number') {
+      const offset = 96;
+      scrollViewRef.current.scrollTo({ y: Math.max(y - offset, 0), animated: true });
+    }
+  };
+
+  const scrollToY = (y: number) => {
+    if (scrollViewRef.current && typeof y === 'number') {
+      const offset = 96;
+      scrollViewRef.current.scrollTo({ y: Math.max(y - offset, 0), animated: true });
+    }
+  };
+
+  const registerSectionAnchor = (sectionKey: string, anchorKey: string, yWithinSection: number) => {
+    const sectionHeaderY = sectionYPositionsRef.current[sectionKey] || 0;
+    const paddingAllowance = 40;
+    sectionAnchorsYRef.current[anchorKey] = sectionHeaderY + yWithinSection + paddingAllowance;
+  };
+
+  const findGPRubricAnchorForQuery = (q: string): string | null => {
+    const lower = q.toLowerCase();
+    // IA criteria anchors
+    if (lower.includes('criterion a') || lower.includes('identification of issue')) return 'gp_critA';
+    if (lower.includes('criterion b') || lower.includes('explanation of engagement')) return 'gp_critB';
+    if (lower.includes('criterion c') || lower.includes('political knowledge')) return 'gp_critC';
+    if (lower.includes('criterion d') || lower.includes('analysis of issue')) return 'gp_critD';
+    if (lower.includes('criterion e') || lower.includes('evaluation')) return 'gp_critE';
+    if (lower.includes('criterion f') || lower.includes('communication')) return 'gp_critF';
+    // Paper 1 anchors
+    if (lower.includes('paper 1') && (lower.includes('overview') || lower.includes('ques.'))) return 'gp_p1_overview';
+    if (lower.includes('markbands') && (lower.includes('fourth question') || lower.includes('q4'))) return 'gp_p1_q4_bands';
+    // Paper 2 anchors
+    if (lower.includes('paper 2') || lower.includes('essay markbands')) return 'gp_p2_bands';
+    return null;
   };
 
   const toggleSection = (section: string) => {
@@ -102,10 +185,18 @@ const GlobalPoliticsScreen = ({ navigation, route }: { navigation: any; route: a
       'globalPoliticsTips': 'Global Politics Tips',
     };
     
-    const matches = sectionKeys.filter(key =>
+    let matches = sectionKeys.filter(key =>
       sectionContentStrings[key].toLowerCase().includes(trimmedQuery.toLowerCase()) ||
       sectionTitles[key].toLowerCase().includes(trimmedQuery.toLowerCase())
     );
+    // Include Detailed Rubrics when the full-text blob matches
+    if (detailedRubricsSearchContent.toLowerCase().includes(trimmedQuery.toLowerCase()) && !matches.includes('detailedRubrics')) {
+      matches = [...matches, 'detailedRubrics'];
+    }
+    // Ensure rubrics section is included if query targets a specific rubric anchor
+    if (findGPRubricAnchorForQuery(trimmedQuery) && !matches.includes('detailedRubrics')) {
+      matches = [...matches, 'detailedRubrics'];
+    }
     setMatchingSections(matches);
     setCurrentMatchIndex(0);
     if (matches.length > 0) {
@@ -165,6 +256,23 @@ const GlobalPoliticsScreen = ({ navigation, route }: { navigation: any; route: a
         }
       }
     });
+
+    // After expanding, scroll to matching anchor if the search query targets a subsection
+    if (highlightedText) {
+      setTimeout(() => {
+        if (expandedSection === 'detailedRubrics') {
+          const anchor = findGPRubricAnchorForQuery(highlightedText);
+          const y = anchor ? sectionAnchorsYRef.current[anchor] : undefined;
+          if (typeof y === 'number') {
+            scrollToY(y);
+          } else {
+            scrollToSection(expandedSection);
+          }
+        } else {
+          scrollToSection(expandedSection);
+        }
+      }, 200);
+    }
   }, [expandedSection]);
 
   useEffect(() => {
@@ -232,6 +340,7 @@ const GlobalPoliticsScreen = ({ navigation, route }: { navigation: any; route: a
         </Animated.View>
       </View>
       <ScrollView 
+        ref={scrollViewRef}
         keyboardShouldPersistTaps="handled" 
         contentContainerStyle={{ paddingTop: 112, paddingBottom: 32, paddingHorizontal: 16 }}
         onScroll={handleScroll}
@@ -281,7 +390,7 @@ const GlobalPoliticsScreen = ({ navigation, route }: { navigation: any; route: a
           </View>
           {/* Dropdowns */}
           {[{ key: 'overview', title: 'Course Overview' }, { key: 'essentials', title: 'Subject Essentials' }, { key: 'coreThemes', title: 'Prescribed Literature' }, { key: 'detailedRubrics', title: 'Detailed Rubrics' }].map((section, idx, arr) => (
-            <View key={section.key}>
+            <View key={section.key} onLayout={(e) => { sectionYPositionsRef.current[section.key] = e.nativeEvent.layout.y; }}>
               <List.Item
                 title={section.title}
                 titleStyle={{ color: '#fff', fontFamily: 'ScopeOne-Regular', fontSize: 18 }}
@@ -351,7 +460,7 @@ const GlobalPoliticsScreen = ({ navigation, route }: { navigation: any; route: a
                       )}
                       {section.key === 'detailedRubrics' && (
                         <View>
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginBottom: 12 }}>Detailed Rubrics – Internal Assessment (Engagement Activity)</Text>
+                          <Text onLayout={(e) => registerSectionAnchor('detailedRubrics', 'gp_ia_header', e.nativeEvent.layout.y)} style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginBottom: 12 }}>Detailed Rubrics – Internal Assessment (Engagement Activity)</Text>
                           
                           {/* Internal Assessment Rubric Table */}
                           <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
@@ -377,7 +486,7 @@ const GlobalPoliticsScreen = ({ navigation, route }: { navigation: any; route: a
                           </View>
                           
                           {/* Paper 1 — Overview (Paraphrased) */}
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, marginBottom: 8 }}>Paper 1 — Overview (Paraphrased)</Text>
+                          <Text onLayout={(e) => registerSectionAnchor('detailedRubrics', 'gp_p1_overview', e.nativeEvent.layout.y)} style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, marginBottom: 8 }}>Paper 1 — Overview (Paraphrased)</Text>
                           <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
                             <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
                               <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.8, padding: 8 }}>Ques.</Text>
@@ -401,7 +510,7 @@ const GlobalPoliticsScreen = ({ navigation, route }: { navigation: any; route: a
                           </View>
                           
                           {/* Paper 1 — Markbands for Fourth Question (Paraphrased) */}
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, marginBottom: 8 }}>Paper 1 — Markbands for Fourth Question (Paraphrased)</Text>
+                          <Text onLayout={(e) => registerSectionAnchor('detailedRubrics', 'gp_p1_q4_bands', e.nativeEvent.layout.y)} style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, marginBottom: 8 }}>Paper 1 — Markbands for Fourth Question (Paraphrased)</Text>
                           <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
                             <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
                               <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.0, padding: 8 }}>Marks</Text>
@@ -423,7 +532,7 @@ const GlobalPoliticsScreen = ({ navigation, route }: { navigation: any; route: a
                           </View>
                           
                           {/* Paper 2 — Markbands (Paraphrased) */}
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, marginBottom: 8 }}>Paper 2 — Markbands (Paraphrased)</Text>
+                          <Text onLayout={(e) => registerSectionAnchor('detailedRubrics', 'gp_p2_bands', e.nativeEvent.layout.y)} style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, marginBottom: 8 }}>Paper 2 — Markbands (Paraphrased)</Text>
                           <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
                             <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
                               <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.0, padding: 8 }}>Marks</Text>
