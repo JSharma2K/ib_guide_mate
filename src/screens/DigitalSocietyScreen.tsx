@@ -7,9 +7,11 @@ import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { Feather } from '@expo/vector-icons';
 
+const escapeRegExp = (input: string) => input.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const highlightText = (text: string, highlightedText: string) => {
   if (!highlightedText) return text;
-  const parts = text.split(new RegExp(`(${highlightedText})`, 'gi'));
+  const safe = escapeRegExp(highlightedText);
+  const parts = text.split(new RegExp(`(${safe})`, 'gi'));
   return parts.map((part, i) =>
     part.toLowerCase() === highlightedText.toLowerCase() ?
       <Text key={i} style={themeStyles.highlightedText}>{part}</Text> :
@@ -44,6 +46,74 @@ const DigitalSocietyScreen = ({ navigation, route }: { navigation: any; route: a
     digitalSocietyTips: `Top 10 Study Tips for Success – Digital Society\n\n• Master the key concepts (e.g., identity, networks, sustainability) early on.\n\n• Follow emerging digital issues in real time to use in essays and IA.\n\n• Use specific examples and real-world platforms in every response.\n\n• Analyze rather than describe – always ask why and how.\n\n• Connect theoretical ideas with lived digital experiences.\n\n• Practice concise, critical writing for source analysis in Paper 1.\n\n• Prepare structured arguments for Paper 2 using digital perspectives.\n\n• Choose a relevant and manageable issue for your Digital Exploration IA.\n\n• In Paper 3 (HL), speculate thoughtfully on the future, using theory and evidence.\n\n• Review the rubrics frequently and self-assess your work using them.`,
   };
   const sectionKeys: Array<'overview' | 'essentials' | 'coreThemes' | 'detailedRubrics' | 'digitalSocietyTips'> = ['overview', 'essentials', 'coreThemes', 'detailedRubrics', 'digitalSocietyTips'];
+
+  // Full-text blob of Detailed Rubrics content to improve search coverage
+  const detailedRubricsSearchContent = `
+  Assessment Guidelines Independent Research Project Digital Exploration
+  Internal Assessment Digital Investigation Scoring 26 marks total
+  A Topic identification Clear definition of a contemporary digital challenge with demonstrated relevance 0-4
+  B Investigation methods Strategic use of sources and viewpoints to examine the topic thoroughly 0-6
+  C Examination Comprehensive examination of digital trends and frameworks with contextual connections 0-6
+  D Assessment and reflection Thoughtful assessment of consequences and underlying assumptions with individual perspective 0-6
+  E Presentation Clear organization flow and proper source attribution 0-4
+
+  SL Paper 1 Test Layout
+  Part A 6 points Basic Show what you know and understand Questions might be split into smaller parts
+  Part B 6 points Apply Use what you know to examine and break down information Questions might be split into smaller parts
+  Part C 8 points Judge Make judgments and combine different ideas together
+
+  SL HL Paper 2 Test Layout
+  Question 1 2 points Basic Show what you know and understand about the given material You might need to identify claims or explain visuals and charts
+  Question 2 4 points Apply Use and examine information from the given material You might need to analyze word choices or explain claims
+  Question 3 6 points Judge Compare and contrast two different sources You might need to discuss different viewpoints claims and what you learned in class
+  Question 4 12 points Judge Make judgments and combine sources with what you learned in class
+
+  HL Paper 1 Section B Test Layout
+  12 points Judge Write a longer answer that requires making judgments and combining ideas with opposing arguments May include given materials
+
+  HL Paper 3 Test Layout
+  Question 1 4 points Basic Show what you know and understand about future challenges or solutions
+  Question 2 6 points Apply Use and examine information about future challenges or solutions
+  Question 3 8 points Judge Make judgments about future challenges or solutions
+  Question 4 12 points Judge Give suggestions for future actions on challenges or solutions
+
+  Digital Society Project Overview
+  A Main Focus Research process document 3
+  B Ideas and Viewpoints Research process document 6
+  C Examining and Judging Presentation 6
+  D Final Thoughts Presentation 6
+  E Sharing Your Work Presentation 3
+
+  Criterion A Main Focus
+  0 The work does not reach a standard described by the descriptors below
+  1 The main topic is unclear or incomplete Missing important parts and not relevant examples
+  2 Good focus with some explanation of how it connects to real-world examples and class content
+  3 Clear and focused topic with thorough explanation of how it connects to real-world examples and class content
+
+  Criterion B Ideas and Viewpoints
+  0 The work does not reach a standard described by the descriptors below
+  1-2 Basic discussion of ideas with limited explanation Uses fewer than 3 sources or weak support for arguments
+  3-4 Some discussion with partial support for arguments but not fully developed
+  5-6 Complete discussion with clear support and reasoning for each source used
+
+  Criterion C Examining and Judging
+  0 The work does not reach a standard described by the descriptors below
+  1-2 Basic examination and judgment mostly just describing or not staying focused
+  3-4 Good but not always consistent or well-backed examination
+  5-6 Strong consistent and well-backed examination with proof
+
+  Criterion D Patterns and Future Changes
+  0 The work does not reach a standard described by the descriptors below
+  1-2 Basic understanding patterns and future changes barely discussed
+  3-4 Good understanding some discussion of patterns and changes
+  5-6 Strong understanding thorough discussion of patterns and changes
+
+  Criterion E Sharing Your Work
+  0 The work does not reach a standard described by the descriptors below
+  1 Poor organization and use of media does not help understanding
+  2 Good organization and use of media only somewhat helpful
+  3 Well-organized and clear use of media that helps understanding
+  `;
 
   const handleScroll = (event: any) => {
     const scrollY = event.nativeEvent.contentOffset.y;
@@ -102,10 +172,18 @@ const DigitalSocietyScreen = ({ navigation, route }: { navigation: any; route: a
       'digitalSocietyTips': 'Digital Society Tips',
     };
     
-    const matches = sectionKeys.filter(key =>
+    let matches = sectionKeys.filter(key =>
       sectionContentStrings[key].toLowerCase().includes(trimmedQuery.toLowerCase()) ||
       sectionTitles[key].toLowerCase().includes(trimmedQuery.toLowerCase())
     );
+    // Include Detailed Rubrics when the full-text blob matches
+    if (detailedRubricsSearchContent.toLowerCase().includes(trimmedQuery.toLowerCase()) && !matches.includes('detailedRubrics')) {
+      matches = ['detailedRubrics', ...matches];
+    }
+    // Prioritize opening Detailed Rubrics when present
+    if (matches.includes('detailedRubrics')) {
+      matches = ['detailedRubrics', ...matches.filter(k => k !== 'detailedRubrics')];
+    }
     setMatchingSections(matches);
     setCurrentMatchIndex(0);
     if (matches.length > 0) {

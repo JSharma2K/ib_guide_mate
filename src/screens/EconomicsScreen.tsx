@@ -7,9 +7,11 @@ import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { Feather } from '@expo/vector-icons';
 
+const escapeRegExp = (input: string) => input.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const highlightText = (text: string, highlightedText: string) => {
   if (!highlightedText) return text;
-  const parts = text.split(new RegExp(`(${highlightedText})`, 'gi'));
+  const safe = escapeRegExp(highlightedText);
+  const parts = text.split(new RegExp(`(${safe})`, 'gi'));
   return parts.map((part, i) =>
     part.toLowerCase() === highlightedText.toLowerCase() ?
       <Text key={i} style={themeStyles.highlightedText}>{part}</Text> :
@@ -62,6 +64,77 @@ Additional IA tables covered in this section for search:
     economicsTips: `Top 10 Study Tips for Success\n\n• 1. Know all diagrams—practice drawing and explaining them clearly.\n\n• 2. Practice writing concise, structured responses using economic terms.\n\n• 3. Link real-world examples to every major concept.\n\n• 4. Use command terms to guide answer structure (e.g., evaluate, explain, distinguish).\n\n• 5. Practice numerical and diagrammatic skills regularly for Paper 3 (HL).\n\n• 6. Build your IA portfolio early with diverse article types.\n\n• 7. Compare different schools of thought in macroeconomics.\n\n• 8. Master definitions and calculations for elasticity, multiplier, GDP, etc.\n\n• 9. Integrate the 9 key concepts into your analysis.\n\n• 10. Plan essay responses with clear thesis, argument, examples, and evaluation.`,
   };
   const sectionKeys: Array<'overview' | 'essentials' | 'coreThemes' | 'detailedRubrics' | 'economicsTips'> = ['overview', 'essentials', 'coreThemes', 'detailedRubrics', 'economicsTips'];
+
+  // Full-text blob of Detailed Rubrics content to improve search coverage
+  const detailedRubricsSearchContent = `
+  Assessment Guidelines Essay Response Evaluation
+  Paper 1 Comprehensive Response Scoring 25 marks Part a 10 marks Part b 15 marks
+  
+  Part a 10 Marks Scoring Guide
+  1-2 Minimal comprehension economic concepts and terminology are unclear or inappropriate
+  3-4 Basic comprehension fundamental economic principles outlined restricted use of terminology
+  5-6 Adequate comprehension some visual aids and terminology incomplete organization
+  7-8 Strong comprehension appropriate examples visual aids mostly accurate well-organized response
+  9-10 Outstanding comprehension concepts examples and visual aids are appropriate and thoroughly developed
+
+  Paper 3 HL Only Quantitative Analysis Scoring 17 marks
+  A Source material utilization Integration of case study and supporting resources 4
+  B Analytical frameworks and concepts Effective application of analytical tools and economic principles 4
+  C Critical assessment Analysis of consequences and alternative approaches for the organization 6
+  D Logical organization Coherent progression and clarity of strategic recommendations 3
+
+  Portfolio Assessment SL HL Independent Research Project 25 marks
+  A Core principle integration Connection and application of fundamental concepts eg sustainability ethics 5
+  B Reference materials Relevance and variety of selected source documentation 4
+  C Analytical methods and frameworks Selection and implementation of theoretical approaches 4
+  D Data interpretation and evaluation Utilization of information to investigate research focus with depth and integration 5
+  E Summary findings Conclusion alignment and connection to research objectives 3
+  F Organization and structure Coherence logical flow and clarity of presentation 2
+  G Academic formatting Citation standards bibliography and format compliance 2
+
+  Economics Project Overview
+  A Charts and Graphs Each commentary 3
+  B Key Words Each commentary 2
+  C Using Ideas Breaking Down Each commentary 3
+  D Main Ideas Each commentary 3
+  E Making Judgments Each commentary 3
+  F Guidelines Requirements Each commentary 3
+
+  Economics IA Criterion A Charts and Graphs
+  0 Does not meet minimum requirements
+  1 Includes a helpful chart but does not explain it
+  2 Correct chart with some explanation
+  3 Correct chart with complete explanation
+
+  Economics IA Criterion B Key Words
+  0 Does not meet minimum requirements
+  1 Uses helpful economic words
+  2 Uses economic words correctly throughout
+
+  Economics IA Criterion C Using Ideas and Breaking Down
+  0 Does not meet minimum requirements
+  1 Uses economic ideas with basic examination
+  2 Uses good economic ideas and examination throughout
+  3 Uses strong economic ideas and examination throughout
+
+  Economics IA Criterion D Main Ideas
+  0 No new important ideas or not connected to the topic
+  1 Main idea mentioned with some attempt to connect
+  2 Main idea somewhat connected to the topic
+  3 Main idea fully connected and explained clearly
+
+  Economics IA Criterion E Making Judgments
+  0 Does not meet minimum requirements
+  1 Basic reasoning supports decisions made
+  2 Good reasoning supports decisions made
+  3 Strong and balanced reasoning supports decisions made
+
+  Economics IA Criterion F Guidelines Requirements
+  0 Does not meet minimum requirements
+  1 Follows one guideline requirement
+  2 Follows two guideline requirements
+  3 Follows all three guideline requirements
+  `;
 
   const handleScroll = (event: any) => {
     const scrollY = event.nativeEvent.contentOffset.y;
@@ -120,10 +193,18 @@ Additional IA tables covered in this section for search:
       'economicsTips': 'Economics Tips',
     };
     
-    const matches = sectionKeys.filter(key =>
+    let matches = sectionKeys.filter(key =>
       sectionContentStrings[key].toLowerCase().includes(trimmedQuery.toLowerCase()) ||
       sectionTitles[key].toLowerCase().includes(trimmedQuery.toLowerCase())
     );
+    // Include Detailed Rubrics when the full-text blob matches
+    if (detailedRubricsSearchContent.toLowerCase().includes(trimmedQuery.toLowerCase()) && !matches.includes('detailedRubrics')) {
+      matches = ['detailedRubrics', ...matches];
+    }
+    // Prioritize opening Detailed Rubrics when present
+    if (matches.includes('detailedRubrics')) {
+      matches = ['detailedRubrics', ...matches.filter(k => k !== 'detailedRubrics')];
+    }
     setMatchingSections(matches);
     setCurrentMatchIndex(0);
     if (matches.length > 0) {

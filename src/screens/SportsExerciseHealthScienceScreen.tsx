@@ -7,9 +7,11 @@ import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { Feather } from '@expo/vector-icons';
 
+const escapeRegExp = (input: string) => input.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const highlightText = (text: string, highlightedText: string) => {
   if (!highlightedText) return text;
-  const parts = text.split(new RegExp(`(${highlightedText})`, 'gi'));
+  const safe = escapeRegExp(highlightedText);
+  const parts = text.split(new RegExp(`(${safe})`, 'gi'));
   return parts.map((part, i) =>
     part.toLowerCase() === highlightedText.toLowerCase() ?
       <Text key={i} style={themeStyles.highlightedText}>{part}</Text> :
@@ -143,6 +145,69 @@ Criterion Marks Description Personal engagement Demonstrates personal involvemen
   };
   const sectionKeys: Array<'overview' | 'essentials' | 'coreThemes' | 'detailedRubrics' | 'sehsTips'> = ['overview', 'essentials', 'coreThemes', 'detailedRubrics', 'sehsTips'];
 
+  // Full-text blob of Detailed Rubrics content to improve search coverage
+  const detailedRubricsSearchContent = `
+  Internal Assessment Table Paraphrased
+  Research design 6 25
+  Data analysis 6 25
+  Conclusion 6 25
+  Evaluation 6 25
+  Total 24 100
+
+  Paper 1 SL HL Multiple Choice
+  SL 30 mins HL 40 mins
+  Assesses knowledge and understanding AO1
+  No rubric marked objectively
+
+  Paper 2 Short Answer Data-based Questions
+  SL 1 hour 15 mins HL 2 hours 15 mins
+  Assesses application analysis evaluation skills
+
+  Paper 2 Criteria vs Explanation Paraphrased
+  AO1 Knowledge and understanding Recall and explain key scientific facts ideas and processes
+  AO2 Application Apply knowledge to new situations analyze data and solve structured problems
+  AO3 Synthesis and evaluation Interpret results judge explanations and identify limits in methods or data
+  AO4 Communication Use clear scientific language and formats eg graphs tables with readable structure
+
+  Paper 2 Markbands and Expected Levels Paraphrased
+  0 No answer or off-topic
+  1-2 Basic recall limited grasp weak structure little relevance
+  3-4 Adequate knowledge some application basic structure lacks depth
+  5-6 Good understanding with clear application organized responses with some critical thinking
+  7-8 Excellent understanding well developed answers showing synthesis analysis and coherent organization
+
+  Paper 3 Option Topic SL HL Paraphrased
+  Short Answer Tests focused knowledge from the chosen option Clear concise accurate responses
+  Extended Response Requires linking ideas examples and evaluation Emphasize coherence and a reasoned argument
+
+  Internal Assessment IA Individual Investigation
+  Total Marks 24
+  Weight SL 25% HL 20%
+  Personal engagement Demonstrates personal involvement initiative genuine interest topic 2 marks
+  Exploration Includes background rationale clear research question relevant scientific context Method appropriate addresses research question 6 marks
+  Analysis Data analyzed using appropriate techniques trends patterns interpreted logically 6 marks
+  Evaluation Discusses strengths weaknesses improvements limitations Conclusion consistent data 6 marks
+  Communication Report structured logically appropriate use scientific terminology consistent referencing format 4 marks
+
+  Assessment objectives
+  AO1 Knowledge understanding Recalling explaining scientific facts concepts processes
+  AO2 Application Applying knowledge unfamiliar scenarios analyzing data solving structured problems
+  AO3 Synthesis Evaluation Interpreting results evaluating hypotheses identifying limitations
+  AO4 Communication Using appropriate scientific vocabulary formats graphs tables clarity expression
+
+  Scoring Levels Performance Standards
+  Applied data analysis questions essay-style responses
+  Level 0 Missing completely off-topic response
+  Level 1-2 Simple facts remembered shows confusion disorganized writing not very relevant
+  Level 3-4 Decent grasp topics tries apply knowledge organized shallow analysis
+  Level 5-6 Strong comprehension practical application well-structured answers showing deeper thinking
+  Level 7-8 Exceptional mastery comprehensive responses demonstrating analysis connections logical flow
+
+  Paper 3 Option Topic SL HL
+  Brief Questions Checks detailed knowledge chosen specialty area Answers should direct precise factually correct
+  Long-form Questions Demands combining multiple ideas real examples critical assessment Emphasis logical structure strong reasoning
+  `;
+
   const handleScroll = (event: any) => {
     const scrollY = event.nativeEvent.contentOffset.y;
     const fadeThreshold = 50;
@@ -200,14 +265,24 @@ Criterion Marks Description Personal engagement Demonstrates personal involvemen
       'sehsTips': 'SEHS Tips',
     };
     
-    const matches = sectionKeys.filter(key =>
-      sectionContentStrings[key].toLowerCase().includes(trimmedQuery.toLowerCase()) ||
-      sectionTitles[key].toLowerCase().includes(trimmedQuery.toLowerCase())
-    );
-    setMatchingSections(matches);
+    const matches = sectionKeys.filter(key => {
+      if (key === 'detailedRubrics') {
+        return detailedRubricsSearchContent.toLowerCase().includes(trimmedQuery.toLowerCase()) ||
+               sectionTitles[key].toLowerCase().includes(trimmedQuery.toLowerCase());
+      }
+      return sectionContentStrings[key].toLowerCase().includes(trimmedQuery.toLowerCase()) ||
+             sectionTitles[key].toLowerCase().includes(trimmedQuery.toLowerCase());
+    });
+    
+    // Prioritize detailedRubrics if it matches
+    const prioritizedMatches = matches.includes('detailedRubrics') 
+      ? ['detailedRubrics', ...matches.filter(m => m !== 'detailedRubrics')]
+      : matches;
+    
+    setMatchingSections(prioritizedMatches);
     setCurrentMatchIndex(0);
-    if (matches.length > 0) {
-      setExpandedSection(matches[0]);
+    if (prioritizedMatches.length > 0) {
+      setExpandedSection(prioritizedMatches[0]);
     } else {
       setExpandedSection(null);
     }

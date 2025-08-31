@@ -242,7 +242,7 @@ HL only - Curatorial Rationale: Presentation of intention and curatorial decisio
         style={{
           maxHeight: animationValue.interpolate({
             inputRange: [0, 1],
-            outputRange: [0, 5000],
+            outputRange: [0, 7000],
           }),
           opacity: animationValue,
           overflow: 'hidden',
@@ -363,7 +363,145 @@ HL only - Curatorial Rationale: Presentation of intention and curatorial decisio
                           <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("AO1: Demonstrate knowledge and understanding of specified content\nAO2: Apply skills and techniques effectively\nAO3: Analyse and evaluate information, artworks, and ideas\nAO4: Present information and artistic expression in a structured and appropriate format", highlightedText)}</Text>
                           
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>Assessment Outline and Weightages</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("SL:\n- Comparative Study: 20%\n- Process Portfolio: 40%\n- Exhibition: 40%\n\nHL:\n- Comparative Study: 20%\n- Process Portfolio: 40%\n- Exhibition: 40%", highlightedText)}</Text>
+                          
+                          {/* SL Assessment Overview Table (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginTop: 16, marginBottom: 8 }}>SL Assessment Structure</Text>
+                          
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginTop: 16 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 2, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Component</Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Weight</Text>
+                            </View>
+                            {/* External Assessment */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF', backgroundColor: 'rgba(126, 195, 255, 0.06)' }}>
+                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, fontWeight: 'bold' }}>External Assessment</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, textAlign: 'center', fontWeight: 'bold' }}>60%</Text>
+                            </View>
+                            {/* Art Portfolio */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <View style={{ flex: 2, padding: 12 }}>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 13, fontWeight: 'bold' }}>Art Portfolio (32 marks)</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 12, marginTop: 4, lineHeight: 16 }}>
+                                  Portfolio showing personal art investigations and creative development through inquiry-based learning.
+                                </Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 12, marginTop: 4, lineHeight: 16 }}>
+                                  • PDF file: up to 15 screens (max 3,000 words)
+                                </Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 12, marginTop: 4, lineHeight: 16 }}>
+                                  • Separate text file with sources
+                                </Text>
+                              </View>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, textAlign: 'center' }}>40%</Text>
+                            </View>
+                            {/* Connections Study */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <View style={{ flex: 2, padding: 12 }}>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 13, fontWeight: 'bold' }}>Connections Study (24 marks)</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 12, marginTop: 4, lineHeight: 16 }}>
+                                  SL-only task connecting one student artwork with two works by different artists through research and cultural understanding.
+                                </Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 12, marginTop: 4, lineHeight: 16 }}>
+                                  • File: up to 10 screens (max 2,500 words)
+                                </Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 12, marginTop: 4, lineHeight: 16 }}>
+                                  • Separate text file with sources
+                                </Text>
+                              </View>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, textAlign: 'center' }}>20%</Text>
+                            </View>
+                            {/* Internal Assessment */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF', backgroundColor: 'rgba(126, 195, 255, 0.06)' }}>
+                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, fontWeight: 'bold' }}>Internal Assessment</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, textAlign: 'center', fontWeight: 'bold' }}>40%</Text>
+                            </View>
+                            {/* Completed Artworks */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <View style={{ flex: 2, padding: 12 }}>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 13, fontWeight: 'bold' }}>Completed Artworks (32 marks)</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 12, marginTop: 4, lineHeight: 16 }}>
+                                  Five completed artworks demonstrating coherent artistic intentions with written rationale explaining creative choices.
+                                </Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 12, marginTop: 4, lineHeight: 16 }}>
+                                  • Five image/video files (max 3 mins each) with details
+                                </Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 12, marginTop: 4, lineHeight: 16 }}>
+                                  • PDF rationale: up to 2 screens (max 700 words)
+                                </Text>
+                              </View>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, textAlign: 'center' }}></Text>
+                            </View>
+                          </View>
+                          
+                          {/* HL Assessment Overview Table (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginTop: 24, marginBottom: 8 }}>HL Assessment Structure</Text>
+                          
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginTop: 16 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 2, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Component</Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Weight</Text>
+                            </View>
+                            {/* External Assessment */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF', backgroundColor: 'rgba(126, 195, 255, 0.06)' }}>
+                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, fontWeight: 'bold' }}>External Assessment</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, textAlign: 'center', fontWeight: 'bold' }}>60%</Text>
+                            </View>
+                            {/* Art-making inquiries portfolio */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <View style={{ flex: 2, padding: 12 }}>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 13, fontWeight: 'bold' }}>Art-making inquiries portfolio (32 marks)</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 12, marginTop: 4, lineHeight: 16 }}>
+                                  SL and HL task focusing on student's art-making as inquiry with visual evidence of personal investigations and creative discoveries.
+                                </Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 12, marginTop: 4, lineHeight: 16 }}>
+                                  • PDF file: up to 15 screens (max 3,000 words)
+                                </Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 12, marginTop: 4, lineHeight: 16 }}>
+                                  • Separate text file with sources
+                                </Text>
+                              </View>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, textAlign: 'center' }}>30%</Text>
+                            </View>
+                            {/* Artist project */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <View style={{ flex: 2, padding: 12 }}>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 13, fontWeight: 'bold' }}>Artist project (40 marks)</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 12, marginTop: 4, lineHeight: 16 }}>
+                                  HL-only standalone task where students create and situate an artwork within a chosen context, connecting with at least two works by different artists.
+                                </Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 12, marginTop: 4, lineHeight: 16 }}>
+                                  • PDF file: up to 12 screens (max 2,500 words)
+                                </Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 12, marginTop: 4, lineHeight: 16 }}>
+                                  • Video file: up to 3 minutes with artwork details (max 100 words)
+                                </Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 12, marginTop: 4, lineHeight: 16 }}>
+                                  • Separate text file with sources
+                                </Text>
+                              </View>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, textAlign: 'center' }}>30%</Text>
+                            </View>
+                            {/* Internal Assessment */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF', backgroundColor: 'rgba(126, 195, 255, 0.06)' }}>
+                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, fontWeight: 'bold' }}>Internal Assessment</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, textAlign: 'center', fontWeight: 'bold' }}>40%</Text>
+                            </View>
+                            {/* Selected resolved artworks */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <View style={{ flex: 2, padding: 12 }}>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 13, fontWeight: 'bold' }}>Selected resolved artworks (40 marks)</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 12, marginTop: 4, lineHeight: 16 }}>
+                                  HL-only task creating a coherent body of work with five selected artworks demonstrating artistic intentions and synthesis of concept and form.
+                                </Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 12, marginTop: 4, lineHeight: 16 }}>
+                                  • Five image/video files (max 3 mins each) with details
+                                </Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 12, marginTop: 4, lineHeight: 16 }}>
+                                  • PDF rationale: up to 8 screens (max 700 words) and five artwork texts (max 1,000 words total)
+                                </Text>
+                              </View>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, textAlign: 'center' }}></Text>
+                            </View>
+                          </View>
                         </View>
                       )}
                       {section.key === 'coreThemes' && (
@@ -428,6 +566,336 @@ HL only - Curatorial Rationale: Presentation of intention and curatorial decisio
                               <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>{highlightText("HL only: Curatorial Rationale", highlightedText)}</Text>
                               <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>{highlightText("Presentation of intention and curatorial decisions", highlightedText)}</Text>
                               <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>0-4</Text>
+                            </View>
+                          </View>
+                          
+                          {/* Art-making inquiries portfolio Criteria Table (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginTop: 24, marginBottom: 8 }}>Art-making inquiries portfolio - Assessment Criteria</Text>
+                          
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 16, fontStyle: 'italic' }}>
+                            {highlightText("Weighting: SL 40% HL 30%", highlightedText)}
+                          </Text>
+                          
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginTop: 8 }}>
+                            {/* Header Row */}
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 2, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Criterion</Text>
+                              <Text style={{ flex: 4, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Evidence Requirements</Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Objective</Text>
+                            </View>
+                            
+                            {/* Criterion A */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>A: Exploration and experimentation</Text>
+                              <Text style={{ flex: 4, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Trying different art techniques and materials to create your own personal artistic style</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>8</Text>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Investigate</Text>
+                            </View>
+                            
+                            {/* Criterion B */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>B: Practical investigation</Text>
+                              <Text style={{ flex: 4, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Looking at and learning from other artists' work to improve your own art</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>8</Text>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Investigate</Text>
+                            </View>
+                            
+                            {/* Criterion C */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>C: Lines of inquiry</Text>
+                              <View style={{ flex: 4, padding: 12 }}>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>
+                                  • Using guiding questions or ideas to drive your artwork
+                                </Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, marginTop: 4 }}>
+                                  • Showing how your art evolved by following specific themes or questions
+                                </Text>
+                              </View>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>8</Text>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Generate</Text>
+                            </View>
+                            
+                            {/* Criterion D */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>D: Critical review</Text>
+                              <View style={{ flex: 4, padding: 12 }}>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>
+                                  • Thinking deeply about your work
+                                </Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, marginTop: 4 }}>
+                                  • Making changes to improve both your techniques and ideas
+                                </Text>
+                              </View>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>8</Text>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Refine</Text>
+                            </View>
+                            
+                            {/* Total Row */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 2, borderColor: '#7EC3FF', backgroundColor: 'rgba(126, 195, 255, 0.1)' }}>
+                              <Text style={{ flex: 2, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Total</Text>
+                              <Text style={{ flex: 4, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}></Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>32</Text>
+                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}></Text>
+                            </View>
+                          </View>
+                          
+                          {/* Connections study Criteria Table (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginTop: 24, marginBottom: 8 }}>Connections study - Assessment Criteria</Text>
+                          
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 16, fontStyle: 'italic' }}>
+                            {highlightText("Weighting: SL 20%", highlightedText)}
+                          </Text>
+                          
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginTop: 8 }}>
+                            {/* Header Row */}
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 2, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Criterion</Text>
+                              <Text style={{ flex: 4, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Evidence Requirements</Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Objective</Text>
+                            </View>
+                            
+                            {/* Criterion A */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>A: Connections with context(s)</Text>
+                              <Text style={{ flex: 4, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>How the student's chosen finished artwork connects to their own background and experiences</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>8</Text>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Situate</Text>
+                            </View>
+                            
+                            {/* Criterion B */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>B: Connections with artworks</Text>
+                              <Text style={{ flex: 4, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Links between the student's chosen finished artwork and at least two artworks by different artists</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>8</Text>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Situate</Text>
+                            </View>
+                            
+                            {/* Criterion C */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>C: Investigation of cultural significance</Text>
+                              <Text style={{ flex: 4, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Understanding of the cultural importance of the two artworks by different artists, selected in connection with the student's own chosen finished artwork</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>8</Text>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Investigate</Text>
+                            </View>
+                            
+                            {/* Total Row */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 2, borderColor: '#7EC3FF', backgroundColor: 'rgba(126, 195, 255, 0.1)' }}>
+                              <Text style={{ flex: 2, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Total</Text>
+                              <Text style={{ flex: 4, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}></Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>24</Text>
+                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}></Text>
+                            </View>
+                          </View>
+                          
+                          {/* Artist project Criteria Table (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginTop: 24, marginBottom: 8 }}>Artist project - Assessment Criteria (HL only)</Text>
+                          
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 16, fontStyle: 'italic' }}>
+                            {highlightText("Weighting: HL 30%", highlightedText)}
+                          </Text>
+                          
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginTop: 8 }}>
+                            {/* Header Row */}
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 2, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Criterion</Text>
+                              <Text style={{ flex: 4, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Evidence Requirements</Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Objectives</Text>
+                            </View>
+                            
+                            {/* Criterion A */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>A: Proposal (up to 3 screens, max 500 words)</Text>
+                              <View style={{ flex: 4, padding: 12 }}>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>
+                                  • Your ideas for the project and how it fits in the chosen location
+                                </Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, marginTop: 4 }}>
+                                  • What you learned about the chosen location through research
+                                </Text>
+                              </View>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>8</Text>
+                              <View style={{ flex: 1.5, padding: 12 }}>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Investigate</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Situate</Text>
+                              </View>
+                            </View>
+                            
+                            {/* Criterion B */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>B: Connections (up to 4 screens, max 1,000 words)</Text>
+                              <View style={{ flex: 4, padding: 12 }}>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>
+                                  • How your project connects to at least two artworks by different artists
+                                </Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, marginTop: 4 }}>
+                                  • Research about why at least two other artworks are culturally important to help with your project
+                                </Text>
+                              </View>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>8</Text>
+                              <View style={{ flex: 1.5, padding: 12 }}>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Investigate</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Situate</Text>
+                              </View>
+                            </View>
+                            
+                            {/* Criterion C */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>C: Dialogues (up to 2 screens, max 500 words)</Text>
+                              <Text style={{ flex: 4, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Your responses to important feedback to make your project better for the location and viewers</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>6</Text>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Refine</Text>
+                            </View>
+                            
+                            {/* Criterion D */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>D: Curation and realization in context (up to 3 minutes of video)</Text>
+                              <Text style={{ flex: 4, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Finishing your final project by combining your ideas and artistic techniques to communicate with real or potential viewers</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>10</Text>
+                              <View style={{ flex: 1.5, padding: 12 }}>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Synthesize</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Curate</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Situate</Text>
+                              </View>
+                            </View>
+                            
+                            {/* Criterion E */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>E: Post-production evaluation (up to 2 screens, max 300 words)</Text>
+                              <Text style={{ flex: 4, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Looking back at how well your finished project worked in the chosen location and how effectively it communicated with real or potential viewers</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>4</Text>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Situate</Text>
+                            </View>
+                            
+                            {/* Criterion F */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>F: Future development (up to 1 screen, max 200 words)</Text>
+                              <Text style={{ flex: 4, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>New directions and ideas based on what you learned from reflecting on your project</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>4</Text>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Situate</Text>
+                            </View>
+                            
+                            {/* Total Row */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 2, borderColor: '#7EC3FF', backgroundColor: 'rgba(126, 195, 255, 0.1)' }}>
+                              <Text style={{ flex: 2, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Total</Text>
+                              <Text style={{ flex: 4, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}></Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>40</Text>
+                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}></Text>
+                            </View>
+                          </View>
+                          
+                          {/* Resolved artworks Criteria Table (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginTop: 24, marginBottom: 8 }}>Resolved artworks - Internal Assessment Criteria (SL)</Text>
+                          
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 16, fontStyle: 'italic' }}>
+                            {highlightText("Weighting: 40%", highlightedText)}
+                          </Text>
+                          
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginTop: 8 }}>
+                            {/* Header Row */}
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 2, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Criterion</Text>
+                              <Text style={{ flex: 4, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Evidence Requirements</Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Objective</Text>
+                            </View>
+                            
+                            {/* Criterion A */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>A: Coherence of body of artworks</Text>
+                              <Text style={{ flex: 4, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>A unified collection of five finished artworks</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>8</Text>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Curate</Text>
+                            </View>
+                            
+                            {/* Criterion B */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>B: Conceptual realization</Text>
+                              <Text style={{ flex: 4, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Combining concept and form to communicate your artistic ideas</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>12</Text>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Synthesize</Text>
+                            </View>
+                            
+                            {/* Criterion C */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>C: Technical resolution</Text>
+                              <Text style={{ flex: 4, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Skillful use of materials and techniques to communicate your artistic ideas</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>12</Text>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Resolve</Text>
+                            </View>
+                            
+                            {/* Total Row */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 2, borderColor: '#7EC3FF', backgroundColor: 'rgba(126, 195, 255, 0.1)' }}>
+                              <Text style={{ flex: 2, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Total</Text>
+                              <Text style={{ flex: 4, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}></Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>32</Text>
+                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}></Text>
+                            </View>
+                          </View>
+                          
+                          {/* Selected resolved artworks Criteria Table (Paraphrased) */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginTop: 24, marginBottom: 8 }}>Selected resolved artworks - Internal Assessment Criteria (HL)</Text>
+                          
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 16, fontStyle: 'italic' }}>
+                            {highlightText("Weighting: 40%", highlightedText)}
+                          </Text>
+                          
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginTop: 8 }}>
+                            {/* Header Row */}
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 2, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Criterion</Text>
+                              <Text style={{ flex: 4, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Evidence Requirements</Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Objective</Text>
+                            </View>
+                            
+                            {/* Criterion A */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>A: Coherence of body of selected artworks</Text>
+                              <View style={{ flex: 4, padding: 12 }}>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>
+                                  • The process of choosing five finished artworks from your broader collection of work
+                                </Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, marginTop: 4 }}>
+                                  • A unified collection of five chosen finished artworks
+                                </Text>
+                              </View>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>8</Text>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Curate</Text>
+                            </View>
+                            
+                            {/* Criterion B */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>B: Conceptual realization</Text>
+                              <Text style={{ flex: 4, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Combining concept and form to communicate your artistic ideas</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>12</Text>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Synthesize</Text>
+                            </View>
+                            
+                            {/* Criterion C */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>C: Technical resolution</Text>
+                              <Text style={{ flex: 4, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Skillful use of materials and techniques to communicate your artistic ideas</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>12</Text>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Resolve</Text>
+                            </View>
+                            
+                            {/* Criterion D */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>D: Understanding of artistic context</Text>
+                              <Text style={{ flex: 4, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Thoughtful analysis to place each of the chosen five finished artworks in their proper setting</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18, textAlign: 'center' }}>8</Text>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, lineHeight: 18 }}>Situate</Text>
+                            </View>
+                            
+                            {/* Total Row */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 2, borderColor: '#7EC3FF', backgroundColor: 'rgba(126, 195, 255, 0.1)' }}>
+                              <Text style={{ flex: 2, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Total</Text>
+                              <Text style={{ flex: 4, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}></Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>40</Text>
+                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}></Text>
                             </View>
                           </View>
                         </View>

@@ -7,9 +7,11 @@ import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { Feather } from '@expo/vector-icons';
 
+const escapeRegExp = (input: string) => input.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const highlightText = (text: string, highlightedText: string) => {
   if (!highlightedText) return text;
-  const parts = text.split(new RegExp(`(${highlightedText})`, 'gi'));
+  const safe = escapeRegExp(highlightedText);
+  const parts = text.split(new RegExp(`(${safe})`, 'gi'));
   return parts.map((part, i) =>
     part.toLowerCase() === highlightedText.toLowerCase() ?
       <Text key={i} style={themeStyles.highlightedText}>{part}</Text> :
@@ -51,6 +53,40 @@ Also includes additional tables and markbands:
     geographyTips: `Top 10 Study Tips for Success – Geography\n\n• Familiarize yourself thoroughly with case studies for all themes.\n\n• Use diagrams and maps effectively in your answers.\n\n• Understand command terms and structure answers accordingly.\n\n• Practice past paper questions under timed conditions.\n\n• Keep a glossary of key terms and definitions.\n\n• Choose IA topics that are specific, measurable, and locally relevant.\n\n• Incorporate evaluation and synthesis into essay-style questions.\n\n• Learn how to analyze and interpret graphs, maps, and statistics.\n\n• Plan essays before writing to ensure clarity and organization.\n\n• Use the assessment rubrics to self-assess and refine work.`,
   };
   const sectionKeys: Array<'overview' | 'essentials' | 'coreThemes' | 'detailedRubrics' | 'geographyTips'> = ['overview', 'essentials', 'coreThemes', 'detailedRubrics', 'geographyTips'];
+
+  // Full-text blob of Detailed Rubrics content to improve search coverage
+  const detailedRubricsSearchContent = `
+  Assessment Rubrics Internal Assessment Fieldwork
+  A Research question and context Developing a well-defined and focused research question with appropriate geographic context 0-3
+  B Research methodology Selecting suitable research methods and providing strong justification for their use 0-3
+  C Data quality and presentation Gathering precise and relevant data with effective organization and presentation 0-6
+  D Analysis and interpretation Conducting thoughtful analysis that logically supports the research findings 0-8
+  E Research conclusions Formulating well-supported conclusions that directly address the research question 0-2
+  F Critical evaluation Providing thoughtful review and assessment of research methods and outcomes 0-3
+  G Academic presentation Meeting academic standards for organization citations and word count limits 0-3
+
+  Paper Assessment Framework Max Score 10
+  0 Work fails to meet any assessment standards outlined below
+  1-2 Response lacks focus and structure with minimal relevant content Contains brief disconnected statements Shows no clear analytical approach Lacks appropriate geographic terminology
+  3-4 General response with limited development and weak supporting evidence Includes basic information with poor organization Minimal use of geographic concepts and terminology Limited analytical depth
+  5-6 Addresses the question partially with some relevant analysis Shows limited evaluation and reasoning Basic use of geographic terminology Some organization present but inconsistent
+  7-8 Comprehensive response with strong analytical content Clear conclusions supported by evidence Appropriate use of geographic concepts Well-structured argument with some evaluation
+  9-10 Thorough well-developed response demonstrating deep understanding Sophisticated analysis with multiple perspectives Excellent use of geographic terminology Clear structure with strong evaluative conclusions
+
+  Paper 3 HL Extended Response Assessment Max Score 12
+  0 Work does not meet the minimum standards described below
+  1-3 Basic response with significant limitations in scope and development Contains unconnected factual information Lacks synthesis and evaluative thinking Poor paragraph organization and flow
+  4-6 Partially developed response addressing some aspects of the question Combines relevant and irrelevant supporting material Shows minimal synthesis with basic conclusions Inconsistent structural organization
+  7-9 Well-developed response covering most question requirements with analytical depth Presents balanced arguments with some brief development Uses mostly accurate and relevant supporting evidence Shows some paragraph connectivity and logical flow
+  10-12 Comprehensive response fully addressing the question with sophisticated analysis Demonstrates integrated evidence with clear well-reasoned arguments Excellent structural organization with strong paragraph cohesion Note Advanced synthesis not required at this level
+
+  Paper 3 HL Part B Assessment Max Mark 16
+  0 The work does not reach a standard described by the descriptors below
+  1-4 General lacks focus and structure Unconnected facts no synthesis Weak or no conclusion
+  5-8 Partially addresses the question with limited links Some valid but weak perspectives Basic grouping of ideas
+  9-12 Addresses most of the question some evaluation Multiple guide links listed but not integrated Good evidence but paragraph connections weak
+  13-16 Fully addresses question with evaluated analysis Logical flow linked paragraphs Clear opinion supported by evidence Explicit links to guide and perspectives
+  `;
 
   const handleScroll = (event: any) => {
     const scrollY = event.nativeEvent.contentOffset.y;
@@ -109,10 +145,18 @@ Also includes additional tables and markbands:
       'geographyTips': 'Geography Tips',
     };
     
-    const matches = sectionKeys.filter(key =>
+    let matches = sectionKeys.filter(key =>
       sectionContentStrings[key].toLowerCase().includes(trimmedQuery.toLowerCase()) ||
       sectionTitles[key].toLowerCase().includes(trimmedQuery.toLowerCase())
     );
+    // Include Detailed Rubrics when the full-text blob matches
+    if (detailedRubricsSearchContent.toLowerCase().includes(trimmedQuery.toLowerCase()) && !matches.includes('detailedRubrics')) {
+      matches = ['detailedRubrics', ...matches];
+    }
+    // Prioritize opening Detailed Rubrics when present
+    if (matches.includes('detailedRubrics')) {
+      matches = ['detailedRubrics', ...matches.filter(k => k !== 'detailedRubrics')];
+    }
     setMatchingSections(matches);
     setCurrentMatchIndex(0);
     if (matches.length > 0) {

@@ -7,9 +7,11 @@ import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { Feather } from '@expo/vector-icons';
 
+const escapeRegExp = (input: string) => input.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const highlightText = (text: string, highlightedText: string) => {
   if (!highlightedText) return text;
-  const parts = text.split(new RegExp(`(${highlightedText})`, 'gi'));
+  const safe = escapeRegExp(highlightedText);
+  const parts = text.split(new RegExp(`(${safe})`, 'gi'));
   return parts.map((part, i) =>
     part.toLowerCase() === highlightedText.toLowerCase() ?
       <Text key={i} style={themeStyles.highlightedText}>{part}</Text> :
@@ -44,6 +46,61 @@ const EnvironmentalSystemsScreen = ({ navigation, route }: { navigation: any; ro
     essTips: `Top 10 Study Tips for Success – Environmental Systems and Societies\n\n• Master the key concepts of systems, models, and sustainability.\n\n• Use diagrams to represent flows, feedback loops, and models.\n\n• Regularly practice past paper questions on data-based analysis.\n\n• Link theory with real-world environmental case studies.\n\n• Understand terminology and use it precisely in assessments.\n\n• Engage with current environmental news and debates.\n\n• Keep clear, detailed notes during practical investigations.\n\n• Apply systems thinking in analyzing environmental problems.\n\n• Reflect on human impacts from ethical and economic perspectives.\n\n• Review IA criteria while planning and writing your report.`,
   };
   const sectionKeys: Array<'overview' | 'essentials' | 'coreThemes' | 'detailedRubrics' | 'essTips'> = ['overview', 'essentials', 'coreThemes', 'detailedRubrics', 'essTips'];
+
+  // Full-text blob of Detailed Rubrics content to improve search coverage
+  const detailedRubricsSearchContent = `
+  Assessment Guidelines Individual Investigation
+  A Investigation planning Clarity of research focus and development of investigation objectives 6
+  B Data gathering and analysis Suitability of methods and analytical approaches employed 6
+  C Results interpretation and evaluation Analysis of findings and demonstration of critical reasoning 6
+  D Real-world connections Broader environmental relevance and practical implications 6
+  E Student involvement Individual initiative understanding and dedication 6
+
+  Criterion A Research Question and Inquiry Max 4 marks
+  0 The report does not reach a standard described by the descriptors below
+  1-2 Talks about a nearby or worldwide environmental topic with mistakes or missing parts Asks a main question but it is not clear or does not fit well with the topic Shows little background reading or preparation
+  3-4 Clearly explains a nearby or worldwide environmental topic with good background reading Asks a clear main question that directly relates to the chosen topic or problem Strong connection between the main question and the environmental situation
+
+  Criterion B Strategy Max 4 marks
+  0 The report does not reach a standard described by the descriptors below
+  1-2 Mentions a solution for an environmental problem connected to the main question Points out disagreements between different viewpoints money social cultural political or environmental concerns Shows basic awareness of what different groups of people think
+  3-4 Explains a solution for the problem with good reasons why it would work Clearly shows how the solution creates disagreements between different viewpoints Shows understanding of complicated relationships between different groups and what they give up
+
+  Criterion C Method Max 4 marks
+  0 The report does not reach a standard described by the descriptors below
+  1-2 Explains a process that others cannot easily follow or copy Does not collect enough information to properly answer the main question The steps are unclear and lack important details needed to repeat the work
+  3-4 Explains a clear process that others can follow step-by-step Collects enough information to thoroughly answer the main question The steps are detailed and well-organized for others to understand and repeat
+
+  Criterion D Working with Data Max 6 marks
+  0 The report does not reach a standard described by the descriptors below
+  1-2 Writing is hard to understand Working with information contains big mistakes Results do not answer the main question
+  3-4 Writing is easy to understand Working with information has small mistakes Results do not completely answer the main question
+  5-6 Writing is easy to understand and has good detail Working with information is done correctly Results completely answer the main question
+
+  Criterion E Understanding Results and Final Thoughts Max 6 marks
+  0 The report does not reach a standard described by the descriptors below
+  1-2 Points out patterns or trends in the information Final thoughts are not backed up by the work done or do not answer the main question Limited understanding of what the results mean
+  3-4 Explains trends and discusses problems with accuracy reliability and uncertainty Final thoughts are somewhat backed up by the work Shows partial understanding of result limitations and meanings
+  5-6 Clearly explains trends and fully discusses how accurate and reliable the results are Final thoughts are completely backed up by the detailed work done Shows full understanding of what results mean and their limitations
+
+  Criterion F Looking Back and Moving Forward Max 6 marks
+  0 The report does not reach a standard described by the descriptors below
+  1-2 Mentions general problems with the approach used Lists basic ways to make the work better Points out unanswered questions without much detail
+  3-4 Explains problems and ways to improve the work with some detail Lists unanswered questions that came up during the study Shows understanding of what could be done differently
+  5-6 Carefully examines specific problems and suggests detailed improvements Clearly explains how unanswered questions affect the final thoughts Shows deep understanding of study limitations and future research possibilities
+
+  External Assessment Markbands SL Paper 2 Section B Essay
+  0 The work does not reach a standard described by the descriptors below
+  1-3 Minimal understanding of environmental concepts or systems issues Disconnected statements with poor structure Weak terminology usage and unclear examples Absent or vague conclusions
+  4-6 Basic understanding with appropriate terminology and examples Limited explanations with some structural organization Some balanced perspectives and basic conclusions presented
+  7-9 Strong understanding with precise terminology and relevant examples Well-developed analysis with logical structure Balanced evaluation leading to sound conclusions
+
+  External Assessment Markbands HL Paper 2 Section B Essay
+  0 The work does not reach a standard described by the descriptors below
+  1-3 Minimal understanding of environmental systems concepts or HL content Fragmented knowledge with poor structure Weak examples and unsupported judgments
+  4-6 Basic understanding with appropriate terminology and some examples Limited explanations with basic organization Some conclusions supported by limited arguments
+  7-9 Strong understanding with precise terminology and well-explained examples Thorough analysis with logical structure Well-supported and reflective conclusions
+  `;
 
   const handleScroll = (event: any) => {
     const scrollY = event.nativeEvent.contentOffset.y;
@@ -102,10 +159,18 @@ const EnvironmentalSystemsScreen = ({ navigation, route }: { navigation: any; ro
       'essTips': 'ESS Tips',
     };
     
-    const matches = sectionKeys.filter(key =>
+    let matches = sectionKeys.filter(key =>
       sectionContentStrings[key].toLowerCase().includes(trimmedQuery.toLowerCase()) ||
       sectionTitles[key].toLowerCase().includes(trimmedQuery.toLowerCase())
     );
+    // Include Detailed Rubrics when the full-text blob matches
+    if (detailedRubricsSearchContent.toLowerCase().includes(trimmedQuery.toLowerCase()) && !matches.includes('detailedRubrics')) {
+      matches = ['detailedRubrics', ...matches];
+    }
+    // Prioritize opening Detailed Rubrics when present
+    if (matches.includes('detailedRubrics')) {
+      matches = ['detailedRubrics', ...matches.filter(k => k !== 'detailedRubrics')];
+    }
     setMatchingSections(matches);
     setCurrentMatchIndex(0);
     if (matches.length > 0) {

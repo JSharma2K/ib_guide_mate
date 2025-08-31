@@ -7,9 +7,11 @@ import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { Feather } from '@expo/vector-icons';
 
+const escapeRegExp = (input: string) => input.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const highlightText = (text: string, highlightedText: string) => {
   if (!highlightedText) return text;
-  const parts = text.split(new RegExp(`(${highlightedText})`, 'gi'));
+  const safe = escapeRegExp(highlightedText);
+  const parts = text.split(new RegExp(`(${safe})`, 'gi'));
   return parts.map((part, i) =>
     part.toLowerCase() === highlightedText.toLowerCase() ?
       <Text key={i} style={themeStyles.highlightedText}>{part}</Text> :
@@ -98,6 +100,48 @@ Criterion Description Marks Personal engagement Shows original thinking innovati
   };
   const sectionKeys: Array<'overview' | 'essentials' | 'coreThemes' | 'detailedRubrics' | 'physicsTips'> = ['overview', 'essentials', 'coreThemes', 'detailedRubrics', 'physicsTips'];
 
+  // Full-text blob of Detailed Rubrics content to improve search coverage
+  const detailedRubricsSearchContent = `
+  Internal Assessment Table Paraphrased
+  Research design 6 25
+  Data analysis 6 25
+  Conclusion 6 25
+  Evaluation 6 25
+  Total 24 100
+
+  Research design Markbands Paraphrased
+  0 Does not meet the basic expectations described below
+  1-2 Question is stated without context Notes about how data will be gathered are mentioned but not linked to the question Method steps lack enough detail to repeat the work
+  3-4 Question is set within a broad context How relevant data will be gathered is described Method steps mostly allow someone else to repeat the work with few gaps
+  5-6 Question is clearly framed within a specific appropriate context How sufficient and relevant data will be gathered is explained Method steps clearly allow repetition of the work
+
+  Data analysis Markbands Paraphrased
+  0 Does not meet the basic expectations described below
+  1-2 Data recording processing is shown but is unclear or imprecise Little consideration of uncertainties Some relevant processing attempted but with major gaps or errors
+  3-4 Recording processing is clear or precise one but not both Evidence of thinking about uncertainties but with notable omissions or inaccuracies Processing related to the question has significant gaps or mistakes
+  5-6 Recording and processing are both clear and precise Uncertainties are handled appropriately Processing relevant to the question is carried out carefully and accurately
+
+  Conclusion Markbands Paraphrased
+  0 Does not meet the basic expectations described below
+  1-2 States a conclusion relevant to the question but not supported by the analysis Any comparison to accepted science is superficial
+  3-4 Describes a conclusion relevant to the question but not fully consistent with the analysis Makes some relevant comparison to accepted science
+  5-6 Justifies a conclusion relevant to the question and fully consistent with the analysis Supports it with relevant comparison to accepted science
+
+  Evaluation Markbands Paraphrased
+  0 Does not meet the basic expectations described below
+  1-2 States general weaknesses or limits in the method Lists improvements but only as statements
+  3-4 Describes specific weaknesses or limits Describes realistic improvements that relate to those issues
+  5-6 Explains the impact of specific weaknesses or limits Explains realistic relevant improvements that address those issues
+
+  External Assessment SL Paraphrased
+  Paper 1 1h 30m 45 marks Two booklets taken together 1A 25 marks 25 multiple choice on SL content no penalty for wrong answers and 1B 20 marks questions based on data Checks knowledge understanding and analysis Calculators allowed bring the Physics data booklet school provides copies 36
+  Paper 2 1h 30m 50 marks Short answer and extended response on SL content Checks core objectives knowledge understanding analysis Calculators allowed Physics data booklet required school ensures copies 44
+
+  External Assessment HL Paraphrased
+  Paper 1 2h 60 marks Two booklets taken together 1A 40 marks 40 multiple choice on SL HL content no penalty for wrong answers and 1B 20 marks questions based on data Checks knowledge understanding and analysis objectives 1-3 Calculators allowed Physics data booklet required school provides copies 36
+  Paper 2 2h 30m 90 marks Short answer and extended response on SL HL content Checks objectives 1-3 calculators and Physics data booklet allowed 44
+  `;
+
   const handleScroll = (event: any) => {
     const scrollY = event.nativeEvent.contentOffset.y;
     const fadeThreshold = 50;
@@ -155,14 +199,24 @@ Criterion Description Marks Personal engagement Shows original thinking innovati
       'physicsTips': 'Physics Tips',
     };
     
-    const matches = sectionKeys.filter(key =>
-      sectionContentStrings[key].toLowerCase().includes(trimmedQuery.toLowerCase()) ||
-      sectionTitles[key].toLowerCase().includes(trimmedQuery.toLowerCase())
-    );
-    setMatchingSections(matches);
+    const matches = sectionKeys.filter(key => {
+      if (key === 'detailedRubrics') {
+        return detailedRubricsSearchContent.toLowerCase().includes(trimmedQuery.toLowerCase()) ||
+               sectionTitles[key].toLowerCase().includes(trimmedQuery.toLowerCase());
+      }
+      return sectionContentStrings[key].toLowerCase().includes(trimmedQuery.toLowerCase()) ||
+             sectionTitles[key].toLowerCase().includes(trimmedQuery.toLowerCase());
+    });
+    
+    // Prioritize detailedRubrics if it matches
+    const prioritizedMatches = matches.includes('detailedRubrics') 
+      ? ['detailedRubrics', ...matches.filter(m => m !== 'detailedRubrics')]
+      : matches;
+    
+    setMatchingSections(prioritizedMatches);
     setCurrentMatchIndex(0);
-    if (matches.length > 0) {
-      setExpandedSection(matches[0]);
+    if (prioritizedMatches.length > 0) {
+      setExpandedSection(prioritizedMatches[0]);
     } else {
       setExpandedSection(null);
     }

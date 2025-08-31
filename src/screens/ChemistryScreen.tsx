@@ -7,9 +7,11 @@ import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { Feather } from '@expo/vector-icons';
 
+const escapeRegExp = (input: string) => input.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const highlightText = (text: string, highlightedText: string) => {
   if (!highlightedText) return text;
-  const parts = text.split(new RegExp(`(${highlightedText})`, 'gi'));
+  const safe = escapeRegExp(highlightedText);
+  const parts = text.split(new RegExp(`(${safe})`, 'gi'));
   return parts.map((part, i) =>
     part.toLowerCase() === highlightedText.toLowerCase() ?
       <Text key={i} style={themeStyles.highlightedText}>{part}</Text> :
@@ -62,6 +64,56 @@ const ChemistryScreen = ({ navigation, route }: { navigation: any; route: any })
 • Maintain a revision journal and review errors actively.`,
   };
   const sectionKeys: Array<'overview' | 'essentials' | 'coreThemes' | 'detailedRubrics' | 'chemistryTips'> = ['overview', 'essentials', 'coreThemes', 'detailedRubrics', 'chemistryTips'];
+
+  // Full-text blob of Detailed Rubrics content to improve search coverage
+  const detailedRubricsSearchContent = `
+  Internal assessment
+  Research design 6 25
+  Data analysis 6 25
+  Conclusion 6 25
+  Evaluation 6 25
+  Total 24 100
+
+  Research design Markbands Paraphrased
+  0 Does not meet the basic expectations described below
+  1-2 Question is stated without context Notes about how data will be gathered are mentioned but not connected to the question Method steps lack enough detail to repeat the work
+  3-4 Question is placed within a broad context How relevant data will be gathered is described Method steps mostly allow someone else to repeat the work with few gaps
+  5-6 Question is clearly framed within a specific appropriate context How sufficient and relevant data will be gathered is explained Method steps clearly allow repetition of the work
+
+  Data analysis Markbands Paraphrased
+  0 Does not meet the basic expectations described below
+  1-2 Data recording processing is shown but is unclear or imprecise Little consideration of uncertainties Some relevant processing attempted but with major gaps or errors
+  3-4 Recording processing is clear or precise one but not both Evidence of thinking about uncertainties but with notable omissions or inaccuracies Processing relevant to the question is done but has significant gaps or mistakes
+  5-6 Recording and processing are both clear and precise Uncertainties are handled appropriately Processing relevant to the question is carried out carefully and accurately
+
+  Conclusion Markbands Paraphrased
+  0 Does not meet the basic expectations described below
+  1-2 States a conclusion that fits the question but is not supported by the analysis Any comparison to accepted science is superficial
+  3-4 Describes a conclusion that fits the question but is not fully consistent with the analysis Makes some relevant comparison to accepted science
+  5-6 Justifies a conclusion that fits the question and fully matches the analysis Supports it with relevant comparison to accepted science
+
+  Evaluation Markbands Paraphrased
+  0 Does not meet the basic expectations described below
+  1-2 States general weaknesses or limits in the method Lists improvements but only as statements
+  3-4 Describes specific weaknesses or limits Describes realistic improvements that relate to those issues
+  5-6 Explains the impact of specific weaknesses or limits Explains realistic relevant improvements that address those issues
+
+  Assessment Outline SL Paraphrased
+  External assessment 3 hours
+  Paper 1 1 hour 30 minutes Paper 1A Multiple choice questions Paper 1B Data based questions Total 55 marks
+  Paper 2 1 hour 30 minutes Short answer and extended response questions Total 50 marks 44%
+  Paper 1 combined weighting 36%
+  External assessment total 80%
+  Internal assessment 10 hours One task a scientific investigation Marked by the school and checked by external moderators at the end of the course Total 24 marks 20%
+
+  Assessment Outline HL Paraphrased
+  External assessment 4 hours 30 minutes
+  Paper 1 2 hours Paper 1A Multiple choice questions Paper 1B Data based questions Total 75 marks
+  Paper 2 2 hours 30 minutes Short answer and extended response questions Total 90 marks 44%
+  Paper 1 combined weighting 36%
+  External assessment total 80%
+  Internal assessment 10 hours One task a scientific investigation Marked by the school and checked by external moderators at the end of the course Total 24 marks 20%
+  `;
 
   const handleScroll = (event: any) => {
     const scrollY = event.nativeEvent.contentOffset.y;
@@ -120,10 +172,18 @@ const ChemistryScreen = ({ navigation, route }: { navigation: any; route: any })
       'chemistryTips': 'Chemistry Tips',
     };
     
-    const matches = sectionKeys.filter(key =>
+    let matches = sectionKeys.filter(key =>
       sectionContentStrings[key].toLowerCase().includes(trimmedQuery.toLowerCase()) ||
       sectionTitles[key].toLowerCase().includes(trimmedQuery.toLowerCase())
     );
+    // Include Detailed Rubrics when the full-text blob matches
+    if (detailedRubricsSearchContent.toLowerCase().includes(trimmedQuery.toLowerCase()) && !matches.includes('detailedRubrics')) {
+      matches = ['detailedRubrics', ...matches];
+    }
+    // Prioritize opening Detailed Rubrics when present
+    if (matches.includes('detailedRubrics')) {
+      matches = ['detailedRubrics', ...matches.filter(k => k !== 'detailedRubrics')];
+    }
     setMatchingSections(matches);
     setCurrentMatchIndex(0);
     if (matches.length > 0) {

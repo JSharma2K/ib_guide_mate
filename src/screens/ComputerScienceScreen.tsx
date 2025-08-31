@@ -7,9 +7,11 @@ import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { Feather } from '@expo/vector-icons';
 
+const escapeRegExp = (input: string) => input.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const highlightText = (text: string, highlightedText: string) => {
   if (!highlightedText) return text;
-  const parts = text.split(new RegExp(`(${highlightedText})`, 'gi'));
+  const safe = escapeRegExp(highlightedText);
+  const parts = text.split(new RegExp(`(${safe})`, 'gi'));
   return parts.map((part, i) =>
     part.toLowerCase() === highlightedText.toLowerCase() ?
       <Text key={i} style={themeStyles.highlightedText}>{part}</Text> :
@@ -62,6 +64,40 @@ const ComputerScienceScreen = ({ navigation, route }: { navigation: any; route: 
 • Join coding communities or GitHub projects to build experience.`,
   };
   const sectionKeys: Array<'overview' | 'essentials' | 'coreThemes' | 'detailedRubrics' | 'computerScienceTips'> = ['overview', 'essentials', 'coreThemes', 'detailedRubrics', 'computerScienceTips'];
+
+  // Full-text blob of Detailed Rubrics content to improve search coverage
+  const detailedRubricsSearchContent = `
+  Paper 1 Core SL and HL
+  Weighting Standard 45% Advanced 40%
+  Structure Part A Brief responses and organized questions on foundation topics Part B Single comprehensive response question on foundation topics
+  Content mastery Shows precise and applicable understanding of fundamental curriculum
+  Knowledge implementation Uses theoretical comprehension to address or clarify challenges
+  Evaluation and integration Examines situations or issues and combines logical responses
+  Expression Conveys concepts through suitable vocabulary visual aids and structures such as process diagrams code representation
+
+  Paper 2 Option SL and HL
+  Weighting Standard 25% Advanced 20%
+  Structure Organized questions on selected specialization such as Object-Oriented Programming Web Development Database Systems Modeling
+  Specialized understanding Shows comprehensive grasp of the selected specialization material
+  Technical application Implements understanding in different situations with precise solutions and logic
+  Technical methodology Shows application of principles including algorithms system architecture programming examples
+  Critical assessment Evaluates consequences compromises or efficiency of a system or approach from various viewpoints
+
+  Paper 3 Case Study HL only
+  Weighting Advanced 20%
+  Structure Built on pre-distributed scenario analysis organized questions
+  Scenario comprehension Shows understanding of systems and concepts relevant to the scenario analysis
+  Curriculum integration Implements foundation and advanced level material appropriately to the scenario
+  Analytical reasoning Assesses system operations connections or consequences within the provided context
+  Structured communication Delivers organized well-supported responses using suitable technical vocabulary and logic
+
+  Internal Assessment Rubric
+  Project initiation Establishes the challenge and determines the boundaries and success standards 6
+  Approach summary Details the methodology incorporating processes and frameworks 6
+  Technical execution Shows programming competencies and development procedures 12
+  Output assessment Evaluates the standard and performance of the completed solution 4
+  Critical review Analyzes achievement standards and identifies potential improvements 6
+  `;
 
   const handleScroll = (event: any) => {
     const scrollY = event.nativeEvent.contentOffset.y;
@@ -120,10 +156,18 @@ const ComputerScienceScreen = ({ navigation, route }: { navigation: any; route: 
       'computerScienceTips': 'Computer Science Tips',
     };
     
-    const matches = sectionKeys.filter(key =>
+    let matches = sectionKeys.filter(key =>
       sectionContentStrings[key].toLowerCase().includes(trimmedQuery.toLowerCase()) ||
       sectionTitles[key].toLowerCase().includes(trimmedQuery.toLowerCase())
     );
+    // Include Detailed Rubrics when the full-text blob matches
+    if (detailedRubricsSearchContent.toLowerCase().includes(trimmedQuery.toLowerCase()) && !matches.includes('detailedRubrics')) {
+      matches = ['detailedRubrics', ...matches];
+    }
+    // Prioritize opening Detailed Rubrics when present
+    if (matches.includes('detailedRubrics')) {
+      matches = ['detailedRubrics', ...matches.filter(k => k !== 'detailedRubrics')];
+    }
     setMatchingSections(matches);
     setCurrentMatchIndex(0);
     if (matches.length > 0) {
