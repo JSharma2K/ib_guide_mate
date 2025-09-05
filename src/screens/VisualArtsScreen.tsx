@@ -7,9 +7,14 @@ import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { Feather } from '@expo/vector-icons';
 
+const escapeRegExp = (string: string) => {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+};
+
 const highlightText = (text: string, highlightedText: string) => {
   if (!highlightedText) return text;
-  const parts = text.split(new RegExp(`(${highlightedText})`, 'gi'));
+  const escapedHighlight = escapeRegExp(highlightedText);
+  const parts = text.split(new RegExp(`(${escapedHighlight})`, 'gi'));
   return parts.map((part, i) =>
     part.toLowerCase() === highlightedText.toLowerCase() ?
       <Text key={i} style={themeStyles.highlightedText}>{part}</Text> :
@@ -34,6 +39,9 @@ const VisualArtsScreen = ({ navigation, route }: { navigation: any; route: any }
   
   // Animation value for home icon fade
   const homeIconOpacity = useRef(new Animated.Value(1)).current;
+  
+  // ScrollView ref for auto-scrolling
+  const scrollViewRef = useRef<ScrollView>(null);
 
   // Section keys and content for search
   const sectionContentStrings: Record<'overview' | 'essentials' | 'coreThemes' | 'detailedRubrics' | 'visualArtsTips', string> = {
@@ -77,7 +85,124 @@ Factual Information: Accurate and relevant information about artworks and their 
 Analysis and Evaluation: Comparative analysis and evaluation of artworks (0-12 points)
 Making Connections: Connections between own work and investigated work (0-6 points)
 Presentation and Subject-Specific Language: Effective visual presentation and use of terminology (0-6 points)
-HL only - Curatorial Rationale: Presentation of intention and curatorial decisions (0-4 points for HL only)`,
+HL only - Curatorial Rationale: Presentation of intention and curatorial decisions (0-4 points for HL only)
+
+Art-making inquiries portfolio - Assessment Criteria
+Criterion A: Knowledge and understanding of art forms
+Excellent (9-10): Shows thorough knowledge of art forms studied, with clear understanding of their cultural significance and creative contexts
+Good (7-8): Shows good knowledge of art forms studied, with understanding of their cultural significance and creative contexts
+Satisfactory (5-6): Shows adequate knowledge of art forms studied, with some understanding of their cultural significance and creative contexts
+Needs Improvement (3-4): Shows limited knowledge of art forms studied, with minimal understanding of their cultural significance and creative contexts
+Poor (1-2): Shows very limited knowledge of art forms studied, with little understanding of their cultural significance and creative contexts
+
+Criterion B: Application of skills and techniques
+Excellent (9-10): Demonstrates excellent application of skills and techniques appropriate to the art form
+Good (7-8): Demonstrates good application of skills and techniques appropriate to the art form
+Satisfactory (5-6): Demonstrates adequate application of skills and techniques appropriate to the art form
+Needs Improvement (3-4): Demonstrates limited application of skills and techniques appropriate to the art form
+Poor (1-2): Demonstrates very limited application of skills and techniques appropriate to the art form
+
+Criterion C: Thinking creatively
+Excellent (9-10): Shows excellent creative thinking in the development of ideas and artistic solutions
+Good (7-8): Shows good creative thinking in the development of ideas and artistic solutions
+Satisfactory (5-6): Shows adequate creative thinking in the development of ideas and artistic solutions
+Needs Improvement (3-4): Shows limited creative thinking in the development of ideas and artistic solutions
+Poor (1-2): Shows very limited creative thinking in the development of ideas and artistic solutions
+
+Criterion D: Responding to artwork
+Excellent (9-10): Shows excellent ability to respond to and analyze artwork from different perspectives
+Good (7-8): Shows good ability to respond to and analyze artwork from different perspectives
+Satisfactory (5-6): Shows adequate ability to respond to and analyze artwork from different perspectives
+Needs Improvement (3-4): Shows limited ability to respond to and analyze artwork from different perspectives
+Poor (1-2): Shows very limited ability to respond to and analyze artwork from different perspectives
+
+Connections study - Assessment Criteria
+Criterion A: Knowledge and understanding
+Excellent (9-10): Shows thorough knowledge and understanding of artistic connections between different works and contexts
+Good (7-8): Shows good knowledge and understanding of artistic connections between different works and contexts
+Satisfactory (5-6): Shows adequate knowledge and understanding of artistic connections between different works and contexts
+Needs Improvement (3-4): Shows limited knowledge and understanding of artistic connections between different works and contexts
+Poor (1-2): Shows very limited knowledge and understanding of artistic connections between different works and contexts
+
+Criterion B: Visual analysis
+Excellent (9-10): Demonstrates excellent visual analysis skills with detailed examination of artistic elements
+Good (7-8): Demonstrates good visual analysis skills with examination of artistic elements
+Satisfactory (5-6): Demonstrates adequate visual analysis skills with some examination of artistic elements
+Needs Improvement (3-4): Demonstrates limited visual analysis skills with minimal examination of artistic elements
+Poor (1-2): Demonstrates very limited visual analysis skills with little examination of artistic elements
+
+Criterion C: Interpretation and evaluation
+Excellent (9-10): Shows excellent interpretation and evaluation of artistic works with thoughtful insights
+Good (7-8): Shows good interpretation and evaluation of artistic works with insights
+Satisfactory (5-6): Shows adequate interpretation and evaluation of artistic works with some insights
+Needs Improvement (3-4): Shows limited interpretation and evaluation of artistic works with few insights
+Poor (1-2): Shows very limited interpretation and evaluation of artistic works with minimal insights
+
+Artist project - Assessment Criteria (HL only)
+Criterion A: Conceptual understanding
+Excellent (9-10): Shows thorough conceptual understanding of artistic themes and ideas with clear development
+Good (7-8): Shows good conceptual understanding of artistic themes and ideas with development
+Satisfactory (5-6): Shows adequate conceptual understanding of artistic themes and ideas with some development
+Needs Improvement (3-4): Shows limited conceptual understanding of artistic themes and ideas with minimal development
+Poor (1-2): Shows very limited conceptual understanding of artistic themes and ideas with little development
+
+Criterion B: Technical proficiency
+Excellent (9-10): Demonstrates excellent technical skills and mastery of chosen artistic medium
+Good (7-8): Demonstrates good technical skills and competency in chosen artistic medium
+Satisfactory (5-6): Demonstrates adequate technical skills and basic competency in chosen artistic medium
+Needs Improvement (3-4): Demonstrates limited technical skills and minimal competency in chosen artistic medium
+Poor (1-2): Demonstrates very limited technical skills and little competency in chosen artistic medium
+
+Criterion C: Creative development
+Excellent (9-10): Shows excellent creative development with innovative approaches and original thinking
+Good (7-8): Shows good creative development with some innovative approaches and original thinking
+Satisfactory (5-6): Shows adequate creative development with basic approaches and some original thinking
+Needs Improvement (3-4): Shows limited creative development with few innovative approaches and minimal original thinking
+Poor (1-2): Shows very limited creative development with little innovative approaches and original thinking
+
+Resolved artworks - Internal Assessment Criteria (SL)
+Criterion A: Technical skills
+Excellent (9-10): Demonstrates excellent technical skills with masterful execution of artistic techniques
+Good (7-8): Demonstrates good technical skills with competent execution of artistic techniques
+Satisfactory (5-6): Demonstrates adequate technical skills with basic execution of artistic techniques
+Needs Improvement (3-4): Demonstrates limited technical skills with minimal execution of artistic techniques
+Poor (1-2): Demonstrates very limited technical skills with poor execution of artistic techniques
+
+Criterion B: Creative thinking
+Excellent (9-10): Shows excellent creative thinking with innovative solutions and original artistic expression
+Good (7-8): Shows good creative thinking with some innovative solutions and artistic expression
+Satisfactory (5-6): Shows adequate creative thinking with basic solutions and some artistic expression
+Needs Improvement (3-4): Shows limited creative thinking with few solutions and minimal artistic expression
+Poor (1-2): Shows very limited creative thinking with poor solutions and little artistic expression
+
+Criterion C: Coherence and intention
+Excellent (9-10): Shows excellent coherence with clear artistic intention and unified body of work
+Good (7-8): Shows good coherence with artistic intention and mostly unified body of work
+Satisfactory (5-6): Shows adequate coherence with some artistic intention and partially unified body of work
+Needs Improvement (3-4): Shows limited coherence with unclear artistic intention and fragmented body of work
+Poor (1-2): Shows very limited coherence with no clear artistic intention and disconnected body of work
+
+Selected resolved artworks - Internal Assessment Criteria (HL)
+Criterion A: Technical skills
+Excellent (9-10): Demonstrates excellent technical skills with masterful execution across multiple artistic techniques
+Good (7-8): Demonstrates good technical skills with competent execution across artistic techniques
+Satisfactory (5-6): Demonstrates adequate technical skills with basic execution across some artistic techniques
+Needs Improvement (3-4): Demonstrates limited technical skills with minimal execution across few artistic techniques
+Poor (1-2): Demonstrates very limited technical skills with poor execution across artistic techniques
+
+Criterion B: Creative thinking and development
+Excellent (9-10): Shows excellent creative thinking with sophisticated development of innovative artistic ideas
+Good (7-8): Shows good creative thinking with development of innovative artistic ideas
+Satisfactory (5-6): Shows adequate creative thinking with some development of artistic ideas
+Needs Improvement (3-4): Shows limited creative thinking with minimal development of artistic ideas
+Poor (1-2): Shows very limited creative thinking with poor development of artistic ideas
+
+Criterion C: Coherence and artistic intention
+Excellent (9-10): Shows excellent coherence with clear and sophisticated artistic intention throughout selected works
+Good (7-8): Shows good coherence with clear artistic intention throughout selected works
+Satisfactory (5-6): Shows adequate coherence with some artistic intention throughout selected works
+Needs Improvement (3-4): Shows limited coherence with unclear artistic intention throughout selected works
+Poor (1-2): Shows very limited coherence with no clear artistic intention throughout selected works`,
     visualArtsTips: `1. Document your artistic process regularly in your Visual Arts Journal.
 
 2. Explore a wide variety of media, techniques, and styles.
@@ -161,10 +286,23 @@ HL only - Curatorial Rationale: Presentation of intention and curatorial decisio
       sectionContentStrings[key].toLowerCase().includes(trimmedQuery.toLowerCase()) ||
       sectionTitles[key].toLowerCase().includes(trimmedQuery.toLowerCase())
     );
-    setMatchingSections(matches);
+
+    // Prioritize detailed rubrics if it's in the matches
+    const prioritizedMatches = matches.includes('detailedRubrics') 
+      ? ['detailedRubrics', ...matches.filter(m => m !== 'detailedRubrics')]
+      : matches;
+
+    setMatchingSections(prioritizedMatches);
     setCurrentMatchIndex(0);
-    if (matches.length > 0) {
-      setExpandedSection(matches[0]);
+    if (prioritizedMatches.length > 0) {
+      setExpandedSection(prioritizedMatches[0]);
+      
+      // Auto-scroll to detailed rubrics section if it's the first match
+      if (prioritizedMatches[0] === 'detailedRubrics') {
+        setTimeout(() => {
+          scrollViewRef.current?.scrollTo({ y: 1200, animated: true });
+        }, 400);
+      }
     } else {
       setExpandedSection(null);
     }
@@ -287,6 +425,7 @@ HL only - Curatorial Rationale: Presentation of intention and curatorial decisio
         </Animated.View>
       </View>
       <ScrollView 
+        ref={scrollViewRef}
         keyboardShouldPersistTaps="handled" 
         contentContainerStyle={{ paddingTop: 112, paddingBottom: 32, paddingHorizontal: 16 }}
         onScroll={handleScroll}

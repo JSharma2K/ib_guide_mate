@@ -7,9 +7,14 @@ import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { Feather } from '@expo/vector-icons';
 
+const escapeRegExp = (string: string) => {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+};
+
 const highlightText = (text: string, highlightedText: string) => {
   if (!highlightedText) return text;
-  const parts = text.split(new RegExp(`(${highlightedText})`, 'gi'));
+  const escapedHighlight = escapeRegExp(highlightedText);
+  const parts = text.split(new RegExp(`(${escapedHighlight})`, 'gi'));
   return parts.map((part, i) =>
     part.toLowerCase() === highlightedText.toLowerCase() ?
       <Text key={i} style={themeStyles.highlightedText}>{part}</Text> :
@@ -34,6 +39,9 @@ const DanceScreen = ({ navigation, route }: { navigation: any; route: any }) => 
   
   // Animation value for home icon fade
   const homeIconOpacity = useRef(new Animated.Value(1)).current;
+  
+  // ScrollView ref for auto-scrolling
+  const scrollViewRef = useRef<ScrollView>(null);
 
   // Section keys and content for search
   const sectionContentStrings: Record<'overview' | 'essentials' | 'coreThemes' | 'detailedRubrics' | 'danceTips', string> = {
@@ -85,7 +93,46 @@ Standard C: Quality of written communication
 Live Performance
 Standard A: Technical skill and execution
 Standard B: Artistic expression and interpretation
-Standard C: Performance presence and assurance`,
+Standard C: Performance presence and assurance
+
+SL Assessment and Criterions
+
+Composition and Analysis
+There are three evaluation standards at SL.
+Criterion A Overall impression 10 marks
+Criterion B Craft 5 marks
+Criterion C Written analysis 5 marks
+Total 20 marks
+
+Dance Investigation
+There are five evaluation standards at SL.
+Criterion A Past background 5 marks
+Criterion B Present background 5 marks
+Criterion C Movement components 5 marks
+Criterion D References 3 marks
+Criterion E Structure 2 marks
+Total 20 marks
+
+HL Assessment and Criterions
+
+Composition and Analysis
+There are five evaluation standards at HL.
+Criterion A Overall impression 10 marks
+Criterion B Craft 5 marks
+Criterion C Creative contrast 5 marks
+Criterion D Written analysis 5 marks
+Criterion E Links 5 marks
+Total 30 marks
+
+Dance Investigation
+There are six evaluation standards at HL.
+Criterion A Past background 5 marks
+Criterion B Present background 5 marks
+Criterion C Movement components 5 marks
+Criterion D References 3 marks
+Criterion E Structure 2 marks
+Criterion F Detailed comparison of brief excerpts 5 marks
+Total 25 marks`,
     danceTips: `1. Practice technique consistently to refine physical execution.
 
 2. Review and annotate choreographic journal entries regularly.
@@ -169,10 +216,23 @@ Standard C: Performance presence and assurance`,
       sectionContentStrings[key].toLowerCase().includes(trimmedQuery.toLowerCase()) ||
       sectionTitles[key].toLowerCase().includes(trimmedQuery.toLowerCase())
     );
-    setMatchingSections(matches);
+
+    // Prioritize detailed rubrics if it's in the matches
+    const prioritizedMatches = matches.includes('detailedRubrics') 
+      ? ['detailedRubrics', ...matches.filter(m => m !== 'detailedRubrics')]
+      : matches;
+
+    setMatchingSections(prioritizedMatches);
     setCurrentMatchIndex(0);
-    if (matches.length > 0) {
-      setExpandedSection(matches[0]);
+    if (prioritizedMatches.length > 0) {
+      setExpandedSection(prioritizedMatches[0]);
+      
+      // Auto-scroll to detailed rubrics section if it's the first match
+      if (prioritizedMatches[0] === 'detailedRubrics') {
+        setTimeout(() => {
+          scrollViewRef.current?.scrollTo({ y: 1200, animated: true });
+        }, 400);
+      }
     } else {
       setExpandedSection(null);
     }
@@ -295,6 +355,7 @@ Standard C: Performance presence and assurance`,
         </Animated.View>
       </View>
       <ScrollView 
+        ref={scrollViewRef}
         keyboardShouldPersistTaps="handled" 
         contentContainerStyle={{ paddingTop: 112, paddingBottom: 32, paddingHorizontal: 16 }}
         onScroll={handleScroll}
@@ -401,6 +462,137 @@ Standard C: Performance presence and assurance`,
                           
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 14, marginTop: 16 }}>Live Performance</Text>
                           <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("Standard A: Technical skill and execution\nStandard B: Artistic expression and interpretation\nStandard C: Performance presence and assurance", highlightedText)}</Text>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginTop: 24, marginBottom: 16 }}>SL Assessment and Criterions</Text>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 14, marginTop: 16, marginBottom: 8 }}>Composition and Analysis</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 18, marginBottom: 8 }}>There are three evaluation standards at SL.</Text>
+                          
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginTop: 16 }}>
+                            {/* Header Row */}
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>{highlightText("Criterion", highlightedText)}</Text>
+                              <Text style={{ flex: 2.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>{highlightText("Focus Area", highlightedText)}</Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>{highlightText("Points", highlightedText)}</Text>
+                            </View>
+                            {/* Data Rows */}
+                            {[
+                              { criterion: 'Criterion A', focus: 'Overall impression', points: '10 marks' },
+                              { criterion: 'Criterion B', focus: 'Craft', points: '5 marks' },
+                              { criterion: 'Criterion C', focus: 'Written analysis', points: '5 marks' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.criterion, highlightedText)}</Text>
+                                <Text style={{ flex: 2.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.focus, highlightedText)}</Text>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, textAlign: 'center' }}>{highlightText(row.points, highlightedText)}</Text>
+                              </View>
+                            ))}
+                            {/* Total Row */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 2, borderColor: '#7EC3FF', backgroundColor: 'rgba(126, 195, 255, 0.1)' }}>
+                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}></Text>
+                              <Text style={{ flex: 2.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>{highlightText("Total", highlightedText)}</Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>{highlightText("20 marks", highlightedText)}</Text>
+                            </View>
+                          </View>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 14, marginTop: 16, marginBottom: 8 }}>Dance Investigation</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 18, marginBottom: 8 }}>There are five evaluation standards at SL.</Text>
+                          
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginTop: 16 }}>
+                            {/* Header Row */}
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>{highlightText("Criterion", highlightedText)}</Text>
+                              <Text style={{ flex: 2.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>{highlightText("Focus Area", highlightedText)}</Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>{highlightText("Points", highlightedText)}</Text>
+                            </View>
+                            {/* Data Rows */}
+                            {[
+                              { criterion: 'Criterion A', focus: 'Past background', points: '5 marks' },
+                              { criterion: 'Criterion B', focus: 'Present background', points: '5 marks' },
+                              { criterion: 'Criterion C', focus: 'Movement components', points: '5 marks' },
+                              { criterion: 'Criterion D', focus: 'References', points: '3 marks' },
+                              { criterion: 'Criterion E', focus: 'Structure', points: '2 marks' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.criterion, highlightedText)}</Text>
+                                <Text style={{ flex: 2.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.focus, highlightedText)}</Text>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, textAlign: 'center' }}>{highlightText(row.points, highlightedText)}</Text>
+                              </View>
+                            ))}
+                            {/* Total Row */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 2, borderColor: '#7EC3FF', backgroundColor: 'rgba(126, 195, 255, 0.1)' }}>
+                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}></Text>
+                              <Text style={{ flex: 2.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>{highlightText("Total", highlightedText)}</Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>{highlightText("20 marks", highlightedText)}</Text>
+                            </View>
+                          </View>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginTop: 24, marginBottom: 16 }}>HL Assessment and Criterions</Text>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 14, marginTop: 16, marginBottom: 8 }}>Composition and Analysis</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 18, marginBottom: 8 }}>There are five evaluation standards at HL.</Text>
+                          
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginTop: 16 }}>
+                            {/* Header Row */}
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>{highlightText("Criterion", highlightedText)}</Text>
+                              <Text style={{ flex: 2.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>{highlightText("Focus Area", highlightedText)}</Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>{highlightText("Points", highlightedText)}</Text>
+                            </View>
+                            {/* Data Rows */}
+                            {[
+                              { criterion: 'Criterion A', focus: 'Overall impression', points: '10 marks' },
+                              { criterion: 'Criterion B', focus: 'Craft', points: '5 marks' },
+                              { criterion: 'Criterion C', focus: 'Creative contrast', points: '5 marks' },
+                              { criterion: 'Criterion D', focus: 'Written analysis', points: '5 marks' },
+                              { criterion: 'Criterion E', focus: 'Links', points: '5 marks' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.criterion, highlightedText)}</Text>
+                                <Text style={{ flex: 2.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.focus, highlightedText)}</Text>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, textAlign: 'center' }}>{highlightText(row.points, highlightedText)}</Text>
+                              </View>
+                            ))}
+                            {/* Total Row */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 2, borderColor: '#7EC3FF', backgroundColor: 'rgba(126, 195, 255, 0.1)' }}>
+                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}></Text>
+                              <Text style={{ flex: 2.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>{highlightText("Total", highlightedText)}</Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>{highlightText("30 marks", highlightedText)}</Text>
+                            </View>
+                          </View>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 14, marginTop: 16, marginBottom: 8 }}>Dance Investigation</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 18, marginBottom: 8 }}>There are six evaluation standards at HL.</Text>
+                          
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginTop: 16 }}>
+                            {/* Header Row */}
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>{highlightText("Criterion", highlightedText)}</Text>
+                              <Text style={{ flex: 2.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>{highlightText("Focus Area", highlightedText)}</Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>{highlightText("Points", highlightedText)}</Text>
+                            </View>
+                            {/* Data Rows */}
+                            {[
+                              { criterion: 'Criterion A', focus: 'Past background', points: '5 marks' },
+                              { criterion: 'Criterion B', focus: 'Present background', points: '5 marks' },
+                              { criterion: 'Criterion C', focus: 'Movement components', points: '5 marks' },
+                              { criterion: 'Criterion D', focus: 'References', points: '3 marks' },
+                              { criterion: 'Criterion E', focus: 'Structure', points: '2 marks' },
+                              { criterion: 'Criterion F', focus: 'Detailed comparison of brief excerpts', points: '5 marks' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.criterion, highlightedText)}</Text>
+                                <Text style={{ flex: 2.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.focus, highlightedText)}</Text>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, textAlign: 'center' }}>{highlightText(row.points, highlightedText)}</Text>
+                              </View>
+                            ))}
+                            {/* Total Row */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 2, borderColor: '#7EC3FF', backgroundColor: 'rgba(126, 195, 255, 0.1)' }}>
+                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}></Text>
+                              <Text style={{ flex: 2.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>{highlightText("Total", highlightedText)}</Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>{highlightText("25 marks", highlightedText)}</Text>
+                            </View>
+                          </View>
                         </View>
                       )}
                     </View>
