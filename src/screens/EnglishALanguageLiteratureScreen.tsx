@@ -398,14 +398,41 @@ const EnglishALanguageLiteratureScreen = ({ navigation, route }: { navigation: a
                           />
                           {/* Paper 2 Table */}
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', marginTop: 24, marginBottom: 8, color: '#7EC3FF' }}>Language A: Language and Literature - Paper 2</Text>
-                          <RubricTable
-                            data={[
-                              { criterion: 'A', summary: 'Depth of knowledge, understanding, and interpretation', max: 10 },
-                              { criterion: 'B', summary: 'Quality of analysis and evaluation', max: 10 },
-                              { criterion: 'C', summary: 'Clear focus and organization', max: 10 },
-                            ]}
-                            highlightedText={highlightedText}
-                          />
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginBottom: 8 }}>
+                            {/* Header Row */}
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.5, padding: 8 }}>{highlightText("Criterion", highlightedText)}</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>{highlightText("Descriptor Summary", highlightedText)}</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>{highlightText("Max", highlightedText)}</Text>
+                            </View>
+                            {/* Data Rows */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText("Criterion A", highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText("Understanding and explanation of texts", highlightedText)}</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText("5 marks", highlightedText)}</Text>
+                            </View>
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText("Criterion B", highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText("Examining and judging texts", highlightedText)}</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText("10 marks", highlightedText)}</Text>
+                            </View>
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText("Criterion C", highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText("Clear structure and arrangement", highlightedText)}</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText("5 marks", highlightedText)}</Text>
+                            </View>
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText("Criterion D", highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText("Writing quality and expression", highlightedText)}</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText("5 marks", highlightedText)}</Text>
+                            </View>
+                            {/* Total Row */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 2, borderColor: '#7EC3FF', backgroundColor: 'rgba(126, 195, 255, 0.1)' }}>
+                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 8, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>{highlightText("Total", highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#7EC3FF', padding: 8, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}></Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 8, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>{highlightText("25 marks", highlightedText)}</Text>
+                            </View>
+                          </View>
                           {/* Individual Oral Table */}
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', marginTop: 24, marginBottom: 8, color: '#7EC3FF' }}>Language A: Language and Literature - Individual Oral</Text>
                           <RubricTable

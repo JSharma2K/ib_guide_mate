@@ -57,7 +57,7 @@ const EnglishALiteraturePerformanceScreen = ({ navigation, route }: { navigation
     overview: `English A: Literature and Performance is a course that combines the study of literary texts with performance elements. It is designed for students who are interested in exploring literature through both analytical and performative approaches.`,
     essentials: `Syllabus Outline Teaching Hours Total 150 hours SL only Areas Exploration Readers writers texts 50 hrs Time space 50 hrs Intertextuality connecting texts 50 hrs Minimum 5 works 1 translation must include 1 dramatic text Written Assignment 2 other literary forms prose poetry non-fiction Assessment Objectives Practice Objective 1 Know understand interpret Applied all components literary dramatic textual exploration Objective 2 Analyse evaluate Emphasized both written performed components Objective 3 Communicate Through formal writing oral performance Assessment Outline Weightage Paper 1 Comparative Essay 1h45m 30% Compare two works studied one four set questions Written Assignment Dramatic Analysis 2000 words 30% Analyse performed extract dramatic text Internal Assessment IA Transformative Performance Individual Oral 40% 10-min performance non-dramatic extract theatre 15-min oral explanation transformation`,
     literature: `Course Requirements Minimum 5 literary works total 1 work translation must include 1 dramatic text 2 additional literary forms prose poetry non-fiction Areas Exploration Coverage Readers Writers Texts Focus author purpose audience context Time Space Historical periods geographical settings cultural contexts Intertextuality Connecting Texts Relationships between works themes genres influences Dramatic Text Requirements Must include least 1 dramatic work Written Assignment analysis Examples suitable dramatic texts Shakespeare Hamlet Macbeth Romeo Juliet Othello King Lear Caryl Churchill Top Girls Cloud Nine Serious Money Henrik Ibsen Doll House Hedda Gabler Enemy People Tennessee Williams Glass Menagerie Streetcar Named Desire Cat Hot Tin Roof Arthur Miller Death Salesman Crucible All My Sons August Wilson Fences Piano Lesson Ma Rainey Black Bottom Lorraine Hansberry Raisin Sun Tony Kushner Angels America Suzan-Lori Parks Topdog Underdog Contemporary Options Annie Baker Circle Mirror Transformation Flick Lynn Nottage Sweat Ruined Ayad Akhtar Disgraced Translation Works Examples Sophocles Antigone Oedipus Rex Euripides Medea Electra Jean Racine Phaedra Molière Tartuffe Misanthrope Anton Chekhov Cherry Orchard Three Sisters Uncle Vanya Federico García Lorca House Bernarda Alba Blood Wedding Yerma Bertolt Brecht Mother Courage Caucasian Chalk Circle Good Person Szechwan Luigi Pirandello Six Characters Search Author Right You Are Think You Are Additional Literary Forms Poetry Collections Individual poems novels short story collections non-fiction works memoirs essays speeches Global Perspectives Works different time periods geographical regions cultural backgrounds minimum 3 countries regions 2 continents Language Requirements Works originally written English works translation balance contemporary classic texts`,
-    detailedRubrics: `Paper 1 Comparative Essay 30 marks Criterion A How well you understand interpret texts comparing Criterion B How effectively analyze literary techniques evaluate impact Criterion C How clearly structured well-organized comparative essay Written Assignment 26 marks Criterion A How well understand dramatic text performance concepts Criterion B How effectively analyze performance choices effects Criterion C How well-structured focused written response Criterion D Quality writing style expression Criterion E How well analyze communicate performance elements Internal Assessment 32 marks Criterion A How well understand text transformation choices Criterion B How effectively analyze evaluate creative decisions Criterion C Quality actual performance theatrical skills Criterion D How clearly communicate structure oral explanation`,
+    detailedRubrics: `Paper 1 Comparative Essay Criterion A Understanding and explanation of texts Criterion B Examining and judging texts Criterion C Clear structure and arrangement Criterion D Writing quality and expression Written Assignment Criterion A Understanding the text in context Criterion B Examining the text content Criterion C Describing use of staging elements Criterion D Discussion of character portrayal Criterion E Quality of writing Internal Assessment Criterion A Personal contributions to the performance Criterion B Understanding and knowledge of the text Criterion C Creative adaptation of the text Criterion D Assessment of the final outcome Criterion E Clear structure and arrangement Criterion F Writing quality and expression`,
     performanceResources: `Literature Performance Resources Study Tips Combine literary performative insights dual analysis Explain IO piece staged interpreted performance Treat creative transformation task artistic signature Compare contrast texts theme performability Document every decision process journal Plan HL performance showcase thematic depth skill Justify stage directions director would Remember performance interpretation intentional Study major theatre movements support choices Respect time word limits avoid grade penalties`,
   };
   
@@ -337,37 +337,60 @@ const EnglishALiteraturePerformanceScreen = ({ navigation, route }: { navigation
                       {section.key === 'detailedRubrics' && (
                         <View>
                           {/* Paper 1 Table */}
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', marginBottom: 8, color: '#7EC3FF' }}>Paper 1: Comparative Essay (30 marks)</Text>
-                          <RubricTable
-                            data={[
-                              { criterion: 'A', summary: 'How well you understand and interpret the texts you are comparing', max: 10 },
-                              { criterion: 'B', summary: 'How effectively you analyze literary techniques and evaluate their impact', max: 10 },
-                              { criterion: 'C', summary: 'How clearly structured and well-organized your comparative essay is', max: 10 },
-                            ]}
-                            highlightedText={highlightedText}
-                          />
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', marginBottom: 8, color: '#7EC3FF' }}>Paper 1: Comparative Essay</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginBottom: 8 }}>
+                            {/* Header Row */}
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.5, padding: 8 }}>{highlightText("Criterion", highlightedText)}</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>{highlightText("Descriptor Summary", highlightedText)}</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>{highlightText("Max", highlightedText)}</Text>
+                            </View>
+                            {/* Data Rows */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText("Criterion A", highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText("Understanding and explanation of texts", highlightedText)}</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText("5 marks", highlightedText)}</Text>
+                            </View>
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText("Criterion B", highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText("Examining and judging texts", highlightedText)}</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText("10 marks", highlightedText)}</Text>
+                            </View>
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText("Criterion C", highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText("Clear structure and arrangement", highlightedText)}</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText("5 marks", highlightedText)}</Text>
+                            </View>
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText("Criterion D", highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText("Writing quality and expression", highlightedText)}</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText("5 marks", highlightedText)}</Text>
+                            </View>
+                          </View>
                           
                           {/* Written Assignment Table */}
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', marginTop: 24, marginBottom: 8, color: '#7EC3FF' }}>Written Assignment (26 marks)</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', marginTop: 24, marginBottom: 8, color: '#7EC3FF' }}>Written Assignment</Text>
                           <RubricTable
                             data={[
-                              { criterion: 'A', summary: 'How well you understand the dramatic text and performance concepts', max: 6 },
-                              { criterion: 'B', summary: 'How effectively you analyze performance choices and their effects', max: 6 },
-                              { criterion: 'C', summary: 'How well-structured and focused your written response is', max: 6 },
-                              { criterion: 'D', summary: 'Quality of your writing style and expression', max: 4 },
-                              { criterion: 'E', summary: 'How well you analyze and communicate about performance elements', max: 4 },
+                              { criterion: 'A', summary: 'Understanding the text in context', max: 2 },
+                              { criterion: 'B', summary: 'Examining the text content', max: 8 },
+                              { criterion: 'C', summary: 'Describing use of staging elements', max: 8 },
+                              { criterion: 'D', summary: 'Discussion of character portrayal', max: 4 },
+                              { criterion: 'E', summary: 'Quality of writing', max: 4 },
                             ]}
                             highlightedText={highlightedText}
                           />
                           
                           {/* Internal Assessment Table */}
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', marginTop: 24, marginBottom: 8, color: '#7EC3FF' }}>Internal Assessment (32 marks)</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', marginTop: 24, marginBottom: 8, color: '#7EC3FF' }}>Internal Assessment</Text>
                           <RubricTable
                             data={[
-                              { criterion: 'A', summary: 'How well you understand the text and transformation choices', max: 8 },
-                              { criterion: 'B', summary: 'How effectively you analyze and evaluate your creative decisions', max: 8 },
-                              { criterion: 'C', summary: 'Quality of your actual performance and theatrical skills', max: 8 },
-                              { criterion: 'D', summary: 'How clearly you communicate and structure your oral explanation', max: 8 },
+                              { criterion: 'A', summary: 'Personal contributions to the performance', max: 8 },
+                              { criterion: 'B', summary: 'Understanding and knowledge of the text', max: 4 },
+                              { criterion: 'C', summary: 'Creative adaptation of the text', max: 8 },
+                              { criterion: 'D', summary: 'Assessment of the final outcome', max: 4 },
+                              { criterion: 'E', summary: 'Clear structure and arrangement', max: 4 },
+                              { criterion: 'F', summary: 'Writing quality and expression', max: 4 },
                             ]}
                             highlightedText={highlightedText}
                           />
