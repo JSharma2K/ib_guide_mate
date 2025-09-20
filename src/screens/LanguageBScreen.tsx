@@ -57,7 +57,7 @@ const LanguageBScreen = ({ navigation, route }: { navigation: any; route: any })
     overview: `The Language B course is designed for students with some prior experience in the target language. It develops communicative competence through receptive, productive, and interactive language skills. The course emphasizes the conceptual understanding of language including audience, context, purpose, meaning, and variation. At HL, the study of two literary works originally written in the target language is mandatory. The course supports international-mindedness, critical thinking, and cross-cultural understanding.`,
     essentials: `1. Syllabus Outline & Teaching Hours\nSL: 150 hours\nHL: 240 hours\n\nCore Themes:\n- Identities: Personal and cultural identity\n- Experiences: Leisure, travel, and migration\n- Human Ingenuity: Entertainment, artistic expression, and communication\n- Social Organization: Social relationships and community\n- Sharing the Planet: Global citizenship and environmental concerns\n\n2. Assessment Objectives in Practice\n• Communicate clearly and effectively in a range of contexts and for a variety of purposes (Paper 1, IA).\n• Use language appropriate to interpersonal/intercultural contexts and audiences (Paper 1, Paper 2, IA).\n• Express and respond to ideas with fluency and accuracy (Paper 1, Paper 2, IA).\n• Identify, organize, and present ideas effectively (Paper 1, IA).\n• Understand, analyze, and reflect upon various text types (Paper 2, IA).\n\n3. Assessment Outline & Weightages\n• SL External Assessment – 75%: Paper 1 (Writing): 25%, Paper 2 (Listening & Reading): 50%\n• SL Internal Assessment – 25%: Individual Oral based on a visual stimulus and general discussion\n• HL External Assessment – 75%: Paper 1 (Writing): 25%, Paper 2 (Listening & Reading): 50%\n• HL Internal Assessment – 25%: Individual Oral based on a literary extract and theme discussion\n\n4. Internal and External Assessment Details\n• Paper 1: A written task of 250–400 words (SL) or 450–600 words (HL), based on one of five prescribed themes.\n• Paper 2: Listening and Reading comprehension. SL (1hr 45min), HL (2hr).\n• Internal Assessment: Individual Oral—SL based on visual stimulus, HL based on literary extract.`,
     literature: `Prescribed Themes and Topics\n• Identities – Lifestyles, beliefs, values, health, language and identity.\n• Experiences – Life stories, migration, traditions, leisure.\n• Human Ingenuity – Media, entertainment, technology.\n• Social Organization – Education, law and order, workplace.\n• Sharing the Planet – Climate, rights, ethics, globalization.\n\nText Types and Categories\n• Personal Texts: Blogs, diaries, personal letters, social media posts.\n• Professional Texts: Reports, proposals, surveys, emails.\n• Mass Media Texts: Articles, reviews, podcasts, speeches, web pages.`,
-    detailedRubrics: `Paper 1 Writing Assessment Criteria (SL & HL)\nLanguage Use: Evaluation of vocabulary range, grammatical accuracy, and linguistic complexity (maximum 12 points). Message Development: Assessment of idea relevance, clarity of expression, and content development (maximum 12 points). Conceptual Understanding: Analysis of appropriate register, tone, and adherence to text-type conventions (maximum 6 points).\n\nIndividual Oral Assessment Criteria\nLanguage Proficiency: Assessment of vocabulary usage, grammatical accuracy, and spoken fluency (maximum 10 points). Message Clarity: Evaluation of idea relevance, coherence, and clarity of communication (maximum 10 points). Interactive Communication: Assessment of engagement level, response quality, and spontaneous interaction skills (maximum 10 points).`,
+    detailedRubrics: `Paper 1 Writing Assessment Criteria (SL & HL)\nLanguage Use: Evaluation of vocabulary range, grammatical accuracy, and linguistic complexity (maximum 12 points). Message Development: Assessment of idea relevance, clarity of expression, and content development (maximum 12 points). Conceptual Understanding: Analysis of appropriate register, tone, and adherence to text-type conventions (maximum 6 points).\n\nIndividual Oral Assessment SL Criteria\nLanguage Proficiency: Assessment of vocabulary usage, grammatical accuracy, and spoken fluency (maximum 12 points). Message Clarity: Evaluation of idea relevance, coherence, and clarity of communication (maximum 12 points). Message-visual stimulus: How relevant are the ideas to the selected stimulus (maximum 6 points). Message-conversation: How relevant are the ideas in the conversation (maximum 6 points). Interactive skills—communication: To what extent does the candidate understand and interact (maximum 6 points).\n\nIndividual Oral Assessment HL Criteria\nLanguage Proficiency: Assessment of vocabulary usage, grammatical accuracy, and spoken fluency (maximum 12 points). Message Clarity: Evaluation of idea relevance, coherence, and clarity of communication (maximum 12 points). Message—literary extract: How relevant are the ideas to the literary extract How well does the candidate engage with the literary extract in the presentation (maximum 6 points). Message—conversation: How relevant are the ideas in the conversation How appropriately and thoroughly does the candidate respond to the questions in the conversation To what depth are the questions answered (maximum 6 points). Interactive skills—communication: To what extent does the candidate understand and interact (maximum 6 points).`,
     languageTips: `Language Acquisition Tips for Success:\n1. Understand the prescribed themes deeply—build vocabulary and personal connections.\n2. Practice writing across personal, professional, and media text types.\n3. Use idioms and accurate grammar to score well on Paper 1.\n4. Prepare visual stimulus conversations for the Oral (especially HL).\n5. Listen to authentic podcasts and videos with varied accents.\n6. Read literary and non-literary texts actively—highlight unfamiliar vocabulary.\n7. Time yourself on past Paper 1/2 to simulate exam conditions.\n8. Master the rubrics—know how Language, Message, and Conceptual understanding are scored.\n9. Record mock orals and review your fluency and interaction.\n10. Review grammar and sentence connectors consistently.`,
   };
   const sectionKeys: Array<'overview' | 'essentials' | 'literature' | 'detailedRubrics' | 'languageTips'> = ['overview', 'essentials', 'literature', 'detailedRubrics', 'languageTips'];
@@ -359,16 +359,95 @@ const LanguageBScreen = ({ navigation, route }: { navigation: any; route: any })
                             ]}
                             highlightedText={highlightedText}
                           />
-                          {/* Individual Oral Table */}
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', marginTop: 24, marginBottom: 8, color: '#7EC3FF' }}>Individual Oral Assessment</Text>
-                          <RubricTable
-                            data={[
-                              { criterion: 'A: Language Proficiency', summary: 'Assessment of vocabulary usage, grammatical accuracy, and spoken fluency', max: 10 },
-                              { criterion: 'B: Message Clarity', summary: 'Evaluation of idea relevance, coherence, and clarity of communication', max: 10 },
-                              { criterion: 'C: Interactive Communication', summary: 'Assessment of engagement level, response quality, and spontaneous interaction skills', max: 10 },
-                            ]}
-                            highlightedText={highlightedText}
-                          />
+                          {/* Individual Oral Table SL */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', marginTop: 24, marginBottom: 8, color: '#7EC3FF' }}>Individual Oral Assessment (SL)</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 2.4, padding: 8 }}>Criterion</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 2.1, padding: 8 }}>Descriptor Summary</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 0.8, padding: 8, textAlign: 'center' }}>Max</Text>
+                            </View>
+                            
+                            {/* Criterion A */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2.4, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('A: Language Proficiency', highlightedText)}</Text>
+                              <Text style={{ flex: 2.1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('Assessment of vocabulary usage, grammatical accuracy, and spoken fluency', highlightedText)}</Text>
+                              <Text style={{ flex: 0.8, color: '#B6B6B6', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular' }}>{highlightText('12', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Criterion B */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2.4, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('B: Message Clarity', highlightedText)}</Text>
+                              <Text style={{ flex: 2.1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('Evaluation of idea relevance, coherence, and clarity of communication', highlightedText)}</Text>
+                              <Text style={{ flex: 0.8, color: '#B6B6B6', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular' }}>{highlightText('12', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Criterion B1 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2.4, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', paddingLeft: 24 }}>{highlightText('B1: Message-visual stimulus', highlightedText)}</Text>
+                              <Text style={{ flex: 2.1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('How relevant are the ideas to the selected stimulus?', highlightedText)}</Text>
+                              <Text style={{ flex: 0.8, color: '#B6B6B6', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular' }}>{highlightText('6', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Criterion B2 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2.4, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', paddingLeft: 24 }}>{highlightText('B2: Message-conversation', highlightedText)}</Text>
+                              <Text style={{ flex: 2.1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('How relevant are the ideas in the conversation?', highlightedText)}</Text>
+                              <Text style={{ flex: 0.8, color: '#B6B6B6', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular' }}>{highlightText('6', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Criterion C */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2.4, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('C: Interactive skills—communication', highlightedText)}</Text>
+                              <Text style={{ flex: 2.1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('To what extent does the candidate understand and interact?', highlightedText)}</Text>
+                              <Text style={{ flex: 0.8, color: '#B6B6B6', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular' }}>{highlightText('6', highlightedText)}</Text>
+                            </View>
+                          </View>
+                          
+                          {/* Individual Oral Table HL */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', marginTop: 24, marginBottom: 8, color: '#7EC3FF' }}>Individual Oral Assessment (HL)</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 2.4, padding: 8 }}>Criterion</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 2.1, padding: 8 }}>Descriptor Summary</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 0.8, padding: 8, textAlign: 'center' }}>Max</Text>
+                            </View>
+                            
+                            {/* Criterion A */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2.4, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('A: Language Proficiency', highlightedText)}</Text>
+                              <Text style={{ flex: 2.1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('Assessment of vocabulary usage, grammatical accuracy, and spoken fluency', highlightedText)}</Text>
+                              <Text style={{ flex: 0.8, color: '#B6B6B6', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular' }}>{highlightText('12', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Criterion B */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2.4, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('B: Message Clarity', highlightedText)}</Text>
+                              <Text style={{ flex: 2.1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('Evaluation of idea relevance, coherence, and clarity of communication', highlightedText)}</Text>
+                              <Text style={{ flex: 0.8, color: '#B6B6B6', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular' }}>{highlightText('12', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Criterion B1 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2.4, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', paddingLeft: 24 }}>{highlightText('B1: Message—literary extract', highlightedText)}</Text>
+                              <Text style={{ flex: 2.1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('How relevant are the ideas to the literary extract?\nHow well does the candidate engage with the literary extract in the presentation?', highlightedText)}</Text>
+                              <Text style={{ flex: 0.8, color: '#B6B6B6', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular' }}>{highlightText('6', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Criterion B2 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2.4, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', paddingLeft: 24 }}>{highlightText('B2: Message—conversation', highlightedText)}</Text>
+                              <Text style={{ flex: 2.1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('How relevant are the ideas in the conversation?\nHow appropriately and thoroughly does the candidate respond to the questions in the conversation?\nTo what depth are the questions answered?', highlightedText)}</Text>
+                              <Text style={{ flex: 0.8, color: '#B6B6B6', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular' }}>{highlightText('6', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Criterion C */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2.4, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('C: Interactive skills—communication', highlightedText)}</Text>
+                              <Text style={{ flex: 2.1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('To what extent does the candidate understand and interact?', highlightedText)}</Text>
+                              <Text style={{ flex: 0.8, color: '#B6B6B6', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular' }}>{highlightText('6', highlightedText)}</Text>
+                            </View>
+                          </View>
                           <Text style={{ 
                             fontSize: 11, 
                             color: 'rgba(255, 255, 255, 0.5)', 
