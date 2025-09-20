@@ -55,9 +55,9 @@ const ClassicalLanguagesScreen = ({ navigation, route }: { navigation: any; rout
   // Section keys and content for search
   const sectionContentStrings: Record<'overview' | 'essentials' | 'literature' | 'detailedRubrics' | 'classicalTips', string> = {
     overview: `The Classical Languages course enables students to read and engage with Latin or Classical Greek literature in its original form. It fosters an integrated understanding of language, literature, and culture. Students develop proficiency in grammar and syntax, literary analysis, and contextual knowledge of the ancient world. The course uses three key areas of exploration: Meaning, Form and Language; Text, Author and Audience; and Time, Space and Culture. These act as interpretative lenses to deepen inquiry. At HL, students also complete a creative composition task in the classical language, while both HL and SL students produce a research dossier. The distinction between SL and HL lies in the number and complexity of texts studied, the assessment components, and the expectation of original composition at HL.`,
-    essentials: `Assessment Objectives in Practice\n• Demonstrate understanding of classical language and texts through translation and analysis (Papers 1 & 2, IA).\n• Interpret and analyse texts in their historical and cultural contexts (Paper 2, IA, HL composition).\n• Synthesize evidence from primary, secondary and reference sources (All components).\n• Construct arguments supported by relevant textual analysis (Paper 2, Research Dossier, HL composition rationale).\n\nAssessment Outline & Weightages\n• SL External: Paper 1 (35%), Paper 2 (40%)\n• SL Internal: Research Dossier (25%)\n• HL External: Paper 1 (30%), Paper 2 (35%)\n• HL Internal: Research Dossier (20%), HL Composition (15%)`,
+    essentials: `Assessment Objectives in Practice\n• Demonstrate understanding of classical language and texts through translation and analysis (Papers 1 & 2, IA).\n• Interpret and analyse texts in their historical and cultural contexts (Paper 2, IA, HL composition).\n• Synthesize evidence from primary, secondary and reference sources (All components).\n• Construct arguments supported by relevant textual analysis (Paper 2, Research Dossier, HL composition rationale).\n\nAssessment Outline & Weightages\nStandard Level (SL)\n• External Assessment (3 hours) - 70%\n  - Paper 1 (1 hour 30 minutes) - 35%: Reading comprehension and translation questions based on an unseen extract (30 marks)\n  - Paper 2 (1 hour 30 minutes) - 35%: Short answer questions based on an extract from a prescribed core text and an extended response based on a prompt (32 marks)\n• Internal Assessment - 30%: Research dossier - An annotated collection of seven to nine primary source materials that answers a question on a topic related to the classical language, literature, or culture (28 marks)`,
     literature: `Internal and External Assessment Details\n• Paper 1: Unseen text analysis for SL/HL with short answers and translation.\n• Paper 2: Analysis of prepared core text; includes extended response and contextual questions.\n• Research Dossier: Inquiry-based project using classical texts and sources to address a research question.\n• HL Composition: Original prose piece in classical language with rationale and references.\n\nAreas of Exploration\n• 1. Meaning, Form, and Language: Explore syntax, diction, and literary technique to interpret meaning.\n• 2. Text, Author, and Audience: Understand how authors shape meaning and how different audiences interpret texts.\n• 3. Time, Space, and Culture: Analyze texts in their historical, political, and social contexts across time periods.\n\nPrescribed Core and Companion Texts\n• SL: One core text (either prose or verse), HL: Two core texts (one prose, one verse).\n• Both SL and HL: Any two companion texts that offer different literary forms and styles.\n• Examples – Latin Core: Cicero, Livy, Vergil, Ovid | Greek Core: Thucydides, Antiphon, Homer, Euripides\n• Companion texts are not assessed directly but enrich understanding and support IA and Paper 2.`,
-    detailedRubrics: `Paper 1 – Unseen Text Analysis; Paper 2 – Core Text Analysis; Research Dossier; HL Composition.\n\nTranslation Markbands (SL & HL): holistic quality of translation, vocabulary, syntax, morphology, accuracy, clarity.\nGuided analysis (HL): analysis of textual features and author choices, use of relevant evidence.\nExtended response (SL & HL): Criterion A (knowledge, understanding, use of evidence), Criterion B (analysis and evaluation).\nHL Composition: Criterion A (introduction/intentions: form, meaning, audience, purpose), Criterion B (language and communication), Criterion C (rationale – use of sources), Criterion D (rationale – explanation of choices).`,
+    detailedRubrics: `Paper 1 – Unseen Text Analysis; Paper 2 – Core Text Analysis; Research Dossier; HL Composition.\n\nTranslation Markbands (SL & HL): holistic quality of translation, vocabulary, syntax, morphology, accuracy, clarity.\nGuided analysis (HL): analysis of textual features and author choices, use of relevant evidence.\nExtended response (SL & HL): Criterion A (knowledge, understanding, use of evidence), Criterion B (analysis and evaluation).\nHL Composition: Criterion A (introduction/intentions: form, meaning, audience, purpose), Criterion B (language and communication), Criterion C (rationale – use of sources), Criterion D (rationale – explanation of choices).\n\nInternal Assessment Criteria SL HL Research Dossier\nCriterion A Sources: How well do the chosen materials connect to the research topic Do the materials provide comprehensive coverage of the investigation\nCriterion B Annotations: How clearly do the notes address the research topic Do the notes show good understanding of the materials\nCriterion C Argument: How clear, organized, and well-developed is the main argument How well does the reasoning flow from one point to the next\nCriterion D Conclusions and Assessment: How suitable are the final findings based on the research Does the student evaluate results against initial expectations and starting ideas`,
     classicalTips: `1. Build daily vocabulary and grammar habits using flashcards and scaffolded translations.\n\n2. Translate and retranslate core and companion texts for deeper syntactic understanding.\n\n3. Practice identifying stylistic devices and rhetorical techniques in prepared texts.\n\n4. Annotate texts with literary, cultural, and historical notes to support Paper 2 responses.\n\n5. Develop source organization strategies early for the Research Dossier.\n\n6. For HL, plan compositions in English first, then translate ideas with accurate classical structure.\n\n7. Use past Paper 1 unseen texts weekly for practice with dictionary support.\n\n8. Link study with TOK and CAS by reflecting on how classical ideas resonate in today's world.\n\n9. Compare interpretations with peers to explore multiple viewpoints.\n\n10. Use maps, timelines, and glossaries to contextualize characters, settings, and themes.`,
   };
   const sectionKeys: Array<'overview' | 'essentials' | 'literature' | 'detailedRubrics' | 'classicalTips'> = ['overview', 'essentials', 'literature', 'detailedRubrics', 'classicalTips'];
@@ -204,7 +204,7 @@ const ClassicalLanguagesScreen = ({ navigation, route }: { navigation: any; rout
         style={{
           maxHeight: animationValue.interpolate({
             inputRange: [0, 1],
-            outputRange: [0, 7000],
+            outputRange: [0, 8000],
           }),
           opacity: animationValue,
           overflow: 'hidden',
@@ -319,7 +319,24 @@ const ClassicalLanguagesScreen = ({ navigation, route }: { navigation: any; rout
                           <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("• Demonstrate understanding of classical language and texts through translation and analysis (Papers 1 & 2, IA).\n• Interpret and analyse texts in their historical and cultural contexts (Paper 2, IA, HL composition).\n• Synthesize evidence from primary, secondary and reference sources (All components).\n• Construct arguments supported by relevant textual analysis (Paper 2, Research Dossier, HL composition rationale).", highlightedText)}</Text>
                           
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>Assessment Outline & Weightages</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("• SL External: Paper 1 (35%), Paper 2 (40%)\n• SL Internal: Research Dossier (25%)\n• HL External: Paper 1 (30%), Paper 2 (35%)\n• HL Internal: Research Dossier (20%), HL Composition (15%)", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.levelTitle, color: '#7EC3FF', fontFamily: 'ScopeOne-Regular', marginTop: 8 }}>Standard Level (SL)</Text>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 12 }}>{highlightText("External Assessment (3 hours) — 70%", highlightedText)}</Text>
+                          
+                          <View style={{ marginLeft: 16, marginTop: 8 }}>
+                            <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 20, marginBottom: 8 }}>{highlightText("Paper 1 (1 hour 30 minutes) — 35%", highlightedText)}</Text>
+                            <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 20, color: '#B6B6B6', marginLeft: 12, marginBottom: 12 }}>{highlightText("Reading comprehension and translation questions based on an unseen extract (30 marks)", highlightedText)}</Text>
+                            
+                            <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 20, marginBottom: 8 }}>{highlightText("Paper 2 (1 hour 30 minutes) — 35%", highlightedText)}</Text>
+                            <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 20, color: '#B6B6B6', marginLeft: 12 }}>{highlightText("Short answer questions based on an extract from a prescribed core text and an extended response based on a prompt (32 marks)", highlightedText)}</Text>
+                          </View>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>{highlightText("Internal Assessment — 30%", highlightedText)}</Text>
+                          
+                          <View style={{ marginLeft: 16, marginTop: 8 }}>
+                            <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 20, marginBottom: 8 }}>{highlightText("Research Dossier", highlightedText)}</Text>
+                            <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 20, color: '#B6B6B6', marginLeft: 12 }}>{highlightText("An annotated collection of seven to nine primary source materials that answers a question on a topic related to the classical language, literature, or culture (28 marks)", highlightedText)}</Text>
+                          </View>
                         </View>
                       )}
                       {section.key === 'literature' && (
@@ -565,6 +582,42 @@ const ClassicalLanguagesScreen = ({ navigation, route }: { navigation: any; rout
                                 <Text style={{ flex: 3.2, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.desc, highlightedText)}</Text>
                               </View>
                             ))}
+                          </View>
+
+                          {/* Internal Assessment Criteria Table */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24 }}>Internal Assessment Criteria — SL and HL</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 12, fontStyle: 'italic' }}>Research Dossier</Text>
+                          
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 2.4, padding: 8 }}>Criterion</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 2.1, padding: 8 }}>Assessment Focus</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 0.8, padding: 8, textAlign: 'center' }}>Max</Text>
+                            </View>
+                            
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2.4, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('A: Sources', highlightedText)}</Text>
+                              <Text style={{ flex: 2.1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('How well do the chosen materials connect to the research topic?\nDo the materials provide comprehensive coverage of the investigation?', highlightedText)}</Text>
+                              <Text style={{ flex: 0.8, color: '#B6B6B6', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular' }}>{highlightText('8', highlightedText)}</Text>
+                            </View>
+                            
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2.4, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('B: Annotations', highlightedText)}</Text>
+                              <Text style={{ flex: 2.1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('How clearly do the notes address the research topic?\nDo the notes show good understanding of the materials?', highlightedText)}</Text>
+                              <Text style={{ flex: 0.8, color: '#B6B6B6', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular' }}>{highlightText('8', highlightedText)}</Text>
+                            </View>
+                            
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2.4, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('C: Argument', highlightedText)}</Text>
+                              <Text style={{ flex: 2.1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('How clear, organized, and well-developed is the main argument?\nHow well does the reasoning flow from one point to the next?', highlightedText)}</Text>
+                              <Text style={{ flex: 0.8, color: '#B6B6B6', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular' }}>{highlightText('8', highlightedText)}</Text>
+                            </View>
+                            
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 2.4, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('D: Conclusions and Assessment', highlightedText)}</Text>
+                              <Text style={{ flex: 2.1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('How suitable are the final findings based on the research?\nDoes the student evaluate results against initial expectations and starting ideas?', highlightedText)}</Text>
+                              <Text style={{ flex: 0.8, color: '#B6B6B6', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular' }}>{highlightText('4', highlightedText)}</Text>
+                            </View>
                           </View>
                         </View>
                       )}
