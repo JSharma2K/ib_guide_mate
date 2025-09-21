@@ -69,7 +69,8 @@ Criteria A–C: Identification and evaluation of sources; Investigation; Reflect
 Also included for search coverage:
 • Paper 1 — Source Questions (Ques., Description, Marks) – comprehension, source value/limits, compare/contrast, argue using sources + own knowledge
 • Paper 1 — Fourth Question Markbands – bands 0, 1–3, 4–6, 7–9 with level descriptors (relevance, knowledge accuracy, analysis, synthesis)
-• Paper 2 — Essay Markbands (SL/HL) – bands 0, 1–3, 4–6, 7–9, 10–12, 13–15 with descriptors (structure, knowledge, examples, evaluation)`,
+• Paper 2 — Essay Markbands (SL/HL) – bands 0, 1–3, 4–6, 7–9, 10–12, 13–15 with descriptors (structure, knowledge, examples, evaluation)
+• Paper 3 HL — External Assessment Markbands – bands 0, 1–3, 4–6, 7–9, 10–12 with descriptors (understanding question, structure, knowledge accuracy, historical context, examples, analysis, evaluation, perspectives, conclusion)`,
     historyTips: `Top 10 Study Tips for Success – History\n\n1. Familiarize yourself with historical concepts such as causation, change, and significance.\n2. Use a study timeline to organize world history topics chronologically.\n3. Practice Paper 1 by working through source-based questions under timed conditions.\n4. Develop thematic essay skills for Paper 2 by linking content across different topics.\n5. For HL, regularly write full-length essays for Paper 3 using past paper prompts.\n6. Choose a well-defined and original topic for your Historical Investigation.\n7. Evaluate sources critically, focusing on origin, purpose, value, and limitations.\n8. Make flashcards of key dates, events, and historiographical interpretations.\n9. Use planning structures (e.g., PEEL) for clear and coherent essays.\n10. Self-assess your writing against rubrics to improve clarity and analytical depth.`,
   };
   const sectionKeys: Array<'overview' | 'essentials' | 'coreThemes' | 'detailedRubrics' | 'historyTips'> = ['overview', 'essentials', 'coreThemes', 'detailedRubrics', 'historyTips'];
@@ -418,9 +419,6 @@ Also included for search coverage:
                           <Text onLayout={(e) => registerSectionAnchor('detailedRubrics', 'hist_ia_header', e.nativeEvent.layout.y)} style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginBottom: 12 }}>Detailed Rubrics – Internal Assessment (Historical Investigation)</Text>
                           
                           {/* Internal Assessment Rubric Table */}
-                          <Text onLayout={(e) => registerSectionAnchor('detailedRubrics', 'hist_critA', e.nativeEvent.layout.y)} style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 8, marginBottom: 4 }}>
-                            Criterion A: Identification and evaluation of sources
-                          </Text>
                           <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
                             <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
                               <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 2.2, padding: 8 }}>Criterion</Text>
@@ -440,14 +438,6 @@ Also included for search coverage:
                             ))}
                           </View>
 
-                          <Text onLayout={(e) => registerSectionAnchor('detailedRubrics', 'hist_critB', e.nativeEvent.layout.y)} style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 12, marginBottom: 4 }}>
-                            Criterion B: Investigation
-                          </Text>
-                          <View />
-
-                          <Text onLayout={(e) => registerSectionAnchor('detailedRubrics', 'hist_critC', e.nativeEvent.layout.y)} style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 12, marginBottom: 4 }}>
-                            Criterion C: Reflection
-                          </Text>
 
                           {/* Paper 1 — Source Questions (Paraphrased) */}
                           <Text onLayout={(e) => registerSectionAnchor('detailedRubrics', 'hist_p1_overview', e.nativeEvent.layout.y)} style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, marginBottom: 8 }}>Paper 1 — Source Questions (Paraphrased)</Text>
@@ -514,6 +504,27 @@ Also included for search coverage:
                             ))}
                           </View>
                           
+                          {/* Paper 3 HL External Markbands (Paraphrased) */}
+                          <Text onLayout={(e) => registerSectionAnchor('detailedRubrics', 'hist_p3_hl_bands', e.nativeEvent.layout.y)} style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, marginBottom: 8 }}>Paper 3 HL — External Assessment Markbands (Paraphrased)</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.0, padding: 8 }}>Marks</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 4.0, padding: 8 }}>Level Descriptor</Text>
+                            </View>
+                            {[
+                              { band: '0', desc: 'Does not meet the basic expectations described below.' },
+                              { band: '1–3', desc: 'Shows little understanding of what the question is asking. Poor structure or no clear essay format. Little focus on the task.\n\nLimited knowledge present. Examples are wrong, unrelated, or unclear.\n\nContains little or no thoughtful analysis. Mostly general statements and unsupported claims.' },
+                              { band: '4–6', desc: 'Shows some understanding of what the question asks. Tries to follow a structured approach, but lacks clarity and flow.\n\nShows knowledge but it lacks accuracy and relevance. Superficial understanding of historical context. Uses specific examples, though these may be unclear or not relevant.\n\nSome limited analysis, but the response is mainly telling what happened rather than analyzing.' },
+                              { band: '7–9', desc: 'Shows understanding of what the question demands, but these demands are only partially addressed. Attempts to follow a structured approach.\n\nKnowledge is partly accurate and relevant. Events are generally placed in their historical context. Examples used are appropriate and relevant.\n\nThe response moves beyond description to include some analysis or thoughtful commentary, but this is not sustained.' },
+                              { band: '10–12', desc: 'The demands of the question are understood and addressed. Answers are generally well structured and organized, although there may be some repetition or lack of clarity in places.\n\nKnowledge is mostly accurate and relevant. Events are placed in their historical context, and there is a clear understanding of historical concepts. Examples used are appropriate and relevant, and are used to support the analysis.\n\nArguments are mainly clear and flow well. There is some awareness and evaluation of different perspectives.\n\nThe response contains thoughtful analysis. Most of the main points are supported, and the response argues to a consistent conclusion.' }
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1.0, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.band, highlightedText)}</Text>
+                                <Text style={{ flex: 4.0, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.desc, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+
                           <Text style={{ 
                             fontSize: 11, 
                             color: 'rgba(255, 255, 255, 0.5)', 
