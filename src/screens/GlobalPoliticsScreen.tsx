@@ -43,7 +43,7 @@ const GlobalPoliticsScreen = ({ navigation, route }: { navigation: any; route: a
   // Section keys and content for search
   const sectionContentStrings: Record<'overview' | 'essentials' | 'coreThemes' | 'detailedRubrics' | 'globalPoliticsTips', string> = {
     overview: `The IB Global Politics course explores fundamental political concepts such as power, sovereignty, legitimacy, and justice. Students examine these concepts in a variety of contexts and through a diverse range of perspectives. The course emphasizes the interconnectedness of global issues and promotes critical thinking, engagement, and reflective discussion on political activity at local, national, and international levels.`,
-    essentials: `Syllabus Outline and Teaching Hours\nSL: 150 hours\nHL: 240 hours\nCore Units\n- Power, Sovereignty and International Relations\n- Human Rights\n- Development\n- Peace and Conflict\nHL Extension\n- HL students undertake an extension: Global Political Challenges (Two from six topics)\nEngagement Activity\n- Research-based investigation on a political issue of personal interest\n\nAssessment Objectives in Practice\n• AO1: Demonstrate knowledge and understanding of key political concepts and contemporary political issues.\n• AO2: Apply political concepts and examples to analyse and construct arguments.\n• AO3: Demonstrate awareness of multiple perspectives and their implications.\n• AO4: Evaluate political issues and arguments, including their implications and limitations.\n\nAssessment Outline and Weightage\nStandard Level (SL)\n- Paper 1 (Stimulus-based questions): 30%\n- Paper 2 (Extended response): 45%\n- Engagement activity (Internal Assessment): 25%\nHigher Level (HL)\n- Paper 1: 20%\n- Paper 2: 35%\n- HL Extension (Global Political Challenges): 20%\n- Engagement activity (Internal Assessment): 25%`,
+    essentials: `Syllabus Outline and Teaching Hours\nSL: 150 hours\nHL: 240 hours\nCore Units\n- Power, Sovereignty and International Relations\n- Human Rights\n- Development\n- Peace and Conflict\nHL Extension\n- HL students undertake an extension: Global Political Challenges (Two from six topics)\nEngagement Activity\n- Research-based investigation on a political issue of personal interest\n\nAssessment Objectives in Practice\n• AO1: Demonstrate knowledge and understanding of key political concepts and contemporary political issues.\n• AO2: Apply political concepts and examples to analyse and construct arguments.\n• AO3: Demonstrate awareness of multiple perspectives and their implications.\n• AO4: Evaluate political issues and arguments, including their implications and limitations.\n\nAssessment Outline and Weightage\nStandard Level (SL)\n- Paper 1 (Stimulus-based questions): 30%\n- Paper 2 (Extended response): 45%\n- Engagement activity (Internal Assessment): 30%\nHigher Level (HL)\n- Paper 1: 20%\n- Paper 2: 30%\n- Paper 3 - HL Extension (Global Political Challenges): 20%\n- Engagement activity (Internal Assessment): 30%`,
     coreThemes: `Overview of the SL and HL Course: Concepts, Content, and Contexts\n\nConcepts:\nPower, Sovereignty, Legitimacy, Interdependence, Human Rights, Justice, Development, Globalization, Inequality, Sustainability, Peace, Conflict, Violence, Security\n\nContexts:\nLocal, National, Regional, International, Global\n\nContent / Topics:\n• Core Units:\n- Power, Sovereignty and International Relations\n- Human Rights\n- Development\n- Peace and Conflict\n• HL Extension: Global Political Challenges\n• Engagement Activity`,
     detailedRubrics: `Detailed Rubrics – Internal Assessment (Engagement Activity)
 
@@ -70,24 +70,35 @@ Also included for search coverage:
   Paper 1 — Overview (Paraphrased)
   First Question (Ques. 1) – AO1: Knowledge and understanding – Identify/explain a key political issue from a source. Marks 3.
   Second Question (Ques. 2) – AO2: Application and analysis – Apply knowledge to explain a term/topic using the source. Marks 4.
-  Third Question (Ques. 3) – AO3/AO4: Synthesis, evaluation, and skills – Compare/contrast ideas in two sources; coherent comparison. Marks 8.
-  Fourth Question (Ques. 4) – AO3/AO4: Synthesis, evaluation, and skills – Evaluate sources with own knowledge; reasoned judgment. Marks 10.
+  Third Question (Ques. 3) – AO3/AO4: Synthesis, evaluation, and skills – Compare/contrast ideas in two sources; coherent comparison. Marks 6.
+  Fourth Question (Ques. 4) – AO3/AO4: Synthesis, evaluation, and skills – Evaluate sources with own knowledge; reasoned judgment. Marks 12.
 
   Paper 1 — Markbands for Fourth Question (Paraphrased)
-  Band 0 – Does not meet basic expectations.
-  Band 1–2 – Very limited understanding; minimal relevant knowledge; mostly descriptive.
-  Band 3–4 – Limited understanding; some knowledge; counterarguments not addressed.
-  Band 5–6 – Understanding shown; mostly accurate knowledge; limited synthesis; counterarguments implied.
-  Band 7–8 – Focused response; relevant knowledge; counterarguments considered.
-  Band 9–10 – High understanding; accurate knowledge; clear synthesis; counterarguments evaluated with judgment.
+  Band 0 – The work does not reach a standard described by the descriptors below.
+  Band 1–3 – Limited understanding of question demands; little relevant knowledge demonstrated; references to sources mostly descriptive; different perspectives not identified.
+  Band 4–6 – Some understanding of question demands; some knowledge demonstrated but not always relevant or accurate; evidence from sources partially integrated; different perspectives identified but not explored.
+  Band 7–9 – Adequate understanding of question demands; relevant and accurate knowledge demonstrated; synthesis of own knowledge and source material; different perspectives explored.
+  Band 10–12 – In-depth understanding of question demands; relevant and accurate knowledge used effectively throughout; effective synthesis of own knowledge and source material with appropriate examples; different perspectives explored and evaluated.
 
   Paper 2 — Markbands (Paraphrased)
-  Band 0 – Does not meet basic expectations.
-  Band 1–5 – Limited understanding; poorly structured; mostly descriptive; little relevant knowledge.
-  Band 6–10 – Some understanding; attempts structure; some relevant knowledge; limited justification of points.
-  Band 11–15 – Mostly addresses the question; structured; relevant knowledge; some counterarguments considered.
-  Band 16–20 – Well structured; accurate knowledge; strong examples; counterarguments explored.
-  Band 21–25 – Very well structured; comprehensive knowledge; persuasive arguments; counterarguments evaluated.
+  Band 0 – The work does not reach a standard described by the descriptors below.
+  Band 1–3 – Limited understanding of question demands; arguments poorly structured and unclear; little relevant knowledge present; response descriptive or based on unsupported generalizations.
+  Band 4–6 – Some understanding of question demands; response structured to extent but organization lacks clarity or coherence; limited justification of claims; some relevant knowledge present; examples mentioned but not developed; diverse perspectives not identified.
+  Band 7–9 – Understanding of question demands but only partially addressed; adequate structure and organization; arguments clear and coherent; most main claims justified; relevant and accurate knowledge present; supporting examples partly developed; diverse perspectives identified but not explored.
+  Band 10–12 – Question demands understood and addressed; well structured and organized; arguments clear coherent and well supported; all main claims justified; relevant and accurate knowledge demonstrated throughout; supporting examples adequately developed; diverse perspectives explored.
+  Band 13–15 – Question demands understood and addressed with possible implications considered; well structured balanced and effectively organized; arguments clear coherent and compelling; all main claims justified and evaluated; relevant and accurate knowledge used effectively throughout; supporting examples effectively developed; diverse perspectives explored and evaluated.
+
+  Paper 3 (HL only) — Markbands (Paraphrased)
+  Paper 3 Question 2 Part A – Band 0: work does not reach standard; Band 1–2: question demands partially addressed, response mostly descriptive, some knowledge of political issue but not all relevant or accurate; Band 3–4: question demands addressed, response provides clear analysis of political issue, relevant and accurate knowledge of context demonstrated.
+  Paper 3 Question 2 Part B – Band 0: work does not reach standard; Band 1–2: recommendation presented but vague or unclear, recommendation does not clearly address identified political issue; Band 3–4: adequate recommendation presented, recommendation addresses identified political issue, possible challenges or implications not considered; Band 5–6: clear and well-supported recommendation presented, recommendation addresses identified political issue effectively, possible challenges implications or unintended consequences considered.
+  Paper 3 Question 3 – Band 0: work does not reach standard; Band 1–3: limited understanding of question demands, arguments poorly structured and unclear, little relevant knowledge present, response descriptive or based on unsupported generalizations; Band 4–6: some understanding of question demands, response structured to extent but arguments lack clarity or coherence, limited justification of claims, some relevant knowledge present, examples mentioned but not developed, diverse perspectives not identified; Band 7–9: understanding of question demands but only partially addressed, adequate structure and organization, arguments clear and coherent, most main claims justified, relevant and accurate knowledge present, supporting examples partly developed, diverse perspectives identified but not explored; Band 10–12: question demands understood and addressed, well structured and organized, arguments clear coherent and well supported, all main claims justified, relevant and accurate knowledge demonstrated throughout, supporting examples adequately developed, diverse perspectives explored; Band 13–15: question demands understood and addressed with possible implications considered, well structured balanced and effectively organized, arguments clear coherent and compelling, all main claims justified and evaluated, relevant and accurate knowledge used effectively throughout, supporting examples effectively developed, diverse perspectives explored and evaluated.
+
+  Internal Assessment SL HL Criteria
+  Criterion A: Clear reasoning and support for your position (4 marks)
+  Criterion B: Steps taken and methods used (3 marks)
+  Criterion C: Breaking down and combining information (8 marks)
+  Criterion D: Judging outcomes and thinking about results (6 marks)
+  Criterion E: Clear writing and organization (3 marks)
   `;
 
   const handleScroll = (event: any) => {
@@ -295,7 +306,7 @@ Also included for search coverage:
         style={{
           maxHeight: animationValue.interpolate({
             inputRange: [0, 1],
-            outputRange: [0, 6000],
+            outputRange: [0, 10000],
           }),
           opacity: animationValue,
           overflow: 'hidden',
@@ -424,10 +435,10 @@ Also included for search coverage:
                           
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>Assessment Outline and Weightage</Text>
                           <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 8 }}>{highlightText("Standard Level (SL)", highlightedText)}</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("• Paper 1 (Stimulus-based questions): 30%\n• Paper 2 (Extended response): 45%\n• Engagement activity (Internal Assessment): 25%", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("• Paper 1 (Stimulus-based questions): 30%\n• Paper 2 (Extended response): 45%\n• Engagement activity (Internal Assessment): 30%", highlightedText)}</Text>
                           
                           <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginTop: 12, marginBottom: 8 }}>{highlightText("Higher Level (HL)", highlightedText)}</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("• Paper 1: 20%\n• Paper 2: 35%\n• HL Extension (Global Political Challenges): 20%\n• Engagement activity (Internal Assessment): 25%", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("• Paper 1: 20%\n• Paper 2: 30%\n• Paper 3 - HL Extension (Global Political Challenges): 20%\n• Engagement activity (Internal Assessment): 30%", highlightedText)}</Text>
                         </View>
                       )}
                       {section.key === 'coreThemes' && (
@@ -497,8 +508,8 @@ Also included for search coverage:
                             {[
                               { q: 'First Question', ao: 'AO1: Knowledge and understanding', desc: 'Show understanding of a source, like identifying the key political issue or explaining information in the source.', marks: '3' },
                               { q: 'Second Question', ao: 'AO2: Application and analysis', desc: 'Apply knowledge to the source context; explain a term or topic from the source using supporting examples.', marks: '4' },
-                              { q: 'Third Question', ao: 'AO3/AO4: Synthesis, evaluation, and skills', desc: 'Compare or contrast ideas in two sources; may include wider course knowledge. Needs clear, coherent comparison.', marks: '8' },
-                              { q: 'Fourth Question', ao: 'AO3/AO4: Synthesis, evaluation, and skills', desc: 'Evaluate sources together with your own knowledge; combine course content with source analysis to reach a reasoned judgment.', marks: '10' },
+                              { q: 'Third Question', ao: 'AO3/AO4: Synthesis, evaluation, and skills', desc: 'Compare or contrast ideas in two sources; may include wider course knowledge. Needs clear, coherent comparison.', marks: '6' },
+                              { q: 'Fourth Question', ao: 'AO3/AO4: Synthesis, evaluation, and skills', desc: 'Evaluate sources together with your own knowledge; combine course content with source analysis to reach a reasoned judgment.', marks: '12' },
                             ].map((row, idx) => (
                               <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
                                 <Text style={{ flex: 1.8, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.q, highlightedText)}</Text>
@@ -517,12 +528,11 @@ Also included for search coverage:
                               <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 4.0, padding: 8 }}>Level Descriptor</Text>
                             </View>
                             {[
-                              { band: '0', desc: 'Does not meet the basic expectations described below.' },
-                              { band: '1–2', desc: 'Very limited understanding; little relevant knowledge; mostly descriptive with minimal analysis.' },
-                              { band: '3–4', desc: 'Limited understanding; some relevant knowledge; counterarguments not addressed.' },
-                              { band: '5–6', desc: 'Understanding shown; mostly accurate knowledge; limited synthesis; counterarguments implied rather than discussed.' },
-                              { band: '7–8', desc: 'Focused response; good understanding; relevant knowledge; counterarguments considered.' },
-                              { band: '9–10', desc: 'High understanding; accurate knowledge; clear synthesis; counterarguments evaluated with judgment.' },
+                              { band: '0', desc: 'The work does not reach a standard described by the descriptors below.' },
+                              { band: '1–3', desc: 'The response shows a limited understanding of the demands of the question.\n\n• Little relevant knowledge is demonstrated.\n• References to the sources are made, but they are mostly descriptive or no clear evidence is integrated in the response.\n• Different perspectives are not identified.' },
+                              { band: '4–6', desc: 'The response shows some understanding of the demands of the question.\n\n• Some knowledge is demonstrated, but this is not always relevant or accurate.\n• Evidence from the sources is partially integrated into the response.\n• Different perspectives are identified, but not explored.' },
+                              { band: '7–9', desc: 'The response shows adequate understanding of the demands of the question.\n\n• Relevant and accurate knowledge is demonstrated.\n• There is synthesis of own knowledge and source material.\n• Different perspectives are explored.' },
+                              { band: '10–12', desc: 'The response shows an in-depth understanding of the demands of the question.\n\n• Relevant and accurate knowledge is used effectively throughout.\n• There is effective synthesis of own knowledge and source material, with appropriate examples integrated in the response.\n• Different perspectives are explored and evaluated.' },
                             ].map((row, idx) => (
                               <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
                                 <Text style={{ flex: 1.0, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.band, highlightedText)}</Text>
@@ -539,16 +549,103 @@ Also included for search coverage:
                               <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 4.0, padding: 8 }}>Level Descriptor</Text>
                             </View>
                             {[
-                              { band: '0', desc: 'Does not meet the basic expectations described below.' },
-                              { band: '1–5', desc: 'Limited understanding; poorly structured; mostly descriptive with little relevant knowledge.' },
-                              { band: '6–10', desc: 'Some understanding; attempts structure; some relevant knowledge; limited justification of points.' },
-                              { band: '11–15', desc: 'Mostly addresses the question; structured; relevant knowledge; some counterarguments considered.' },
-                              { band: '16–20', desc: 'Well structured; accurate knowledge; strong examples; counterarguments explored.' },
-                              { band: '21–25', desc: 'Very well structured; comprehensive knowledge; persuasive arguments; counterarguments evaluated.' },
+                              { band: '0', desc: 'The work does not reach a standard described by the descriptors below.' },
+                              { band: '1–3', desc: 'The response shows limited understanding of the demands of the question.\n\n• The arguments are poorly structured and unclear.\n• There is little relevant knowledge present.\n• The response is descriptive or is based on unsupported generalizations.' },
+                              { band: '4–6', desc: 'The response shows some understanding of the demands of the question.\n\n• The response is structured to an extent, but the organization lacks clarity or coherence.\n• There is limited justification of the claims presented.\n• Some relevant knowledge is present.\n• Some examples are mentioned, but they are not developed, or their relevance is unclear.\n• Diverse perspectives are not identified.' },
+                              { band: '7–9', desc: 'The response indicates an understanding of the demands of the question, but these demands are only partially addressed.\n\n• The response presents an adequate structure and organization. Arguments are clear and coherent.\n• Most of the main claims are justified.\n• Relevant and accurate knowledge is present.\n• Supporting examples are partly developed.\n• Diverse perspectives are identified, but not explored.' },
+                              { band: '10–12', desc: 'The response indicates that the demands of the question are understood and addressed.\n\n• The response is well structured and organized. Arguments are clear, coherent and well supported.\n• All of the main claims are justified.\n• Relevant and accurate knowledge is demonstrated throughout the response.\n• Supporting examples are adequately developed.\n• Diverse perspectives are explored.' },
+                              { band: '13–15', desc: 'The response indicates that the demands of the question are understood and addressed, and that possible implications are considered.\n\n• The response is well structured, balanced and effectively organized. Arguments are clear, coherent and compelling.\n• All of the main claims are justified and evaluated.\n• Relevant and accurate knowledge is used effectively throughout the response.\n• Supporting examples are effectively developed.\n• Diverse perspectives are explored and evaluated.' },
                             ].map((row, idx) => (
                               <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
                                 <Text style={{ flex: 1.0, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.band, highlightedText)}</Text>
                                 <Text style={{ flex: 4.0, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.desc, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+
+                          {/* Paper 3 (HL only) — Markbands (Paraphrased) */}
+                          <Text onLayout={(e) => registerSectionAnchor('detailedRubrics', 'gp_p3_hl_bands', e.nativeEvent.layout.y)} style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, marginBottom: 8 }}>Paper 3 (HL only) — Markbands (Paraphrased)</Text>
+                          
+                          {/* Paper 3, Question 2, Part A */}
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#B6B6B6', marginBottom: 8, fontWeight: 'bold' }}>Paper 3, Question 2, Part A</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 16 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.0, padding: 8 }}>Marks</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 4.0, padding: 8 }}>Level Descriptor</Text>
+                            </View>
+                            {[
+                              { band: '0', desc: 'The work does not reach a standard described by the descriptors below.' },
+                              { band: '1–2', desc: 'The demands of the question are partially addressed.\n\n• The response is mostly descriptive.\n• Some knowledge of the political issue is demonstrated, but it is not all relevant or accurate.' },
+                              { band: '3–4', desc: 'The demands of the question are addressed.\n\n• The response provides a clear analysis of a political issue.\n• Relevant and accurate knowledge of the context is demonstrated.' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1.0, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.band, highlightedText)}</Text>
+                                <Text style={{ flex: 4.0, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.desc, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+
+                          {/* Paper 3, Question 2, Part B */}
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#B6B6B6', marginBottom: 8, fontWeight: 'bold' }}>Paper 3, Question 2, Part B</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.0, padding: 8 }}>Marks</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 4.0, padding: 8 }}>Level Descriptor</Text>
+                            </View>
+                            {[
+                              { band: '0', desc: 'The work does not reach a standard described by the descriptors below.' },
+                              { band: '1–2', desc: 'A recommendation is presented, but it is vague or unclear.\n\n• The recommendation does not clearly address the identified political issue.' },
+                              { band: '3–4', desc: 'An adequate recommendation is presented.\n\n• The recommendation addresses the identified political issue.\n• Possible challenges or implications are not considered.' },
+                              { band: '5–6', desc: 'A clear and well-supported recommendation is presented.\n\n• The recommendation addresses the identified political issue effectively.\n• Possible challenges, implications or unintended consequences are considered.' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1.0, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.band, highlightedText)}</Text>
+                                <Text style={{ flex: 4.0, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.desc, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+
+                          {/* Paper 3, Question 3 */}
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#B6B6B6', marginTop: 16, marginBottom: 8, fontWeight: 'bold' }}>Paper 3, Question 3</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.0, padding: 8 }}>Marks</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 4.0, padding: 8 }}>Level Descriptor</Text>
+                            </View>
+                            {[
+                              { band: '0', desc: 'The work does not reach a standard described by the descriptors below.' },
+                              { band: '1–3', desc: 'The response shows limited understanding of the demands of the question.\n\n• The arguments are poorly structured and unclear.\n• There is little relevant knowledge present.\n• The response is descriptive or is based on unsupported generalizations.' },
+                              { band: '4–6', desc: 'The response shows some understanding of the demands of the question.\n\n• The response is structured to an extent, but the arguments lack clarity or coherence.\n• There is limited justification of the claims presented.\n• Some relevant knowledge is present.\n• Some examples are mentioned, but they are not developed, or their relevance is unclear.\n• Diverse perspectives are not identified.' },
+                              { band: '7–9', desc: 'The response indicates an understanding of the demands of the question, but these demands are only partially addressed.\n\n• The response presents an adequate structure and organization. Arguments are clear and coherent.\n• Most of the main claims are justified.\n• Relevant and accurate knowledge is present.\n• Supporting examples are partly developed.\n• Diverse perspectives are identified, but not explored.' },
+                              { band: '10–12', desc: 'The response indicates that the demands of the question are understood and addressed.\n\n• The response is well structured and organized. Arguments are clear, coherent and well supported.\n• All of the main claims are justified.\n• Relevant and accurate knowledge is demonstrated throughout the response.\n• Supporting examples are adequately developed.\n• Diverse perspectives are explored.' },
+                              { band: '13–15', desc: 'The response indicates that demands of the question are understood and addressed, and that possible implications are considered.\n\n• The response is well structured, balanced and effectively organized. Arguments are clear, coherent and compelling.\n• All of the main claims are justified and evaluated.\n• Relevant and accurate knowledge is used effectively throughout the response.\n• Supporting examples are effectively developed.\n• Diverse perspectives are explored and evaluated.' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1.0, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.band, highlightedText)}</Text>
+                                <Text style={{ flex: 4.0, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.desc, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+
+                          {/* Internal Assessment SL/HL */}
+                          <Text onLayout={(e) => registerSectionAnchor('detailedRubrics', 'gp_ia_sl_hl', e.nativeEvent.layout.y)} style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, marginBottom: 8 }}>Internal Assessment — SL/HL</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.5, padding: 8 }}>Criterion</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3.5, padding: 8 }}>Description</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.0, padding: 8, textAlign: 'center' }}>Marks</Text>
+                            </View>
+                            {[
+                              { criterion: 'A', description: 'Clear reasoning and support for your position', marks: '4' },
+                              { criterion: 'B', description: 'Steps taken and methods used', marks: '3' },
+                              { criterion: 'C', description: 'Breaking down and combining information', marks: '8' },
+                              { criterion: 'D', description: 'Judging outcomes and thinking about results', marks: '6' },
+                              { criterion: 'E', description: 'Clear writing and organization', marks: '3' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.criterion, highlightedText)}</Text>
+                                <Text style={{ flex: 3.5, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.description, highlightedText)}</Text>
+                                <Text style={{ flex: 1.0, color: '#B6B6B6', padding: 8, textAlign: 'center', fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.marks, highlightedText)}</Text>
                               </View>
                             ))}
                           </View>
