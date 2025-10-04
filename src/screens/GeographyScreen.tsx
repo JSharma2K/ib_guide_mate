@@ -4,7 +4,7 @@ import { Text, Card, List, Searchbar, Button as PaperButton } from 'react-native
 import { LinearGradient } from 'expo-linear-gradient';
 import { theme, gradientColors, styles as themeStyles } from '../theme/theme';
 import { useFonts } from 'expo-font';
-import AppLoading from 'expo-app-loading';
+import * as SplashScreen from 'expo-splash-screen';
 import { Feather } from '@expo/vector-icons';
 
 const escapeRegExp = (input: string) => input.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -47,7 +47,7 @@ const GeographyScreen = ({ navigation, route }: { navigation: any; route: any })
 Criteria A–G: Research question and context; Research methodology; Data quality and presentation; Analysis and interpretation; Research conclusions; Critical evaluation; Academic presentation.
 
 Also includes additional tables and markbands:
-• Paper Assessment Framework (Max Score: 10): performance indicators for bands 0, 1–2, 3–4, 5–6, 7–8, 9–10.
+• Paper 1 SL & HL question 2 (optional themes) & paper 2 SL & HL section c: performance indicators for bands 0, 1–2, 3–4, 5–6, 7–8, 9–10.
 • Paper 3 HL – Extended Response Assessment (Max Score: 12): bands 0, 1–3, 4–6, 7–9, 10–12 with characteristics (analysis, synthesis, structure).
 • Paper 3 (HL) – Part B Assessment (Max Mark: 16): bands 0, 1–4, 5–8, 9–12, 13–16 with level descriptors (focus, evidence, evaluation, organization).`,
     geographyTips: `Top 10 Study Tips for Success – Geography\n\n• Familiarize yourself thoroughly with case studies for all themes.\n\n• Use diagrams and maps effectively in your answers.\n\n• Understand command terms and structure answers accordingly.\n\n• Practice past paper questions under timed conditions.\n\n• Keep a glossary of key terms and definitions.\n\n• Choose IA topics that are specific, measurable, and locally relevant.\n\n• Incorporate evaluation and synthesis into essay-style questions.\n\n• Learn how to analyze and interpret graphs, maps, and statistics.\n\n• Plan essays before writing to ensure clarity and organization.\n\n• Use the assessment rubrics to self-assess and refine work.`,
@@ -65,7 +65,7 @@ Also includes additional tables and markbands:
   F Critical evaluation Providing thoughtful review and assessment of research methods and outcomes 0-3
   G Academic presentation Meeting academic standards for organization citations and word count limits 0-3
 
-  Paper Assessment Framework Max Score 10
+  Paper 1 SL & HL question 2 optional themes & paper 2 SL & HL section c Max Score 10
   0 Work fails to meet any assessment standards outlined below
   1-2 Response lacks focus and structure with minimal relevant content Contains brief disconnected statements Shows no clear analytical approach Lacks appropriate geographic terminology
   3-4 General response with limited development and weak supporting evidence Includes basic information with poor organization Minimal use of geographic concepts and terminology Limited analytical depth
@@ -259,7 +259,7 @@ Also includes additional tables and markbands:
     'ScopeOne-Regular': require('../../assets/fonts/ScopeOne-Regular.ttf'),
   });
   if (!fontsLoaded) {
-    return <AppLoading />;
+    return null;
   }
 
   return (
@@ -423,7 +423,7 @@ Also includes additional tables and markbands:
                           </View>
                           
                           {/* Additional Assessment Table - Paper Marking Scheme */}
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Paper Assessment Framework (Max Score: 10)</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Paper 1 SL & HL question 2 (optional themes) & paper 2 SL & HL section c</Text>
                           
                           <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
                             <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>

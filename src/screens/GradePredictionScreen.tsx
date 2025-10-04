@@ -4,7 +4,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Feather } from '@expo/vector-icons';
 import Slider from '@react-native-community/slider';
 import { useFonts } from 'expo-font';
-import AppLoading from 'expo-app-loading';
+import * as SplashScreen from 'expo-splash-screen';
 
 type Props = {
   navigation: any;
@@ -2332,7 +2332,7 @@ const GradePredictionScreen: React.FC<Props> = ({ navigation, route }) => {
     'ScopeOne-Regular': require('../../assets/fonts/ScopeOne-Regular.ttf'),
   });
   if (!fontsLoaded) {
-    return <AppLoading />;
+    return null;
   }
 
   const subjectData = paperMaxScores[subject as keyof typeof paperMaxScores];

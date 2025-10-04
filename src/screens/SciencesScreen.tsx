@@ -6,7 +6,7 @@ import { Feather } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
 import { useFonts } from 'expo-font';
-import AppLoading from 'expo-app-loading';
+import * as SplashScreen from 'expo-splash-screen';
 import { RootStackParamList } from '../types/navigation';
 
 const { width } = Dimensions.get('window');
@@ -134,7 +134,7 @@ const SciencesScreen: React.FC<Props> = ({ navigation, route }) => {
   }, [navigation]);
 
   if (!fontsLoaded) {
-    return <AppLoading />;
+    return null;
   }
 
   return (

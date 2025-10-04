@@ -31,6 +31,7 @@ import GeographyScreen from './src/screens/GeographyScreen';
 import EnvironmentalSystemsScreen from './src/screens/EnvironmentalSystemsScreen';
 import EconomicsScreen from './src/screens/EconomicsScreen';
 import DigitalSocietyScreen from './src/screens/DigitalSocietyScreen';
+import BusinessManagementScreen from './src/screens/BusinessManagementScreen';
 import SciencesScreen from './src/screens/SciencesScreen';
 import BiologyScreen from './src/screens/BiologyScreen';
 import ChemistryScreen from './src/screens/ChemistryScreen';
@@ -333,6 +334,17 @@ export default function App() {
               component={DigitalSocietyScreen}
               options={{
                 title: 'Digital Society',
+                headerStyle: {
+                  backgroundColor: theme.colors.primary,
+                },
+                headerTintColor: theme.colors.onPrimary,
+              }}
+            />
+            <Stack.Screen
+              name="BusinessManagement"
+              component={BusinessManagementScreen}
+              options={{
+                title: 'Business Management',
                 headerStyle: {
                   backgroundColor: theme.colors.primary,
                 },

@@ -4,7 +4,7 @@ import { Text, Card, List, Searchbar, Button as PaperButton } from 'react-native
 import { LinearGradient } from 'expo-linear-gradient';
 import { theme, gradientColors, styles as themeStyles } from '../theme/theme';
 import { useFonts } from 'expo-font';
-import AppLoading from 'expo-app-loading';
+import * as SplashScreen from 'expo-splash-screen';
 import { Feather } from '@expo/vector-icons';
 
 const highlightText = (text: string, highlightedText: string) => {
@@ -254,7 +254,7 @@ Criterion D (where applicable): Creative process and collaboration`,
     'ScopeOne-Regular': require('../../assets/fonts/ScopeOne-Regular.ttf'),
   });
   if (!fontsLoaded) {
-    return <AppLoading />;
+    return null;
   }
 
   return (

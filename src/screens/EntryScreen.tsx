@@ -6,7 +6,7 @@ import { theme } from '../theme/theme';
 import { RootStackParamList } from '../types/navigation';
 import Animated, { FadeIn } from 'react-native-reanimated';
 import { useFonts } from 'expo-font';
-import AppLoading from 'expo-app-loading';
+import * as SplashScreen from 'expo-splash-screen';
 
 const GOLD_GRADIENT = ['#FFD700', '#FFC300', '#FFB300'];
 
@@ -16,7 +16,7 @@ const EntryScreen: React.FC<{ navigation: NativeStackNavigationProp<RootStackPar
   });
 
   if (!fontsLoaded) {
-    return <AppLoading />;
+    return null;
   }
 
   return (

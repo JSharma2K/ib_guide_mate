@@ -6,7 +6,7 @@ import { Feather } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
 import { useFonts } from 'expo-font';
-import AppLoading from 'expo-app-loading';
+import * as SplashScreen from 'expo-splash-screen';
 import { RootStackParamList } from '../types/navigation';
 
 const { width } = Dimensions.get('window');
@@ -73,6 +73,14 @@ const INDIVIDUALS_SOCIETIES_SUBJECTS = [
     color: '#B6C7F7',
     group: 'individuals-societies',
   },
+  {
+    key: 'business-management',
+    icon: 'briefcase',
+    title: 'Business Management',
+    subtitle: 'Organizations and strategic decisions',
+    color: '#B6C7F7',
+    group: 'individuals-societies',
+  },
 ];
 
 const IndividualsAndSocietiesScreen: React.FC<Props> = ({ navigation, route }) => {
@@ -105,6 +113,8 @@ const IndividualsAndSocietiesScreen: React.FC<Props> = ({ navigation, route }) =
             navigation.navigate('Economics', { userType });
           } else if (item.key === 'digital-society') {
             navigation.navigate('DigitalSociety', { userType });
+          } else if (item.key === 'business-management') {
+            navigation.navigate('BusinessManagement', { userType });
           }
         }}
         elevation={0}
@@ -154,7 +164,7 @@ const IndividualsAndSocietiesScreen: React.FC<Props> = ({ navigation, route }) =
   }, [navigation]);
 
   if (!fontsLoaded) {
-    return <AppLoading />;
+    return null;
   }
 
   return (

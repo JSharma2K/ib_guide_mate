@@ -4,7 +4,7 @@ import { Text, Card, List, Searchbar, Button as PaperButton } from 'react-native
 import { LinearGradient } from 'expo-linear-gradient';
 import { theme, gradientColors, styles as themeStyles } from '../theme/theme';
 import { useFonts } from 'expo-font';
-import AppLoading from 'expo-app-loading';
+import * as SplashScreen from 'expo-splash-screen';
 import { Feather } from '@expo/vector-icons';
 
 const escapeRegExp = (input: string) => input.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -40,9 +40,9 @@ const EnvironmentalSystemsScreen = ({ navigation, route }: { navigation: any; ro
   // Section keys and content for search
   const sectionContentStrings: Record<'overview' | 'essentials' | 'coreThemes' | 'detailedRubrics' | 'essTips', string> = {
     overview: `The Environmental Systems and Societies (ESS) course provides students with a coherent perspective on the environment. It combines scientific exploration with ethical awareness and policy-based problem solving. Students explore ecological processes, evaluate environmental problems, and assess solutions using systems thinking and sustainability concepts.`,
-    essentials: `Syllabus Outline and Teaching Hours\nSL/HL – 150 hours\n- Foundations of environmental systems and societies\n- Ecosystems and ecology\n- Biodiversity and conservation\n- Water and aquatic food production systems and societies\n- Soil systems and terrestrial food production systems and societies\n- Atmospheric systems and societies\n- Climate change and energy production\n- Human systems and resource use\n- Practical scheme of work (hands-on investigations, fieldwork)\n\nAssessment Objectives in Practice\nAO1: Demonstrate knowledge and understanding of environmental issues, systems, and terminology.\nAO2: Apply knowledge and understanding to analyze environmental issues and solve problems.\nAO3: Synthesize, evaluate and reflect upon environmental data, scenarios, and policies.\nAO4: Demonstrate the use of skills in practical and investigative work.\n\nAssessment Outline and Weightage\nStandard Level (SL):\n- Paper 1 (Case study): 25%\n- Paper 2 (Short and extended response): 50%\n- Internal Assessment (Individual investigation): 25%`,
+    essentials: `Syllabus Outline and Teaching Hours\nSL/HL – 150 hours\n- Foundations of environmental systems and societies\n- Ecosystems and ecology\n- Biodiversity and conservation\n- Water and aquatic food production systems and societies\n- Soil systems and terrestrial food production systems and societies\n- Atmospheric systems and societies\n- Climate change and energy production\n- Human systems and resource use\n- Practical scheme of work (hands-on investigations, fieldwork)\n\nAssessment Objectives in Practice\nAO1: Demonstrate knowledge and understanding of environmental issues, systems, and terminology.\nAO2: Apply knowledge and understanding to analyze environmental issues and solve problems.\nAO3: Synthesize, evaluate and reflect upon environmental data, scenarios, and policies.\nAO4: Demonstrate the use of skills in practical and investigative work.\n\nAssessment Outline and Weightage\nStandard Level (SL):\n- Paper 1 (Case study): 25%\n- Paper 2 (Short and extended response): 50%\n- Internal Assessment (Individual investigation): 25%\n\nHigher Level (HL):\n- Paper 1 (Case study): 30%\n- Paper 2 (Short and extended response): 50%\n- Internal Assessment (Individual investigation): 20%`,
     coreThemes: `Overview of the Course: Concepts, Content, and Contexts\n\nConcepts:\nSystems - Systems and models - Local and global environmental challenges\nSustainability - Sustainability, natural capital - Resource consumption and environmental degradation\nStewardship - Conservation, environmental ethics - Human responsibilities and policy implications\nChange - Climate change, ecological succession - Historical and future trends in biodiversity\nEquity - Access to resources - Global inequalities and environmental justice\n\nContent:\nSystems and models\nSustainability, natural capital\nConservation, environmental ethics\nClimate change, ecological succession\nAccess to resources\n\nContexts:\nLocal and global environmental challenges\nResource consumption and environmental degradation\nHuman responsibilities and policy implications\nHistorical and future trends in biodiversity\nGlobal inequalities and environmental justice`,
-    detailedRubrics: `Assessment Guidelines – Individual Investigation\n\nCriterion A: Investigation planning\nClarity of research focus and development of investigation objectives\nMarks: 6\n\nCriterion B: Data gathering and analysis\nSuitability of methods and analytical approaches employed\nMarks: 6\n\nCriterion C: Results interpretation and evaluation\nAnalysis of findings and demonstration of critical reasoning\nMarks: 6\n\nCriterion D: Real-world connections\nBroader environmental relevance and practical implications\nMarks: 6\n\nCriterion E: Student involvement\nIndividual initiative, understanding, and dedication\nMarks: 6`,
+    detailedRubrics: `Assessment Guidelines – Internal Assessment (SL/HL)\n\nCriterion A: Research question and inquiry\nClarity of research focus and development of investigation objectives\nMarks: 6\n\nCriterion B: Strategy\nSuitability of methods and analytical approaches employed\nMarks: 6\n\nCriterion C: Method\nAnalysis of findings and demonstration of critical reasoning\nMarks: 6\n\nCriterion D: Treatment of data\nBroader environmental relevance and practical implications\nMarks: 6\n\nCriterion E: Analysis and conclusion\nIndividual initiative, understanding, and dedication\nMarks: 6\n\nCriterion F: Evaluation\nReflection on methodology and potential improvements\nMarks: 6`,
     essTips: `Top 10 Study Tips for Success – Environmental Systems and Societies\n\n• Master the key concepts of systems, models, and sustainability.\n\n• Use diagrams to represent flows, feedback loops, and models.\n\n• Regularly practice past paper questions on data-based analysis.\n\n• Link theory with real-world environmental case studies.\n\n• Understand terminology and use it precisely in assessments.\n\n• Engage with current environmental news and debates.\n\n• Keep clear, detailed notes during practical investigations.\n\n• Apply systems thinking in analyzing environmental problems.\n\n• Reflect on human impacts from ethical and economic perspectives.\n\n• Review IA criteria while planning and writing your report.`,
   };
   const sectionKeys: Array<'overview' | 'essentials' | 'coreThemes' | 'detailedRubrics' | 'essTips'> = ['overview', 'essentials', 'coreThemes', 'detailedRubrics', 'essTips'];
@@ -273,7 +273,7 @@ const EnvironmentalSystemsScreen = ({ navigation, route }: { navigation: any; ro
     'ScopeOne-Regular': require('../../assets/fonts/ScopeOne-Regular.ttf'),
   });
   if (!fontsLoaded) {
-    return <AppLoading />;
+    return null;
   }
 
   return (
@@ -377,7 +377,11 @@ const EnvironmentalSystemsScreen = ({ navigation, route }: { navigation: any; ro
                           <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("• AO1: Demonstrate knowledge and understanding of environmental issues, systems, and terminology.\n• AO2: Apply knowledge and understanding to analyze environmental issues and solve problems.\n• AO3: Synthesize, evaluate and reflect upon environmental data, scenarios, and policies.\n• AO4: Demonstrate the use of skills in practical and investigative work.", highlightedText)}</Text>
                           
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>Assessment Outline and Weightage</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 8 }}>{highlightText("Standard Level (SL):\n• Paper 1 (Case study): 25%\n• Paper 2 (Short and extended response): 50%\n• Internal Assessment (Individual investigation): 25%", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 8 }}>{highlightText("Standard Level (SL):", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 12 }}>{highlightText("• Paper 1 (Case study): 25%\n• Paper 2 (Short and extended response): 50%\n• Internal Assessment (Individual investigation): 25%", highlightedText)}</Text>
+                          
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 8 }}>{highlightText("Higher Level (HL):", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("• Paper 1 (Case study): 30%\n• Paper 2 (Short and extended response): 50%\n• Internal Assessment (Individual investigation): 20%", highlightedText)}</Text>
                         </View>
                       )}
                       {section.key === 'coreThemes' && (
@@ -388,9 +392,9 @@ const EnvironmentalSystemsScreen = ({ navigation, route }: { navigation: any; ro
                           <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
                             {/* Table Header */}
                             <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
-                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 12, fontSize: 14, fontWeight: 'bold' }}>Concepts</Text>
-                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 12, fontSize: 14, fontWeight: 'bold' }}>Content</Text>
-                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 12, fontSize: 14, fontWeight: 'bold' }}>Contexts</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.6, padding: 12, fontSize: 14, fontWeight: 'bold' }}>Concepts</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.2, padding: 12, fontSize: 14, fontWeight: 'bold' }}>Content</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1.2, padding: 12, fontSize: 14, fontWeight: 'bold' }}>Contexts</Text>
                             </View>
                             
                             {/* Table Rows */}
@@ -402,9 +406,9 @@ const EnvironmentalSystemsScreen = ({ navigation, route }: { navigation: any; ro
                               { concept: 'Equity', content: 'Access to resources', context: 'Global inequalities and environmental justice' }
                             ].map((row, idx) => (
                               <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
-                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.concept, highlightedText)}</Text>
-                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.content, highlightedText)}</Text>
-                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.context, highlightedText)}</Text>
+                                <Text style={{ flex: 1.6, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.concept, highlightedText)}</Text>
+                                <Text style={{ flex: 1.2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.content, highlightedText)}</Text>
+                                <Text style={{ flex: 1.2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.context, highlightedText)}</Text>
                               </View>
                             ))}
                           </View>
@@ -412,7 +416,7 @@ const EnvironmentalSystemsScreen = ({ navigation, route }: { navigation: any; ro
                       )}
                       {section.key === 'detailedRubrics' && (
                         <View>
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginBottom: 12 }}>Assessment Guidelines – Individual Investigation</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginBottom: 12 }}>Assessment Guidelines – Internal Assessment (SL/HL)</Text>
                           
                           {/* Internal Assessment Rubric Table */}
                           <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
@@ -422,11 +426,12 @@ const EnvironmentalSystemsScreen = ({ navigation, route }: { navigation: any; ro
                               <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 0.8, padding: 8, textAlign: 'center' }}>Marks</Text>
                             </View>
                             {[
-                              { criterion: 'A: Investigation planning', description: 'Clarity of research focus and development of investigation objectives', marks: '6' },
-                              { criterion: 'B: Data gathering and analysis', description: 'Suitability of methods and analytical approaches employed', marks: '6' },
-                              { criterion: 'C: Results interpretation and evaluation', description: 'Analysis of findings and demonstration of critical reasoning', marks: '6' },
-                              { criterion: 'D: Real-world connections', description: 'Broader environmental relevance and practical implications', marks: '6' },
-                              { criterion: 'E: Student involvement', description: 'Individual initiative, understanding, and dedication', marks: '6' }
+                              { criterion: 'A: Research question and inquiry', description: 'Clarity of research focus and development of investigation objectives', marks: '6' },
+                              { criterion: 'B: Strategy', description: 'Suitability of methods and analytical approaches employed', marks: '6' },
+                              { criterion: 'C: Method', description: 'Analysis of findings and demonstration of critical reasoning', marks: '6' },
+                              { criterion: 'D: Treatment of data', description: 'Broader environmental relevance and practical implications', marks: '6' },
+                              { criterion: 'E: Analysis and conclusion', description: 'Individual initiative, understanding, and dedication', marks: '6' },
+                              { criterion: 'F: Evaluation', description: 'Reflection on methodology and potential improvements', marks: '6' }
                             ].map((row, idx) => (
                               <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
                                 <Text style={{ flex: 2.2, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.criterion, highlightedText)}</Text>
@@ -551,6 +556,27 @@ const EnvironmentalSystemsScreen = ({ navigation, route }: { navigation: any; ro
                               { score: '1-2', description: 'Mentions general problems with the approach used.\n• Lists basic ways to make the work better.\n• Points out unanswered questions without much detail.' },
                               { score: '3-4', description: 'Explains problems and ways to improve the work with some detail.\n• Lists unanswered questions that came up during the study.\n• Shows understanding of what could be done differently.' },
                               { score: '5-6', description: 'Carefully examines specific problems and suggests detailed improvements.\n• Clearly explains how unanswered questions affect the final thoughts.\n• Shows deep understanding of study limitations and future research possibilities.' }
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText(row.score, highlightedText)}</Text>
+                                <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', lineHeight: 18 }}>{highlightText(row.description, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+                          
+                          {/* Criterion F: Evaluation Table */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 12 }}>Criterion F: Evaluation (Max 6 marks)</Text>
+                          
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>Level Descriptor</Text>
+                            </View>
+                            {[
+                              { score: '0', description: 'The report does not reach a standard described by the descriptors below.' },
+                              { score: '1-2', description: 'Limited reflection on the investigation process.\n• Few or no suggestions for improvement.\n• Minimal awareness of limitations in methods or data.\n• Superficial evaluation of results quality.' },
+                              { score: '3-4', description: 'Some reflection on the investigation with basic improvement suggestions.\n• Recognizes some limitations in methods or data collection.\n• Shows understanding of how limitations affected results.\n• Adequate evaluation of investigation effectiveness.' },
+                              { score: '5-6', description: 'Thorough reflection on all aspects of the investigation.\n• Clear, practical suggestions for improvement with justification.\n• Detailed awareness of limitations and their impact on results.\n• Comprehensive evaluation of methodology and data quality.' }
                             ].map((row, idx) => (
                               <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
                                 <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText(row.score, highlightedText)}</Text>

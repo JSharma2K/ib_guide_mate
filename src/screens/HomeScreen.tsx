@@ -6,7 +6,7 @@ import { Feather } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
 import { useFonts } from 'expo-font';
-import AppLoading from 'expo-app-loading';
+import * as SplashScreen from 'expo-splash-screen';
 import ExtendedEssayScreen from '../screens/ExtendedEssayScreen';
 import { RootStackParamList } from '../types/navigation';
 
@@ -86,6 +86,23 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, route }) => {
     'ScopeOne-Regular': require('../../assets/fonts/ScopeOne-Regular.ttf'),
   });
 
+  useEffect(() => {
+    async function prepare() {
+      await SplashScreen.preventAutoHideAsync();
+    }
+    prepare();
+  }, []);
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   const renderSubject = useCallback(({ item, index }: any) => (
     <Animated.View entering={FadeInDown.delay(200 + index * 100).duration(600)}>
       <Card
@@ -162,15 +179,12 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation, route }) => {
     });
   }, [navigation]);
 
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  }
-
   return (
     <ImageBackground
       source={require('../../assets/images/entry-bg.png')}
       style={[styles.flex1, { width: '100%', height: '100%' }]}
       resizeMode="cover"
+      onLayout={onLayoutRootView}
     >
       {/* Home icon top left */}
       <RNAnimated.View style={{ position: 'absolute', top: 56, left: 16, zIndex: 100, flexDirection: 'row', alignItems: 'center', opacity: homeIconOpacity }}>

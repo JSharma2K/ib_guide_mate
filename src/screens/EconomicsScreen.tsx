@@ -4,7 +4,7 @@ import { Text, Card, List, Searchbar, Button as PaperButton } from 'react-native
 import { LinearGradient } from 'expo-linear-gradient';
 import { theme, gradientColors, styles as themeStyles } from '../theme/theme';
 import { useFonts } from 'expo-font';
-import AppLoading from 'expo-app-loading';
+import * as SplashScreen from 'expo-splash-screen';
 import { Feather } from '@expo/vector-icons';
 
 const escapeRegExp = (input: string) => input.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -47,6 +47,29 @@ const EconomicsScreen = ({ navigation, route }: { navigation: any; route: any })
 Paper 1 – Comprehensive Response Scoring (25 marks)
 Each question is structured as: Part (a) (10), Part (b) (15)
 
+Part (a) – 10 Marks Scoring Guide
+1-2: Minimal comprehension; economic concepts and terminology are unclear or inappropriate.
+3-4: Basic comprehension; fundamental economic principles outlined; restricted use of terminology.
+5-6: Adequate comprehension; some visual aids and terminology; incomplete organization.
+7-8: Strong comprehension; appropriate examples; visual aids mostly accurate; well-organized response.
+9-10: Outstanding comprehension; concepts, examples, and visual aids are appropriate and thoroughly developed.
+
+Part (b) – 15 Marks Scoring Guide
+0: The work does not reach a standard described by the descriptors below.
+1-3: Shows minimal grasp of question requirements. Basic economic ideas mentioned but not properly explained. Economic language used incorrectly or inappropriately. No clear evidence of combining ideas or making judgments. Real-world examples missing or completely unrelated.
+4-6: Shows some grasp of question requirements. Relevant economic ideas described with basic explanation. Some appropriate economic language used correctly. Limited evidence of combining ideas or making simple judgments. Some relevant real-world examples provided.
+7-9: Shows good grasp of question requirements, but only partially addressed. Relevant economic ideas partly explained with some detail. Economic language used appropriately in most cases. Clear evidence of combining ideas and making balanced judgments, but lacks depth. Relevant real-world examples identified and partly connected to the question context.
+10-12: Shows strong grasp of question requirements and addresses them well. Relevant economic ideas clearly explained with good detail. Economic language used accurately throughout most of the response. Strong evidence of combining ideas and making well-balanced judgments. Relevant real-world examples identified and well-connected to support the argument.
+13-15: Shows excellent grasp of question requirements and addresses them completely. Relevant economic ideas fully explained with comprehensive detail. Economic language used accurately and precisely throughout. Clear evidence of effective combining of ideas and well-balanced, thorough judgments. Relevant real-world examples identified and fully developed to strongly support the argument.
+
+Paper 2 – Data Response Scoring (SL/HL) (15 marks)
+0: The work does not reach a standard described by the descriptors below.
+1-3: Shows minimal grasp of question requirements. Basic economic ideas mentioned but not properly explained. Economic language used incorrectly or inappropriately. No clear evidence of combining ideas or making judgments. No use of provided data/text or information is simply copied without analysis.
+4-6: Shows some grasp of question requirements. Relevant economic ideas described with basic explanation. Some appropriate economic language used correctly. Limited evidence of combining ideas or making simple judgments. Limited use of provided data/text with minimal analysis.
+7-9: Shows good grasp of question requirements, but only partially addressed. Relevant economic ideas partly explained with some detail. Economic language used appropriately in most cases. Where relevant, appropriate charts/graphs are included. Clear evidence of combining ideas and making balanced judgments, but lacks depth. Includes some relevant information from the provided data/text.
+10-12: Shows strong grasp of question requirements and addresses them well. Relevant economic ideas clearly explained with good detail. Economic language used accurately throughout most of the response. Where relevant, appropriate charts/graphs are included and explained. Strong evidence of combining ideas and making well-balanced judgments. Information from provided data/text is generally appropriate, relevant, and applied correctly.
+13-15: Shows excellent grasp of question requirements and addresses them completely. Relevant economic ideas fully explained with comprehensive detail. Economic language used accurately and precisely throughout. Where relevant, appropriate charts/graphs are included and fully explained. Clear evidence of effective combining of ideas and well-balanced, thorough judgments. Information from provided data/text is appropriate, relevant, and used to create a reasoned argument supported by analysis and evaluation.
+
 Paper 3 (HL Only) – Quantitative Analysis Scoring (17 marks)
 Criteria A–D summary included.
 
@@ -76,6 +99,22 @@ Additional IA tables covered in this section for search:
   5-6 Adequate comprehension some visual aids and terminology incomplete organization
   7-8 Strong comprehension appropriate examples visual aids mostly accurate well-organized response
   9-10 Outstanding comprehension concepts examples and visual aids are appropriate and thoroughly developed
+
+  Part b 15 Marks Scoring Guide
+  0 The work does not reach a standard described by the descriptors below
+  1-3 Shows minimal grasp of question requirements Basic economic ideas mentioned but not properly explained Economic language used incorrectly or inappropriately No clear evidence of combining ideas or making judgments Real-world examples missing or completely unrelated
+  4-6 Shows some grasp of question requirements Relevant economic ideas described with basic explanation Some appropriate economic language used correctly Limited evidence of combining ideas or making simple judgments Some relevant real-world examples provided
+  7-9 Shows good grasp of question requirements but only partially addressed Relevant economic ideas partly explained with some detail Economic language used appropriately in most cases Clear evidence of combining ideas and making balanced judgments but lacks depth Relevant real-world examples identified and partly connected to the question context
+  10-12 Shows strong grasp of question requirements and addresses them well Relevant economic ideas clearly explained with good detail Economic language used accurately throughout most of the response Strong evidence of combining ideas and making well-balanced judgments Relevant real-world examples identified and well-connected to support the argument
+  13-15 Shows excellent grasp of question requirements and addresses them completely Relevant economic ideas fully explained with comprehensive detail Economic language used accurately and precisely throughout Clear evidence of effective combining of ideas and well-balanced thorough judgments Relevant real-world examples identified and fully developed to strongly support the argument
+
+  Paper 2 Data Response Scoring SL HL 15 marks
+  0 The work does not reach a standard described by the descriptors below
+  1-3 Shows minimal grasp of question requirements Basic economic ideas mentioned but not properly explained Economic language used incorrectly or inappropriately No clear evidence of combining ideas or making judgments No use of provided data text or information is simply copied without analysis
+  4-6 Shows some grasp of question requirements Relevant economic ideas described with basic explanation Some appropriate economic language used correctly Limited evidence of combining ideas or making simple judgments Limited use of provided data text with minimal analysis
+  7-9 Shows good grasp of question requirements but only partially addressed Relevant economic ideas partly explained with some detail Economic language used appropriately in most cases Where relevant appropriate charts graphs are included Clear evidence of combining ideas and making balanced judgments but lacks depth Includes some relevant information from the provided data text
+  10-12 Shows strong grasp of question requirements and addresses them well Relevant economic ideas clearly explained with good detail Economic language used accurately throughout most of the response Where relevant appropriate charts graphs are included and explained Strong evidence of combining ideas and making well-balanced judgments Information from provided data text is generally appropriate relevant and applied correctly
+  13-15 Shows excellent grasp of question requirements and addresses them completely Relevant economic ideas fully explained with comprehensive detail Economic language used accurately and precisely throughout Where relevant appropriate charts graphs are included and fully explained Clear evidence of effective combining of ideas and well-balanced thorough judgments Information from provided data text is appropriate relevant and used to create a reasoned argument supported by analysis and evaluation
 
   Paper 3 HL Only Quantitative Analysis Scoring 17 marks
   A Source material utilization Integration of case study and supporting resources 4
@@ -282,8 +321,8 @@ Additional IA tables covered in this section for search:
     }[section];
     if (!animationValue) return null;
     
-    // Increase max height for detailed rubrics to accommodate all tables
-    const maxHeight = section === 'detailedRubrics' ? 7000 : 3000;
+    // Increase max height significantly for detailed rubrics to accommodate all tables
+    const maxHeight = section === 'detailedRubrics' ? 12000 : 3000;
     
     return (
       <Animated.View
@@ -293,10 +332,15 @@ Additional IA tables covered in this section for search:
             outputRange: [0, maxHeight],
           }),
           opacity: animationValue,
-          overflow: 'hidden',
         }}
       >
-        <View style={{ backgroundColor: 'rgba(24,26,32,0.92)', borderRadius: 12, padding: 16, marginTop: 8 }}>
+        <View style={{ 
+          backgroundColor: 'rgba(24,26,32,0.92)', 
+          borderRadius: 12, 
+          padding: 16, 
+          marginTop: 8,
+          paddingBottom: section === 'detailedRubrics' ? 32 : 16 
+        }}>
           {content}
         </View>
       </Animated.View>
@@ -307,7 +351,7 @@ Additional IA tables covered in this section for search:
     'ScopeOne-Regular': require('../../assets/fonts/ScopeOne-Regular.ttf'),
   });
   if (!fontsLoaded) {
-    return <AppLoading />;
+    return null;
   }
 
   return (
@@ -438,6 +482,52 @@ Additional IA tables covered in this section for search:
                               { marks: '5-6', description: 'Adequate comprehension; some visual aids and terminology; incomplete organization.' },
                               { marks: '7-8', description: 'Strong comprehension; appropriate examples; visual aids mostly accurate; well-organized response.' },
                               { marks: '9-10', description: 'Outstanding comprehension; concepts, examples, and visual aids are appropriate and thoroughly developed.' }
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText(row.marks, highlightedText)}</Text>
+                                <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.description, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 14, marginTop: 20, marginBottom: 8 }}>Part (b) – 15 Marks Scoring Guide</Text>
+                          
+                          {/* Part (b) Rubric Table */}
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>Level Descriptor</Text>
+                            </View>
+                            {[
+                              { marks: '0', description: 'The work does not reach a standard described by the descriptors below.' },
+                              { marks: '1-3', description: 'Shows minimal grasp of question requirements.\n• Basic economic ideas mentioned but not properly explained.\n• Economic language used incorrectly or inappropriately.\n• No clear evidence of combining ideas or making judgments.\n• Real-world examples missing or completely unrelated.' },
+                              { marks: '4-6', description: 'Shows some grasp of question requirements.\n• Relevant economic ideas described with basic explanation.\n• Some appropriate economic language used correctly.\n• Limited evidence of combining ideas or making simple judgments.\n• Some relevant real-world examples provided.' },
+                              { marks: '7-9', description: 'Shows good grasp of question requirements, but only partially addressed.\n• Relevant economic ideas partly explained with some detail.\n• Economic language used appropriately in most cases.\n• Clear evidence of combining ideas and making balanced judgments, but lacks depth.\n• Relevant real-world examples identified and partly connected to the question context.' },
+                              { marks: '10-12', description: 'Shows strong grasp of question requirements and addresses them well.\n• Relevant economic ideas clearly explained with good detail.\n• Economic language used accurately throughout most of the response.\n• Strong evidence of combining ideas and making well-balanced judgments.\n• Relevant real-world examples identified and well-connected to support the argument.' },
+                              { marks: '13-15', description: 'Shows excellent grasp of question requirements and addresses them completely.\n• Relevant economic ideas fully explained with comprehensive detail.\n• Economic language used accurately and precisely throughout.\n• Clear evidence of effective combining of ideas and well-balanced, thorough judgments.\n• Relevant real-world examples identified and fully developed to strongly support the argument.' }
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText(row.marks, highlightedText)}</Text>
+                                <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText(row.description, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 14, marginTop: 20, marginBottom: 8 }}>Paper 2 – Data Response Scoring (SL/HL) (15 marks)</Text>
+                          
+                          {/* Paper 2 Rubric Table */}
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>Level Descriptor</Text>
+                            </View>
+                            {[
+                              { marks: '0', description: 'The work does not reach a standard described by the descriptors below.' },
+                              { marks: '1-3', description: 'Shows minimal grasp of question requirements.\n• Basic economic ideas mentioned but not properly explained.\n• Economic language used incorrectly or inappropriately.\n• No clear evidence of combining ideas or making judgments.\n• No use of provided data/text or information is simply copied without analysis.' },
+                              { marks: '4-6', description: 'Shows some grasp of question requirements.\n• Relevant economic ideas described with basic explanation.\n• Some appropriate economic language used correctly.\n• Limited evidence of combining ideas or making simple judgments.\n• Limited use of provided data/text with minimal analysis.' },
+                              { marks: '7-9', description: 'Shows good grasp of question requirements, but only partially addressed.\n• Relevant economic ideas partly explained with some detail.\n• Economic language used appropriately in most cases.\n• Where relevant, appropriate charts/graphs are included.\n• Clear evidence of combining ideas and making balanced judgments, but lacks depth.\n• Includes some relevant information from the provided data/text.' },
+                              { marks: '10-12', description: 'Shows strong grasp of question requirements and addresses them well.\n• Relevant economic ideas clearly explained with good detail.\n• Economic language used accurately throughout most of the response.\n• Where relevant, appropriate charts/graphs are included and explained.\n• Strong evidence of combining ideas and making well-balanced judgments.\n• Information from provided data/text is generally appropriate, relevant, and applied correctly.' },
+                              { marks: '13-15', description: 'Shows excellent grasp of question requirements and addresses them completely.\n• Relevant economic ideas fully explained with comprehensive detail.\n• Economic language used accurately and precisely throughout.\n• Where relevant, appropriate charts/graphs are included and fully explained.\n• Clear evidence of effective combining of ideas and well-balanced, thorough judgments.\n• Information from provided data/text is appropriate, relevant, and used to create a reasoned argument supported by analysis and evaluation.' }
                             ].map((row, idx) => (
                               <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
                                 <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center' }}>{highlightText(row.marks, highlightedText)}</Text>

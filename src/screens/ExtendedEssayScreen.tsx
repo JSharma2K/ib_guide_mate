@@ -7,7 +7,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../types/navigation';
 import { Feather } from '@expo/vector-icons';
 import { useFonts } from 'expo-font';
-import AppLoading from 'expo-app-loading';
+import * as SplashScreen from 'expo-splash-screen';
 
 type Props = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'ExtendedEssay'>;
@@ -216,7 +216,7 @@ const ExtendedEssayScreen: React.FC<Props> = ({ navigation, route }) => {
     'ScopeOne-Regular': require('../../assets/fonts/ScopeOne-Regular.ttf'),
   });
   if (!fontsLoaded) {
-    return <AppLoading />;
+    return null;
   }
 
   const renderAnimatedContent = (section: string, content: React.ReactNode) => {
