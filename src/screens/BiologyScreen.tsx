@@ -40,7 +40,7 @@ const BiologyScreen = ({ navigation, route }: { navigation: any; route: any }) =
   // Section keys and content for search
   const sectionContentStrings: Record<'overview' | 'essentials' | 'coreThemes' | 'detailedRubrics' | 'biologyTips', string> = {
     overview: `The Biology course aims to develop a broad understanding of the principles of biology through experimental investigation, critical thinking, and interdisciplinary connections. It includes both core and additional higher level content, emphasizing the scientific method, the evaluation of data, and the relevance of biology to global issues.`,
-    essentials: `**Course Structure and Teaching Hours**\nStandard Level: 150 hours, Higher Level: 240 hours\n- Cell biology\n- Molecular biology\n- Genetics\n- Ecology\n- Evolution and biodiversity\n- Human physiology\n- Nucleic acids (Higher Level)\n- Metabolism, cell respiration and photosynthesis (Higher Level)\n- Plant biology (Higher Level)\n- Genetics and evolution (Higher Level)\n- Animal physiology (Higher Level)\n- Practical scheme of work (including 10 hours for the individual investigation)\n\n**Learning Objectives in Practice**\nLO1: Demonstrate knowledge and understanding of facts, concepts, methodologies, and techniques.\nLO2: Apply facts, concepts, and methods to solve problems in familiar and unfamiliar situations.\nLO3: Formulate, analyze, and evaluate hypotheses, research questions, and methodologies.\nLO4: Demonstrate the ability to collect, process, and interpret data from experiments.\n\n**Assessment Structure and Weightings**\nStandard Level:\n- Paper 1: Multiple choice – 20%\n- Paper 2: Data-based and short/extended response – 40%\n- Paper 3: Data-based and practical skills – 20%\n- Individual Investigation: Independent research project – 20%\n\nHigher Level:\n- Paper 1: Multiple choice – 20%\n- Paper 2: Short and extended response – 36%\n- Paper 3: Data-based and practical skills – 24%\n- Individual Investigation: Independent research project – 20%`,
+    essentials: `**Course Structure and Teaching Hours**\nStandard Level: 150 hours, Higher Level: 240 hours\n- Cell biology\n- Molecular biology\n- Genetics\n- Ecology\n- Evolution and biodiversity\n- Human physiology\n- Nucleic acids (Higher Level)\n- Metabolism, cell respiration and photosynthesis (Higher Level)\n- Plant biology (Higher Level)\n- Genetics and evolution (Higher Level)\n- Animal physiology (Higher Level)\n- Practical scheme of work (including 10 hours for the individual investigation)\n\n**Learning Objectives in Practice**\nLO1: Demonstrate knowledge and understanding of facts, concepts, methodologies, and techniques.\nLO2: Apply facts, concepts, and methods to solve problems in familiar and unfamiliar situations.\nLO3: Formulate, analyze, and evaluate hypotheses, research questions, and methodologies.\nLO4: Demonstrate the ability to collect, process, and interpret data from experiments.\n\n**Assessment Structure and Weightings**\nAssessment Outline SL\nExternal assessment (3 hours) - 80%\nPaper 1 (1 hour and 30 minutes) - 36%\nPaper 1A—Multiple-choice questions\nPaper 1B—Data-based questions (four questions that are syllabus related, addressing all themes)\n(Total 55 marks)\nPaper 2 (1 hour and 30 minutes) - 44%\nSection A—Data-based and short answer questions\nSection B—Extended-response questions\n(Total 50 marks)\nInternal assessment (10 hours) - 20%\nThe internal assessment consists of one task: the scientific investigation.\nThis component is internally assessed by the teacher and externally moderated by the IB at the end of the course.\n(Total 24 marks)\n\nAssessment Outline HL\nExternal assessment (4 hours 30 minutes) - 80%\nPaper 1 (2 hours) - 36%\nPaper 1A—Multiple-choice questions\nPaper 1B—Data-based questions (four questions that are syllabus related, addressing all themes)\n(Total 75 marks)\nPaper 2 (2 hour and 30 minutes) - 44%\nSection A—Data-based and short answer questions\nSection B—Extended-response questions\n(Total 80 marks)\nInternal assessment (10 hours) - 20%\nThe internal assessment consists of one task: the scientific investigation.\nThis component is internally assessed by the teacher and externally moderated by the IB at the end of the course.\n(Total 24 marks)`,
     coreThemes: `Course Topics & Skills\n• Cell Biology: Cell theory, cell structure, membrane transport, cell division\n• Molecular Biology: Metabolism, water, carbohydrates, lipids, proteins, enzymes, DNA and RNA, protein synthesis, respiration, photosynthesis\n• Genetics: Genes, chromosomes, meiosis, inheritance, genetic modification\n• Ecology: Species, communities, ecosystems, energy flow, carbon cycling, climate change\n• Evolution and Biodiversity: Evidence for evolution, natural selection, classification, cladistics\n• Human Physiology: Digestion, gas exchange, blood system, immunity, neurons, hormones`,
     detailedRubrics: `Individual Investigation Evaluation Criteria\n\nExternal Assessment (80%)\nPaper 1: Multiple choice questions (20%)\nPaper 2: Short answer and extended response questions (40%)\nPaper 3: Data analysis and evaluation questions (20%)\n\nIndividual Investigation (20%)\nBiology Investigation: Independent laboratory investigation\n\nEvaluation Criteria:\n• Research Question: Clear, focused, and investigable question\n• Background Information: Relevant biological theory and context\n• Methodology: Appropriate methods and controls\n• Results: Data collection, processing, and presentation\n• Conclusion and Evaluation: Analysis of results and evaluation of methodology`,
     biologyTips: `• Understand the underlying concepts rather than just memorizing facts.\n\n• Use labeled diagrams to reinforce processes like DNA replication or photosynthesis.\n\n• Practice past paper questions to familiarize with question styles.\n\n• Relate topics to real-life biological examples or issues.\n\n• Review evaluation criteria frequently while working on the individual investigation.\n\n• Use mind maps and flowcharts to organize and connect ideas.\n\n• Master command terms such as 'explain', 'compare', and 'evaluate'.\n\n• Engage in peer discussions to clarify difficult topics.\n\n• Revise regularly and create a glossary of biological terms.\n\n• Balance content learning with lab skill practice.`,
@@ -365,7 +365,109 @@ const BiologyScreen = ({ navigation, route }: { navigation: any; route: any }) =
                           <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("LO1: Demonstrate knowledge and understanding of facts, concepts, methodologies, and techniques.\nLO2: Apply facts, concepts, and methods to solve problems in familiar and unfamiliar situations.\nLO3: Formulate, analyze, and evaluate hypotheses, research questions, and methodologies.\nLO4: Demonstrate the ability to collect, process, and interpret data from experiments.", highlightedText)}</Text>
                           
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>Assessment Structure and Weightings</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("Standard Level:\n- Paper 1: Multiple choice – 20%\n- Paper 2: Data-based and short/extended response – 40%\n- Paper 3: Data-based and practical skills – 20%\n- Individual Investigation: Independent research project – 20%\n\nHigher Level:\n- Paper 1: Multiple choice – 20%\n- Paper 2: Short and extended response – 36%\n- Paper 3: Data-based and practical skills – 24%\n- Individual Investigation: Independent research project – 20%", highlightedText)}</Text>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, marginBottom: 8 }}>Assessment Outline — SL</Text>
+                          
+                          {/* Assessment Structure Table */}
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginTop: 12, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>Assessment component</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Weighting</Text>
+                            </View>
+                            
+                            {/* External assessment (3 hours) */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>{highlightText('External assessment (3 hours)', highlightedText)}</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('80%', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Paper 1 */}
+                            <View style={{ borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <View style={{ flexDirection: 'row' }}>
+                                <Text style={{ flex: 3, color: '#7EC3FF', padding: 8, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>{highlightText('Paper 1 (1 hour and 30 minutes)', highlightedText)}</Text>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('36%', highlightedText)}</Text>
+                              </View>
+                              <View style={{ paddingLeft: 8, paddingRight: 8, paddingBottom: 8 }}>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', marginBottom: 4 }}>{highlightText('Paper 1A—Multiple-choice questions', highlightedText)}</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', marginBottom: 4 }}>{highlightText('Paper 1B—Data-based questions (four questions that are syllabus related, addressing all themes)', highlightedText)}</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontStyle: 'italic' }}>{highlightText('(Total 55 marks)', highlightedText)}</Text>
+                              </View>
+                            </View>
+                            
+                            {/* Paper 2 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <View style={{ flex: 3, padding: 8 }}>
+                                <Text style={{ color: '#7EC3FF', fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', marginBottom: 4 }}>{highlightText('Paper 2 (1 hour and 30 minutes)', highlightedText)}</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', marginBottom: 4 }}>{highlightText('Section A—Data-based and short answer questions', highlightedText)}</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', marginBottom: 4 }}>{highlightText('Section B—Extended-response questions', highlightedText)}</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontStyle: 'italic' }}>{highlightText('(Total 50 marks)', highlightedText)}</Text>
+                              </View>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('44%', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Internal assessment */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <View style={{ flex: 3, padding: 8 }}>
+                                <Text style={{ color: '#7EC3FF', fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', marginBottom: 4 }}>{highlightText('Internal assessment (10 hours)', highlightedText)}</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', marginBottom: 4 }}>{highlightText('The internal assessment consists of one task: the scientific investigation.', highlightedText)}</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', marginBottom: 4 }}>{highlightText('This component is internally assessed by the teacher and externally moderated by the IB at the end of the course.', highlightedText)}</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontStyle: 'italic' }}>{highlightText('(Total 24 marks)', highlightedText)}</Text>
+                              </View>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('20%', highlightedText)}</Text>
+                            </View>
+                          </View>
+                          
+                          {/* Assessment Outline — HL */}
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 8 }}>Assessment Outline — HL</Text>
+                          
+                          {/* HL Assessment Structure Table */}
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginTop: 12, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>Assessment component</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Weighting</Text>
+                            </View>
+                            
+                            {/* External assessment (4 hours 30 minutes) */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>{highlightText('External assessment (4 hours 30 minutes)', highlightedText)}</Text>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('80%', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Paper 1 HL */}
+                            <View style={{ borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <View style={{ flexDirection: 'row' }}>
+                                <Text style={{ flex: 3, color: '#7EC3FF', padding: 8, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>{highlightText('Paper 1 (2 hours)', highlightedText)}</Text>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('36%', highlightedText)}</Text>
+                              </View>
+                              <View style={{ paddingLeft: 8, paddingRight: 8, paddingBottom: 8 }}>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', marginBottom: 4 }}>{highlightText('Paper 1A—Multiple-choice questions', highlightedText)}</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', marginBottom: 4 }}>{highlightText('Paper 1B—Data-based questions (four questions that are syllabus related, addressing all themes)', highlightedText)}</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontStyle: 'italic' }}>{highlightText('(Total 75 marks)', highlightedText)}</Text>
+                              </View>
+                            </View>
+                            
+                            {/* Paper 2 HL */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <View style={{ flex: 3, padding: 8 }}>
+                                <Text style={{ color: '#7EC3FF', fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', marginBottom: 4 }}>{highlightText('Paper 2 (2 hour and 30 minutes)', highlightedText)}</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', marginBottom: 4 }}>{highlightText('Section A—Data-based and short answer questions', highlightedText)}</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', marginBottom: 4 }}>{highlightText('Section B—Extended-response questions', highlightedText)}</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontStyle: 'italic' }}>{highlightText('(Total 80 marks)', highlightedText)}</Text>
+                              </View>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('44%', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Internal assessment HL */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <View style={{ flex: 3, padding: 8 }}>
+                                <Text style={{ color: '#7EC3FF', fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', marginBottom: 4 }}>{highlightText('Internal assessment (10 hours)', highlightedText)}</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', marginBottom: 4 }}>{highlightText('The internal assessment consists of one task: the scientific investigation.', highlightedText)}</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', marginBottom: 4 }}>{highlightText('This component is internally assessed by the teacher and externally moderated by the IB at the end of the course.', highlightedText)}</Text>
+                                <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontStyle: 'italic' }}>{highlightText('(Total 24 marks)', highlightedText)}</Text>
+                              </View>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('20%', highlightedText)}</Text>
+                            </View>
+                          </View>
                         </View>
                       )}
                       {section.key === 'coreThemes' && (

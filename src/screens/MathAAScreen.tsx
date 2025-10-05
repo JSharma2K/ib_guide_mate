@@ -63,7 +63,7 @@ const MathAAScreen: React.FC<Props> = ({ navigation, route }) => {
     overview: `Mathematics: Analysis and Approaches is a course that focuses on developing mathematical knowledge, concepts, and principles. It is designed for students who enjoy developing mathematical arguments and problem-solving skills.`,
     topics: `• Number and Algebra\n• Functions\n• Geometry and Trigonometry\n• Statistics and Probability\n• Calculus\n• Complex Numbers\n• Vectors` ,
     essentials: `Topics (SL/HL):\n• Number & Algebra (19/39)\n• Functions (21/32)\n• Geometry (25/51)\n• Statistics (27/33)\n• Calculus (28/55)\nAssessment Outline\n• Paper 1 (90m): 40%\n• Paper 2 (90m): 40%\n• Internal Assessment: 20%\n• Paper 1 (120m): 30%\n• Paper 2 (120m): 30%\n• Paper 3 (75m): 20%\n• Internal Assessment: 20%\nInternal Assessment Rubrics (20 marks)\n• Criterion A: Presentation (4 marks)\n• Criterion B: Mathematical communication (4 marks)\n• Criterion C: Personal engagement (4 marks)\n• Criterion D: Reflection (3 marks)\n• Criterion E: Use of mathematics (5 marks)\nAssessment Objectives in Practice\n• Problem solving\n• Communication\n• Reasoning\n• Technology use\n• Inquiry`,
-    rubrics: `Papers 1 2 3: Assessed via mark schemes not fixed rubrics. Mathematical reasoning and accuracy, Logical structure and progression, Use of correct notation, Clear communication of solutions, For HL Paper 3 deep problem solving and strategy. Internal Assessment: How well your exploration is structured and presented clearly, Effective use of mathematical language notation and terminology, Evidence of your personal interest and independent thinking, Quality of your reflection on methods and results, Sophistication and correctness of mathematical processes used.`,
+    rubrics: `Papers 1 2 3: Assessed via mark schemes not fixed rubrics. Mathematical reasoning and accuracy, Logical structure and progression, Use of correct notation, Clear communication of solutions, For HL Paper 3 deep problem solving and strategy. External Assessment Details SL General Information Paper 1 and Paper 2 are externally set and marked, contributing 80% of the final grade. These assessments allow students to demonstrate their knowledge and abilities. Some questions may be shared between SL and HL levels. Calculator Policy Paper 1: No calculators permitted. Focus on analytical approaches rather than complex computations. Paper 2: Graphing calculator required throughout, though not every question needs it. Assessment Approach Points awarded for methodology, precision, solutions, and logical reasoning. Correct answers without shown work may not receive full credit. Students must demonstrate their working through calculations, diagrams, or explanations. Paper 1 (1h 30min, 40%) 80 marks total. Section A: Short-response questions (~40 marks) testing breadth. Section B: Extended-response questions (~40 marks) requiring sustained reasoning and in-depth analysis. Questions progress from easier to more challenging within each section. Paper 2 (1h 30min, 40%) 80 marks total. Section A: Short-response questions (~40 marks) across all topics. Section B: Extended-response questions (~40 marks) with cross-topic integration. Graphing calculator available but not required for every question. External Assessment Details HL General Information Papers 1, 2, and 3 are externally set and marked, contributing 80% of the final grade. These assessments demonstrate student knowledge and problem-solving abilities. Papers 1 and 2 share some questions with SL level. Calculator Policy Paper 1: No calculators permitted. Emphasizes analytical solutions over computational work. Papers 2 & 3: Graphing calculator required throughout, though not every question part needs it. Assessment Approach Points awarded for methodology, precision, solutions, and logical reasoning. Correct answers without demonstrated work may not receive full credit. Students must show their process through calculations, diagrams, or explanations. Paper 1 (2h, 30%) 110 marks total. Section A: Short-response questions (~55 marks) testing syllabus breadth. Section B: Extended-response questions (~55 marks) requiring sustained reasoning. Progressive difficulty within questions. Paper 2 (2h, 30%) 110 marks total. Section A: Short-response questions (~55 marks) across all topics. Section B: Extended-response questions (~55 marks) with multi-topic integration. Graphing calculator available throughout. Paper 3 (1h 15min, 20%) 55 marks total. Two compulsory extended-response problem-solving questions. Emphasizes problem-solving leading to generalizations or contextual interpretations. Questions progress from accessible to challenging, focusing on analytical thinking. Internal Assessment Criterion A Presentation Achievement level 0 The investigation does not meet the standard described by the descriptors below. Achievement level 1 The investigation has some structure or some organization. Achievement level 2 The investigation has some structure and shows some organization. Achievement level 3 The investigation is structured and well organized. Achievement level 4 The investigation is structured, well organized, and concise. The presentation criterion assesses the organization and coherence of the exploration. Criterion B Mathematical communication Achievement level 0 The investigation does not meet the standard described by the descriptors below. Achievement level 1 The investigation contains some relevant mathematical communication which is partially appropriate. Achievement level 2 The investigation contains some relevant appropriate mathematical communication. Achievement level 3 The mathematical communication is relevant, appropriate and is mostly consistent. Achievement level 4 The mathematical communication is relevant, appropriate and consistent throughout. Criterion C Personal engagement Achievement level 0 The investigation does not meet the standard described by the descriptors below. Achievement level 1 There is evidence of some personal engagement. Achievement level 2 There is evidence of significant personal engagement. Achievement level 3 There is evidence of outstanding personal engagement. Criterion D Reflection Achievement level 0 The investigation does not meet the standard described by the descriptors below. Achievement level 1 There is evidence of limited reflection. Achievement level 2 There is evidence of meaningful reflection. Achievement level 3 There is substantial evidence of critical reflection. Criterion E Use of mathematics SL Achievement level 0 The investigation does not meet the standard described by the descriptors below. Achievement level 1 Some relevant mathematics is used. Achievement level 2 Some relevant mathematics is used. Limited understanding is demonstrated. Achievement level 3 Relevant mathematics appropriate with the level of the course is used. Limited understanding is demonstrated. Achievement level 4 Relevant mathematics appropriate with the level of the course is used. The mathematics investigated is partially correct. Some knowledge and understanding are demonstrated. Achievement level 5 Relevant mathematics appropriate with the level of the course is used. The mathematics investigated is mostly correct. Good knowledge and understanding are demonstrated. Achievement level 6 Relevant mathematics appropriate with the level of the course is used. The mathematics investigated is correct. Thorough knowledge and understanding are demonstrated. Criterion E Use of mathematics HL Achievement level 0 The investigation does not meet the standard described by the descriptors below. Achievement level 1 Some relevant mathematics is used. Limited understanding is demonstrated. Achievement level 2 Some relevant mathematics is used. The mathematics investigated is partially correct. Some knowledge and understanding is demonstrated. Achievement level 3 Relevant mathematics appropriate with the level of the course is used. The mathematics investigated is correct. Some knowledge and understanding are demonstrated. Achievement level 4 Relevant mathematics appropriate with the level of the course is used. The mathematics investigated is correct. Good knowledge and understanding are demonstrated. Achievement level 5 Relevant mathematics appropriate with the level of the course is used. The mathematics investigated is correct and demonstrates sophistication or rigour. Thorough knowledge and understanding are demonstrated. Achievement level 6 Relevant mathematics appropriate with the level of the course is used. The mathematics investigated is precise and demonstrates sophistication and rigour. Thorough knowledge and understanding are demonstrated.`,
     mathematicsAA: `Mathematics AA Build fluency in algebra and calculus—these are your core tools. Practice formal proof techniques, especially for HL. Link mathematical topics together conceptually. Always explain your reasoning, not just provide answers. Use your GDC wisely and efficiently—practice the interface. Get comfortable with the formula booklet early. Do HL past paper questions frequently to prep for Paper 3. Use math thinking strategies like conjecture and generalization. Pick a personally meaningful topic for your IA and analyze deeply. Create an error log and review what went wrong regularly.`,
   };
 
@@ -164,7 +164,7 @@ const MathAAScreen: React.FC<Props> = ({ navigation, route }) => {
         style={{
           maxHeight: animationValue.interpolate({
             inputRange: [0, 1],
-            outputRange: [0, 1000],
+            outputRange: [0, 15000],
           }),
           opacity: animationValue,
           overflow: 'hidden',
@@ -339,17 +339,300 @@ const MathAAScreen: React.FC<Props> = ({ navigation, route }) => {
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF' }}>Papers 1, 2, 3</Text>
                           <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', lineHeight: 22 }}>{highlightText('Assessed via mark schemes, not fixed rubrics.\n\nRewarded elements include:\n• Mathematical reasoning and accuracy\n• Logical structure and progression\n• Use of correct notation\n• Clear communication of solutions\n• For HL Paper 3: deep problem solving and strategy', highlightedText)}</Text>
                           
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24 }}>External Assessment Details—SL</Text>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, fontSize: 16 }}>General Information</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', lineHeight: 22 }}>{highlightText('• Paper 1 and Paper 2 are externally set and marked\n• Together contribute 80% of the final grade\n• Allow students to demonstrate knowledge and abilities\n• Some questions may be shared between SL and HL levels', highlightedText)}</Text>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, fontSize: 16 }}>Calculator Policy</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', lineHeight: 22 }}>{highlightText('• Paper 1: No calculators permitted\n• Focus on analytical approaches rather than complex computations\n• Paper 2: Graphing calculator required throughout\n• Not every question needs calculator use', highlightedText)}</Text>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, fontSize: 16 }}>Assessment Approach</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', lineHeight: 22 }}>{highlightText('• Points awarded for methodology, precision, solutions, and logical reasoning\n• Correct answers without shown work may not receive full credit\n• Students must demonstrate working through calculations, diagrams, or explanations\n• Partial credit given for correct methods when answers are incorrect', highlightedText)}</Text>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, fontSize: 16 }}>Paper 1 (1h 30min, 40%)</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', lineHeight: 22 }}>{highlightText('• 80 marks total\n• Section A: Short-response questions (~40 marks)\n• Tests breadth across syllabus topics\n• Section B: Extended-response questions (~40 marks)\n• Requires sustained reasoning and in-depth analysis\n• Questions progress from easier to more challenging', highlightedText)}</Text>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, fontSize: 16 }}>Paper 2 (1h 30min, 40%)</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', lineHeight: 22 }}>{highlightText('• 80 marks total\n• Section A: Short-response questions (~40 marks) across all topics\n• Section B: Extended-response questions (~40 marks)\n• Features cross-topic integration\n• Graphing calculator available but not required for every question\n• Progressive difficulty within questions', highlightedText)}</Text>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24 }}>External Assessment Details—HL</Text>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, fontSize: 16 }}>General Information</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', lineHeight: 22 }}>{highlightText('• Papers 1, 2, and 3 are externally set and marked\n• Together contribute 80% of the final grade\n• Demonstrate student knowledge and problem-solving abilities\n• Papers 1 and 2 share some questions with SL level\n• Paper 3 is unique to HL students', highlightedText)}</Text>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, fontSize: 16 }}>Calculator Policy</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', lineHeight: 22 }}>{highlightText('• Paper 1: No calculators permitted\n• Emphasizes analytical solutions over computational work\n• Papers 2 & 3: Graphing calculator required throughout\n• Not every question part needs calculator use', highlightedText)}</Text>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, fontSize: 16 }}>Assessment Approach</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', lineHeight: 22 }}>{highlightText('• Points awarded for methodology, precision, solutions, and logical reasoning\n• Correct answers without demonstrated work may not receive full credit\n• Students must show process through calculations, diagrams, or explanations\n• Partial credit available for correct methods with incorrect answers', highlightedText)}</Text>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, fontSize: 16 }}>Paper 1 (2h, 30%)</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', lineHeight: 22 }}>{highlightText('• 110 marks total\n• Section A: Short-response questions (~55 marks)\n• Tests syllabus breadth across all topics\n• Section B: Extended-response questions (~55 marks)\n• Requires sustained reasoning and deep analysis\n• Progressive difficulty within questions', highlightedText)}</Text>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, fontSize: 16 }}>Paper 2 (2h, 30%)</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', lineHeight: 22 }}>{highlightText('• 110 marks total\n• Section A: Short-response questions (~55 marks) across all topics\n• Section B: Extended-response questions (~55 marks)\n• Features multi-topic integration and connections\n• Graphing calculator available throughout\n• Emphasis on sustained mathematical reasoning', highlightedText)}</Text>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, fontSize: 16 }}>Paper 3 (1h 15min, 20%)</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF', lineHeight: 22 }}>{highlightText('• 55 marks total\n• Two compulsory extended-response problem-solving questions\n• Emphasizes problem-solving leading to generalizations\n• Features contextual interpretations and applications\n• Questions progress from accessible to challenging\n• Focus on analytical thinking and mathematical reasoning', highlightedText)}</Text>
+                          
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 18 }}>Internal Assessment</Text>
-                          <RubricTable
-                            data={[
-                              { criterion: 'A', summary: 'How well your exploration is structured and presented clearly', max: 4 },
-                              { criterion: 'B', summary: 'Effective use of mathematical language, notation, and terminology', max: 4 },
-                              { criterion: 'C', summary: 'Evidence of your personal interest and independent thinking', max: 4 },
-                              { criterion: 'D', summary: 'Quality of your reflection on methods and results', max: 3 },
-                              { criterion: 'E', summary: 'Sophistication and correctness of mathematical processes used', max: 5 },
-                            ]}
-                            highlightedText={highlightedText}
-                          />
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, marginBottom: 8 }}>Criterion A: Presentation</Text>
+                          
+                          {/* Criterion A: Presentation Table */}
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginTop: 12, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Achievement level</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>Descriptor</Text>
+                            </View>
+                            
+                            {/* Level 0 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('0', highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('The investigation does not meet the standard described by the descriptors below.', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Level 1 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('1', highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('The investigation has some structure or some organization.', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Level 2 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('2', highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('The investigation has some structure and shows some organization.', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Level 3 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('3', highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('The investigation is structured and well organized.', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Level 4 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('4', highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('The investigation is structured, well organized, and concise.', highlightedText)}</Text>
+                            </View>
+                          </View>
+                          
+                          <Text style={{ color: '#B6B6B6', fontFamily: 'ScopeOne-Regular', fontSize: 14, marginTop: 8, fontStyle: 'italic' }}>
+                            {highlightText('The "presentation" criterion assesses the organization and coherence of the exploration.', highlightedText)}
+                          </Text>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 8 }}>Criterion B: Mathematical communication</Text>
+                          
+                          {/* Criterion B: Mathematical communication Table */}
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginTop: 12, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Achievement level</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>Descriptor</Text>
+                            </View>
+                            
+                            {/* Level 0 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('0', highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('The investigation does not meet the standard described by the descriptors below.', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Level 1 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('1', highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('The investigation contains some relevant mathematical communication which is partially appropriate.', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Level 2 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('2', highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('The investigation contains some relevant appropriate mathematical communication.', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Level 3 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('3', highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('The mathematical communication is relevant, appropriate and is mostly consistent.', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Level 4 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('4', highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('The mathematical communication is relevant, appropriate and consistent throughout.', highlightedText)}</Text>
+                            </View>
+                          </View>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 8 }}>Criterion C: Personal engagement</Text>
+                          
+                          {/* Criterion C: Personal engagement Table */}
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginTop: 12, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Achievement level</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>Descriptor</Text>
+                            </View>
+                            
+                            {/* Level 0 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('0', highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('The investigation does not meet the standard described by the descriptors below.', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Level 1 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('1', highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('There is evidence of some personal engagement.', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Level 2 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('2', highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('There is evidence of significant personal engagement.', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Level 3 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('3', highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('There is evidence of outstanding personal engagement.', highlightedText)}</Text>
+                            </View>
+                          </View>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 8 }}>Criterion D: Reflection</Text>
+                          
+                          {/* Criterion D: Reflection Table */}
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginTop: 12, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Achievement level</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>Descriptor</Text>
+                            </View>
+                            
+                            {/* Level 0 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('0', highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('The investigation does not meet the standard described by the descriptors below.', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Level 1 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('1', highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('There is evidence of limited reflection.', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Level 2 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('2', highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('There is evidence of meaningful reflection.', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Level 3 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('3', highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('There is substantial evidence of critical reflection.', highlightedText)}</Text>
+                            </View>
+                          </View>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 8 }}>Criterion E: Use of mathematics—SL</Text>
+                          
+                          {/* Criterion E: Use of mathematics Table */}
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginTop: 12, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Achievement level</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>Descriptor</Text>
+                            </View>
+                            
+                            {/* Level 0 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('0', highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('The investigation does not meet the standard described by the descriptors below.', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Level 1 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('1', highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('Some relevant mathematics is used.', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Level 2 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('2', highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('Some relevant mathematics is used. Limited understanding is demonstrated.', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Level 3 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('3', highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('Relevant mathematics appropriate with the level of the course is used. Limited understanding is demonstrated.', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Level 4 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('4', highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('Relevant mathematics appropriate with the level of the course is used. The mathematics investigated is partially correct. Some knowledge and understanding are demonstrated.', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Level 5 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('5', highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('Relevant mathematics appropriate with the level of the course is used. The mathematics investigated is mostly correct. Good knowledge and understanding are demonstrated.', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Level 6 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('6', highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('Relevant mathematics appropriate with the level of the course is used. The mathematics investigated is correct. Thorough knowledge and understanding are demonstrated.', highlightedText)}</Text>
+                            </View>
+                          </View>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 24, marginBottom: 8 }}>Criterion E: Use of mathematics—HL</Text>
+                          
+                          {/* Criterion E: Use of mathematics HL Table */}
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, marginTop: 12, marginBottom: 8 }}>
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(182,199,247,0.18)' }}>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 1, padding: 8, textAlign: 'center' }}>Achievement level</Text>
+                              <Text style={{ ...themeStyles.sectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', flex: 3, padding: 8 }}>Descriptor</Text>
+                            </View>
+                            
+                            {/* Level 0 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('0', highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('The investigation does not meet the standard described by the descriptors below.', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Level 1 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('1', highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('Some relevant mathematics is used. Limited understanding is demonstrated.', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Level 2 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('2', highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('Some relevant mathematics is used. The mathematics investigated is partially correct. Some knowledge and understanding is demonstrated.', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Level 3 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('3', highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('Relevant mathematics appropriate with the level of the course is used. The mathematics investigated is correct. Some knowledge and understanding are demonstrated.', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Level 4 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('4', highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('Relevant mathematics appropriate with the level of the course is used. The mathematics investigated is correct. Good knowledge and understanding are demonstrated.', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Level 5 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('5', highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('Relevant mathematics appropriate with the level of the course is used. The mathematics investigated is correct and demonstrates sophistication or rigour. Thorough knowledge and understanding are demonstrated.', highlightedText)}</Text>
+                            </View>
+                            
+                            {/* Level 6 */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                              <Text style={{ flex: 1, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular', textAlign: 'center', fontWeight: 'bold' }}>{highlightText('6', highlightedText)}</Text>
+                              <Text style={{ flex: 3, color: '#B6B6B6', padding: 8, fontFamily: 'ScopeOne-Regular' }}>{highlightText('Relevant mathematics appropriate with the level of the course is used. The mathematics investigated is precise and demonstrates sophistication and rigour. Thorough knowledge and understanding are demonstrated.', highlightedText)}</Text>
+                            </View>
+                          </View>
                           <Text style={{ 
                             fontSize: 11, 
                             color: 'rgba(255, 255, 255, 0.5)', 
