@@ -456,13 +456,29 @@ Criterion D (where applicable): Creative process and collaboration`,
                         <View>
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginBottom: 8 }}>Detailed Rubrics Summary</Text>
                           
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 16 }}>{highlightText("Each assessment component is assessed through distinct criteria, graded from 0 to 10 or 0 to 12 depending on the task. Criteria typically include:", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 16 }}>{highlightText("Each assessment component is assessed through distinct criteria, graded from 0 to 10 or 0 to 12 depending on the task.", highlightedText)}</Text>
                           
-                          <View style={{ marginLeft: 16, marginBottom: 16 }}>
-                            <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 8 }}>{highlightText("- Criterion A: Knowledge and understanding of theatre practices", highlightedText)}</Text>
-                            <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 8 }}>{highlightText("- Criterion B: Application and analysis", highlightedText)}</Text>
-                            <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22, marginBottom: 8 }}>{highlightText("- Criterion C: Reflection and evaluation", highlightedText)}</Text>
-                            <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("- Criterion D (where applicable): Creative process and collaboration", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 14, marginTop: 16, marginBottom: 8 }}>Assessment Criteria</Text>
+                          
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginTop: 8 }}>
+                            {/* Header Row */}
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Criterion</Text>
+                              <Text style={{ flex: 3, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Description</Text>
+                            </View>
+                            
+                            {/* Data Rows */}
+                            {[
+                              { criterion: 'Criterion A', description: 'Knowledge and understanding of theatre practices' },
+                              { criterion: 'Criterion B', description: 'Application and analysis' },
+                              { criterion: 'Criterion C', description: 'Reflection and evaluation' },
+                              { criterion: 'Criterion D', description: 'Creative process and collaboration (where applicable)' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.criterion, highlightedText)}</Text>
+                                <Text style={{ flex: 3, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.description, highlightedText)}</Text>
+                              </View>
+                            ))}
                           </View>
                         </View>
                       )}

@@ -66,10 +66,10 @@ SL:
 - Performance (40%)
 
 HL:
-- Composition and analysis (35%)
-- World dance investigation (20%)
-- Performance (25%)
-- Composition and analysis solo project (20%)`,
+- External assessment (60%)
+  - Composition and analysis (35%)
+  - Dance investigation (25%)
+- Internal assessment (40%)`,
     coreThemes: `Concepts, Content, and Contexts
 
 Concepts:
@@ -433,7 +433,7 @@ Total 25 marks`,
                           <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("1. Demonstrate practical skills in performance and composition.\n2. Analyze and evaluate dance from different cultures and historical periods.\n3. Communicate choreographic intentions through reflective writing and practical work.", highlightedText)}</Text>
                           
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>4. Assessment Outline and Weightages</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("SL:\n- Composition and analysis (40%)\n- World dance investigation (20%)\n- Performance (40%)\n\nHL:\n- Composition and analysis (35%)\n- World dance investigation (20%)\n- Performance (25%)\n- Composition and analysis solo project (20%)", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("SL:\n- Composition and analysis (40%)\n- World dance investigation (20%)\n- Performance (40%)\n\nHL:\n- External assessment (60%)\n  - Composition and analysis (35%)\n  - Dance investigation (25%)\n- Internal assessment (40%)", highlightedText)}</Text>
                         </View>
                       )}
                       {section.key === 'coreThemes' && (
@@ -489,7 +489,7 @@ Total 25 marks`,
                             ))}
                             {/* Total Row */}
                             <View style={{ flexDirection: 'row', borderTopWidth: 2, borderColor: '#7EC3FF', backgroundColor: 'rgba(126, 195, 255, 0.1)' }}>
-                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}></Text>
+                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}> </Text>
                               <Text style={{ flex: 2.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>{highlightText("Total", highlightedText)}</Text>
                               <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>{highlightText("20 marks", highlightedText)}</Text>
                             </View>
@@ -521,7 +521,7 @@ Total 25 marks`,
                             ))}
                             {/* Total Row */}
                             <View style={{ flexDirection: 'row', borderTopWidth: 2, borderColor: '#7EC3FF', backgroundColor: 'rgba(126, 195, 255, 0.1)' }}>
-                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}></Text>
+                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}> </Text>
                               <Text style={{ flex: 2.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>{highlightText("Total", highlightedText)}</Text>
                               <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>{highlightText("20 marks", highlightedText)}</Text>
                             </View>
@@ -555,7 +555,7 @@ Total 25 marks`,
                             ))}
                             {/* Total Row */}
                             <View style={{ flexDirection: 'row', borderTopWidth: 2, borderColor: '#7EC3FF', backgroundColor: 'rgba(126, 195, 255, 0.1)' }}>
-                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}></Text>
+                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}> </Text>
                               <Text style={{ flex: 2.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>{highlightText("Total", highlightedText)}</Text>
                               <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>{highlightText("30 marks", highlightedText)}</Text>
                             </View>
@@ -588,7 +588,7 @@ Total 25 marks`,
                             ))}
                             {/* Total Row */}
                             <View style={{ flexDirection: 'row', borderTopWidth: 2, borderColor: '#7EC3FF', backgroundColor: 'rgba(126, 195, 255, 0.1)' }}>
-                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}></Text>
+                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}> </Text>
                               <Text style={{ flex: 2.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>{highlightText("Total", highlightedText)}</Text>
                               <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>{highlightText("25 marks", highlightedText)}</Text>
                             </View>

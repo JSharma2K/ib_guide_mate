@@ -56,15 +56,15 @@ AO4: Evaluate and reflect on artistic choices in film.
 
 Assessment Outline & Weightages
 SL:
-- Textual Analysis: 30%
-- Film Portfolio: 45%
-- Collaborative Film Project: 25%
+- Film portfolio (Internal): 40%
+- Textual analysis (External): 30%
+- Comparative study (External): 30%
 
 HL:
-- Textual Analysis: 20%
-- Film Portfolio: 25%
-- Collaborative Film Project: 35%
-- Independent Comparative Study: 20%`,
+- Film portfolio (Internal): 25%
+- Textual analysis (External): 20%
+- Comparative study (External): 20%
+- Collaborative film project (External): 35%`,
     coreThemes: `Concepts, Content, and Contexts
 
 Concepts:
@@ -383,7 +383,7 @@ Standard C: Communication and formatting (6 points)`,
                           <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("AO1: Demonstrate knowledge and understanding of the film medium in context.\nAO2: Apply film language and concepts in film analysis and production.\nAO3: Synthesize research, critical reflection, and creative work.\nAO4: Evaluate and reflect on artistic choices in film.", highlightedText)}</Text>
                           
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16 }}>Assessment Outline & Weightages</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("SL:\n- Textual Analysis: 30%\n- Film Portfolio: 45%\n- Collaborative Film Project: 25%\n\nHL:\n- Textual Analysis: 20%\n- Film Portfolio: 25%\n- Collaborative Film Project: 35%\n- Independent Comparative Study: 20%", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("SL:\n- Film portfolio (Internal): 40%\n- Textual analysis (External): 30%\n- Comparative study (External): 30%\n\nHL:\n- Film portfolio (Internal): 25%\n- Textual analysis (External): 20%\n- Comparative study (External): 20%\n- Collaborative film project (External): 35%", highlightedText)}</Text>
                         </View>
                       )}
                       {section.key === 'coreThemes' && (
@@ -424,17 +424,102 @@ Standard C: Communication and formatting (6 points)`,
                         <View>
                           <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 16, marginBottom: 8 }}>Assessment Standards</Text>
                           
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 14, marginTop: 16 }}>Film Analysis Tasks</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("Standard A: Comprehension of cinematic elements and techniques (5 points)\nStandard B: Application of film terminology and concepts (5 points)\nStandard C: Cultural and contextual awareness (5 points)\nStandard D: Structure and presentation clarity (5 points)", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 14, marginTop: 16, marginBottom: 8 }}>Film Analysis Tasks</Text>
                           
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 14, marginTop: 16 }}>Film Production Portfolio</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("Standard A: Personal reflection on production responsibilities (6 points)\nStandard B: Creative justification and critical evaluation (6 points)\nStandard C: Technical proficiency and artistic expression (6 points)", highlightedText)}</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginTop: 8 }}>
+                            {/* Header Row */}
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Standard</Text>
+                              <Text style={{ flex: 3, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Description</Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Points</Text>
+                            </View>
+                            
+                            {/* Data Rows */}
+                            {[
+                              { standard: 'Standard A', description: 'Comprehension of cinematic elements and techniques', points: '5' },
+                              { standard: 'Standard B', description: 'Application of film terminology and concepts', points: '5' },
+                              { standard: 'Standard C', description: 'Cultural and contextual awareness', points: '5' },
+                              { standard: 'Standard D', description: 'Structure and presentation clarity', points: '5' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.standard, highlightedText)}</Text>
+                                <Text style={{ flex: 3, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.description, highlightedText)}</Text>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, textAlign: 'center' }}>{highlightText(row.points, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
                           
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 14, marginTop: 16 }}>Group Film Project</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("Standard A: Collaborative participation and teamwork (6 points)\nStandard B: Technical implementation and execution (6 points)\nStandard C: Critical reflection and evaluation (6 points)", highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 14, marginTop: 16, marginBottom: 8 }}>Film Production Portfolio</Text>
                           
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 14, marginTop: 16 }}>Independent Film Study (HL only)</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 22 }}>{highlightText("Standard A: Subject knowledge and comprehension (6 points)\nStandard B: Investigation and analytical skills (6 points)\nStandard C: Communication and formatting (6 points)", highlightedText)}</Text>
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginTop: 8 }}>
+                            {/* Header Row */}
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Standard</Text>
+                              <Text style={{ flex: 3, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Description</Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Points</Text>
+                            </View>
+                            
+                            {/* Data Rows */}
+                            {[
+                              { standard: 'Standard A', description: 'Personal reflection on production responsibilities', points: '6' },
+                              { standard: 'Standard B', description: 'Creative justification and critical evaluation', points: '6' },
+                              { standard: 'Standard C', description: 'Technical proficiency and artistic expression', points: '6' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.standard, highlightedText)}</Text>
+                                <Text style={{ flex: 3, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.description, highlightedText)}</Text>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, textAlign: 'center' }}>{highlightText(row.points, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 14, marginTop: 16, marginBottom: 8 }}>Group Film Project</Text>
+                          
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginTop: 8 }}>
+                            {/* Header Row */}
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Standard</Text>
+                              <Text style={{ flex: 3, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Description</Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Points</Text>
+                            </View>
+                            
+                            {/* Data Rows */}
+                            {[
+                              { standard: 'Standard A', description: 'Collaborative participation and teamwork', points: '6' },
+                              { standard: 'Standard B', description: 'Technical implementation and execution', points: '6' },
+                              { standard: 'Standard C', description: 'Critical reflection and evaluation', points: '6' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.standard, highlightedText)}</Text>
+                                <Text style={{ flex: 3, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.description, highlightedText)}</Text>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, textAlign: 'center' }}>{highlightText(row.points, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 14, marginTop: 16, marginBottom: 8 }}>Independent Film Study (HL only)</Text>
+                          
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginTop: 8 }}>
+                            {/* Header Row */}
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 1.5, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Standard</Text>
+                              <Text style={{ flex: 3, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Description</Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Points</Text>
+                            </View>
+                            
+                            {/* Data Rows */}
+                            {[
+                              { standard: 'Standard A', description: 'Subject knowledge and comprehension', points: '6' },
+                              { standard: 'Standard B', description: 'Investigation and analytical skills', points: '6' },
+                              { standard: 'Standard C', description: 'Communication and formatting', points: '6' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1.5, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.standard, highlightedText)}</Text>
+                                <Text style={{ flex: 3, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.description, highlightedText)}</Text>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, textAlign: 'center' }}>{highlightText(row.points, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
                         </View>
                       )}
                     </View>

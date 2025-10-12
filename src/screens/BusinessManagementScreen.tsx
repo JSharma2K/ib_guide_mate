@@ -39,23 +39,31 @@ const BusinessManagementScreen = ({ navigation, route }: { navigation: any; rout
 
   // Section keys and content for search
   const sectionContentStrings: Record<'overview' | 'essentials' | 'coreThemes' | 'detailedRubrics' | 'businessTips', string> = {
-    overview: `Syllabus Overview\nThe IB Business Management course provides students with a comprehensive understanding of business theory and practice. Students explore how businesses operate in different contexts and cultures, examining organizational behavior, strategy, and decision-making processes. The course emphasizes critical thinking, ethical considerations, and real-world application of business concepts through case studies and practical examples.`,
-    essentials: `Assessment Objectives in Practice\n• AO1 – Knowledge and understanding: Demonstrate knowledge of business management tools, theories, and concepts.\n• AO2 – Application and analysis: Apply business management tools, theories, and concepts to given business situations.\n• AO3 – Synthesis and evaluation: Examine business strategies and practices, showing awareness of stakeholder interests and ethical concerns.\n• AO4 – Use and application of skills: Select and use appropriate business management tools, theories, and concepts to analyze business situations.\n\nAssessment Outline & Weightages\n• SL External: Paper 1 (25%), Paper 2 (50%) | Internal: Research Project (25%)\n• HL External: Paper 1 (20%), Paper 2 (40%), Paper 3 (20%) | Internal: Research Project (20%)\n\nInternal and External Assessment Details\n• Paper 1: Section A (10 marks) and Section B (15 marks) based on a business case study (SL/HL).\n• Paper 2: Structured questions based on stimulus material covering all course content (SL/HL).\n• Paper 3 (HL only): Two structured questions from a choice of three (HL only).\n• Internal Assessment (SL & HL): Research project investigating a real business issue or decision.`,
-    coreThemes: `Syllabus Outline\n\nUnit 1: Business Organization and Environment – Introduction to business management, types of organizations, organizational objectives, stakeholders, external environment.\n\nUnit 2: Human Resource Management – Human resource planning, organizational structure, leadership and management, motivation, organizational culture, communication.\n\nUnit 3: Finance and Accounts – Sources of finance, costs and revenues, break-even analysis, final accounts, profitability and liquidity ratio analysis, efficiency ratio analysis, investment appraisal.\n\nUnit 4: Marketing – The role of marketing, market research, the four Ps, international marketing.\n\nUnit 5: Operations Management – The role of operations management, production methods, lean production and quality management, location, production planning, research and development.\n\nHL Extension Topics:\n• Strategic planning\n• International business\n• Digital business innovation`,
-    detailedRubrics: `Assessment Guidelines – Research Project Evaluation\n\nInternal Assessment – Research Project Scoring (25 marks total)\n\nCriterion A: Knowledge and understanding\nDemonstration of relevant business management knowledge and understanding\nMarks: 0-7\n\nCriterion B: Application\nApplication of business management tools, theories and techniques\nMarks: 0-6\n\nCriterion C: Reasoned arguments\nPresentation of reasoned arguments based on analysis and evaluation\nMarks: 0-6\n\nCriterion D: Structure\nStructure and presentation of the research project\nMarks: 0-3\n\nCriterion E: Individuals and societies\nAwareness of ethical issues and consideration of stakeholder interests\nMarks: 0-3\n\nTotal: 25 marks`,
-    businessTips: `Top 10 Study Tips for Success – Business Management\n\n• Master key business theories and models early in the course.\n\n• Stay updated with current business news and case studies.\n\n• Practice applying business tools and theories to real situations.\n\n• Develop strong analytical and evaluation skills for higher marks.\n\n• Understand stakeholder perspectives and ethical considerations.\n\n• Practice writing clear, structured responses with business terminology.\n\n• Choose a focused and manageable topic for your research project.\n\n• Use real business examples to support your arguments.\n\n• Understand the difference between analysis and evaluation in responses.\n\n• Review past papers and mark schemes regularly for exam preparation.`,
+    overview: `Syllabus Overview\nThe Business Management course empowers students to become confident, creative, and ethical business leaders. Students explore business functions, decision-making processes, and management tools in a global context. The course revolves around four key interdisciplinary concepts: change, creativity, ethics, and sustainability. Students investigate human resource management, finance, marketing, operations, and strategy. SL and HL students complete an internal assessment project based on a real business issue, with HL students exploring additional extension content and Paper 3. The subject integrates theory and practical applications, preparing students to analyze, evaluate, and communicate business decisions through case studies and real-world challenges.`,
+    essentials: `Assessment Objectives in Practice\n• AO1: Demonstrate knowledge and understanding of business management tools, theories, concepts, and problems.\n• AO2: Apply and analyse business tools and concepts to problems and decisions using appropriate data.\n• AO3: Synthesize and evaluate business issues, stakeholder perspectives, and propose recommendations.\n• AO4: Use relevant tools and techniques to communicate structured and reasoned responses effectively.\n\nAssessment Outline & Weightages\n• SL External: Paper 1 (35%), Paper 2 (40%) | Internal: IA (25%)\n• HL External: Paper 1 (30%), Paper 2 (35%), Paper 3 (20%) | Internal: IA (15%)\n\nInternal and External Assessment Details\n• Paper 1: Section A (10 marks) and Section B (15 marks) based on a business case study (SL/HL).\n• Paper 2: Structured questions based on stimulus material covering all course content (SL/HL).\n• Paper 3 (HL only): Two structured questions from a choice of three (HL only).\n• Internal Assessment (SL & HL): Research project investigating a real business issue or decision.`,
+    coreThemes: `Business Management Toolkit\nStudents must master and apply these tools across topics:\nFor SL & HL:\n• Decision-making Tools: SWOT Analysis, Ansoff Matrix, Decision Trees, STEEPLE Analysis\n• Financial Tools: Break-even Analysis, Contribution Analysis, Ratios (Liquidity, Profitability, Efficiency)\n• Marketing Tools: BCG Matrix, Product Life Cycle, Boston Matrix\n• Operations Tools: Quality Assurance vs. Quality Control, Supply Chain Diagrams\n• Human Resource Tools: Organizational Charts, Motivation Theories (Maslow, Herzberg, Pink), Recruitment/Training Methods\nHL Only (Extended Toolkit):\n• Gantt Charts – project scheduling and time management\n• Critical Path Analysis (CPA) – identifying minimum time for task completion\n• Porter's Generic Strategies – cost leadership, differentiation, focus\n• Force Field Analysis – understanding driving and restraining forces\n• Linear Regression – forecasting based on trends and relationships\nThese tools must be applied analytically, not just described. Students should reference them in the IA and external assessments (especially Paper 2 and Paper 3).\n\nSyllabus Outline (Organized by Units)\nUnit 1: Introduction to Business Management\n• Functions of business\n• Business types (profit vs non-profit)\n• Organizational objectives\n• Stakeholders\n• Business growth and planning\nUnit 2: Human Resource Management\n• Functions and strategies of HR\n• Organizational structures\n• Leadership styles\n• Motivation theories\n• Recruitment, training, and appraisals\nUnit 3: Finance and Accounts\n• Sources of finance\n• Final accounts and financial ratios\n• Break-even analysis\n• Investment appraisal\nUnit 4: Marketing\n• Market planning and segmentation\n• Product, price, promotion, and place (4 Ps)\n• Branding and international marketing\n• E-commerce\nUnit 5: Operations Management\n• Production methods\n• Lean production\n• Quality management\n• Supply chain\n• Crisis management\nUnit 6: Business Strategy (HL only)\n• Strategic decision-making\n• Tools for strategic analysis\n• Risk management\n• Change management\n\nInternal and External Assessment Details\n• Paper 1: Case-based exam focused on a pre-seen statement (business scenario).\n• Paper 2: Quantitative and qualitative questions on syllabus content and concepts.\n• Paper 3 (HL only): Social enterprise scenario requiring decision-making and recommendation.\n• IA: Business research project based on a real organization. Requires analysis through one key concept.\n\nConcepts and Themes\n• Change: Understanding transformation processes and their drivers.\n• Creativity: Applying innovative solutions in business strategy and operations.\n• Ethics: Navigating moral implications in decision-making and stakeholder impact.\n• Sustainability: Focusing on the triple bottom line—people, planet, and profit.\n\nBusiness Management Toolkit\n• Tools include SWOT, Ansoff Matrix, STEEPLE, Decision Trees, Contribution, Break-even analysis, Gantt Charts (HL), BCG Matrix, and more.\n• HL tools: Porter's Strategies, Critical Path Analysis, Linear Regression, Force Field Analysis.`,
+    detailedRubrics: `External Assessment Rubrics\n\nPaper 1 and Paper 2 Extended Response (10 Marks)\nUsed in Section B of both papers.\n\nMarks 0: Does not reach a standard described by the descriptors below.\nMarks 1-2: Little understanding of question demands. Tools/theories used are irrelevant or inaccurate. No arguments made.\nMarks 3-4: Some understanding; mostly superficial use of tools and theories. Arguments mostly unsubstantiated.\nMarks 5-6: Partial understanding; some relevant tools/theories and limited balanced evaluation. Arguments are one-sided.\nMarks 7-8: Mostly addresses the demands; good use of tools and mostly balanced arguments.\nMarks 9-10: Fully addresses question demands with accurate tools, integrated stimulus info, and balanced, substantiated arguments.\n\nPaper 3 (HL Only) Question 3 Rubric (17 Marks)\n\nCriterion A Use of Resource Materials: Integration of case study and supporting resources (4 marks)\nCriterion B Tools & Theories: Effective application of business tools and concepts (4 marks)\nCriterion C Evaluation: Analysis of impact and trade-offs on the business (6 marks)\nCriterion D Sequencing: Logical flow and clarity of action plan (3 marks)\nTotal: 17 marks\n\nInternal Assessment Business Research Project (25 Marks)\n\nCriterion A Key Concept: Connection and integration of concept (e.g., change, ethics) (5 marks)\nCriterion B Supporting Docs: Relevance and diversity of selected source material (4 marks)\nCriterion C Tools & Theories: Selection and application of tools/theories (4 marks)\nCriterion D Analysis & Evaluation: Use of data to explore RQ with integration and depth (5 marks)\nCriterion E Conclusions: Conclusion consistency and link to research question (3 marks)\nCriterion F Structure: Organization, coherence, and clarity of argument (2 marks)\nCriterion G Presentation: Referencing, bibliography, format adherence (2 marks)\nTotal: 25 marks`,
+    businessTips: `Top 10 Study Tips for Success\n• 1. Master command terms and know how they map to AO1–AO4.\n• 2. Use real-world case studies in every unit for application-based learning.\n• 3. Develop comfort with finance-based tools: ratios, break-even, and investment appraisal.\n• 4. Use business terminology accurately and consistently in all responses.\n• 5. Practice structuring extended responses (especially for Paper 2 and IA).\n• 6. Map syllabus concepts (change, ethics, creativity, sustainability) to current events.\n• 7. Break down large questions using assessment objectives.\n• 8. Compare multiple stakeholder perspectives in evaluations.\n• 9. For HL, read social enterprise case studies to prep for Paper 3.\n• 10. Choose an IA topic that connects well with one key concept and allows deep evaluation.`,
   };
   const sectionKeys: Array<'overview' | 'essentials' | 'coreThemes' | 'detailedRubrics' | 'businessTips'> = ['overview', 'essentials', 'coreThemes', 'detailedRubrics', 'businessTips'];
 
   // Full-text blob of Detailed Rubrics content to improve search coverage
   const detailedRubricsSearchContent = `
-  Assessment Guidelines Research Project Evaluation
-  Internal Assessment Research Project Scoring 25 marks total
-  A Knowledge and understanding Demonstration of relevant business management knowledge and understanding 0-7
-  B Application Application of business management tools theories and techniques 0-6
-  C Reasoned arguments Presentation of reasoned arguments based on analysis and evaluation 0-6
-  D Structure Structure and presentation of the research project 0-3
-  E Individuals and societies Awareness of ethical issues and consideration of stakeholder interests 0-3
+  External Assessment Rubrics Paper 1 Paper 2 Extended Response 10 Marks
+  Marks 0 1-2 3-4 5-6 7-8 9-10 understanding question demands tools theories arguments substantiated balanced evaluation
+  Paper 3 HL Only Question 3 Rubric 17 Marks
+  Criterion A Use of Resource Materials Integration case study supporting resources 4 marks
+  Criterion B Tools Theories Effective application business tools concepts 4 marks
+  Criterion C Evaluation Analysis impact trade-offs business 6 marks
+  Criterion D Sequencing Logical flow clarity action plan 3 marks
+  Internal Assessment Business Research Project 25 Marks
+  Criterion A Key Concept Connection integration concept change ethics 5 marks
+  Criterion B Supporting Docs Relevance diversity selected source material 4 marks
+  Criterion C Tools Theories Selection application tools theories 4 marks
+  Criterion D Analysis Evaluation Use data explore RQ research question integration depth 5 marks
+  Criterion E Conclusions Conclusion consistency link research question 3 marks
+  Criterion F Structure Organization coherence clarity argument 2 marks
+  Criterion G Presentation Referencing bibliography format adherence 2 marks
   `;
 
   const toggleSection = (section: string) => {
@@ -309,7 +317,7 @@ const BusinessManagementScreen = ({ navigation, route }: { navigation: any; rout
             <View style={{ height: 2, backgroundColor: '#7EC3FF', marginBottom: 8 }} />
           </View>
           {/* Dropdowns */}
-          {[{ key: 'overview', title: 'Course Overview' }, { key: 'essentials', title: 'Subject Essentials' }, { key: 'coreThemes', title: 'Prescribed Literature' }, { key: 'detailedRubrics', title: 'Detailed Rubrics' }, { key: 'businessTips', title: 'Business Management Tips' }].map((section, idx, arr) => (
+          {[{ key: 'overview', title: 'Course Overview' }, { key: 'essentials', title: 'Subject Essentials' }, { key: 'coreThemes', title: 'Prescribed Literature' }, { key: 'detailedRubrics', title: 'Detailed Rubrics' }].map((section, idx, arr) => (
             <View key={section.key}>
               <List.Item
                 title={section.title}
@@ -345,12 +353,101 @@ const BusinessManagementScreen = ({ navigation, route }: { navigation: any; rout
                       )}
                       {section.key === 'detailedRubrics' && (
                         <View>
-                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginBottom: 12 }}>Assessment Guidelines – Research Project Evaluation</Text>
-                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 20 }}>{highlightText(sectionContentStrings.detailedRubrics, highlightedText)}</Text>
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginBottom: 12, fontSize: 16 }}>External Assessment Rubrics</Text>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 14, marginTop: 8, marginBottom: 8 }}>Paper One and Paper Two – Extended Response (10 Marks)</Text>
+                          <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 20, marginBottom: 12 }}>{highlightText("Used in Section B of both papers.", highlightedText)}</Text>
+                          
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginBottom: 16 }}>
+                            {/* Header Row */}
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Marks</Text>
+                              <Text style={{ flex: 4, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Descriptor</Text>
+                            </View>
+                            
+                            {/* Data Rows */}
+                            {[
+                              { marks: '0', descriptor: 'Does not reach a standard described by the descriptors below.' },
+                              { marks: '1-2', descriptor: 'Little understanding of question demands. Tools/theories used are irrelevant or inaccurate. No arguments made.' },
+                              { marks: '3-4', descriptor: 'Some understanding; mostly superficial use of tools and theories. Arguments mostly unsubstantiated.' },
+                              { marks: '5-6', descriptor: 'Partial understanding; some relevant tools/theories and limited balanced evaluation. Arguments are one-sided.' },
+                              { marks: '7-8', descriptor: 'Mostly addresses the demands; good use of tools and mostly balanced arguments.' },
+                              { marks: '9-10', descriptor: 'Fully addresses question demands with accurate tools, integrated stimulus info, and balanced, substantiated arguments.' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, textAlign: 'center', fontWeight: 'bold' }}>{highlightText(row.marks, highlightedText)}</Text>
+                                <Text style={{ flex: 4, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.descriptor, highlightedText)}</Text>
+                              </View>
+                            ))}
+                          </View>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', fontSize: 14, marginTop: 16, marginBottom: 8 }}>Paper 3 (HL Only) – Question 3 Rubric (17 Marks)</Text>
+                          
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginBottom: 16 }}>
+                            {/* Header Row */}
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 2, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Criterion</Text>
+                              <Text style={{ flex: 3, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Description</Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Max Marks</Text>
+                            </View>
+                            
+                            {/* Data Rows */}
+                            {[
+                              { criterion: 'A – Use of Resource Materials', description: 'Integration of case study and supporting resources', marks: '4' },
+                              { criterion: 'B – Tools & Theories', description: 'Effective application of business tools and concepts', marks: '4' },
+                              { criterion: 'C – Evaluation', description: 'Analysis of impact and trade-offs on the business', marks: '6' },
+                              { criterion: 'D – Sequencing', description: 'Logical flow and clarity of action plan', marks: '3' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, fontWeight: 'bold' }}>{highlightText(row.criterion, highlightedText)}</Text>
+                                <Text style={{ flex: 3, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.description, highlightedText)}</Text>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, textAlign: 'center' }}>{highlightText(row.marks, highlightedText)}</Text>
+                              </View>
+                            ))}
+                            
+                            {/* Total Row */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 2, borderColor: '#7EC3FF', backgroundColor: 'rgba(126, 195, 255, 0.1)' }}>
+                              <Text style={{ flex: 2, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Total</Text>
+                              <Text style={{ flex: 3, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}> </Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>{highlightText("17", highlightedText)}</Text>
+                            </View>
+                          </View>
+                          
+                          <Text style={{ ...themeStyles.subsectionTitle, fontFamily: 'ScopeOne-Regular', color: '#7EC3FF', marginTop: 16, marginBottom: 12, fontSize: 16 }}>Internal Assessment (SL/HL) – Business Research Project (25 Marks)</Text>
+                          
+                          <View style={{ borderWidth: 1, borderColor: '#7EC3FF', borderRadius: 8, overflow: 'hidden', marginBottom: 16 }}>
+                            {/* Header Row */}
+                            <View style={{ flexDirection: 'row', backgroundColor: 'rgba(126, 195, 255, 0.2)' }}>
+                              <Text style={{ flex: 2, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Criterion</Text>
+                              <Text style={{ flex: 3, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Focus</Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>Max Marks</Text>
+                            </View>
+                            
+                            {/* Data Rows */}
+                            {[
+                              { criterion: 'A – Key Concept', focus: 'Connection and integration of concept (e.g., change, ethics)', marks: '5' },
+                              { criterion: 'B – Supporting Docs', focus: 'Relevance and diversity of selected source material', marks: '4' },
+                              { criterion: 'C – Tools & Theories', focus: 'Selection and application of tools/theories', marks: '4' },
+                              { criterion: 'D – Analysis & Evaluation', focus: 'Use of data to explore RQ with integration and depth', marks: '5' },
+                              { criterion: 'E – Conclusions', focus: 'Conclusion consistency and link to research question', marks: '3' },
+                              { criterion: 'F – Structure', focus: 'Organization, coherence, and clarity of argument', marks: '2' },
+                              { criterion: 'G – Presentation', focus: 'Referencing, bibliography, format adherence', marks: '2' },
+                            ].map((row, idx) => (
+                              <View key={idx} style={{ flexDirection: 'row', borderTopWidth: 1, borderColor: '#7EC3FF' }}>
+                                <Text style={{ flex: 2, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, fontWeight: 'bold' }}>{highlightText(row.criterion, highlightedText)}</Text>
+                                <Text style={{ flex: 3, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13 }}>{highlightText(row.focus, highlightedText)}</Text>
+                                <Text style={{ flex: 1, color: '#B6B6B6', padding: 12, fontFamily: 'ScopeOne-Regular', fontSize: 13, textAlign: 'center' }}>{highlightText(row.marks, highlightedText)}</Text>
+                              </View>
+                            ))}
+                            
+                            {/* Total Row */}
+                            <View style={{ flexDirection: 'row', borderTopWidth: 2, borderColor: '#7EC3FF', backgroundColor: 'rgba(126, 195, 255, 0.1)' }}>
+                              <Text style={{ flex: 2, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}>Total</Text>
+                              <Text style={{ flex: 3, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold' }}> </Text>
+                              <Text style={{ flex: 1, color: '#7EC3FF', padding: 12, fontFamily: 'ScopeOne-Regular', fontWeight: 'bold', textAlign: 'center' }}>{highlightText("25", highlightedText)}</Text>
+                            </View>
+                          </View>
                         </View>
-                      )}
-                      {section.key === 'businessTips' && (
-                        <Text style={{ ...themeStyles.content, fontFamily: 'ScopeOne-Regular', lineHeight: 20 }}>{highlightText(sectionContentStrings.businessTips, highlightedText)}</Text>
                       )}
                     </View>
                   ))}
@@ -359,14 +456,59 @@ const BusinessManagementScreen = ({ navigation, route }: { navigation: any; rout
             </View>
           ))}
         </View>
-
+        {userType === 'student' && (
+          <View style={{ borderRadius: 16, borderWidth: 1, borderColor: '#7EC3FF', backgroundColor: 'rgba(182,199,247,0.12)', marginBottom: 24, overflow: 'hidden', paddingHorizontal: 8 }}>
+            <View style={{ padding: 20, paddingBottom: 0 }}>
+              <Text style={{ fontSize: 22, color: '#fff', fontFamily: 'ScopeOne-Regular', fontWeight: '700', marginBottom: 4 }}>Student Resources</Text>
+              <View style={{ height: 2, backgroundColor: '#7EC3FF', marginBottom: 8 }} />
+            </View>
+            
+            {/* Business Management Tips dropdown */}
+            <View>
+              <List.Item
+                title="Business Management Tips"
+                titleStyle={{ color: '#fff', fontFamily: 'ScopeOne-Regular', fontSize: 18 }}
+                onPress={() => toggleSection('businessTips')}
+                right={props => <List.Icon {...props} icon="chevron-right" color="#FFFFFF" style={{ transform: [{ rotate: expandedSection === 'businessTips' ? '90deg' : '0deg' }] }} />}
+                style={{ paddingVertical: 8, paddingLeft: 20, backgroundColor: 'transparent' }}
+              />
+              {expandedSection === 'businessTips' && (
+                <View style={{ paddingHorizontal: 20, paddingBottom: 16 }}>
+                  {renderAnimatedContent('businessTips', (
+                    <View style={{ backgroundColor: 'rgba(24,26,32,0.92)', borderRadius: 12, padding: 16, marginTop: 8 }}>
+                      <View>
+                        {[
+                          "Master command terms and know how they map to AO1–AO4.",
+                          "Use real-world case studies in every unit for application-based learning.",
+                          "Develop comfort with finance-based tools: ratios, break-even, and investment appraisal.",
+                          "Use business terminology accurately and consistently in all responses.",
+                          "Practice structuring extended responses (especially for Paper 2 and IA).",
+                          "Map syllabus concepts (change, ethics, creativity, sustainability) to current events.",
+                          "Break down large questions using assessment objectives.",
+                          "Compare multiple stakeholder perspectives in evaluations.",
+                          "For HL, read social enterprise case studies to prep for Paper 3.",
+                          "Choose an IA topic that connects well with one key concept and allows deep evaluation."
+                        ].map((tip, idx) => (
+                          <View key={idx} style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: 8 }}>
+                            <Text style={{ color: '#7EC3FF', fontSize: 16, marginRight: 8, lineHeight: 24, fontFamily: 'ScopeOne-Regular' }}>{idx + 1}.</Text>
+                            <Text style={[themeStyles.content, { flex: 1, fontFamily: 'ScopeOne-Regular', color: '#FFFFFF' }]}>{highlightText(tip, highlightedText)}</Text>
+                          </View>
+                        ))}
+                      </View>
+                    </View>
+                  ))}
+                </View>
+              )}
+            </View>
+          </View>
+        )}
         {userType === 'student' && (
           <TouchableOpacity
             style={{
               backgroundColor: 'rgba(126, 195, 255, 0.2)',
               borderRadius: 16,
               padding: 20,
-              marginTop: 32,
+              marginTop: 8,
               borderWidth: 1,
               borderColor: '#7EC3FF',
             }}
